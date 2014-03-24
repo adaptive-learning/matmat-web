@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    'lazysignup',
     'core',
 )
 
@@ -40,6 +41,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'lazysignup.backends.LazySignupBackend',
 )
 
 ROOT_URLCONF = 'matmat.urls'
