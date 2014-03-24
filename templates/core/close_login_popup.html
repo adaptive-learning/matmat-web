@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block extrascripts%}
+    <script type="text/javascript">
+        closePopupAndUpdateOpener("{% url "home" %}");
+    </script>
+{% endblock %}
