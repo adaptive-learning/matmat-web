@@ -1,0 +1,4 @@
+Django==1.6
+South==0.8.4
+dj-database-url==0.2.2
+MySQL-python==1.2.5
