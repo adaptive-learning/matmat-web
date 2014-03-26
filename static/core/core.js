@@ -1,5 +1,6 @@
 function openPopup(url, next) {
     /* Open popup to Google or Facebook auth */
+
     var w = 700;
     var h = 500;
     var left = 100;
@@ -12,8 +13,9 @@ function openPopup(url, next) {
 }
 
 
-function closePopupAndUpdateOpener(url)
-{
+function closePopupAndUpdateOpener(url){
+    /* Close popup window (Google or Facebook auth) and reload main window */
+
     if (window.opener) {
         window.opener.location.href=url;
         window.close();
