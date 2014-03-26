@@ -4,9 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}MatMat{% endblock %}</title>
+
+    {# styles and scripts #}
+    <link rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
+    {% block extrastyles %}{% endblock %}
+
     <script src="{% static "core/core.js" %}"></script>
-    {% block extrascripts %}
-    {% endblock %}
+    <script src="{% static "angular/angular.js" %}"></script>
+    <script src="{% static "angular/angular-cookies.min.js" %}"></script>
+    {% include "core/googleanalytics.html" %}
+    {% block extrascripts %}{% endblock %}
 </head>
 <body>
 
