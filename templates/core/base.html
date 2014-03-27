@@ -10,16 +10,48 @@
     <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
     {% block extrastyles %}{% endblock %}
 
-    <script src="{% static "core/core.js" %}"></script>
+
+    <script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>
     <script src="{% static "angular/angular.js" %}"></script>
     <script src="{% static "angular/angular-cookies.min.js" %}"></script>
+    <script src="{% static "core/core.js" %}"></script>
     {% include "core/googleanalytics.html" %}
     {% block extrascripts %}{% endblock %}
 </head>
 <body>
 
+<div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="{% url "home" %}">My Site</a></h1>
+            </li>
+        </ul>
+        <section class="top-bar-section">
+        <ul class="right">
+            <li class="active"><a href="#">Right Button Active</a></li>
+            <li class="has-dropdown">
+                <a href="#">Right Button Dropdown</a>
+                <ul class="dropdown">
+                    <li><a href="#">First link in dropdown</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="left">
+            <li><a href="#">Left Nav Button</a></li>
+        </ul>
+    </section>
+    </nav>
+</div>
+
+<div class="row">
 {% block content %}
 {% endblock %}
+</div>
 
+<script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+<script src="{% static "foundation/js/foundation.min.js" %}"></script>
+<script>$(document).foundation();</script>
 </body>
 </html>
