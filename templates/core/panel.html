@@ -1,5 +1,5 @@
 {% load staticfiles %}
-{% load i18n lazysignup_tags %}
+{% load i18n core_tags %}
 <div class="contain-to-grid">
     <nav class="top-bar" data-topbar>
         <ul class="title-area">
@@ -11,7 +11,7 @@
         <ul class="right">
 {#            <li class="active"><a href="#">Right Button Active</a></li>#}
             <li class="has-dropdown">
-                {% if not user|is_lazy_user %}
+                {% if user|is_auth %}
                     <a href="#"> {{ user.first_name }} {{ user.last_name }} </a>
                     <ul class="dropdown">
                         <li><a href="{% url "logout" %}">Odhlásit se</a></li>
