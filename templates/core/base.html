@@ -8,6 +8,7 @@
     {# styles and scripts #}
     <link rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
     <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
+    <link rel="stylesheet" href="{% static "core/style.css" %}">
     {% block extrastyles %}{% endblock %}
 
 
@@ -20,30 +21,7 @@
 </head>
 <body>
 
-<div class="contain-to-grid">
-    <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-            <li class="name">
-                <h1><a href="{% url "home" %}">My Site</a></h1>
-            </li>
-        </ul>
-        <section class="top-bar-section">
-        <ul class="right">
-            <li class="active"><a href="#">Right Button Active</a></li>
-            <li class="has-dropdown">
-                <a href="#">Right Button Dropdown</a>
-                <ul class="dropdown">
-                    <li><a href="#">First link in dropdown</a></li>
-                </ul>
-            </li>
-        </ul>
-
-        <ul class="left">
-            <li><a href="#">Left Nav Button</a></li>
-        </ul>
-    </section>
-    </nav>
-</div>
+{% include "core/panel.html" %}
 
 <div class="row">
 {% block content %}

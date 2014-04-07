@@ -1,0 +1,25 @@
+.login-provider {
+    transition: box-shadow 0.25s, border-color 0.25s, background-color 0.25s;
+}
+
+.login-provider:hover{
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#login-google{
+    background-image: linear-gradient(to bottom, #2CAFE2, #1C9CCE);
+    background-color: #2CAFE2;
+}
+#login-google:hover{
+    background-image: none;
+    background-color: #2ec9fe;
+}
+
+#login-facebook{
+    background-image: linear-gradient(to bottom, #406298, #3B5998);
+    background-color: #3B5998;
+}
+#login-facebook:hover{
+    background-image: none;
+    background-color: #4476bb;
+}

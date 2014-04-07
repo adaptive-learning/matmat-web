@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="{% url "home" %}">MatMat</a></h1>
+            </li>
+        </ul>
+        <section class="top-bar-section">
+        <ul class="right">
+{#            <li class="active"><a href="#">Right Button Active</a></li>#}
+            <li class="has-dropdown">
+                <a href="#">Přihlášení</a>
+                <ul class="dropdown">
+                    <li>
+                        <a class="login-provider" id="login-google"
+                           href="javascript:openPopup('{% url "socialauth_begin" "google-oauth2" %}', {% url 'login_popup_close' %})">
+                            <img width="24" height="24" class="provider-signup-img" src="{% static "core/imgs/google-icon.png" %}">
+                            <span class="provider-signup-text">přes <b>Google</b></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="login-provider" id="login-facebook"
+                           href="javascript:openPopup('{% url "socialauth_begin" "facebook" %}', {% url 'login_popup_close' %})">
+                            <img width="24" height="24" class="provider-signup-img" src="{% static "core/imgs/facebook-icon.png" %}">
+                            <span class="provider-signup-text">přes <b>Facebook</b></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+{#        <ul class="left">#}
+{#            <li><a href="#">Left Nav Button</a></li>#}
+{#        </ul>#}
+    </section>
+    </nav>
+</div>
