@@ -42,6 +42,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.AuthAlreadyAssociatedMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -86,8 +87,13 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
+
 # Social auth
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/close_login_popup/'
 
 # oauth2 data for localhost
 GOOGLE_OAUTH2_CLIENT_ID = os.getenv("GOOGLE_OAUTH2_CLIENT_ID", "292645579868-u9e41sdmt269d7orrkq6j1cjhhudrgmq.apps.googleusercontent.com")
 GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH2_CLIENT_SECRET", "WDLtIQEnvwHIy2ge96Uf3os-")
+FACEBOOK_APP_ID              = '300944176721659'
+FACEBOOK_API_SECRET          = '5a4b653aba18f4b589d6003ec569efb3'
