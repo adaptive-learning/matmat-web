@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'social_auth',
     'core',
     'model',
+    'questions',
 )
 
 MIDDLEWARE_CLASSES = (
