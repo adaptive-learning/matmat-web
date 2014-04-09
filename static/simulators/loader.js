@@ -16,6 +16,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                 $("#playground").append(questionDirective);
                 $compile(questionDirective)($scope);
                 $scope.question.start_time = new Date().getTime();
+                $scope.loading = false;
             });
     };
 
@@ -28,6 +29,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
 
 
     $scope.next_question = function(){
+        $scope.loading = true;
         $scope.counter.current++;
         $scope.get_question()
     };
@@ -38,14 +40,15 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         $scope.question.correctly_solved =  correctly_solved;
         $scope.save_answer();
 
-        $("#playground").empty();
         $scope.question = null;
-
-        if ($scope.counter.current == $scope.counter.total){
-            window.location.replace("/");
-        }else{
-            $scope.next_question();
-        }
+        setTimeout(function() {
+            $("#playground").empty();
+            if ($scope.counter.current == $scope.counter.total){
+                window.location.replace("/");
+            }else{
+                $scope.next_question();
+            }
+        }, 500);
     };
 
     $scope.log_something = function(data){

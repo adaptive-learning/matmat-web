@@ -1,4 +1,4 @@
-var app = angular.module('matmat', ["ngCookies"]);
+var app = angular.module('matmat', ["ngCookies", "ngAnimate"]);
 
 app.factory("CommonData", function(){
         return {

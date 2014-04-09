@@ -12,10 +12,10 @@
         {% verbatim %}
         <div id="counter">{{ counter.current }} z {{ counter.total }}</div>
         {% endverbatim %}
-        <div ng-show="question">
+        <div ng-show="question" class="animate-show animate-hide">
             <div id="playground"></div>
         </div>
-        <div ng-hide="question">
+        <div ng-show="loading" class="animate-show">
             <div></div><img class="spinner" src="{% static "core/imgs/spinner.gif" %}" />
         </div>
     </div>
