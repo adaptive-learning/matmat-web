@@ -53,7 +53,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Question'},
             'data': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'player': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['questions.Player']"}),
+            'player': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['questions.Simulator']"}),
             'skill': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['model.Skill']"})
         }
     }
