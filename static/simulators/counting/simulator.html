@@ -2,11 +2,15 @@
     <span ng-hide="okHidden">&#x2713;</span>
     <span ng-hide="nokHidden">&#x2717;</span>
 </h2>
-<span ng-repeat="i in getNumber(data.question) track by $index">o</span>
-<form ng-submit="submit()">
+<div class="row collapse" style="height:33px;" ng-repeat="row in rows">
+    <span style="width:33px;" ng-repeat="i in getNumber(row) track by $index" >
+        <img src="/static/img/cube_orange.png" />
+    </span>
+</div>
+<form ng-submit="submit()"> 
     <div class="row collapse">
         <div class="small-5 small-centered columns">
-            <input class="small-8 columns " type="text" ng-model="response" ng-change="change()" placeholder="Zadej svoji odpověď"/>
+            <input class="small-8 columns " id="inputBox" type="text" ng-model="response" placeholder="Zadej svoji odpověď"/>
         </div>
         <div class="small-1 small-centered columns">
             <input class="button postfix" type="submit" value="OK" />

@@ -10,7 +10,7 @@ app.directive("freeanswer", function(){
             $scope.okHidden = true;
             $scope.nokHidden = true;
 
-            $scope.check_answer = function(){
+            $scope.submit = function(){
                 $scope.okHidden = !($scope.answer == $scope.data.answer);
                 $scope.nokHidden = ($scope.answer == $scope.data.answer);
 

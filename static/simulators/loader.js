@@ -16,7 +16,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
     $scope.next_question = function(){
         $("#playground").empty();
         $scope.question = null;
-        $scope.get_question()
+        $scope.get_question();
     };
 
     $scope.next_question();
