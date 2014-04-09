@@ -8,14 +8,12 @@
 {% endblock %}
 
 {% block content %}
-{% verbatim %}
     <div ng-controller="Loader">
         <div ng-show="question">
             <div id="playground"></div>
         </div>
         <div ng-hide="question">
-            otázka se načítá
+            <div></div><img class="spinner" src="{% static "core/imgs/spinner.gif" %}" />
         </div>
     </div>
-{% endverbatim %}
 {% endblock %}

@@ -7,24 +7,28 @@
 }
 
 #login-google{
-    background-image: linear-gradient(to bottom, #2CAFE2, #1C9CCE);
-    background-color: #2CAFE2;
+    background: #2CAFE2 linear-gradient(to bottom, #2CAFE2, #1C9CCE);
 }
 #login-google:hover{
-    background-image: none;
-    background-color: #2ec9fe;
+    background: #2ec9fe none;
 }
 
 #login-facebook{
-    background-image: linear-gradient(to bottom, #406298, #3B5998);
-    background-color: #3B5998;
+    background: #3B5998 linear-gradient(to bottom, #406298, #3B5998);
 }
 #login-facebook:hover{
-    background-image: none;
-    background-color: #4476bb;
+    background: #4476bb none;
 }
 
+#content{
+    margin-top: 20px;
+}
 
 #playground{
      text-align: center
+}
+
+.spinner{
+    display: block;
+    margin: 150px auto auto;
 }
