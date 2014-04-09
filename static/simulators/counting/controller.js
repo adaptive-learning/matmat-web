@@ -26,11 +26,7 @@ app.directive("counting", function(){
                 var correct = $scope.response == $scope.data.answer;
                 $scope.okHidden = !correct;
                 $scope.nokHidden = correct;
-
-                setTimeout(function() {
-                    $scope.interface.finish(correct);
-                }, 700);
-
+                $scope.interface.finish(correct);
             };
 
 //          TODO - logging

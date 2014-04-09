@@ -27,11 +27,7 @@ app.directive("selecting", function(){
                 var correct = $scope.selected == $scope.data.answer;
                 $scope.okHidden = !correct;
                 $scope.nokHidden = correct;
-
-                setTimeout(function() {
-                    $scope.interface.finish(correct);
-                }, 700);
-
+                $scope.interface.finish(correct);
             };
 
             $scope.getSrc = function(cell) {

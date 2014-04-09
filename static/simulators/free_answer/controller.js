@@ -15,11 +15,7 @@ app.directive("freeanswer", function(){
                 var correct = $scope.answer == $scope.data.answer;
                 $scope.okHidden = !correct;
                 $scope.nokHidden = correct;
-
-                setTimeout(function() {
-                    $scope.interface.finish(correct);
-                }, 700);
-
+                $scope.interface.finish(correct);
             };
 
             $scope.change = function(){

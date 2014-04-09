@@ -40,14 +40,16 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         $scope.question.correctly_solved =  correctly_solved;
         $scope.save_answer();
 
-        $scope.question = null;
         setTimeout(function() {
-            $("#playground").empty();
-            if ($scope.counter.current == $scope.counter.total){
-                window.location.replace("/");
-            }else{
-                $scope.next_question();
-            }
+            $scope.question = null;
+            setTimeout(function() {
+                $("#playground").empty();
+                if ($scope.counter.current == $scope.counter.total){
+                    window.location.replace("/");
+                }else{
+                    $scope.next_question();
+                }
+            }, 500);
         }, 500);
     };
 
