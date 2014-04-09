@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'lazysignup',
     'social_auth',
     'core',
+    'model',
 )
 
 MIDDLEWARE_CLASSES = (
