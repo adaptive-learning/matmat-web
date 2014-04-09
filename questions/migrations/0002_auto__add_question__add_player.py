@@ -11,7 +11,7 @@ class Migration(SchemaMigration):
         # Adding model 'Question'
         db.create_table(u'questions_question', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('player', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['questions.Player'])),
+            ('player', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['questions.Simulator'])),
             ('skill', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['model.Skill'])),
             ('data', self.gf('django.db.models.fields.TextField')()),
         ))
