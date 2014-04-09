@@ -4,7 +4,7 @@
 </h2>
 <div class="row collapse" style="height:33px;" ng-repeat="row in rows">
     <span style="width:33px;" ng-repeat="i in getNumber(row) track by $index" >
-        <img src="/static/img/cube_orange.png" />
+        <img ng-src="/static/img/cube_orange.png" />
     </span>
 </div>
 <form ng-submit="submit()"> 

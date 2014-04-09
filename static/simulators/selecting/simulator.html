@@ -4,7 +4,7 @@
 </h2>
 <div class="row collapse" style="height:33px;" ng-repeat="row in rows">
     <span style="width:33px;" ng-repeat="cell in row" >
-        <img src="{{getSrc(cell)}}" ng-click="click(cell)"/>
+        <img ng-src="{{getSrc(cell)}}" ng-click="click(cell)"/>
     </span>
 </div>
 <form ng-submit="submit()"> 
