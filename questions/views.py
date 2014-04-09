@@ -22,7 +22,6 @@ def get_question(request):
 def save_answer(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        print request.user.pk
         Answer.objects.create(
             question_id=data["pk"],
             user=request.user,
