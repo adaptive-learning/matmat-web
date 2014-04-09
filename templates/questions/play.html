@@ -9,6 +9,9 @@
 
 {% block content %}
     <div ng-controller="Loader">
+        {% verbatim %}
+        <div id="counter">{{ counter.current }} z {{ counter.total }}</div>
+        {% endverbatim %}
         <div ng-show="question">
             <div id="playground"></div>
         </div>

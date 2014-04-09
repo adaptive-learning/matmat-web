@@ -1,6 +1,10 @@
 app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile){
     $scope.common = CommonData;
     $scope.question = null;
+    $scope.counter = {
+        total: 10,
+        current: 0
+    };
 
     $scope.get_question = function(){
         $http.get("/q/get_question/")
@@ -24,6 +28,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
 
 
     $scope.next_question = function(){
+        $scope.counter.current++;
         $scope.get_question()
     };
 
@@ -36,7 +41,11 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         $("#playground").empty();
         $scope.question = null;
 
-        $scope.next_question();
+        if ($scope.counter.current == $scope.counter.total){
+            window.location.replace("/");
+        }else{
+            $scope.next_question();
+        }
     };
 
     $scope.log_something = function(data){
