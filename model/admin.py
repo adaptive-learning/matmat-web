@@ -1,3 +1,8 @@
 from django.contrib import admin
+from model.models import Skill
 
-# Register your models here.
+class SkillManager(admin.ModelAdmin):
+    list_display = ('name', 'parent', 'level', 'note')
+
+
+admin.site.register(Skill, SkillManager)
