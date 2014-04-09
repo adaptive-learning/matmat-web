@@ -9,6 +9,7 @@ app.directive("freeanswer", function(){
         controller: function($scope){
             $scope.okHidden = true;
             $scope.nokHidden = true;
+            $("#simulator-input").focus();
 
             $scope.check_answer = function(){
                 var correct = $scope.answer == $scope.data.answer;
