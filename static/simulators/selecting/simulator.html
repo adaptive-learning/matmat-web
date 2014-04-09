@@ -2,9 +2,9 @@
     <span ng-hide="okHidden">&#x2713;</span>
     <span ng-hide="nokHidden">&#x2717;</span>
 </h2>
-<div class="row collapse" style="height:33px;" ng-repeat="row in rows">
-    <span style="width:33px;" ng-repeat="cell in row" >
-        <img ng-src="{{getSrc(cell)}}" ng-click="click(cell)"/>
+<div class="row collapse" style="height:33px;" ng-repeat="row in rows" ng-mouseleave="out()">
+    <span style="width:33px;" ng-repeat="cell in row">
+        <img ng-src="{{getSrc(cell)}}" ng-click="click(cell)" ng-mouseenter="over(cell)"/>
     </span>
 </div>
 <form ng-submit="submit()"> 

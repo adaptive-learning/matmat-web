@@ -10,6 +10,7 @@ app.directive("selecting", function(){
             $scope.okHidden = true;
             $scope.nokHidden = true;
             $scope.selected = 0;
+            $scope.mover = 0;
 
             $scope.rows = [];
             var nrows = $scope.data.nrows;
@@ -34,15 +35,29 @@ app.directive("selecting", function(){
             };
 
             $scope.getSrc = function(cell) {
+                var ret = "/static/img/cube_grey.png";
                 if (cell <= $scope.selected) {
-                    return "/static/img/cube_orange.png";
-                } else {
-                    return "/static/img/cube_grey.png";
-                }
+                    ret = "/static/img/cube_orange.png";
+                } 
+                if (cell <= $scope.mover) {
+                    ret = "/static/img/cube_violet.png";
+                } 
+                if (cell <= $scope.selected && cell <= $scope.mover) {
+                    ret = "/static/img/cube_pink.png";
+                } 
+                return ret;
             }
 
             $scope.click = function(cell) {
                 $scope.selected = cell;
+            };
+
+            $scope.over = function(cell) {
+                $scope.mover = cell;
+            };
+
+            $scope.out = function() {
+                $scope.mover = 0;
             };
 
 //          TODO - logging
