@@ -3,7 +3,7 @@ app.directive("freeanswer", function(){
         restrict: "E",
         scope: {
             data: "=data",
-            next: "=next"
+            interface: "=interface"
         },
         templateUrl: static_url + "simulators/free_answer/simulator.html",
         controller: function($scope){
@@ -15,11 +15,14 @@ app.directive("freeanswer", function(){
                 $scope.nokHidden = ($scope.answer == $scope.data.answer);
 
                 setTimeout(function() {
-                    $scope.next();
+                    $scope.interface.finish();
                 }, 700);
 
             };
-//          TODO - logging
+
+            $scope.change = function(){
+                $scope.interface.log($scope.answer);
+            };
         }
     }
 });
