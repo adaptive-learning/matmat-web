@@ -4,7 +4,7 @@ from django.dispatch import receiver
 from model.models import Skill
 
 
-class Player(models.Model):
+class Simulator(models.Model):
     name = models.CharField(max_length=30)
     note = models.TextField(null=True, blank=True)
 
@@ -17,7 +17,7 @@ class Player(models.Model):
 
 
 class Question(models.Model):
-    player = models.ForeignKey(Player)
+    player = models.ForeignKey(Simulator)
     skill = models.ForeignKey(Skill)
     data = models.TextField()
 

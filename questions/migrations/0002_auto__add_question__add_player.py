@@ -17,21 +17,21 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'questions', ['Question'])
 
-        # Adding model 'Player'
-        db.create_table(u'questions_player', (
+        # Adding model 'Simulator'
+        db.create_table(u'questions_simulator', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=30)),
             ('note', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
-        db.send_create_signal(u'questions', ['Player'])
+        db.send_create_signal(u'questions', ['Simulator'])
 
 
     def backwards(self, orm):
         # Deleting model 'Question'
         db.delete_table(u'questions_question')
 
-        # Deleting model 'Player'
-        db.delete_table(u'questions_player')
+        # Deleting model 'Simulator'
+        db.delete_table(u'questions_simulator')
 
 
     models = {
@@ -43,8 +43,8 @@ class Migration(SchemaMigration):
             'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['model.Skill']", 'null': 'True'})
         },
-        u'questions.player': {
-            'Meta': {'object_name': 'Player'},
+        u'questions.simulator': {
+            'Meta': {'object_name': 'Simulator'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'})
