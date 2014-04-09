@@ -23,10 +23,30 @@
         "pk": 3,
         "model": "model.skill",
         "fields": {
-            "note": "Sčítání čísel do 10 - bez přechodu přes desítku",
+            "note": "S\u010d\u00edt\u00e1n\u00ed \u010d\u00edsel do 10 - bez p\u0159echodu p\u0159es des\u00edtku",
             "name": "basic addition up 10",
             "parent": 2,
             "level": 3
+        }
+    },
+    {
+        "pk": 4,
+        "model": "model.skill",
+        "fields": {
+            "note": "",
+            "name": "1+2",
+            "parent": 3,
+            "level": 4
+        }
+    },
+    {
+        "pk": 5,
+        "model": "model.skill",
+        "fields": {
+            "note": "",
+            "name": "3+5",
+            "parent": 3,
+            "level": 4
         }
     }
 ]

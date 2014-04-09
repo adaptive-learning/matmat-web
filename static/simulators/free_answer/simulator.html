@@ -1,0 +1,11 @@
+<h2>{{ data.question }} = {{ answer }}</h2>
+<form ng-submit="check_answer()">
+    <div class="row collapse">
+        <div class="small-5 small-centered columns">
+            <input class="small-8 columns " type="text" ng-model="answer" placeholder="Zadej svoji odpověď"/>
+        </div>
+        <div class="small-1 small-centered columns">
+            <input class="button postfix" type="submit" value="OK" />
+        </div>
+    </div>
+</form>

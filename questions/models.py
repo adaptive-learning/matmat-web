@@ -1,6 +1,5 @@
+import json
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from model.models import Skill
 
 
@@ -19,7 +18,15 @@ class Simulator(models.Model):
 class Question(models.Model):
     player = models.ForeignKey(Simulator)
     skill = models.ForeignKey(Skill)
-    data = models.TextField()
+    data = models.TextField(verbose_name="Data as JSON")
 
     def __unicode__(self):
         return self.data
+
+    def as_json(self):
+        return dict(
+            pk=self.pk,
+            # data=json.loads(self.data),
+            data=self.data,
+            simulator=self.player.name,
+        )

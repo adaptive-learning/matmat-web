@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block extrascripts %}
+    <script src="{% static "simulators/loader.js" %}"></script>
+    <script src="{% static "simulators/free_answer/controller.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+{% verbatim %}
+    <div ng-controller="Loader">
+        <div ng-show="question">
+            <div id="playground"></div>
+        </div>
+        <div ng-hide="question">
+            otázka se načítá
+        </div>
+    </div>
+{% endverbatim %}
+{% endblock %}
