@@ -1,0 +1,17 @@
+<h2> Ukaz {{data.question}}
+    <span ng-hide="okHidden">&#x2713;</span>
+    <span ng-hide="nokHidden">&#x2717;</span>
+</h2>
+<div class="row collapse" style="height:33px;" ng-repeat="row in rows">
+    <span style="width:33px;" ng-repeat="cell in row" >
+        <img src="{{getSrc(cell)}}" ng-click="click(cell)"/>
+    </span>
+</div>
+<form ng-submit="submit()"> 
+    <div class="row collapse">
+        <div class="small-1 small-centered columns">
+            <input class="button postfix" type="submit" value="OK" />
+        </div>
+    </div>
+</form>
+
