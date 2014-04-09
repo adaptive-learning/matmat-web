@@ -1,4 +1,4 @@
-import json
+from django.contrib.auth.models import User
 from django.db import models
 from model.models import Skill
 
@@ -9,10 +9,6 @@ class Simulator(models.Model):
 
     def __unicode__(self):
         return self.name
-
-# @receiver(post_save, sender=Player)
-# def create_dir_for_player(sender, instance, **kwargs):
-#     pass
 
 
 class Question(models.Model):
@@ -26,7 +22,14 @@ class Question(models.Model):
     def as_json(self):
         return dict(
             pk=self.pk,
-            # data=json.loads(self.data),
             data=self.data,
             simulator=self.player.name,
         )
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question)
+    user = models.ForeignKey(User)
+    log = models.TextField()
+    solving_time = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now=True)
