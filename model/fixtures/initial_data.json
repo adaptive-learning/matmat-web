@@ -1,0 +1,32 @@
+[
+    {
+        "pk": 1,
+        "model": "model.skill",
+        "fields": {
+            "note": "superskill",
+            "name": "math",
+            "parent": null,
+            "level": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "model.skill",
+        "fields": {
+            "note": "",
+            "name": "addition",
+            "parent": 1,
+            "level": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "model.skill",
+        "fields": {
+            "note": "Sčítání čísel do 10 - bez přechodu přes desítku",
+            "name": "basic addition up 10",
+            "parent": 2,
+            "level": 3
+        }
+    }
+]
