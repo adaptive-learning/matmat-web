@@ -39,3 +39,4 @@ class Answer(models.Model):
     log = models.TextField()
     solving_time = models.IntegerField()
     timestamp = models.DateTimeField(auto_now=True)
+    correctly_solved = models.BooleanField(default=False)

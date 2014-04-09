@@ -28,6 +28,7 @@ def save_answer(request):
             user=request.user,
             log=data["log"],
             solving_time=data["time"],
+            correctly_solved=data["correctly_solved"],
         )
 
     return HttpResponse("Have to be POST")

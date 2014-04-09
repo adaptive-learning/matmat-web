@@ -11,11 +11,12 @@ app.directive("freeanswer", function(){
             $scope.nokHidden = true;
 
             $scope.check_answer = function(){
-                $scope.okHidden = !($scope.answer == $scope.data.answer);
-                $scope.nokHidden = ($scope.answer == $scope.data.answer);
+                var correct = $scope.answer == $scope.data.answer
+                $scope.okHidden = !correct;
+                $scope.nokHidden = correct;
 
                 setTimeout(function() {
-                    $scope.interface.finish();
+                    $scope.interface.finish(correct);
                 }, 700);
 
             };
