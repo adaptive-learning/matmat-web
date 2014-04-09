@@ -1,28 +1,45 @@
 [
-    {
-        "pk": 1,
-        "model": "questions.simulator",
-        "fields": {
-            "note": "Psan\u00e1 odpov\u011bd na spr\u00e1vnost",
-            "name": "free_answer"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "questions.question",
-        "fields": {
-            "player": 1,
-            "skill": 4,
-            "data": "{\"question\": \"1+2\", \"answer\": \"3\"}"
-        }
-    },
-    {
-        "pk": 2,
-        "model": "questions.question",
-        "fields": {
-            "player": 1,
-            "skill": 5,
-            "data": "{\"question\": \"3+5\", \"answer\": \"8\"}"
-        }
+{
+    "pk": 1, 
+    "model": "questions.simulator", 
+    "fields": {
+        "note": "Psan\u00e1 odpov\u011bd na spr\u00e1vnost", 
+        "name": "free_answer"
     }
+},
+{
+    "pk": 2, 
+    "model": "questions.simulator", 
+    "fields": {
+        "note": "Spocitaj objekty.", 
+        "name": "counting"
+    }
+},
+{
+    "pk": 1, 
+    "model": "questions.question", 
+    "fields": {
+        "player": 1, 
+        "skill": 4, 
+        "data": "{\"question\": \"1+2\", \"answer\": \"3\"}"
+    }
+},
+{
+    "pk": 2, 
+    "model": "questions.question", 
+    "fields": {
+        "player": 1, 
+        "skill": 5, 
+        "data": "{\"question\": \"3+5\", \"answer\": \"8\"}"
+    }
+},
+{
+    "pk": 3, 
+    "model": "questions.question", 
+    "fields": {
+        "player": 2, 
+        "skill": 8, 
+        "data": "{\"question\": 12, \"answer\": \"12\", \"ncols\": 10}"
+    }
+}
 ]
