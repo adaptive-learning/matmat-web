@@ -11,7 +11,7 @@ app.directive("freeanswer", function(){
             $scope.nokHidden = true;
 
             $scope.check_answer = function(){
-                var correct = $scope.answer == $scope.data.answer
+                var correct = $scope.answer == $scope.data.answer;
                 $scope.okHidden = !correct;
                 $scope.nokHidden = correct;
 
