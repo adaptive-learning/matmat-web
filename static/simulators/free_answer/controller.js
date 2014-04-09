@@ -7,15 +7,16 @@ app.directive("freeanswer", function(){
         },
         templateUrl: static_url + "simulators/free_answer/simulator.html",
         controller: function($scope){
-            $scope.check_answer = function(){
-                //TODO - delay after answer with feedback
-                if ($scope.answer == $scope.data.answer){
-                    console.log("yahooo");
-                }else{
-                    console.log("nope");
-                }
+            $scope.okHidden = true;
+            $scope.nokHidden = true;
 
-                $scope.next();
+            $scope.check_answer = function(){
+                $scope.okHidden = !($scope.answer == $scope.data.answer);
+                $scope.nokHidden = ($scope.answer == $scope.data.answer);
+
+                setTimeout(function() {
+                    $scope.next();
+                }, 700);
 
             };
 //          TODO - logging
