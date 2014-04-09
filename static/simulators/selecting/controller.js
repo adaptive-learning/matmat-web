@@ -3,7 +3,7 @@ app.directive("selecting", function(){
         restrict: "E",
         scope: {
             data: "=data",
-            next: "=next"
+            interface: "=interface"
         },
         templateUrl: static_url + "simulators/selecting/simulator.html",
         controller: function($scope){
@@ -23,11 +23,12 @@ app.directive("selecting", function(){
             };
 
             $scope.submit = function() {
-                $scope.okHidden = !($scope.selected == $scope.data.answer);
-                $scope.nokHidden = ($scope.selected == $scope.data.answer);
+                var correct = $scope.selected == $scope.data.answer;
+                $scope.okHidden = !correct;
+                $scope.nokHidden = correct;
 
                 setTimeout(function() {
-                    $scope.next();
+                    $scope.interface.finish(correct);
                 }, 700);
 
             };

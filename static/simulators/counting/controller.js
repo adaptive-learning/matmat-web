@@ -3,7 +3,7 @@ app.directive("counting", function(){
         restrict: "E",
         scope: {
             data: "=data",
-            next: "=next"
+            interface: "=interface"
         },
         templateUrl: static_url + "simulators/counting/simulator.html",
         controller: function($scope){
@@ -23,11 +23,12 @@ app.directive("counting", function(){
             };
 
             $scope.submit = function() {
-                $scope.okHidden = !($scope.response == $scope.data.answer);
-                $scope.nokHidden = ($scope.response == $scope.data.answer);
+                var correct = $scope.response == $scope.data.answer;
+                $scope.okHidden = !correct;
+                $scope.nokHidden = correct;
 
                 setTimeout(function() {
-                    $scope.next();
+                    $scope.interface.finish(correct);
                 }, 700);
 
             };
