@@ -15,7 +15,9 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
 
     $scope.next_question = function(){
         $("#playground").empty();
-        $scope.question = null;
+        // removed this - focus was not working...
+        // is this necessary?
+        //$scope.question = null;
         $scope.get_question();
     };
 

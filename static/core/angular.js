@@ -12,3 +12,10 @@ app.config(function($httpProvider){
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }
 );
+
+
+app.directive('focus', function(){
+    return function(scope, element){
+        element[0].focus();
+    };
+});

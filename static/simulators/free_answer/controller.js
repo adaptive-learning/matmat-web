@@ -19,6 +19,7 @@ app.directive("freeanswer", function(){
                 }, 700);
 
             };
+
 //          TODO - logging
         }
     }

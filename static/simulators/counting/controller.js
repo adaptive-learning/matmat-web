@@ -31,6 +31,7 @@ app.directive("counting", function(){
                 }, 700);
 
             };
+
 //          TODO - logging
         }
     }
