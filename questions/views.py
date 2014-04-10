@@ -5,13 +5,17 @@ from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from lazysignup.decorators import allow_lazy_user
 
-from questions.models import Question, Answer
+from questions.models import Question, Answer, Simulator
 
 
 @ensure_csrf_cookie
 @allow_lazy_user
 def play(request):
-    return render(request, 'questions/play.html')
+    simulators = Simulator.objects.all()
+
+    return render(request, 'questions/play.html', {
+        "simulators": simulators,
+    })
 
 
 def get_question(request):
