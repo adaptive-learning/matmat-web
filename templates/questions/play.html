@@ -20,7 +20,7 @@
             </div>
         </div>
         {% endverbatim %}
-        <div style="clear: both" ng-show="question" class="animate-show animate-hide">
+        <div style="clear: both" ng-show="!question.hide" class="animate-show animate-hide">
             <div id="playground"></div>
         </div>
         <div ng-show="loading" class="animate-show">

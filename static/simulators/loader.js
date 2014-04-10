@@ -44,6 +44,8 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
             $scope.question.correctly_solved =  correctly_solved;
             $scope.save_answer();
 
+
+            $scope.question.hide = true;
             setTimeout(function() {
                 $("#playground").empty();
                 $scope.question = null;
