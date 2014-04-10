@@ -36,7 +36,8 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
 
 
     $scope.finish_question = function(correctly_solved){
-        $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) /  1000);
+        $scope.log_something("finished");
+        $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
         $scope.question.correctly_solved =  correctly_solved;
         $scope.save_answer();
 
