@@ -35,13 +35,15 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
     };
 
 
-    $scope.finish_question = function(correctly_solved){
-        $scope.log_something("finished");
-        $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
-        $scope.question.correctly_solved =  correctly_solved;
-        $scope.save_answer();
+    $scope.finish_question = function(correctly_solved, wait_time){
+        wait_time = typeof wait_time !== 'undefined' ? wait_time : 1000;
 
+        $scope.log_something("finished");
         setTimeout(function() {
+            $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
+            $scope.question.correctly_solved =  correctly_solved;
+            $scope.save_answer();
+
             $scope.question = null;
             setTimeout(function() {
                 $("#playground").empty();
@@ -51,7 +53,12 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                     $scope.next_question();
                 }
             }, 500);
-        }, 500);
+        }, wait_time);
+    };
+
+    $scope.skip = function(){
+        $scope.log_something("skipped");
+        $scope.finish_question(false, 0);
     };
 
     $scope.log_something = function(data){

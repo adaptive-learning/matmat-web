@@ -11,9 +11,16 @@
 {% block content %}
     <div ng-controller="Loader">
         {% verbatim %}
-        <div id="counter">{{ counter.current }} z {{ counter.total }}</div>
+        <div style="width: 150px; float: right" class="row collapse">
+            <div class="small-5 small columns">
+                <input type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+            </div>
+            <div class="small-7 small columns">
+                <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
+            </div>
+        </div>
         {% endverbatim %}
-        <div ng-show="question" class="animate-show animate-hide">
+        <div style="clear: both" ng-show="question" class="animate-show animate-hide">
             <div id="playground"></div>
         </div>
         <div ng-show="loading" class="animate-show">
