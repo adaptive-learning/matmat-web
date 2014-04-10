@@ -24,6 +24,14 @@
     }
 },
 {
+    "pk": 4,
+    "model": "questions.simulator",
+    "fields": {
+        "note": "Just example",
+        "name": "example"
+    }
+},
+{
     "pk": 1, 
     "model": "questions.question", 
     "fields": {
