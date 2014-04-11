@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
     'south',
     'lazysignup',
     'social_auth',
@@ -104,3 +105,8 @@ GOOGLE_OAUTH2_CLIENT_ID = os.getenv("GOOGLE_OAUTH2_CLIENT_ID", "292645579868-u9e
 GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH2_CLIENT_SECRET", "WDLtIQEnvwHIy2ge96Uf3os-")
 FACEBOOK_APP_ID = os.getenv('FACEBOOK_APP_ID', '300944176721659')
 FACEBOOK_API_SECRET = os.getenv('FACEBOOK_API_SECRET', '5a4b653aba18f4b589d6003ec569efb3')
+
+# Sentry logging
+RAVEN_CONFIG = {
+    'dsn': os.getenv('RAVEN_DSN')
+}
