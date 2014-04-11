@@ -6,7 +6,7 @@ from south.v2 import DataMigration
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        call_command('loaddata', 'questions/migrate/initial_data.json')
+        call_command('loaddata', 'questions/migrations/initial_data.json')
 
     def backwards(self, orm):
         raise RuntimeError("Cannot reverse this migration.")

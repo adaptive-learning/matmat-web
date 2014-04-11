@@ -19,7 +19,7 @@
     "pk": 3, 
     "model": "questions.simulator", 
     "fields": {
-        "note": "Select certain number of cubes.", 
+        "note": "Select certain number of cubes.",
         "name": "selecting"
     }
 },
