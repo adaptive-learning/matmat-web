@@ -5,6 +5,8 @@
 echo "Starting deploy script"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+cd $DIR
+
 #requirements
 pip install -r $DIR/requirements.txt
 
