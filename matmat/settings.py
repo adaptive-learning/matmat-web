@@ -18,7 +18,7 @@ if not ON_VIPER:
     DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['matmat.cz', 'matmat.thran.cz']
+ALLOWED_HOSTS = ['matmat.cz', 'devel.matmat.cz']
 
 
 # Application definition
