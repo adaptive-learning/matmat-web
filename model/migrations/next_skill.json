@@ -1,0 +1,12 @@
+[
+{
+    "pk": 9,
+    "model": "model.skill", 
+    "fields": {
+        "note": "Counting up to 100",
+        "name": "numbers100",
+        "parent": 6, 
+        "level": 3
+    }
+}
+]
