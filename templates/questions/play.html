@@ -11,9 +11,9 @@
 {% block content %}
     <div ng-controller="Loader">
         {% verbatim %}
-        <div style="width: 150px; float: right" class="row collapse">
+        <div style="width: 170px; float: right" class="row collapse">
             <div class="small-5 small columns">
-                <input type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+                <input class="text-center" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
             </div>
             <div class="small-7 small columns">
                 <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />

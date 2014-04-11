@@ -19,8 +19,8 @@ def play(request):
 
 
 def get_question(request):
-    question = Question.objects.all().order_by("?")[0]
-    return HttpResponse(json.dumps(question.as_json()))
+    questions = Question.objects.all().order_by("?")[:request.GET["count"]]
+    return HttpResponse(json.dumps([q.as_json() for q in questions]))
 
 
 def save_answer(request):
