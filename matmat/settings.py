@@ -4,6 +4,7 @@ Django settings for matmat project.
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import dj_database_url
+from django.conf import global_settings
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -87,6 +88,10 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+   "core.context_processors.important",
 )
 
 SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
