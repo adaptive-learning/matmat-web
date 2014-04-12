@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -9,3 +10,17 @@ class Skill(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class QuestionDifficulty(models.Model):
+    question = models.OneToOneField('questions.Question', primary_key=True)
+    value = models.FloatField(default=0)
+
+
+class UserSkill(models.Model):
+    user = models.ForeignKey(User)
+    skill = models.ForeignKey(Skill)
+    value = models.FloatField(default=0)
+
+    class Meta:
+        unique_together = ('user', 'skill')

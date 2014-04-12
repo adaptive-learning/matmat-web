@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from model.models import Skill
 
 
 class Simulator(models.Model):
@@ -19,7 +18,7 @@ class Simulator(models.Model):
 
 class Question(models.Model):
     player = models.ForeignKey(Simulator, verbose_name="Simulator")
-    skill = models.ForeignKey(Skill)
+    skill = models.ForeignKey('model.Skill')
     data = models.TextField(verbose_name="Data as JSON")
 
     def __unicode__(self):
