@@ -18,7 +18,7 @@ class Simulator(models.Model):
 
 
 class Question(models.Model):
-    player = models.ForeignKey(Simulator)
+    player = models.ForeignKey(Simulator, verbose_name="Simulator")
     skill = models.ForeignKey(Skill)
     data = models.TextField(verbose_name="Data as JSON")
 
