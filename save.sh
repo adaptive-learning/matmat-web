@@ -1,2 +1,3 @@
-python manage.py dumpdata --indent=4 questions > questions/fixtures/initial_data.json 
-python manage.py dumpdata --indent=4 model > model/fixtures/initial_data.json 
+#!/bin/sh
+python manage.py dumpdata --indent=4 questions.Simulator questions.Question > questions/migrations/current_data.json
+python manage.py dumpdata --indent=4 model.Skill > model/migrations/current_data.json
