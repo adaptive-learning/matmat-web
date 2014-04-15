@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from django.core.management import call_command
 from south.v2 import DataMigration
+from questions.migrations import load_data
 
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        call_command('loaddata', 'questions/migrations/initial_data.json')
+        load_data('questions/migrations/initial_data.json', orm)
 
     def backwards(self, orm):
         raise RuntimeError("Cannot reverse this migration.")

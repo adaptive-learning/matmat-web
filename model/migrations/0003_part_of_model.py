@@ -4,11 +4,13 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import DataMigration
 from django.db import models
+from questions.migrations import load_data
+
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        call_command('loaddata', 'model/migrations/initial_data.json')
+        load_data('model/migrations/initial_data.json', orm)
 
     def backwards(self, orm):
         raise RuntimeError("Cannot reverse this migration.")
