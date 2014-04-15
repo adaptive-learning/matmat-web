@@ -3,23 +3,23 @@ from django.db import models
 
 
 class Simulator(models.Model):
-    TYPES = (
-        ('t', 'time'),
-        ('c', 'correctness')
-    )
-
     name = models.CharField(max_length=30)
     note = models.TextField(null=True, blank=True)
-    type = models.CharField(max_length=1, choices=TYPES, default='t')
 
     def __unicode__(self):
         return self.name
 
 
 class Question(models.Model):
+    TYPES = (
+        ('t', 'time'),
+        ('c', 'correctness')
+    )
+
     player = models.ForeignKey(Simulator, verbose_name="Simulator")
     skill = models.ForeignKey('model.Skill')
     data = models.TextField(verbose_name="Data as JSON")
+    type = models.CharField(max_length=1, choices=TYPES, default='t')
 
     def __unicode__(self):
         return self.data
