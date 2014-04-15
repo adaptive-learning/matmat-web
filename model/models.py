@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 
 class Skill(models.Model):
@@ -11,9 +13,15 @@ class Skill(models.Model):
     def __unicode__(self):
         return self.name
 
+@receiver(pre_save, sender=Skill)
+def compute_level(sender, instance, **kwargs):
+    if instance.parent == None:
+        instance.level = 1
+    else:
+        instance.level = instance.parent.level + 1
 
 class QuestionDifficulty(models.Model):
-    question = models.OneToOneField('questions.Question', primary_key=True)
+    question = models.OneToOneField('questions.Question', primary_key=True, related_name='difficulty')
     value = models.FloatField(default=0)
 
 
