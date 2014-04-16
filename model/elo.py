@@ -27,7 +27,10 @@ def update_user_skill(response, expected_response, user_skill, question_type):
     if question_type == 't':
         user_skill.value += K * (expected_response - response)
 
-    # TODO update parent skills
+    parent_skill = user_skill.skill.parent
+    if parent_skill:
+        user_patent_skill, _ = UserSkill.objects.get_or_create(user=user_skill.user, skill=parent_skill)
+        update_user_skill(response, expected_response, user_patent_skill, question_type)
 
     user_skill.save()
 
@@ -38,7 +41,7 @@ def update_difficulty(response, expected_response, difficulty, question_type):
     K = ALPHA / (1 + DYNAMIC_ALPHA * (difficulty.get_first_attempts_count() - 1))
 
     if question_type == 'c':
-        difficulty.value += K * (expected_response - response)      # that is K * ((1 - response) - (1 - expected_response))
+        difficulty.value += K * (expected_response - response)  # that is K * ((1 - response) - (1 - expected_response))
     if question_type == 't':
         difficulty.value += K * (response - expected_response)
 
