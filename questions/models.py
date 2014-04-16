@@ -33,9 +33,12 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question)
+    question = models.ForeignKey(Question, related_name='answers')
     user = models.ForeignKey(User)
     log = models.TextField()
     solving_time = models.IntegerField()
     timestamp = models.DateTimeField(auto_now=True)
     correctly_solved = models.BooleanField(default=False)
+
+    def is_first_attempt(self):
+        return Answer.objects.filter(user=self.user, question=self.question, timestamp__lt=self.timestamp).count() == 0

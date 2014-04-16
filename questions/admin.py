@@ -5,8 +5,9 @@ from questions.models import Simulator, Question
 class SimulatorManager(admin.ModelAdmin):
     list_display = ('name', 'note')
 
+
 class QuestionManager(admin.ModelAdmin):
-    list_display = ('player', 'skill', 'data')
+    list_display = ('player', 'skill', 'data', 'difficulty')
 
 admin.site.register(Simulator, SimulatorManager)
 admin.site.register(Question, QuestionManager)

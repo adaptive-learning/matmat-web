@@ -20,9 +20,16 @@ def compute_level(sender, instance, **kwargs):
     else:
         instance.level = instance.parent.level + 1
 
+
 class QuestionDifficulty(models.Model):
     question = models.OneToOneField('questions.Question', primary_key=True, related_name='difficulty')
     value = models.FloatField(default=0)
+
+    def __unicode__(self):
+        return self.value
+
+    def get_first_attempts_count(self):
+        return self.question.answers.values('user').distinct().count()
 
 
 class UserSkill(models.Model):
