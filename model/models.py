@@ -7,11 +7,21 @@ from django.dispatch import receiver
 class Skill(models.Model):
     name = models.CharField(max_length=30)
     note = models.TextField(blank=True, null=True)
-    parent = models.ForeignKey("model.Skill", null=True, blank=True)
+    parent = models.ForeignKey("model.Skill", null=True, blank=True, related_name="children")
     level = models.IntegerField()
 
     def __unicode__(self):
         return self.name
+
+    def get_children(self):
+        if self.level >= 4:
+            return [self]
+
+        children = [self]
+        for ch in self.children.all():
+            children += ch.get_children()
+
+        return children
 
 @receiver(pre_save, sender=Skill)
 def compute_level(sender, instance, **kwargs):

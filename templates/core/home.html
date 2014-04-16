@@ -1,5 +1,9 @@
 {% extends "core/base.html" %}
 
 {% block content%}
-    <a href="{% url "play" %}">Start</a>
+    <a href="{% url "play" %}?skill=1">vše</a><br/>
+    {% for skill in skills %}
+        <a href="{% url "play" %}?skill={{ skill.pk }}">{{ skill }}</a><br/>
+    {% endfor %}
+
 {% endblock %}

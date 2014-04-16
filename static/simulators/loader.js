@@ -3,8 +3,13 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
-app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile){
+app.config(function($locationProvider) {
+        $locationProvider.html5Mode(true);
+});
+
+app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile, $location){
     $scope.common = CommonData;
+    $scope.skill_id = $location.search().skill;
     $scope.question = null;
     $scope.counter = {
         total: QUESTIONS_IN_SET,
@@ -19,7 +24,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         count += $scope.question == null ? 1 : 0;
 
         if (count > 0){
-            $http.get("/q/get_question/", {params: {count:count} })
+            $http.get("/q/get_question/", {params: {count:count, skill:$scope.skill_id} })
                 .success(function(data){
                     $scope.questions_queue = $scope.questions_queue.concat(data);
                     $scope.get_question();
