@@ -7,32 +7,39 @@ from django.dispatch import receiver
 class Skill(models.Model):
     name = models.CharField(max_length=30)
     note = models.TextField(blank=True, null=True)
-    parent = models.ForeignKey("model.Skill", null=True, blank=True, related_name="children")
+    parent = models.ForeignKey("model.Skill", null=True, blank=True,
+                               related_name="children")
     level = models.IntegerField()
 
     def __unicode__(self):
         return self.name
 
     def get_children(self):
-        if self.level >= 4:
-            return [self]
+        # using DFS to aviod infinite loops in case child is also a parent
+        fringe = [self]
+        children = set([self])
 
-        children = [self]
-        for ch in self.children.all():
-            children += ch.get_children()
+        while fringe:
+            node = fringe.pop(0)
+            for ch in node.children.all():
+                if ch not in children:
+                    fringe.append(ch)
+                    children.add(ch)
 
-        return children
+        return list(children)
+
 
 @receiver(pre_save, sender=Skill)
 def compute_level(sender, instance, **kwargs):
-    if instance.parent == None:
+    if instance.parent is None:
         instance.level = 1
     else:
         instance.level = instance.parent.level + 1
 
 
 class QuestionDifficulty(models.Model):
-    question = models.OneToOneField('questions.Question', primary_key=True, related_name='difficulty')
+    question = models.OneToOneField('questions.Question', primary_key=True,
+                                    related_name='difficulty')
     value = models.FloatField(default=0)
 
     def __unicode__(self):
