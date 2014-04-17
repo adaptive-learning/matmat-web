@@ -4,7 +4,6 @@ from questions.models import Question
 
 
 def recommend_questions(user, skills):
-
     questions = Question.objects.raw(
         "SELECT questions_question.*, "
         "COUNT(questions_answer.id) AS answers_count, "

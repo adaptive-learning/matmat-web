@@ -10,13 +10,26 @@ app.directive("counting", function(){
             $scope.okHidden = true;
             $scope.nokHidden = true;
 
+            var width = $scope.data.width;
+
             $scope.rows = [];
-            var ctr = $scope.data.question;
-            while (ctr > $scope.data.ncols) {
-                ctr = ctr - $scope.data.ncols;
-                $scope.rows.push($scope.data.ncols);
+            var q = $scope.data.question;
+            for (var i=0; i < q.length; i++) {
+                if (typeof q[i] == "number") {
+                    var ctr = q[i];
+                    while (ctr > width) {
+                        ctr = ctr - width;
+                        $scope.rows.push(width);
+                    }
+                    $scope.rows.push(ctr);
+                } else {
+                    $scope.rows.push(q[i]);
+                }
             }
-            $scope.rows.push(ctr);
+
+            $scope.type = function(v) {
+                return typeof v;
+            };
 
             $scope.getNumber = function(num) {
                 return new Array(num);   
