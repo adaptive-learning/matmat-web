@@ -21,10 +21,11 @@ class Skill(models.Model):
 
         while fringe:
             node = fringe.pop(0)
-            for ch in node.children.all():
-                if ch not in children:
-                    fringe.append(ch)
-                    children.add(ch)
+            if node.level < 4:
+                for ch in node.children.all():
+                    if ch not in children:
+                        fringe.append(ch)
+                        children.add(ch)
 
         return list(children)
 
