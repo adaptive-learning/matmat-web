@@ -7,7 +7,7 @@ INITIAL_DIFFICULTY = 0
 
 def get_expected_response(user_skill, difficulty, question_type):
     if question_type == 'c':
-        return 1. / (1 + math.exp(difficulty.value - user_skill.value))
+        return 1. / (1 + math.exp(difficulty - user_skill))
     if question_type == 't':
         return -(user_skill - difficulty)
 
@@ -60,7 +60,7 @@ def process_answer(answer):
         difficulty = QuestionDifficulty.objects.create(question=answer.question, value=INITIAL_DIFFICULTY)
     user_skill, _ = UserSkill.objects.get_or_create(user=answer.user, skill=skill)
 
-    expected_response = get_expected_response(user_skill, difficulty, question_type=question_type)
+    expected_response = get_expected_response(user_skill.value, difficulty.value, question_type=question_type)
     response = get_response(answer, question_type)
 
     update_user_skill(response, expected_response, user_skill, question_type)

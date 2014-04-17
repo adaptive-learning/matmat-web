@@ -37,7 +37,7 @@ class Answer(models.Model):
     user = models.ForeignKey(User)
     log = models.TextField()
     solving_time = models.IntegerField()
-    timestamp = models.DateTimeField(auto_now=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     correctly_solved = models.BooleanField(default=False)
 
     def is_first_attempt(self):

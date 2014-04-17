@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+    {% for question in questions %}
+        {{ question }} - odpovědí: {{ question.answers_count }}, lasttime: {{ question.time_form_last_answer }}
+        <br/>
+    {% endfor %}
+    
+{% endblock %}

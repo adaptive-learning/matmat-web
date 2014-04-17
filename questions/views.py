@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -25,10 +26,19 @@ def get_question(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.get_children()
 
-    questions = recommend_questions(request.user, subskills)[:request.GET["count"]]
+    questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
 
-    # print questions.query
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
+
+def get_question_test(request):
+    skill = get_object_or_404(Skill, pk=request.GET["skill"])
+    subskills = skill.get_children()
+
+    questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
+
+    return render(request, 'questions/test.html', {
+        "questions": questions
+    })
 
 
 def save_answer(request):
@@ -41,6 +51,7 @@ def save_answer(request):
             solving_time=data["time"],
             correctly_solved=data["correctly_solved"],
         )
+
         process_answer(answer)
 
     return HttpResponse("Have to be POST")
