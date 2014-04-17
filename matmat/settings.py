@@ -110,3 +110,8 @@ FACEBOOK_API_SECRET = os.getenv('FACEBOOK_API_SECRET', '5a4b653aba18f4b589d6003e
 RAVEN_CONFIG = {
     'dsn': os.getenv('RAVEN_DSN')
 }
+
+# Debug toolbar
+if DEBUG:
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
