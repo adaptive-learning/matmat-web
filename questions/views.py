@@ -6,6 +6,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from lazysignup.decorators import allow_lazy_user
 from model.elo import process_answer
 from model.models import Skill
+from model.recommendation import recommend_questions
 
 from questions.models import Question, Answer, Simulator
 
@@ -22,14 +23,11 @@ def play(request):
 
 def get_question(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
-    skills = skill.get_children()
+    subskills = skill.get_children()
 
-    questions = Question.objects.filter().select_related("simulator")\
-        .filter(skill__in=skills)\
-        .order_by("?")\
-        [:request.GET["count"]]
+    questions = recommend_questions(request.user, subskills)[:request.GET["count"]]
 
-    print questions.query
+    # print questions.query
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
 
 
