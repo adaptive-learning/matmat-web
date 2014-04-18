@@ -2,6 +2,7 @@ from math import sqrt
 from model.elo import get_expected_response
 from questions.models import Question
 
+
 def recommend_questions(user, skills):
 
     questions = Question.objects.raw(
@@ -21,19 +22,20 @@ def recommend_questions(user, skills):
          }
     )
     questions = list(questions)
-    questions.sort(key=question_priority, reverse=True)
+    questions.sort(key=lambda q: question_priority(q, user.is_staff), reverse=True)
 
     return questions
 
 
-def question_priority(question):
+def question_priority(question, log):
     GOAL_RESPONSE = 0.7
     TIME_WEIGHT = 120
     COUNT_WEIGHT = 2
     ESTIMATE_WEIGHT = 10
 
-    count_score = 1 / (sqrt(1 + question.answers_count))
-    time_score = -1 / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
+    count_score = 1. / (sqrt(1 + question.answers_count))
+    time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
+    print question.time_form_last_answer, time_score
 
     user_skill = question.user_skill if question.user_skill is not None else 0 # TODO predelat
     expected_response = get_expected_response(user_skill, question.questiondifficulty, question.type)
@@ -42,4 +44,15 @@ def question_priority(question):
     else:
         estimate_score = (1 - expected_response) / (1 - GOAL_RESPONSE)
 
-    return count_score * COUNT_WEIGHT + time_score * TIME_WEIGHT + estimate_score * ESTIMATE_WEIGHT
+    priority = count_score * COUNT_WEIGHT + time_score * TIME_WEIGHT + estimate_score * ESTIMATE_WEIGHT
+
+    if log:
+        question.recommendation_log = {
+            "count_score": "{0} * {1} = {2}".format(count_score, COUNT_WEIGHT, count_score * COUNT_WEIGHT),
+            "time_score": "-{1} / {0}  = {2}".format(question.time_form_last_answer, TIME_WEIGHT, time_score * TIME_WEIGHT),
+            "estimate_score": "{0} * {1} = {2}".format(estimate_score, ESTIMATE_WEIGHT, estimate_score * ESTIMATE_WEIGHT),
+            "expected_response": expected_response,
+            "total": priority,
+        }
+
+    return priority

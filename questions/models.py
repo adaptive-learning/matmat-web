@@ -29,6 +29,7 @@ class Question(models.Model):
             pk=self.pk,
             data=self.data,
             simulator=self.player.name,
+            recommendation_log=self.recommendation_log if hasattr(self, "recommendation_log") else None
         )
 
 

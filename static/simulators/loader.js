@@ -26,6 +26,9 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile,
         if (count > 0){
             $http.get("/q/get_question/", {params: {count:count, skill:$scope.skill_id} })
                 .success(function(data){
+                    for (var i in data){
+                            console.log(data[i]);
+                    }
                     $scope.questions_queue = $scope.questions_queue.concat(data);
                     $scope.get_question();
             });
