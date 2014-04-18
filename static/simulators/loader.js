@@ -3,13 +3,9 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
-app.config(function($locationProvider) {
-        $locationProvider.html5Mode(true);
-});
-
-app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile, $location){
+app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile){
     $scope.common = CommonData;
-    $scope.skill_id = $location.search().skill;
+    $scope.skill_id = getURLParameter("skill");
     $scope.question = null;
     $scope.counter = {
         total: QUESTIONS_IN_SET,
