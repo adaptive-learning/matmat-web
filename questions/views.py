@@ -24,7 +24,7 @@ def play(request):
 
 def get_question(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
-    subskills = skill.get_children()
+    subskills = skill.children_list
 
     questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
 
@@ -32,7 +32,7 @@ def get_question(request):
 
 def get_question_test(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
-    subskills = skill.get_children()
+    subskills = skill.children_list
 
     questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
 

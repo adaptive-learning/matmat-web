@@ -16,7 +16,7 @@ def recommend_questions(user, skills):
         "LEFT JOIN questions_answer ON ( questions_question.id = questions_answer.question_id AND questions_answer.user_id = %(user_id)s) "
         "LEFT JOIN model_questiondifficulty ON ( model_questiondifficulty.question_id = questions_question.id) "
         "WHERE questions_question.skill_id IN ( {0} ) "
-        "GROUP BY questions_question.id ".format(",".join([str(s.pk) for s in skills])),
+        "GROUP BY questions_question.id ".format(skills),
         {
             "user_id": user.pk,
          }
@@ -33,12 +33,16 @@ def question_priority(question, log):
     COUNT_WEIGHT = 2
     ESTIMATE_WEIGHT = 10
 
+    difficulty = question.questiondifficulty if question.questiondifficulty is not None else 0
+
     count_score = 1. / (sqrt(1 + question.answers_count))
-    time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
-    print question.time_form_last_answer, time_score
+    if question.time_form_last_answer is None:
+        time_score = 0
+    else:
+        time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
 
     user_skill = question.user_skill if question.user_skill is not None else 0 # TODO predelat
-    expected_response = get_expected_response(user_skill, question.questiondifficulty, question.type)
+    expected_response = get_expected_response(user_skill, difficulty, question.type)
     if GOAL_RESPONSE > expected_response:
         estimate_score = expected_response / GOAL_RESPONSE
     else:
@@ -54,5 +58,6 @@ def question_priority(question, log):
             "expected_response": expected_response,
             "total": priority,
         }
+        print question.recommendation_log
 
     return priority
