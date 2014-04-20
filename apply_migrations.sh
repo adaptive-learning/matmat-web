@@ -1,0 +1,3 @@
+python manage.py migrate model 0002_auto__add_field_skill_level
+python manage.py migrate questions 0005_auto__add_field_answer_correctly_solved
+python manage.py migrate
