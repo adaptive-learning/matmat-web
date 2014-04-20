@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <table>
+    {% for row in rows %}
+        <tr>
+        {% for skill in row %}
+            <td style="{{skill.style}}">
+                {{ skill.name }}
+            </td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
