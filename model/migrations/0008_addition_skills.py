@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from south.v2 import DataMigration
+from model.migrations import get_children
 
 
 class Migration(DataMigration):
@@ -35,6 +36,12 @@ class Migration(DataMigration):
         a4 = orm.Skill(name='addition <= 1000', parent=addition, level=3,
                        note='Addition with total up to 1000')
         a4.save()
+        #  update children
+        for s in orm.Skill.objects.all():
+            pk = s.pk
+            list = ",".join([str(s.pk) for s in get_children(s)])
+            orm.Skill.objects.filter(pk=pk).update(children_list=list)
+
 
     def backwards(self, orm):
         "Write your backwards methods here."

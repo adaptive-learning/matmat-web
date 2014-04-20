@@ -1,21 +1,34 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
+import datetime
 from south.db import db
 from south.v2 import DataMigration
 from django.db import models
-from model.migrations import get_children
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        for s in orm.Skill.objects.all():
-            pk = s.pk
-            list = ",".join([str(s.pk) for s in get_children(s)])
-            orm.Skill.objects.filter(pk=pk).update(children_list=list)
+        free_answer = orm.Simulator.objects.get(name='free_answer')
+        counting = orm.Simulator.objects.get(name='counting')
+        for a in range(1, 21):
+            for b in range(1, 21):
+                total = a + b
+                if total <= 20:
+                    x, y = (a, b) if a <= b else (b, a)
+                    skill = orm['model.Skill'].objects.get(name='%s+%s' % (x, y))
+                    orm.Question(type='c', skill=skill, player=free_answer,
+                                 data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
+                    orm.Question(type='c', skill=skill, player=counting,
+                                 data='{"question": [%s, "+", %s], "answer": "%s", "width": 10}' % (a, b, total)).save()
+        skill = orm['model.Skill'].objects.get(name='addition <= 100')
+        for a in range(1, 100):
+            for b in range(1, 100):
+                total = a + b
+                if total > 20 and total <= 100:
+                    orm.Question(type='c', skill=skill, player=free_answer,
+                                 data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
 
     def backwards(self, orm):
-        pass
-
+        "Write your backwards methods here."
 
     models = {
         u'auth.group': {
@@ -54,11 +67,6 @@ class Migration(DataMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'model.questiondifficulty': {
-            'Meta': {'object_name': 'QuestionDifficulty'},
-            'question': ('django.db.models.fields.related.OneToOneField', [], {'related_name': "'difficulty'", 'unique': 'True', 'primary_key': 'True', 'to': u"orm['questions.Question']"}),
-            'value': ('django.db.models.fields.FloatField', [], {'default': '0'})
-        },
         u'model.skill': {
             'Meta': {'object_name': 'Skill'},
             'children_list': ('django.db.models.fields.TextField', [], {'default': "''"}),
@@ -68,12 +76,15 @@ class Migration(DataMigration):
             'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': u"orm['model.Skill']"})
         },
-        u'model.userskill': {
-            'Meta': {'unique_together': "(('user', 'skill'),)", 'object_name': 'UserSkill'},
+        u'questions.answer': {
+            'Meta': {'object_name': 'Answer'},
+            'correctly_solved': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'skill': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['model.Skill']"}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"}),
-            'value': ('django.db.models.fields.FloatField', [], {'default': '0'})
+            'log': ('django.db.models.fields.TextField', [], {}),
+            'question': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'answers'", 'to': u"orm['questions.Question']"}),
+            'solving_time': ('django.db.models.fields.IntegerField', [], {}),
+            'timestamp': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
         },
         u'questions.question': {
             'Meta': {'object_name': 'Question'},
@@ -91,7 +102,5 @@ class Migration(DataMigration):
         }
     }
 
-    complete_apps = ['model']
+    complete_apps = ['questions']
     symmetrical = True
-
-
