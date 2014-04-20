@@ -2,17 +2,7 @@
     <span ng-hide="okHidden">&#x2713;</span>
     <span ng-hide="nokHidden">&#x2717;</span>
 </h2>
-<div class="row collapse" ng-repeat="row in rows">
-    <div ng-switch on="type(row)">
-        <div ng-switch-when="string">
-            <h2>{{row}}</h2>
-        </div>
-        <div ng-switch-when="number" style="height:33px;">
-            <span style="width:33px;" ng-repeat="i in getNumber(row) track by $index" >
-                <img ng-src="/static/img/cube_orange.png" />
-            </span>
-        </div>
-    </div>
+<div id="count_display" class="row collapse">
 </div>
 <div style="height:30px;"></div>
 <form ng-submit="submit()"> 

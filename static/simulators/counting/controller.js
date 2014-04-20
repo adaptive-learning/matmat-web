@@ -11,29 +11,32 @@ app.directive("counting", function(){
             $scope.nokHidden = true;
 
             var width = $scope.data.width;
-
-            $scope.rows = [];
+            var container = document.getElementById('count_display');
             var q = $scope.data.question;
             for (var i=0; i < q.length; i++) {
                 if (typeof q[i] == "number") {
                     var ctr = q[i];
-                    while (ctr > width) {
+                    while (ctr > 0) {
+                        var num = Math.min(ctr, width);
+                        var div = document.createElement('div');
+                        container.appendChild(div);
+                        div.style.height = "33px";
+                        for (var j=0; j < num; j++) {
+                            var span = document.createElement('span');
+                            div.appendChild(span);
+                            span.style.padding = "1px";
+                            var img = document.createElement('img');
+                            span.appendChild(img);
+                            img.src = "/static/img/cube_orange.png";
+                        }
                         ctr = ctr - width;
-                        $scope.rows.push(width);
                     }
-                    $scope.rows.push(ctr);
-                } else {
-                    $scope.rows.push(q[i]);
+                } else if (typeof q[i] == "string") {
+                    var h2 = document.createElement('h2');
+                    container.appendChild(h2);
+                    h2.textContent = q[i];
                 }
             }
-
-            $scope.type = function(v) {
-                return typeof v;
-            };
-
-            $scope.getNumber = function(num) {
-                return new Array(num);   
-            };
 
             $scope.submit = function() {
                 var correct = $scope.response == $scope.data.answer;
