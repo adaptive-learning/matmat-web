@@ -2,15 +2,17 @@
 {% load staticfiles %}
 
 {% block content %}
-    <table>
-    {% for row in rows %}
-        <tr>
-        {% for skill in row %}
-            <td style="{{skill.style}}">
-                {{ skill.name }}
-            </td>
+    {% for table in tables %}
+        <table>
+        {% for row in table %}
+            <tr>
+            {% for skill in row %}
+                <td style="{{skill.style}}">
+                    {{ skill.name }}
+                </td>
+            {% endfor %}
+            </tr>
         {% endfor %}
-        </tr>
+        </table>
     {% endfor %}
-    </table>
 {% endblock %}
