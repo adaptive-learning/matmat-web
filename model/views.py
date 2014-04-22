@@ -8,7 +8,8 @@ def my_skills(request):
     skills = set()
     for s in Skill.objects.\
             filter(parent__name__in=['addition <= 10', 'addition <= 20',
-                                     'numbers10', 'numbers20', 'numbers100']):
+                                     'numbers <= 10', 'numbers <= 20',
+                                     'numbers <= 100']):
         skills.add(s.name)
     user_skills = {k: None for k in skills}
     for us in UserSkill.objects.filter(user=request.user):
