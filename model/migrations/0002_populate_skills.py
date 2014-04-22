@@ -6,9 +6,52 @@ from model.migrations import get_children
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        num10 = orm.Skill.objects.get(name='numbers10')
-        num20 = orm.Skill.objects.get(name='numbers20')
-        num100 = orm.Skill.objects.get(name='numbers100')
+        # Adam and Eve of all skills:
+        math = orm.Skill(name='math', parent=None, level=1, note='Superskill')
+        math.save()
+        # addition:
+        addition = orm.Skill(name='addition', parent=math, level=2,
+                             note='Addition')
+        addition.save()
+        # addition up to 10
+        a1 = orm.Skill(name='addition <= 10', parent=addition, level=3,
+                       note='Addition with total up to 10')
+        a1.save()
+        for total in range(1, 11):
+            for a in range(total / 2 + 1):
+                b = total - a
+                orm.Skill(name='%s+%s' % (a, b), parent=a1, level=4,
+                          note='%s+%s' % (a, b)).save()
+        # addition up to 20
+        a2 = orm.Skill(name='addition <= 20', parent=addition, level=3,
+                       note='Addition with total up to 20')
+        a2.save()
+        for total in range(11, 21):
+            for a in range(total / 2 + 1):
+                b = total - a
+                orm.Skill(name='%s+%s' % (a, b), parent=a2, level=4,
+                          note='%s+%s' % (a, b)).save()
+        # addition up to 100
+        a3 = orm.Skill(name='addition <= 100', parent=addition, level=3,
+                       note='Addition with total up to 100')
+        a3.save()
+        # addition up to 1000
+        a4 = orm.Skill(name='addition <= 1000', parent=addition, level=3,
+                       note='Addition with total up to 1000')
+        a4.save()
+        # numbers:
+        numbers = orm.Skill(name='numbers', parent=math, level=2,
+                            note='Numbers')
+        numbers.save()
+        num10 = orm.Skill(name='numbers <= 10', parent=numbers, level=3,
+                          note='Numbers up to 10')
+        num10.save()
+        num20 = orm.Skill(name='numbers <= 20', parent=numbers, level=3,
+                          note='Numbers up to 20')
+        num20.save()
+        num100 = orm.Skill(name='numbers <= 100', parent=numbers, level=3,
+                           note='Numbers up to 100')
+        num100.save()
         for n in range(1, 101):
             if n <= 10:
                 p = num10
