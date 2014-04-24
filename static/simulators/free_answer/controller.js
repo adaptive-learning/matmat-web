@@ -7,6 +7,7 @@ app.directive("freeanswer", function(){
         },
         templateUrl: static_url + "simulators/free_answer/simulator.html",
         controller: function($scope){
+            $scope.answer = '';
             $scope.okHidden = true;
             $scope.nokHidden = true;
             $("#simulator-input").focus();
@@ -20,6 +21,14 @@ app.directive("freeanswer", function(){
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer);
+            };
+
+            $scope.add_text = function(n){
+                $scope.answer = $scope.answer + n;
+            };
+
+            $scope.backspace = function(n){
+                $scope.answer = $scope.answer.slice(0, - 1);
             };
         }
     }
