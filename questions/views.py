@@ -25,16 +25,21 @@ def play(request):
 def get_question(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
+    in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
+    print in_queue
 
-    questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
+    questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
 
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
+
 
 def get_question_test(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
+    in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
+    print in_queue
 
-    questions = recommend_questions(request.user, subskills)[:int(request.GET["count"])]
+    questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
 
     return render(request, 'questions/test.html', {
         "questions": questions

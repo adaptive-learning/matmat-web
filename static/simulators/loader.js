@@ -20,9 +20,16 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         count += $scope.question == null ? 1 : 0;
 
         if (count > 0){
-            $http.get("/q/get_question/", {params: {count:count, skill:$scope.skill_id} })
+            var in_queue = [];
+            if ($scope.question)
+                in_queue.push($scope.question.pk);
+            for (var i in $scope.questions_queue){
+                in_queue.push($scope.questions_queue[i].pk);
+            }
+            $http.get("/q/get_question/", {params: {count:count, skill:$scope.skill_id, in_queue: in_queue.join()} })
                 .success(function(data){
                     for (var i in data){
+                        if (data[i].recommendation_log)
                             console.log(data[i]);
                     }
                     $scope.questions_queue = $scope.questions_queue.concat(data);
