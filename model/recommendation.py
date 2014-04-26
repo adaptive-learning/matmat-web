@@ -1,4 +1,5 @@
 from math import sqrt
+from random import random
 from model.elo import get_expected_response
 from questions.models import Question
 
@@ -35,6 +36,7 @@ def question_priority(question, log):
     TIME_WEIGHT = 120
     COUNT_WEIGHT = 2
     ESTIMATE_WEIGHT = 10
+    RANDOM_WEIGHT = 0.001
 
     difficulty = question.questiondifficulty if question.questiondifficulty is not None else 0
 
@@ -51,7 +53,7 @@ def question_priority(question, log):
     else:
         estimate_score = (1 - expected_response) / (1 - GOAL_RESPONSE)
 
-    priority = count_score * COUNT_WEIGHT + time_score * TIME_WEIGHT + estimate_score * ESTIMATE_WEIGHT
+    priority = count_score * COUNT_WEIGHT + time_score * TIME_WEIGHT + estimate_score * ESTIMATE_WEIGHT + RANDOM_WEIGHT * random()
 
     if log:
         question.recommendation_log = {
