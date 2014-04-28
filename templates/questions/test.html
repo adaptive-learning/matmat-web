@@ -4,7 +4,7 @@
 
 {% block content %}
     {% for question in questions %}
-        {{ question }} - odpovědí: {{ question.answers_count }}, lasttime: {{ question.time_form_last_answer }}
+        {{ question.as_json }}
         <br/>
     {% endfor %}
     

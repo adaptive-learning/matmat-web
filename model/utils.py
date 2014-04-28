@@ -36,8 +36,6 @@ def recalculate_model():
         "FROM questions_answer "
         "ORDER BY questions_answer.timestamp ASC")
 
-    print UserSkill.objects.all().query
-
     provider = CachingDatabaseDataProvider()
     elo = EloModel(provider)
     for answer in dictfetchall(cursor):
@@ -55,8 +53,7 @@ class CachingDatabaseDataProvider(DataProviderInterface):
             "SELECT "
                 "questions_question.id as pk, "
                 "questions_question.skill_id as skill, "
-                "questions_question.type, "
-                "model_questiondifficulty.value as difficulty "
+                "questions_question.type "
             "FROM questions_question "
             "LEFT OUTER JOIN model_questiondifficulty ON ( questions_question.id = model_questiondifficulty.question_id )"
         )
@@ -79,7 +76,7 @@ class CachingDatabaseDataProvider(DataProviderInterface):
 
     def save_data(self):
         for pk, q in self.questions.items():
-            if q["difficulty"] is not None:
+            if "difficulty" in q.keys() and q["difficulty"] is not None:
                 QuestionDifficulty.objects.create(question_id=pk, value=q["difficulty"])
 
         for user, d in self.user_skills.items():
@@ -127,7 +124,10 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         return self.skills[skill]["parent"]
 
     def get_difficulty(self, question):
-        return self.questions[question]["difficulty"]
+        try:
+            return self.questions[question]["difficulty"]
+        except:
+            return None
 
     def set_difficulty(self, question, value):
         self.questions[question]["difficulty"] = value
