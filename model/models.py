@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
+from elo.DataProviderInterface import DataProviderInterface
 
 
 class Skill(models.Model):
@@ -76,3 +77,55 @@ class UserSkill(models.Model):
 
     class Meta:
         unique_together = ('user', 'skill')
+
+
+class DatabaseDataProvider(DataProviderInterface):
+    def get_question(self, answer):
+        return answer.question
+
+    def get_user(self, answer):
+        return answer.user
+
+    def get_skill(self, question):
+        return question.skill
+
+    def get_question_type(self, question):
+        return question.type
+
+    def get_user_skill(self, user, skill):
+        try:
+            return UserSkill.objects.get(user=user, skill=skill).value
+        except UserSkill.DoesNotExist:
+            return None
+
+    def set_user_skill(self, user, skill, value):
+        user_skill, _ = UserSkill.objects.get_or_create(user=user, skill=skill)
+        user_skill.value = value
+        user_skill.save()
+
+    def get_parent_skill(self, skill):
+        return skill.parent
+
+    def get_difficulty(self, question):
+        try:
+            difficulty = question.difficulty.value
+        except QuestionDifficulty.DoesNotExist:
+            difficulty = None
+        return difficulty
+
+    def set_difficulty(self, question, value):
+        difficulty, _ = QuestionDifficulty.objects.get_or_create(question=question)
+        difficulty.value = value
+        difficulty.save()
+
+    def get_solving_time(self, answer):
+        return answer.solving_time
+
+    def get_correctness(self, answer):
+        return answer.correctly_solved
+
+    def is_first_attempt(self, answer):
+        return answer.is_first_attempt()
+
+    def get_first_attempts_count(self, question):
+        return question.difficulty.get_first_attempts_count()

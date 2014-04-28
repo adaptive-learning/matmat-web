@@ -1,11 +1,10 @@
 import json
-from datetime import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 from lazysignup.decorators import allow_lazy_user
-from model.elo import process_answer
+from model.utils import process_answer
 from model.models import Skill
 from model.recommendation import recommend_questions
 
@@ -26,7 +25,6 @@ def get_question(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
-    print in_queue
 
     questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
 
@@ -37,7 +35,6 @@ def get_question_test(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
-    print in_queue
 
     questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
 

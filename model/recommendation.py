@@ -1,6 +1,6 @@
 from math import sqrt
 from random import random
-from model.elo import get_expected_response
+from elo.model import EloModel
 from questions.models import Question
 
 
@@ -47,7 +47,7 @@ def question_priority(question, log):
         time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
 
     user_skill = question.user_skill if question.user_skill is not None else 0 # TODO predelat
-    expected_response = get_expected_response(user_skill, difficulty, question.type)
+    expected_response = EloModel.expected_response(user_skill, difficulty, question.type)
     if GOAL_RESPONSE > expected_response:
         estimate_score = expected_response / GOAL_RESPONSE
     else:
