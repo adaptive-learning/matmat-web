@@ -114,7 +114,7 @@ class CachingDatabaseDataProvider(DataProviderInterface):
 
     def get_user_skill(self, user, skill):
         try:
-            self.user_skills[user][skill]
+            return self.user_skills[user][skill]
         except:
             return None
 
