@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 from lazysignup.decorators import allow_lazy_user
-from model.utils import process_answer
+from model.utils import process_answer, recalculate_model
 from model.models import Skill
 from model.recommendation import recommend_questions
 
@@ -37,6 +37,7 @@ def get_question_test(request):
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
     questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
+    recalculate_model()
 
     return render(request, 'questions/test.html', {
         "questions": questions
