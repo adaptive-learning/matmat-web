@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content%}
-    <div id="skill_selector">
+        <div id="skill_selector">
     {% for skill in skills%}
         <a href="{% url "play" %}?skill={{ skill.pk }}">
         <div class="skill"
@@ -17,8 +17,9 @@
             {% endfor %}
         </ul>
     {% endfor %}
-    <br style="clear: both"/>
     </div>
+
+    <hr/>
 
 
 {% endblock %}

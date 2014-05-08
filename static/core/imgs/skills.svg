@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="skill_numbers.svg"
+   sodipodi:docname="skills.svg"
    inkscape:export-filename="/home/thran/webs/matmat/static/core/imgs/skill_numbers.png"
    inkscape:export-xdpi="89.999878"
    inkscape:export-ydpi="89.999878">
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="523.23061"
-     inkscape:cy="511.31892"
+     inkscape:zoom="1.979899"
+     inkscape:cx="485.28461"
+     inkscape:cy="313.83829"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,7 +56,37 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:0;color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.09673333000000017;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:0.11157023;color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.09673333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3061-4-5-5"
+       width="197.90327"
+       height="197.90326"
+       x="411.17538"
+       y="676.62878"
+       inkscape:export-filename="/home/thran/webs/matmat/static/core/imgs/skill_fractions.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.11157023000000001;color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.09673333000000017;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3061-4"
+       width="197.90327"
+       height="197.90326"
+       x="400.06372"
+       y="75.58799"
+       inkscape:export-filename="/home/thran/webs/matmat/static/core/imgs/skill_addition.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.11157023;color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.09673333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3061-4-5"
+       width="197.90327"
+       height="197.90326"
+       x="89.946884"
+       y="591.77594"
+       inkscape:export-filename="/home/thran/webs/matmat/static/core/imgs/skill_multiplication.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.11157025;color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.09673333000000017;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3061"
        width="197.90327"
        height="197.90326"
@@ -71,7 +101,8 @@ iWOUL9/CQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAAdyAYbNbgQwAAAAAElFTkSuQmCC
 
 "
        height="30"
-       width="30" />
+       width="30"
+       style="opacity:0.8553719" />
     <image
        y="296.03198"
        x="142.58385"
@@ -80,7 +111,8 @@ iWOUL9/CQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAAdyAYbNbgQwAAAAAElFTkSuQmCC
 ie3MQQEAQAQAsHMBVBadFF62AIuufDv+0qtWq9VqtVqtPlEPyGYByN9/GzAAAAAASUVORK5CYII=
 "
        height="30"
-       width="30" />
+       width="30"
+       style="opacity:0.8553719" />
     <image
        y="288.96097"
        x="218.34521"
@@ -89,27 +121,326 @@ ie3MQQEAQAQAsHMBVBadFF62AIuufDv+0qtWq9VqtVqtPlEPyGYByN9/GzAAAAAASUVORK5CYII=
 ie3MMQEAAAQAMOQRWlQpXLYAy56OG3X0qtVqtVqtVqtf1Aud+wE0cihvMwAAAABJRU5ErkJggg==
 "
        height="30"
-       width="30" />
+       width="30"
+       style="opacity:0.8553719" />
     <image
        y="329.36707"
        x="234.50768"
        id="image3015-5"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKElEQVRI ie3MMQEAAAQAMOQRWlQpXLYAy56OG3X0qtVqtVqtVqtf1Aud+wE0cihvMwAAAABJRU5ErkJggg== "
        height="30"
-       width="30" />
+       width="30"
+       style="opacity:0.8553719" />
     <image
        y="321.28586"
        x="199.15236"
        id="image3015-1"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKElEQVRI ie3MMQEAAAQAMOQRWlQpXLYAy56OG3X0qtVqtVqtVqtf1Aud+wE0cihvMwAAAABJRU5ErkJggg== "
        height="30"
-       width="30" />
+       width="30"
+       style="opacity:0.8553719" />
     <image
        y="331.38739"
        x="146.62444"
        id="image3004-3"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKUlEQVRI ie3MQQEAQAQAsHMBVBadFF62AIuufDv+0qtWq9VqtVqtPlEPyGYByN9/GzAAAAAASUVORK5CYII= "
        height="30"
+       width="30"
+       style="opacity:0.8553719" />
+    <image
+       y="495.39679"
+       x="395.34039"
+       id="image2993-0"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWOUL9/CQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAAdyAYbNbgQwAAAAAElFTkSuQmCC  "
+       height="30"
+       width="30"
+       style="opacity:0.85537187" />
+    <image
+       y="496.29727"
+       x="434.73987"
+       id="image3004-8"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKUlEQVRI ie3MQQEAQAQAsHMBVBadFF62AIuufDv+0qtWq9VqtVqtPlEPyGYByN9/GzAAAAAASUVORK5CYII= "
+       height="30"
+       width="30"
+       style="opacity:0.85537187" />
+    <image
+       y="497.3075"
+       x="475.1459"
+       id="image3015-3"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKElEQVRI ie3MMQEAAAQAMOQRWlQpXLYAy56OG3X0qtVqtVqtVqtf1Aud+wE0cihvMwAAAABJRU5ErkJggg== "
+       height="30"
+       width="30"
+       style="opacity:0.85537187" />
+    <image
+       y="799.71094"
+       x="479.92398"
+       id="image3924"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKUlEQVRI
+iWPsCfNmoA1gopG5o0aPGj1q9KjRo0aPGj1q9KjRo0aPCKMB0yIBaU2+6yAAAAAASUVORK5CYII=
+"
+       height="30"
        width="30" />
+    <image
+       y="571.68188"
+       x="469.87323"
+       id="image3946"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI
+ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC
+"
+       height="30"
+       width="30" />
+    <image
+       y="418.13867"
+       x="477.95447"
+       id="image3968"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI
+iWN8XH6IgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAMZwAljloA//AAAAAElFTkSuQmCC
+
+"
+       height="30"
+       width="30" />
+    <image
+       y="418.13867"
+       x="634.52808"
+       id="image3979"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI
+iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC
+
+"
+       height="30"
+       width="30" />
+    <image
+       y="758.65295"
+       x="502.39423"
+       id="image3990"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI
+iWOckr6XgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAJxKAfRwKni+AAAAAElFTkSuQmCC
+
+"
+       height="30"
+       width="30" />
+    <g
+       id="g4268"
+       transform="matrix(1.1241507,0,0,1.1241507,-63.469006,-18.132381)">
+      <image
+         width="16.419886"
+         height="16.419886"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         id="image3979-0"
+         x="454.26993"
+         y="166.31917" />
+      <image
+         width="16.419886"
+         height="16.419886"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         id="image3979-5"
+         x="472.54034"
+         y="166.31917" />
+      <image
+         width="16.419886"
+         height="16.419886"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         id="image3979-7"
+         x="490.81076"
+         y="166.31917" />
+      <image
+         width="16.419886"
+         height="16.419886"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         id="image3979-3"
+         x="509.08118"
+         y="166.31917" />
+      <image
+         width="16.419886"
+         height="16.419886"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         id="image3979-1"
+         x="527.35156"
+         y="166.31917" />
+    </g>
+    <g
+       id="g4275"
+       transform="matrix(0,-1.1241507,1.1241507,0,301.30844,739.03911)">
+      <image
+         y="166.31917"
+         x="454.26993"
+         id="image4277"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         height="16.419886"
+         width="16.419886" />
+      <image
+         y="166.31917"
+         x="472.54034"
+         id="image4279"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         height="16.419886"
+         width="16.419886" />
+      <image
+         y="166.31917"
+         x="490.81076"
+         id="image4281"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         height="16.419886"
+         width="16.419886" />
+      <image
+         y="166.31917"
+         x="509.08118"
+         id="image4283"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         height="16.419886"
+         width="16.419886" />
+      <image
+         y="166.31917"
+         x="527.35156"
+         id="image4285"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWO8pq7BQBvARCNzR40eNXrU6FGjR40eNXrU6FGjR40eEUYDAH5PAWExz5HRAAAAAElFTkSuQmCC  "
+         height="16.419886"
+         width="16.419886" />
+    </g>
+    <g
+       id="g4304"
+       transform="matrix(0.53383496,-0.53383496,0.53383496,0.53383496,-613.69015,569.14309)">
+      <image
+         width="30"
+         height="30"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+         id="image3946-1"
+         x="543.61438"
+         y="859.86218" />
+      <image
+         width="30"
+         height="30"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+         id="image3946-1-8"
+         x="576.71082"
+         y="859.86218" />
+      <image
+         width="30"
+         height="30"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+         id="image3946-1-6"
+         x="609.80725"
+         y="859.86218" />
+      <image
+         width="30"
+         height="30"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+         id="image3946-1-64"
+         x="642.90369"
+         y="859.86218" />
+      <image
+         width="30"
+         height="30"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+         id="image3946-1-640"
+         x="676.00012"
+         y="859.86218" />
+      <g
+         transform="matrix(0,-1,1,0,-250.05493,1499.6694)"
+         id="g4297">
+        <image
+           width="30"
+           height="30"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+           id="image4287"
+           x="-889.86218"
+           y="543.61438"
+           transform="matrix(0,-1,1,0,0,0)" />
+        <image
+           width="30"
+           height="30"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+           id="image4289"
+           x="-889.86218"
+           y="576.71082"
+           transform="matrix(0,-1,1,0,0,0)" />
+        <image
+           width="30"
+           height="30"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+           id="image4291"
+           x="-889.86218"
+           y="609.80725"
+           transform="matrix(0,-1,1,0,0,0)" />
+        <image
+           width="30"
+           height="30"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+           id="image4293"
+           x="-889.86218"
+           y="642.90369"
+           transform="matrix(0,-1,1,0,0,0)" />
+        <image
+           width="30"
+           height="30"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAJ0lEQVRI ie3MQQEAAAQEMBS/6lJ42QKsk9SNOXrVarVarVar1S/qBSedAbk7suuWAAAAAElFTkSuQmCC "
+           id="image4295"
+           x="-889.86218"
+           y="676.00012"
+           transform="matrix(0,-1,1,0,0,0)" />
+      </g>
+    </g>
+    <rect
+       style="opacity:0;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.01300001;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4335"
+       width="233.34525"
+       height="102.02541"
+       x="-109.09647"
+       y="753.35706" />
+    <rect
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.01300001;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4337"
+       width="131.63492"
+       height="2.8466299"
+       x="445.66107"
+       y="790.71234" />
+    <image
+       y="588.85443"
+       x="528.4621"
+       id="image3924-6"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKUlEQVRI iWPsCfNmoA1gopG5o0aPGj1q9KjRo0aPGj1q9KjRo0aPCKMB0yIBaU2+6yAAAAAASUVORK5CYII= "
+       height="30"
+       width="30" />
+    <image
+       y="558.54987"
+       x="577.95953"
+       id="image3990-5"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWOckr6XgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAJxKAfRwKni+AAAAAElFTkSuQmCC  "
+       height="30"
+       width="30" />
+    <image
+       y="816.63544"
+       x="343.77209"
+       id="image3990-1"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWOckr6XgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAJxKAfRwKni+AAAAAElFTkSuQmCC  "
+       height="30"
+       width="30"
+       transform="matrix(0.98893635,-0.14834045,0.14834045,0.98893635,0,0)" />
+    <image
+       y="523.64136"
+       x="757.47784"
+       id="image3990-4"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWOckr6XgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAJxKAfRwKni+AAAAAElFTkSuQmCC  "
+       height="30"
+       width="30"
+       transform="matrix(0.94366713,0.33089627,-0.33089627,0.94366713,0,0)" />
+    <image
+       y="604.97046"
+       x="626.12982"
+       id="image3990-12"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKklEQVRI iWOckr6XgTaAiUbmjho9avSo0aNGjxo9avSo0aNGjxo9IowGAJxKAfRwKni+AAAAAElFTkSuQmCC  "
+       height="30"
+       width="30"
+       transform="matrix(0.97867779,0.20540151,-0.20540151,0.97867779,0,0)"
+       inkscape:transform-center-x="-38.928571"
+       inkscape:transform-center-y="3.5714286" />
+    <image
+       y="958.8714"
+       x="-18.874546"
+       id="image3924-1"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAAA3NCSVQICAjb4U/gAAAAKUlEQVRI iWPsCfNmoA1gopG5o0aPGj1q9KjRo0aPGj1q9KjRo0aPCKMB0yIBaU2+6yAAAAAASUVORK5CYII= "
+       height="30"
+       width="30"
+       transform="matrix(0.83844362,-0.54498835,0.54498835,0.83844362,0,0)" />
   </g>
 </svg>
