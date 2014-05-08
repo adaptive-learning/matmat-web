@@ -32,3 +32,44 @@
     display: block;
     margin: 150px auto auto;
 }
+
+
+/* Skill selection*/
+#skill_selector{
+    text-align: center;
+    align-content: center;
+    margin-top: 100px;
+}
+
+#skill_selector div.skill{
+    height: 200px;
+    width: 200px;
+    border: solid #000000 1px;
+    margin: 5px;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: gray;
+    background: center center no-repeat;
+    position: relative;
+}
+
+#skill_selector div.skill:hover{
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    color: #000000;
+}
+
+#skill_selector div.skill span.subskills{
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    color: #2BA6CB;
+}
+
+
+#skill_selector div.skill span.title{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+}

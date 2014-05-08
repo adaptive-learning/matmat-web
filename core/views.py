@@ -7,8 +7,17 @@ from model.models import Skill
 
 @allow_lazy_user
 def home(request):
+    def order(skill):
+        skill_names = [u"numbers", u"addition"]
+        for index, name in enumerate(skill_names):
+            if skill.name == name:
+                return index
+
+    skills = list(Skill.objects.filter(level=2))
+    skills.sort(key=order)
+
     return render(request, 'core/home.html', {
-        "skills": Skill.objects.filter(level=2)
+        "skills": skills,
     })
 
 @receiver(user_logged_in)
