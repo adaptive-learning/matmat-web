@@ -4,18 +4,18 @@
 {% block content%}
     <div id="skill_selector">
     {% for skill in skills%}
-        <div onclick="window.open('{% url "play" %}?skill={{ skill.pk }}')"
-             class="skill"
+        <a href="{% url "play" %}?skill={{ skill.pk }}">
+        <div class="skill"
              style="background-image: url('{% static "core/imgs/skill_" %}{{ skill.name }}.png')">
             <span class="title">{{ skill.note }}</span>
             <span class="subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:true">Podoblasti &raquo;</span>
-            <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
-                {% for subskill in skill.children.all %}
-                    <li><a href="{% url "play" %}?skill={{ subskill.pk }}">{{ subskill.note }}</a></li>
-                {% endfor %}
+        </div></a>
 
-            </ul>
-        </div>
+        <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
+            {% for subskill in skill.children.all %}
+                <li><a href="{% url "play" %}?skill={{ subskill.pk }}">{{ subskill.note }}</a></li>
+            {% endfor %}
+        </ul>
     {% endfor %}
     <br style="clear: both"/>
     </div>
