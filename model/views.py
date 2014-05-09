@@ -9,7 +9,8 @@ def my_skills(request):
     for s in Skill.objects.\
             filter(parent__name__in=['addition <= 10', 'addition <= 20',
                                      'numbers <= 10', 'numbers <= 20',
-                                     'numbers <= 100']):
+                                     'numbers <= 100', 'multiplication1',
+                                     'multiplication2']):
         skills.add(s.name)
     user_skills = {k: None for k in skills}
     for us in UserSkill.objects.filter(user=request.user):
@@ -20,6 +21,8 @@ def my_skills(request):
                     for c in range(1, 11)] for r in range(10)])
     tables.append([[get_skill_repr('%s+%s' % (c, r), user_skills)
                     for c in range(1, 11)] for r in range(1, 21)])
+    tables.append([[get_skill_repr('%sx%s' % (c, r), user_skills)
+                    for c in range(11)] for r in range(21)])
 
     return render(request, 'model/my_skills.html', {
         "tables": tables,
