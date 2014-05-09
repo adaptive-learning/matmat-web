@@ -5,7 +5,8 @@ from south.v2 import DataMigration
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        # simulators:
+        # Simulators:
+        # -----------
         free_answer = orm.Simulator(name='free_answer', note='Written answer')
         free_answer.save()
         counting = orm.Simulator(name='counting', note='Counting objects')
@@ -15,7 +16,8 @@ class Migration(DataMigration):
         selecting.save()
         example_sim = orm.Simulator(name='example', note='Just an example')
         example_sim.save()
-        # numbers questions:
+        # Numbers:
+        # --------
         for n in range(1, 101):
             skill = orm['model.Skill'].objects.get(name=str(n))
             # for numbers up to 7 ... choice up to 10
@@ -30,7 +32,8 @@ class Migration(DataMigration):
             orm.Question(type='c', skill=skill, player=counting,
                          data='{"question": [%s], "answer": "%s", '
                          '"width": 10}' % (n, n)).save()
-        # addition questions:
+        # Addition:
+        # ---------
         for a in range(1, 21):
             for b in range(1, 21):
                 total = a + b
@@ -48,6 +51,26 @@ class Migration(DataMigration):
                 if total > 20 and total <= 100:
                     orm.Question(type='c', skill=skill, player=free_answer,
                                  data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
+        # Multiplication:
+        # ---------------
+        for a in range(11):
+            for b in range(11):
+                total = a * b
+                x, y = (a, b) if a <= b else (b, a)
+                skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
+                orm.Question(type='c', skill=skill, player=free_answer,
+                             data='{"question": "%sx%s", "answer": "%s"}' % (a, b, total)).save()
+        for a in range(11):
+            for b in range(11, 21):
+                total = a * b
+                skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
+                orm.Question(type='c', skill=skill, player=free_answer,
+                             data='{"question": "%sx%s", "answer": "%s"}' % (a, b, total)).save()
+                orm.Question(type='c', skill=skill, player=free_answer,
+                             data='{"question": "%sx%s", "answer": "%s"}' % (b, a, total)).save()
+
+
+
 
     def backwards(self, orm):
         "Write your backwards methods here."

@@ -6,10 +6,34 @@ from model.migrations import get_children
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        # Adam and Eve of all skills:
+        # Main math skill:
+        # ----------------
         math = orm.Skill(name='math', parent=None, level=1, note='Superskill')
         math.save()
-        # addition:
+        # Numbers:
+        # --------
+        numbers = orm.Skill(name='numbers', parent=math, level=2,
+                            note='Počítání')
+        numbers.save()
+        num10 = orm.Skill(name='numbers <= 10', parent=numbers, level=3,
+                          note='Počítání do 10')
+        num10.save()
+        num20 = orm.Skill(name='numbers <= 20', parent=numbers, level=3,
+                          note='Počítání do 20')
+        num20.save()
+        num100 = orm.Skill(name='numbers <= 100', parent=numbers, level=3,
+                           note='Počítání do 100')
+        num100.save()
+        for n in range(1, 101):
+            if n <= 10:
+                p = num10
+            elif n <= 20:
+                p = num20
+            else:
+                p = num100
+            orm.Skill(name=str(n), parent=p, level=4, note=str(n)).save()
+        # Addition:
+        # ---------
         addition = orm.Skill(name='addition', parent=math, level=2,
                              note=u'Sčítání')
         addition.save()
@@ -39,27 +63,30 @@ class Migration(DataMigration):
         a4 = orm.Skill(name='addition <= 1000', parent=addition, level=3,
                        note=u'Sčítání do 1000')
         a4.save()
-        # numbers:
-        numbers = orm.Skill(name='numbers', parent=math, level=2,
-                            note='Počítání')
-        numbers.save()
-        num10 = orm.Skill(name='numbers <= 10', parent=numbers, level=3,
-                          note='Počítání do 10')
-        num10.save()
-        num20 = orm.Skill(name='numbers <= 20', parent=numbers, level=3,
-                          note='Počítání do 20')
-        num20.save()
-        num100 = orm.Skill(name='numbers <= 100', parent=numbers, level=3,
-                           note='Počítání do 100')
-        num100.save()
-        for n in range(1, 101):
-            if n <= 10:
-                p = num10
-            elif n <= 20:
-                p = num20
-            else:
-                p = num100
-            orm.Skill(name=str(n), parent=p, level=4, note=str(n)).save()
+        # Multiplication:
+        # ---------------
+        multiplication = orm.Skill(name='multiplication', parent=math,
+                                   note=u'Násobení', level=2)
+        multiplication.save()
+        m1 = orm.Skill(name='multiplication1', parent=multiplication, level=3,
+                       note=u'Malá násobilka')
+        m1.save()
+        for b in range(11):
+            for a in range(b + 1):
+                orm.Skill(name='%sx%s' % (a, b), parent=m1, level=4,
+                          note='%sx%s' % (a, b)).save()
+        m2 = orm.Skill(name='multiplication2', parent=multiplication, level=3,
+                       note=u'Velká násobilka')
+        m2.save()
+        for a in range(11):
+            for b in range(11, 21):
+                orm.Skill(name='%sx%s' % (a, b), parent=m2, level=4,
+                          note='%sx%s' % (a, b)).save()
+        # Fractions:
+        # ----------
+        fractions = orm.Skill(name='fractions', parent=math, note=u'Dělení',
+                              level=2)
+        fractions.save()
         #  update children
         for s in orm.Skill.objects.all():
             pk = s.pk
