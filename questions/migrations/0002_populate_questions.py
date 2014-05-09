@@ -15,6 +15,21 @@ class Migration(DataMigration):
         selecting.save()
         example_sim = orm.Simulator(name='example', note='Just an example')
         example_sim.save()
+        # numbers questions:
+        for n in range(1, 101):
+            skill = orm['model.Skill'].objects.get(name=str(n))
+            # for numbers up to 7 ... choice up to 10
+            # for numbers up to 17 ... choice up to 20
+            # for numbers above .... choice up to a 100
+            nr = 1 if n <= 7 else 2 if n <= 17 else 10
+            # number -> select objects
+            orm.Question(type='c', skill=skill, player=selecting,
+                         data='{"question": %s, "answer": %s, "nrows": %s, '
+                         '"ncols": 10}' % (n, n, nr)).save()
+            # objects -> number
+            orm.Question(type='c', skill=skill, player=counting,
+                         data='{"question": [%s], "answer": "%s", '
+                         '"width": 10}' % (n, n)).save()
         # addition questions:
         for a in range(1, 21):
             for b in range(1, 21):
@@ -33,15 +48,6 @@ class Migration(DataMigration):
                 if total > 20 and total <= 100:
                     orm.Question(type='c', skill=skill, player=free_answer,
                                  data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
-        # numbers questions:
-        for n in range(1, 101):
-            skill = orm['model.Skill'].objects.get(name=str(n))
-            nr = (n - 1) // 10 + 1
-            for nrows in range(nr, nr + 4):
-                orm.Question(type='c', skill=skill, player=selecting,
-                             data='{"question": %s, "answer": %s, "nrows": %s, "ncols": 10}' % (n, n, nrows)).save()
-            orm.Question(type='c', skill=skill, player=counting,
-                         data='{"question": [%s], "answer": "%s", "width": 10}' % (n, n)).save()
 
     def backwards(self, orm):
         "Write your backwards methods here."

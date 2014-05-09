@@ -5,7 +5,7 @@
 <div id="count_display" class="row collapse">
 </div>
 <div style="height:30px;"></div>
-<form ng-submit="submit()"> 
+<form ng-submit="submit()" ng-show="showForm"> 
     <div class="row collapse">
         <div class="small-5 small-centered columns">
             <input class="small-8 columns " focus type="text" ng-model="response" autocomplete="off"  placeholder="Zadej svoji odpověď"/>
@@ -15,4 +15,54 @@
         </div>
     </div>
 </form>
+<div ng-show="showForm">
+    <div class="numpadrow">
+        <input type="button" class="button numpad" value="1" ng-click="add_text('1')"></input>
+        <input type="button" class="button numpad" value="2" ng-click="add_text('2')"></input>
+        <input type="button" class="button numpad" value="3" ng-click="add_text('3')"></input>
+    </div>
+    <div class="numpadrow">
+        <input type="button" class="button numpad" value="4" ng-click="add_text('4')"></input>
+        <input type="button" class="button numpad" value="5" ng-click="add_text('5')"></input>
+        <input type="button" class="button numpad" value="6" ng-click="add_text('6')"></input>
+    </div>
+    <div class="numpadrow">
+        <input type="button" class="button numpad" value="7" ng-click="add_text('7')"></input>
+        <input type="button" class="button numpad" value="8" ng-click="add_text('8')"></input>
+        <input type="button" class="button numpad" value="9" ng-click="add_text('9')"></input>
+    </div>
+    <div class="numpadrow">
+        <input type="button" class="button numpad" value="." ng-click="add_text('.')"></input>
+        <input type="button" class="button numpad" value="0" ng-click="add_text('0')"></input>
+        <input type="button" class="button numpad" value="&larr;" ng-click="backspace()"></input>
+    </div>
+</div>
+<div class="numpadrow" ng-show="show10">
+    <input type="button" class="button numpad" value="1" ng-click="set_text('1')"></input>
+    <input type="button" class="button numpad" value="2" ng-click="set_text('2')"></input>
+    <input type="button" class="button numpad" value="3" ng-click="set_text('3')"></input>
+    <input type="button" class="button numpad" value="4" ng-click="set_text('4')"></input>
+    <input type="button" class="button numpad" value="5" ng-click="set_text('5')"></input>
+</div>
+<div class="numpadrow" ng-show="show10">
+    <input type="button" class="button numpad" value="6" ng-click="set_text('6')"></input>
+    <input type="button" class="button numpad" value="7" ng-click="set_text('7')"></input>
+    <input type="button" class="button numpad" value="8" ng-click="set_text('8')"></input>
+    <input type="button" class="button numpad" value="9" ng-click="set_text('9')"></input>
+    <input type="button" class="button numpad" value="10" ng-click="set_text('10')"></input>
+</div>
+<div class="numpadrow" ng-show="show20">
+    <input type="button" class="button numpad" value="11" ng-click="set_text('11')"></input>
+    <input type="button" class="button numpad" value="12" ng-click="set_text('12')"></input>
+    <input type="button" class="button numpad" value="13" ng-click="set_text('13')"></input>
+    <input type="button" class="button numpad" value="14" ng-click="set_text('14')"></input>
+    <input type="button" class="button numpad" value="15" ng-click="set_text('15')"></input>
+</div>
+<div class="numpadrow" ng-show="show20">
+    <input type="button" class="button numpad" value="16" ng-click="set_text('16')"></input>
+    <input type="button" class="button numpad" value="17" ng-click="set_text('17')"></input>
+    <input type="button" class="button numpad" value="18" ng-click="set_text('18')"></input>
+    <input type="button" class="button numpad" value="19" ng-click="set_text('19')"></input>
+    <input type="button" class="button numpad" value="20" ng-click="set_text('20')"></input>
+</div>
 

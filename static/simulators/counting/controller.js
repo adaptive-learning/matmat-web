@@ -7,8 +7,22 @@ app.directive("counting", function(){
         },
         templateUrl: static_url + "simulators/counting/simulator.html",
         controller: function($scope){
+            $scope.response = '';
             $scope.okHidden = true;
             $scope.nokHidden = true;
+            $scope.showForm = true;
+            $scope.show10 = false;
+            $scope.show20 = false;
+
+            var ans = parseInt($scope.data.answer);
+            if (ans <= 7) {
+                $scope.showForm = false;
+                $scope.show10 = true;
+            } else if (ans <= 17) {
+                $scope.showForm = false;
+                $scope.show10 = true;
+                $scope.show20 = true;
+            } 
 
             var width = $scope.data.width;
             var container = document.getElementById('count_display');
@@ -37,6 +51,19 @@ app.directive("counting", function(){
                     h2.textContent = q[i];
                 }
             }
+
+            $scope.set_text = function(n){
+                $scope.response = n;
+                $scope.submit();
+            };
+
+            $scope.add_text = function(n){
+                $scope.response = $scope.response + n;
+            };
+
+            $scope.backspace = function(n){
+                $scope.response = $scope.response.slice(0, - 1);
+            };
 
             $scope.submit = function() {
                 var correct = $scope.response == $scope.data.answer;
