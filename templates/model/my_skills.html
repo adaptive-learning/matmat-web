@@ -2,17 +2,33 @@
 {% load staticfiles %}
 
 {% block content %}
-    {% for table in tables %}
-        <table>
-        {% for row in table %}
-            <tr>
-            {% for skill in row %}
-                <td style="{{skill.style}}">
-                    {{ skill.name }}
-                </td>
-            {% endfor %}
-            </tr>
+    <dl class="tabs skill-tabs" data-tab>
+        {% for skill, skill_data in data.items %}
+             <dd {% if active == skill.name %}class="active"{% endif %}>
+                 <a style="background-image: url('{% static "core/imgs/skill_" %}{{ skill.name }}.png')"
+                     href="#panel{{ skill.pk }}"
+                     >
+                     {{ skill.note }}</a></dd>
         {% endfor %}
-        </table>
-    {% endfor %}
+    </dl>
+
+    <div class="tabs-content">
+        {% for skill, skill_data in data.items %}
+            <div class="content{% if active == skill.name %} active{% endif %}" id="panel{{ skill.pk }}">
+                <table>
+                {% for row in skill_data.table %}
+                    <tr>
+                    {% for skill in row %}
+                        <td style="{{skill.style}}">
+                            {{ skill.name }}
+                        </td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+
+
 {% endblock %}
