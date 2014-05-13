@@ -72,6 +72,14 @@ class Migration(DataMigration):
                              data='{"question": "%sx%s", "answer": "%s"}' % (a, b, total)).save()
                 orm.Question(type='c', skill=skill, player=free_answer,
                              data='{"question": "%sx%s", "answer": "%s"}' % (b, a, total)).save()
+        # Division:
+        # ---------------
+        for a in range(11):
+            for b in range(1, 11):
+                total = a * b
+                skill = orm['model.Skill'].objects.get(name='%s/%s' % (total, b))
+                orm.Question(type='c', skill=skill, player=free_answer,
+                             data='{"question": "%s&divide;%s", "answer": "%s"}' % (total, b, a)).save()
 
 
 

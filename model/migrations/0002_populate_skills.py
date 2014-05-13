@@ -87,6 +87,14 @@ class Migration(DataMigration):
         fractions = orm.Skill(name='fractions', parent=math, note=u'Dělení',
                               level=2)
         fractions.save()
+        d1 = orm.Skill(name='division1', parent=fractions, level=3,
+                       note=u'Dělení malých čísel')  # mala nasobilka inverzne
+        d1.save()
+        for a in range(11):
+            for b in range(1, 11):
+                total = a * b
+                orm.Skill(name='%s/%s' % (total, b), parent=d1, level=4,
+                          note='%s/%s' % (total, b)).save()
         #  update children
         for s in orm.Skill.objects.all():
             pk = s.pk
