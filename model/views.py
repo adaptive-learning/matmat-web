@@ -16,6 +16,9 @@ def my_skills(request):
     multiplication = Skill.objects.get(name="multiplication")
     data[multiplication] = my_skills_multiplication(request.user)
 
+    fractions = Skill.objects.get(name="fractions")
+    data[fractions] = my_skills_fractions(request.user)
+
     return render(request, 'model/my_skills.html', {
         "data": data,
         "active": "numbers",
@@ -25,7 +28,8 @@ def my_skills(request):
 def my_skills_numbers(user):
     skills = set()
     for s in Skill.objects.\
-            filter(parent__name__in=['numbers <= 10', 'numbers <= 20', 'numbers <= 100']):
+            filter(parent__name__in=['numbers <= 10', 'numbers <= 20',
+                                     'numbers <= 100']):
         skills.add(s.name)
     user_skills = {k: None for k in skills}
     for us in UserSkill.objects.filter(user=user):
@@ -33,7 +37,7 @@ def my_skills_numbers(user):
 
     data = {}
     data["table"] = [[get_skill_repr(str(c + r * 10), user_skills)
-                    for c in range(1, 11)] for r in range(10)]
+                      for c in range(1, 11)] for r in range(10)]
     return data
 
 
@@ -48,7 +52,7 @@ def my_skills_addition(user):
 
     data = {}
     data["table"] = [[get_skill_repr('%s+%s' % (c, r), user_skills)
-                    for c in range(1, 11)] for r in range(1, 21)]
+                      for c in range(1, 11)] for r in range(1, 21)]
 
     return data
 
@@ -64,9 +68,26 @@ def my_skills_multiplication(user):
 
     data = {}
     data["table"] = [[get_skill_repr('%sx%s' % (c, r), user_skills)
-                    for c in range(11)] for r in range(21)]
+                      for c in range(11)] for r in range(21)]
 
     return data
+
+
+def my_skills_fractions(user):
+    skills = set()
+    for s in Skill.objects.\
+            filter(parent__name__in=['division1']):
+        skills.add(s.name)
+    user_skills = {k: None for k in skills}
+    for us in UserSkill.objects.filter(user=user):
+        user_skills[us.skill.name] = us.value
+
+    data = {}
+    data["table"] = [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
+                      for a in range(11)] for b in range(1, 11)]
+
+    return data
+
 
 def get_skill_repr(name, user_skills):
     if name in user_skills:
