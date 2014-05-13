@@ -6,18 +6,9 @@ from model.models import UserSkill, Skill
 @allow_lazy_user
 def my_skills(request):
     data = {}
-
-    numbers = Skill.objects.get(name="numbers")
-    data[numbers] = my_skills_numbers(request.user)
-
-    addition = Skill.objects.get(name="addition")
-    data[addition] = my_skills_addition(request.user)
-
-    multiplication = Skill.objects.get(name="multiplication")
-    data[multiplication] = my_skills_multiplication(request.user)
-
-    fractions = Skill.objects.get(name="fractions")
-    data[fractions] = my_skills_fractions(request.user)
+    for name, getter in zip(NAMES, GETTERS):
+        skill = Skill.objects.get(name=name)
+        data[skill] = {'table': getter(request.user)}
 
     return render(request, 'model/my_skills.html', {
         "data": data,
@@ -25,68 +16,38 @@ def my_skills(request):
     })
 
 
-def my_skills_numbers(user):
-    skills = set()
-    for s in Skill.objects.\
-            filter(parent__name__in=['numbers <= 10', 'numbers <= 20',
-                                     'numbers <= 100']):
-        skills.add(s.name)
+def get_user_skills(user, parent_list):
+    skills = set([s.name for s in Skill.objects.
+                  filter(parent__name__in=parent_list)])
     user_skills = {k: None for k in skills}
     for us in UserSkill.objects.filter(user=user):
         user_skills[us.skill.name] = us.value
+    return user_skills
 
-    data = {}
-    data["table"] = [[get_skill_repr(str(c + r * 10), user_skills)
-                      for c in range(1, 11)] for r in range(10)]
-    return data
+
+def my_skills_numbers(user):
+    user_skills = get_user_skills(user, ['numbers <= 10', 'numbers <= 20',
+                                         'numbers <= 100'])
+    return [[get_skill_repr(str(c + r * 10), user_skills)
+             for c in range(1, 11)] for r in range(10)]
 
 
 def my_skills_addition(user):
-    skills = set()
-    for s in Skill.objects.\
-            filter(parent__name__in=['addition <= 10', 'addition <= 20']):
-        skills.add(s.name)
-    user_skills = {k: None for k in skills}
-    for us in UserSkill.objects.filter(user=user):
-        user_skills[us.skill.name] = us.value
-
-    data = {}
-    data["table"] = [[get_skill_repr('%s+%s' % (c, r), user_skills)
-                      for c in range(1, 11)] for r in range(1, 21)]
-
-    return data
+    user_skills = get_user_skills(user, ['addition <= 10', 'addition <= 20'])
+    return [[get_skill_repr('%s+%s' % (c, r), user_skills)
+             for c in range(1, 11)] for r in range(1, 21)]
 
 
 def my_skills_multiplication(user):
-    skills = set()
-    for s in Skill.objects.\
-            filter(parent__name__in=['multiplication1', 'multiplication2']):
-        skills.add(s.name)
-    user_skills = {k: None for k in skills}
-    for us in UserSkill.objects.filter(user=user):
-        user_skills[us.skill.name] = us.value
-
-    data = {}
-    data["table"] = [[get_skill_repr('%sx%s' % (c, r), user_skills)
-                      for c in range(11)] for r in range(21)]
-
-    return data
+    user_skills = get_user_skills(user, ['multiplication1', 'multiplication2'])
+    return [[get_skill_repr('%sx%s' % (c, r), user_skills)
+             for c in range(11)] for r in range(21)]
 
 
 def my_skills_fractions(user):
-    skills = set()
-    for s in Skill.objects.\
-            filter(parent__name__in=['division1']):
-        skills.add(s.name)
-    user_skills = {k: None for k in skills}
-    for us in UserSkill.objects.filter(user=user):
-        user_skills[us.skill.name] = us.value
-
-    data = {}
-    data["table"] = [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
-                      for a in range(11)] for b in range(1, 11)]
-
-    return data
+    user_skills = get_user_skills(user, ['division1'])
+    return [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
+             for a in range(11)] for b in range(1, 11)]
 
 
 def get_skill_repr(name, user_skills):
@@ -106,3 +67,8 @@ def get_style(value):
     if value < 0:
         value = max(value, -5)
         return 'background-color: rgba(214, 39, 40, %.2f);' % (-value / 5.)
+
+
+NAMES = ('numbers', 'addition', 'multiplication', 'fractions')
+GETTERS = (my_skills_numbers, my_skills_addition,
+           my_skills_multiplication, my_skills_fractions)

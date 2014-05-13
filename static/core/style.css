@@ -120,3 +120,8 @@
 .skill-tabs dd.active a{
     background-color: rgba(52, 183, 255, 0.37);
 }
+
+/* Table - alternating rows not colored */
+table tr:nth-of-type(2n) {
+    background: none;
+}
