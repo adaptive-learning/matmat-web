@@ -6,12 +6,15 @@ from model.models import UserSkill, Skill
 @allow_lazy_user
 def my_skills(request):
     data = {}
+    skills = []
     for name, getter in zip(NAMES, GETTERS):
         skill = Skill.objects.get(name=name)
         data[skill] = {'table': getter(request.user)}
+        skills.append(skill)
 
     return render(request, 'model/my_skills.html', {
         "data": data,
+        "skills": skills,
         "active": "numbers",
     })
 
