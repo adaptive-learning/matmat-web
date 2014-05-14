@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from lazysignup.decorators import allow_lazy_user
+import math
 from model.models import UserSkill, Skill
 
 
@@ -9,7 +10,7 @@ def my_skills(request):
     skills = []
     for name, getter in zip(NAMES, GETTERS):
         skill = Skill.objects.get(name=name)
-        data[skill] = {'table': getter(request.user)}
+        data[skill] = getter(request.user)
         skills.append(skill)
 
     return render(request, 'model/my_skills.html', {
@@ -20,37 +21,64 @@ def my_skills(request):
 
 
 def get_user_skills(user, parent_list):
-    skills = set([s.name for s in Skill.objects.
-                  filter(parent__name__in=parent_list)])
-    user_skills = {k: None for k in skills}
-    for us in UserSkill.objects.filter(user=user):
-        user_skills[us.skill.name] = us.value
+    skills = Skill.objects. filter(parent__name__in=parent_list)
+    skills_name = set([s.name for s in skills])
+    user_skills = {k: None for k in skills_name}
+    for us in UserSkill.objects.filter(user=user, skill__in=skills).select_related("skill"):
+        user_skills[us.skill.name] = us
+        us.value_percent = int(100. / (1 + math.exp(-us.value)))
     return user_skills
+
+
+def get_user_skill(name):
+    skill = UserSkill.objects.filter(skill__name=name)
+    if len(skill) == 1:
+        skill = skill[0]
+        skill.value_percent = int(100. / (1 + math.exp(-skill.value)))
+    else:
+        skill = None
+
+    return skill
 
 
 def my_skills_numbers(user):
     user_skills = get_user_skills(user, ['numbers <= 10', 'numbers <= 20',
                                          'numbers <= 100'])
-    return [[get_skill_repr(str(c + r * 10), user_skills)
-             for c in range(1, 11)] for r in range(10)]
+
+    return {
+        "table": [[get_skill_repr(str(c + r * 10), user_skills)
+             for c in range(1, 11)] for r in range(10)],
+        "skills": get_user_skills(user, ["numbers"]),
+        "skill": get_user_skill("numbers"),
+    }
 
 
 def my_skills_addition(user):
     user_skills = get_user_skills(user, ['addition <= 10', 'addition <= 20'])
-    return [[get_skill_repr('%s+%s' % (c, r), user_skills)
-             for c in range(1, 11)] for r in range(1, 21)]
+    return {
+        "table": [[get_skill_repr('%s+%s' % (c, r), user_skills)
+             for c in range(1, 11)] for r in range(1, 21)],
+        "skill": get_user_skill("addition"),
+    }
 
 
 def my_skills_multiplication(user):
     user_skills = get_user_skills(user, ['multiplication1', 'multiplication2'])
-    return [[get_skill_repr('%sx%s' % (c, r), user_skills)
-             for c in range(11)] for r in range(21)]
+    return {
+        "table": [[get_skill_repr('%sx%s' % (c, r), user_skills)
+             for c in range(11)] for r in range(21)],
+        "skill": get_user_skill("multiplication"),
+    }
 
 
 def my_skills_fractions(user):
     user_skills = get_user_skills(user, ['division1'])
-    return [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
-             for a in range(11)] for b in range(1, 11)]
+    return {
+        "table": [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
+             for a in range(11)] for b in range(1, 11)],
+        "skills": get_user_skills(user, ["fractions"]),
+        "skill": get_user_skill("fractions"),
+    }
 
 
 def get_skill_repr(name, user_skills):
@@ -60,10 +88,11 @@ def get_skill_repr(name, user_skills):
         return {'name': '', 'style': get_style(None)}
 
 
-def get_style(value):
+def get_style(user_skill):
     ''' for now scale values from -5 to +5'''
-    if value is None:
+    if user_skill is None:
         return 'background-color: rgba(127, 127, 127, 0);'
+    value = user_skill.value
     if value >= 0:
         value = min(value, 5)
         return 'background-color: rgba(44, 160, 44, %.2f);' % (value / 5.)

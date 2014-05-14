@@ -15,6 +15,18 @@
     <div class="tabs-content">
         {% for skill, skill_data in data.items %}
             <div class="content{% if active == skill.name %} active{% endif %}" id="panel{{ skill.pk }}">
+            {% if skill_data.skill %}
+
+
+                <h3>{{ skill_data.skill.skill.note }}:</h3>
+                <div class="progress large-5 alert round"> <span class="meter" style="width: {{ skill_data.skill.value_percent }}%"></span></div>
+                {% for _, user_skill in skill_data.skills.items %}
+                    {% if user_skill %}
+                        <b>{{ user_skill.skill.note }}</b>:<br/>
+                         <div class="progress large-5 round"> <span class="meter" style="width: {{ user_skill.value_percent }}%"></span></div>
+                    {% endif %}
+                {% endfor %}
+                <hr/>
                 <table>
                 {% for row in skill_data.table %}
                     <tr>
@@ -26,6 +38,9 @@
                     </tr>
                 {% endfor %}
                 </table>
+            {% else %}
+                Zatím neřešno
+            {% endif %}
             </div>
         {% endfor %}
     </div>
