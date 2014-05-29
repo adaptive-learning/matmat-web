@@ -1,0 +1,25 @@
+<!--suppress CheckEmptyScriptTag -->
+
+
+<svg ng-attr-width="{{ settings.width }}" ng-attr-height="{{ settings.height }}">
+    <defs>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur  in="SourceGraphic" stdDeviation="2" />
+        </filter>
+      </defs>
+
+
+    <line ng-attr-x1="{{ settings.offset }}" ng-attr-y1="{{ settings.top }}" ng-attr-x2="{{ settings.width - settings.offset }}" ng-attr-y2="{{ settings.top }}" style="stroke: black; stroke-width:1" />
+    <g
+            id="point{{ point.number }}"
+            class="numberline-point"
+            ng-repeat="point in points"
+            onclick="angular.element(this).scope().select(this)
+            ">
+        <circle class="shadow" class="numberline-point" ng-attr-cx="{{ point.x }}" ng-attr-cy="{{ point.y }}" ng-attr-r="{{ point.r*2 }}" filter="url(#shadow)"/>
+        <circle class="point" class="numberline-point" ng-attr-cx="{{ point.x }}" ng-attr-cy="{{ point.y }}" ng-attr-r="{{ point.r }}" fill="grey"/>
+        <rect ng-attr-width="{{ settings.hover_size }}" ng-attr-height="{{ settings.hover_size }}" ng-attr-x="{{ point.x-settings.hover_size/2}}" ng-attr-y="{{ point.y -settings.hover_size/2}}" />
+    </g>
+</svg>
+<br/>
+{{ selected_number }}

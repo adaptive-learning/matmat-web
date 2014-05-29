@@ -3,9 +3,23 @@
 
 
 {% block content %}
-    {% for question in questions %}
-        {{ question.as_json }}
-        <br/>
-    {% endfor %}
+
+    <div ng-controller="Loader">
+        <div id="playground">
+            <numberline interface='interface' data='{"sdasdfa": 3}' />
+        </div>
+    </div>
+    <hr/>
+
+{#    {% for question in questions %}#}
+{#        {{ question.as_json }}#}
+{#        <br/>#}
+{#    {% endfor %}#}
     
+{% endblock %}
+
+
+{% block extrascripts %}
+    <script src="{% static "simulators/loader.js" %}"></script>
+    <script src="{% static "simulators/numberline/controller.js" %}"></script>
 {% endblock %}

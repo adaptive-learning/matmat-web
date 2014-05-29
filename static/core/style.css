@@ -125,3 +125,28 @@
 table tr:nth-of-type(2n) {
     background: none;
 }
+
+
+/* Numberlin */
+
+.numberline-point rect{
+    opacity: 0;
+    cursor: pointer;
+}
+
+.numberline-point circle.shadow{
+    fill: darkgreen;
+    opacity: 0;
+    transition: opacity 0.25s,
+}
+
+.numberline-point circle.point{
+    transition: fill 0.25s,
+}
+
+.numberline-point:hover circle.shadow{ opacity: 0.7 }
+
+.numberline-point.selected circle.shadow{ opacity: 0.7; fill: darkred }
+.numberline-point.selected:hover circle.shadow{ opacity: 1; }
+
+.numberline-point:hover circle.point, .numberline-point.selected circle.point{ fill: black; }
