@@ -14,6 +14,7 @@ class Migration(DataMigration):
         selecting = orm.Simulator(name='selecting',
                                   note='Selecting specified number of objects')
         selecting.save()
+        numberline = orm.Simulator.objects.create(name='numberline', note='Choose answer on number-line')
         example_sim = orm.Simulator(name='example', note='Just an example')
         example_sim.save()
         # Numbers:
@@ -32,6 +33,9 @@ class Migration(DataMigration):
             orm.Question(type='c', skill=skill, player=counting,
                          data='{"question": [%s], "answer": "%s", '
                          '"width": 10}' % (n, n)).save()
+            # number -> number-line
+            orm.Question.objects.create(type='c', skill=skill, player=numberline,
+                                        data='{{"question": "{0}", "answer": {1}}}'.format(n, n))
         # Addition:
         # ---------
         for a in range(1, 21):
@@ -44,6 +48,8 @@ class Migration(DataMigration):
                                  data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
                     orm.Question(type='c', skill=skill, player=counting,
                                  data='{"question": [%s, "+", %s], "answer": "%s", "width": 10}' % (a, b, total)).save()
+                    orm.Question.objects.create(type='c', skill=skill, player=numberline,
+                                        data='{{"question": "{0}+{1}", "answer": {2}}}'.format(a, b, total))
         skill = orm['model.Skill'].objects.get(name='addition <= 100')
         for a in range(1, 100):
             for b in range(1, 100):
