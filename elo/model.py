@@ -99,8 +99,6 @@ class EloModel():
             self.data.set_difficulty(question, difficulty + difficulty_delta)
 
     def update_parent_skills(self, user, skill, response, difficulty, question_type):
-        PARENT_WEIGHT = 0.2
-
         if skill is None:
             return
         user_skill = self.get_user_skill(user, skill)
@@ -110,7 +108,7 @@ class EloModel():
             question_type=question_type
         )
 
-        user_skill_delta = PARENT_WEIGHT * self.compute_user_skill_delta(response, expected_response, question_type)
+        user_skill_delta = self.compute_user_skill_delta(response, expected_response, question_type)
         self.data.set_user_skill(user, skill, user_skill + user_skill_delta)
 
 
