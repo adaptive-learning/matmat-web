@@ -10,21 +10,28 @@
 
 {% block content %}
     <div ng-controller="Loader">
-        {% verbatim %}
-        <div style="width: 170px; float: right" class="row collapse">
-            <div class="small-5 small columns">
-                <input class="text-center" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+        <div style="width: 170px; float: right;">
+            {% verbatim %}
+            <div style="width: 170px;" class="row collapse">
+                <div class="small-5 small columns">
+                    <input class="text-center" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+                </div>
+                <div class="small-7 small columns">
+                    <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
+                </div>
             </div>
-            <div class="small-7 small columns">
-                <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
+            <keyboard />
+            {% endverbatim %}
+        </div>
+
+        <div style="margin-right: 170px; margin-top: 30px;">
+            <div ng-show="!question.hide" class="animate-show">
+                <div id="playground"></div>
             </div>
-        </div>
-        {% endverbatim %}
-        <div style="clear: both" ng-show="!question.hide" class="animate-show animate-hide">
-            <div id="playground"></div>
-        </div>
-        <div ng-show="loading" class="animate-show">
-            <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
+
+            <div ng-show="loading" class="animate-show">
+                <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
+            </div>
         </div>
     </div>
 {% endblock %}

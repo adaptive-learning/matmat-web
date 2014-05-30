@@ -22,14 +22,6 @@ app.directive("freeanswer", function(){
             $scope.change = function(){
                 $scope.interface.log($scope.answer);
             };
-
-            $scope.add_text = function(n){
-                $scope.answer = $scope.answer + n;
-            };
-
-            $scope.backspace = function(n){
-                $scope.answer = $scope.answer.slice(0, - 1);
-            };
         }
     }
 });

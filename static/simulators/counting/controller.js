@@ -57,14 +57,6 @@ app.directive("counting", function(){
                 $scope.submit();
             };
 
-            $scope.add_text = function(n){
-                $scope.response = $scope.response + n;
-            };
-
-            $scope.backspace = function(n){
-                $scope.response = $scope.response.slice(0, - 1);
-            };
-
             $scope.submit = function() {
                 var correct = $scope.response == $scope.data.answer;
                 $scope.okHidden = !correct;

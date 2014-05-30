@@ -1,3 +1,5 @@
+.animate-show-drop.ng-hide-add,
+.animate-show-drop.ng-hide-remove,
 .animate-show.ng-hide-add,
 .animate-show.ng-hide-remove {
     -webkit-transition: all linear 0.5s;
@@ -17,3 +19,17 @@ opacity:0;
 opacity:1;
 }
 
+.animate-show-drop{
+    overflow: hidden;
+}
+.animate-show-drop.ng-hide-add.ng-hide-add-active,
+.animate-show-drop.ng-hide-remove {
+    max-height: 0;
+    opacity: 0;
+}
+
+.animate-show-drop.ng-hide-add,
+.animate-show-drop.ng-hide-remove.ng-hide-remove-active {
+    max-height: 300px;
+    opacity: 1;
+}
