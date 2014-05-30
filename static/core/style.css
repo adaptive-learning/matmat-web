@@ -146,7 +146,8 @@ table tr:nth-of-type(2n) {
 
 .numberline-point:hover circle.shadow{ opacity: 0.7 }
 
-.numberline-point.selected circle.shadow{ opacity: 0.7; fill: darkred }
+.numberline-point.selected circle.shadow{ opacity: 0.7; fill: darkblue; }
+.numberline-point.selected circle.point{ fill: darkblue }
 .numberline-point.selected:hover circle.shadow{ opacity: 1; }
 
-.numberline-point:hover circle.point, .numberline-point.selected circle.point{ fill: black; }
+.numberline-point:hover circle.point{ fill: black; }
