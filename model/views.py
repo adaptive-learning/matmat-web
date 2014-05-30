@@ -30,8 +30,8 @@ def get_user_skills(user, parent_list):
     return user_skills
 
 
-def get_user_skill(name):
-    skill = UserSkill.objects.filter(skill__name=name)
+def get_user_skill(name, user):
+    skill = UserSkill.objects.filter(user=user,skill__name=name)
     if len(skill) == 1:
         skill = skill[0]
         skill.value_percent = int(100. / (1 + math.exp(-skill.value)))
@@ -49,7 +49,7 @@ def my_skills_numbers(user):
         "table": [[get_skill_repr(str(c + r * 10), user_skills)
              for c in range(1, 11)] for r in range(10)],
         "skills": get_user_skills(user, ["numbers"]),
-        "skill": get_user_skill("numbers"),
+        "skill": get_user_skill("numbers", user),
     }
 
 
@@ -58,7 +58,7 @@ def my_skills_addition(user):
     return {
         "table": [[get_skill_repr('%s+%s' % (c, r), user_skills)
              for c in range(1, 11)] for r in range(1, 21)],
-        "skill": get_user_skill("addition"),
+        "skill": get_user_skill("addition", user),
     }
 
 
@@ -67,7 +67,7 @@ def my_skills_multiplication(user):
     return {
         "table": [[get_skill_repr('%sx%s' % (c, r), user_skills)
              for c in range(11)] for r in range(21)],
-        "skill": get_user_skill("multiplication"),
+        "skill": get_user_skill("multiplication", user),
     }
 
 
@@ -77,7 +77,7 @@ def my_skills_fractions(user):
         "table": [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
              for a in range(11)] for b in range(1, 11)],
         "skills": get_user_skills(user, ["fractions"]),
-        "skill": get_user_skill("fractions"),
+        "skill": get_user_skill("fractions", user),
     }
 
 
