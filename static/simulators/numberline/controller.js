@@ -30,8 +30,6 @@ app.directive("numberline", function(){
             hash = Math.abs(hash);
 
             var bound = Math.ceil($scope.data.answer/10)*10;
-            console.log(hash);
-            console.log($scope.data.answer > 7, 10 * (hash % 2));
             if (18 > $scope.data.answer > 7) bound += 10 * (hash % 2);
             if ($scope.data.answer > 17) bound += 10 * (hash % 3);
 
@@ -64,8 +62,10 @@ app.directive("numberline", function(){
                 if (number != $scope.selected_number) {
                     $scope.selected_number = number;
                     point.attr("class", point.attr('class')+" selected");
+                    $scope.interface.log(number+" selected")
                 }else{
                     $scope.selected_number = null;
+                    $scope.interface.log("unselected")
                 }
 
                 $scope.$apply();
