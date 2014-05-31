@@ -18,10 +18,15 @@ class EloModel():
     @staticmethod
     def compute_user_skill_delta(response, expected_response, question_type):
         K = 0.7
+        K_correct = 1
+        K_incorrect = 0.5
         delta = 0
 
         if question_type == 'c':
-            delta = K * (response - expected_response)
+            if response == 1:
+                delta = K_correct * (response - expected_response)
+            else:
+                delta = K_incorrect * (response - expected_response)
         if question_type == 't':
             delta = K * (expected_response - response)
 
