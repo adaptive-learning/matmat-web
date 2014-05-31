@@ -1,6 +1,7 @@
 from math import sqrt
 from random import random
 from elo.model import EloModel
+from model.models import UserSkill, Skill
 from questions.models import Question
 
 
@@ -9,7 +10,6 @@ def recommend_questions(user, skills, in_queue):
         "SELECT questions_question.*, "
         "COUNT(questions_answer.id) AS answers_count, "
         "MIN(TIME_TO_SEC(TIMEDIFF(NOW(), questions_answer.timestamp))) AS time_form_last_answer,"
-        "model_userskill.value as user_skill, "
         "model_questiondifficulty.value as questiondifficulty "
         "FROM questions_question "
         "LEFT JOIN model_userskill ON ( model_userskill.skill_id = questions_question.skill_id AND model_userskill.user_id = %(user_id)s)"
@@ -25,13 +25,26 @@ def recommend_questions(user, skills, in_queue):
 
          }
     )
+    skill_pks = set()
+    skill_tree = {}
+    for s in Skill.objects.filter(pk__in=skills.split(",")).select_related("parent"):
+        while s is not None and s.pk not in skill_pks:
+            skill_pks.add(s.pk)
+            s.user_skill = None
+            skill_tree[s.pk] = s
+
+            s = s.parent
+
+    for us in UserSkill.objects.filter(user=user, skill__in=skill_pks):
+        skill_tree[us.skill_id].user_skill = us.value
+
     questions = list(questions)
-    questions.sort(key=lambda q: question_priority(q, user.is_staff), reverse=True)
+    questions.sort(key=lambda q: question_priority(q, user.is_staff, skill_tree), reverse=True)
 
     return questions
 
 
-def question_priority(question, log):
+def question_priority(question, log, skill_tree):
     GOAL_RESPONSE = 0.7
     TIME_WEIGHT = 120
     COUNT_WEIGHT = 2
@@ -46,7 +59,16 @@ def question_priority(question, log):
     else:
         time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
 
-    user_skill = question.user_skill if question.user_skill is not None else 0 # TODO predelat
+    user_skill = None
+    current_skill_pk = question.skill_id
+    while user_skill is None:
+        if skill_tree[current_skill_pk].parent is None:
+            user_skill = 0
+            break
+        user_skill = skill_tree[current_skill_pk].user_skill
+        current_skill_pk = skill_tree[current_skill_pk].parent.pk
+
+
     expected_response = EloModel.expected_response(user_skill, difficulty, question.type)
     if GOAL_RESPONSE > expected_response:
         estimate_score = expected_response / GOAL_RESPONSE

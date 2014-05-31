@@ -37,7 +37,6 @@ def get_question_test(request):
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
     questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
-    recalculate_model()
 
     return render(request, 'questions/test.html', {
         "questions": questions
