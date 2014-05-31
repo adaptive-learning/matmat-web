@@ -21,7 +21,7 @@ def my_skills(request):
 
 
 def get_user_skills(user, parent_list):
-    skills = Skill.objects. filter(parent__name__in=parent_list)
+    skills = Skill.objects.filter(parent__name__in=parent_list)
     skills_name = set([s.name for s in skills])
     user_skills = {k: None for k in skills_name}
     for us in UserSkill.objects.filter(user=user, skill__in=skills).select_related("skill"):
@@ -31,7 +31,7 @@ def get_user_skills(user, parent_list):
 
 
 def get_user_skill(name, user):
-    skill = UserSkill.objects.filter(user=user,skill__name=name)
+    skill = UserSkill.objects.filter(user=user, skill__name=name)
     if len(skill) == 1:
         skill = skill[0]
         skill.value_percent = int(100. / (1 + math.exp(-skill.value)))
@@ -58,6 +58,7 @@ def my_skills_addition(user):
     return {
         "table": [[get_skill_repr('%s+%s' % (c, r), user_skills)
              for c in range(1, 11)] for r in range(1, 21)],
+        "skills": get_user_skills(user, ["addition"]),
         "skill": get_user_skill("addition", user),
     }
 
@@ -67,6 +68,7 @@ def my_skills_multiplication(user):
     return {
         "table": [[get_skill_repr('%sx%s' % (c, r), user_skills)
              for c in range(11)] for r in range(21)],
+        "skills": get_user_skills(user, ["addition"]),
         "skill": get_user_skill("multiplication", user),
     }
 
