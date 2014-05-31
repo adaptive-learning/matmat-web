@@ -84,6 +84,8 @@ def question_priority(question, log, skill_tree):
             "estimate_score": "{0} * {1} = {2}".format(estimate_score, ESTIMATE_WEIGHT, estimate_score * ESTIMATE_WEIGHT),
             "expected_response": expected_response,
             "total": priority,
+            "user_skill": user_skill,
+            "difficulty": difficulty,
         }
 
     return priority
