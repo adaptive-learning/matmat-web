@@ -1,4 +1,6 @@
+import json
 from django.db import connection
+import math
 from elo.DataProviderInterface import DataProviderInterface
 from elo.model import EloModel
 from model.models import UserSkill, QuestionDifficulty, DatabaseDataProvider, Skill
@@ -25,6 +27,8 @@ def recalculate_model():
     """
     Process all answers
     """
+
+
     cursor = connection.cursor()
     cursor.execute(
         "SELECT "
@@ -37,6 +41,7 @@ def recalculate_model():
         "ORDER BY questions_answer.timestamp ASC")
 
     provider = CachingDatabaseDataProvider()
+    init_difficulty(provider)
     elo = EloModel(provider)
     for answer in dictfetchall(cursor):
         provider.set_answer(answer)
@@ -46,6 +51,22 @@ def recalculate_model():
     UserSkill.objects.all().delete()
     provider.save_data()
 
+
+def init_difficulty(data):
+    for question in data.get_questions():
+        question_data = data.get_questions_data(question)
+        question_data = json.loads(question_data)
+        if "answer" in question_data.keys():
+            value = abs(float(question_data["answer"]))
+            if value <= 0:
+                value = 1
+            value = math.log(value) - 3
+            data.set_difficulty(question, value)
+        else:
+            print "answer not found"
+
+
+
 class CachingDatabaseDataProvider(DataProviderInterface):
     def __init__(self):
         cursor = connection.cursor()
@@ -53,6 +74,7 @@ class CachingDatabaseDataProvider(DataProviderInterface):
             "SELECT "
                 "questions_question.id as pk, "
                 "questions_question.skill_id as skill, "
+                "questions_question.data as data, "
                 "questions_question.type "
             "FROM questions_question "
             "LEFT OUTER JOIN model_questiondifficulty ON ( questions_question.id = model_questiondifficulty.question_id )"
@@ -75,13 +97,18 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         self.attempts_count = {}
 
     def save_data(self):
+        data = []
         for pk, q in self.questions.items():
             if "difficulty" in q.keys() and q["difficulty"] is not None:
-                QuestionDifficulty.objects.create(question_id=pk, value=q["difficulty"])
+                data.append(QuestionDifficulty(question_id=pk, value=q["difficulty"]))
+        QuestionDifficulty.objects.bulk_create(data)
 
+        data = []
         for user, d in self.user_skills.items():
             for skill, value in d.items():
-                UserSkill.objects.create(user_id=user, skill_id=skill, value=value)
+                data.append(UserSkill(user_id=user, skill_id=skill, value=value))
+        UserSkill.objects.bulk_create(data)
+
 
     def set_answer(self, answer):
         super(CachingDatabaseDataProvider, self).set_answer(answer)
@@ -151,3 +178,9 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         for _, v in self.attempts_count[question].items():
             count += v
         return count
+
+    def get_questions(self):
+        return self.questions.keys()
+
+    def get_questions_data(self, question):
+        return self.questions[question]["data"]
