@@ -80,7 +80,7 @@ app.directive("numberline", function(){
                 $("#point"+$scope.data.answer+" circle.point").css("fill", "green");
                 $scope.okShow = correct;
                 $scope.nokShow = !correct;
-                $scope.interface.finish(correct, 3000);
+                $scope.interface.finish(correct, 1500);
             };
 
             $scope.populate_points();
