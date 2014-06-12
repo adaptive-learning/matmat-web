@@ -7,8 +7,6 @@ app.directive("selecting", function(){
         },
         templateUrl: static_url + "simulators/selecting/simulator.html",
         controller: function($scope){
-            $scope.okHidden = true;
-            $scope.nokHidden = true;
             $scope.selected = 0;
             $scope.mover = 0;
 
@@ -25,8 +23,6 @@ app.directive("selecting", function(){
 
             $scope.submit = function() {
                 var correct = $scope.selected == $scope.data.answer;
-                $scope.okHidden = !correct;
-                $scope.nokHidden = correct;
                 $scope.interface.finish(correct);
             };
 

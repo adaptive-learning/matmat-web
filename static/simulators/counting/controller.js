@@ -8,8 +8,6 @@ app.directive("counting", function(){
         templateUrl: static_url + "simulators/counting/simulator.html",
         controller: function($scope){
             $scope.response = '';
-            $scope.okHidden = true;
-            $scope.nokHidden = true;
             $scope.showForm = true;
             $scope.show10 = false;
             $scope.show20 = false;
@@ -59,8 +57,6 @@ app.directive("counting", function(){
 
             $scope.submit = function() {
                 var correct = $scope.response == $scope.data.answer;
-                $scope.okHidden = !correct;
-                $scope.nokHidden = correct;
                 $scope.interface.finish(correct);
             };
 

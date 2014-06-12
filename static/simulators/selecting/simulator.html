@@ -1,7 +1,4 @@
-<h2> Vyzna&#x010d; {{data.question}}
-    <span ng-hide="okHidden">&#x2713;</span>
-    <span ng-hide="nokHidden">&#x2717;</span>
-</h2>
+<h2>{{data.question}}</h2>
 <div class="row collapse" style="height:33px;" ng-repeat="row in rows" ng-mouseleave="out()">
     <span style="width:33px;" ng-repeat="cell in row">
         <img ng-src="{{getSrc(cell)}}" ng-click="click(cell)" ng-mouseenter="over(cell)"/>

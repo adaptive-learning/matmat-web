@@ -26,7 +26,10 @@
 
         <div style="margin-right: 170px; margin-top: 30px;">
             <div ng-show="!question.hide" class="animate-show">
-                <div id="playground"></div>
+                <div ng-class="solved" id="playground"></div>
+
+                <div class="result" style="color: darkgreen;" ng-show="solved=='solved_correctly'">Správně</div>
+                <div class="result" style="color: darkred;" ng-show="solved=='solved_incorrectly'">Špatně</div>
             </div>
 
             <div ng-show="loading" class="animate-show">

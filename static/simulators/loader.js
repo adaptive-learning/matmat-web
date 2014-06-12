@@ -72,6 +72,9 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
         $scope.log_something("finished");
+
+        $scope.solved= correctly_solved ? "solved_correctly" : "solved_incorrectly";
+
         setTimeout(function() {
             $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
             $scope.question.correctly_solved =  correctly_solved;
@@ -87,6 +90,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                 }else{
                     $scope.next_question();
                 }
+            $scope.solved = ""
             }, FADEOUT_DURATION);
         }, wait_time);
     };
