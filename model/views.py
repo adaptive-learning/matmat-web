@@ -24,7 +24,7 @@ def get_user_skills(user, parent_list):
     skills = Skill.objects.filter(parent__name__in=parent_list)
     skills_name = set([s.name for s in skills])
     user_skills = {k: None for k in skills_name}
-    for us in UserSkill.objects.filter(user=user, skill__in=skills).select_related("skill"):
+    for us in UserSkill.objects.filter(user=user.pk, skill__in=skills).select_related("skill"):
         user_skills[us.skill.name] = us
         us.value_percent = int(100. / (1 + math.exp(-us.value)))
     return user_skills
