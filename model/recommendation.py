@@ -9,7 +9,7 @@ def recommend_questions(user, skills, in_queue):
     questions = Question.objects.raw(
         "SELECT questions_question.*, "
         "COUNT(questions_answer.id) AS answers_count, "
-        "MIN(TIME_TO_SEC(TIMEDIFF(NOW(), questions_answer.timestamp))) AS time_form_last_answer,"
+        "MIN(TIMESTAMPDIFF(SECOND, questions_answer.timestamp,  NOW())) AS time_form_last_answer,"
         "model_questiondifficulty.value as questiondifficulty "
         "FROM questions_question "
         "LEFT JOIN model_userskill ON ( model_userskill.skill_id = questions_question.skill_id AND model_userskill.user_id = %(user_id)s)"
