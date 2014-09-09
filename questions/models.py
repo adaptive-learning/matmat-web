@@ -20,6 +20,7 @@ class Question(models.Model):
     skill = models.ForeignKey('model.Skill')
     data = models.TextField(verbose_name="Data as JSON")
     type = models.CharField(max_length=1, choices=TYPES, default='c')
+    value = models.CharField(max_length=255, null=True, blank=True)     # value for preventing repeating similar questions
 
     def __unicode__(self):
         return self.data

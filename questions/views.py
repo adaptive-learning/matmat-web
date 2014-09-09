@@ -26,7 +26,7 @@ def get_question(request):
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
-    questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
+    questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue)
 
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
 
@@ -36,7 +36,7 @@ def get_question_test(request):
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
-    questions = recommend_questions(request.user, subskills, in_queue)[:int(request.GET["count"])]
+    questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue)
 
     return render(request, 'questions/test.html', {
         "questions": questions
