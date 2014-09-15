@@ -62,11 +62,11 @@ class Migration(DataMigration):
                     x, y = (a, b) if a <= b else (b, a)
                     skill = orm['model.Skill'].objects.get(name='%s+%s' % (x, y))
                     orm.Question(type='c', skill=skill, player=free_answer,
-                                 data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
+                                 data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
                     orm.Question(type='c', skill=skill, player=counting,
                                  data='{"question": [%s, "+", %s], "answer": "%s", "width": 10}' % (a, b, total)).save()
                     orm.Question.objects.create(type='c', skill=skill, player=numberline,
-                                        data='{{"question": "{0}+{1}", "answer": {2}}}'.format(a, b, total))
+                                        data='{{"question": "{0} + {1}", "answer": {2}}}'.format(a, b, total))
                     orm.Question(
                         type='c', skill=skill, player=fillin,
                         data='{"pre": "%s + ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
@@ -76,7 +76,7 @@ class Migration(DataMigration):
                 total = a + b
                 if total > 20 and total <= 100:
                     orm.Question(type='c', skill=skill, player=free_answer,
-                                 data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
+                                 data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
 
         # Subtraction:
         # ------------
@@ -107,7 +107,7 @@ class Migration(DataMigration):
                 x, y = (a, b) if a <= b else (b, a)
                 skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
                 orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%sx%s", "answer": "%s"}' % (a, b, total)).save()
+                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
                 orm.Question(
                     type='c', skill=skill, player=fillin,
                     data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
@@ -120,9 +120,9 @@ class Migration(DataMigration):
                 total = a * b
                 skill = orm['model.Skill'].objects.get(name='%sx%s' % (a, b))
                 orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%sx%s", "answer": "%s"}' % (a, b, total)).save()
+                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
                 orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%sx%s", "answer": "%s"}' % (b, a, total)).save()
+                             data='{"question": "%s x %s", "answer": "%s"}' % (b, a, total)).save()
                 orm.Question(
                     type='c', skill=skill, player=fillin,
                     data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
@@ -133,7 +133,7 @@ class Migration(DataMigration):
                 total = a * b
                 skill = orm['model.Skill'].objects.get(name='%s/%s' % (total, b))
                 orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s&divide;%s", "answer": "%s"}' % (total, b, a)).save()
+                             data='{"question": "%s &divide; %s", "answer": "%s"}' % (total, b, a)).save()
                 if total:
                     orm.Question(
                         type='c', skill=skill, player=fillin,
