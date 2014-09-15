@@ -24,7 +24,8 @@ def get_user_skills(user, parent_list):
     skills = Skill.objects.filter(parent__name__in=parent_list)
     skills_name = set([s.name for s in skills])
     user_skills = {k: None for k in skills_name}
-    for us in UserSkill.objects.filter(user=user.pk, skill__in=skills).select_related("skill"):
+    for us in UserSkill.objects.filter(user=user.pk, skill__in=skills)\
+            .select_related("skill"):
         user_skills[us.skill.name] = us
         us.value_percent = int(100. / (1 + math.exp(-us.value)))
     return user_skills
@@ -47,7 +48,7 @@ def my_skills_numbers(user):
 
     return {
         "table": [[get_skill_repr(str(c + r * 10), user_skills)
-             for c in range(1, 11)] for r in range(10)],
+                   for c in range(1, 11)] for r in range(10)],
         "skills": get_user_skills(user, ["numbers"]),
         "skill": get_user_skill("numbers", user),
     }
@@ -57,7 +58,7 @@ def my_skills_addition(user):
     user_skills = get_user_skills(user, ['addition <= 10', 'addition <= 20'])
     return {
         "table": [[get_skill_repr('%s+%s' % (c, r), user_skills)
-             for c in range(1, 11)] for r in range(1, 21)],
+                   for c in range(1, 11)] for r in range(1, 21)],
         "skills": get_user_skills(user, ["addition"]),
         "skill": get_user_skill("addition", user),
     }
@@ -67,19 +68,19 @@ def my_skills_multiplication(user):
     user_skills = get_user_skills(user, ['multiplication1', 'multiplication2'])
     return {
         "table": [[get_skill_repr('%sx%s' % (c, r), user_skills)
-             for c in range(11)] for r in range(21)],
+                   for c in range(11)] for r in range(21)],
         "skills": get_user_skills(user, ["addition"]),
         "skill": get_user_skill("multiplication", user),
     }
 
 
-def my_skills_fractions(user):
+def my_skills_division(user):
     user_skills = get_user_skills(user, ['division1'])
     return {
         "table": [[get_skill_repr('%s/%s' % (a * b, b), user_skills)
-             for a in range(11)] for b in range(1, 11)],
-        "skills": get_user_skills(user, ["fractions"]),
-        "skill": get_user_skill("fractions", user),
+                   for a in range(11)] for b in range(1, 11)],
+        "skills": get_user_skills(user, ["division"]),
+        "skill": get_user_skill("division", user),
     }
 
 
@@ -103,6 +104,6 @@ def get_style(user_skill):
         return 'background-color: rgba(214, 39, 40, %.2f);' % (-value / 5.)
 
 
-NAMES = ('numbers', 'addition', 'multiplication', 'fractions')
+NAMES = ('numbers', 'addition', 'multiplication', 'division')
 GETTERS = (my_skills_numbers, my_skills_addition,
-           my_skills_multiplication, my_skills_fractions)
+           my_skills_multiplication, my_skills_division)

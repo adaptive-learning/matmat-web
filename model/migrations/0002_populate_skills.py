@@ -82,12 +82,12 @@ class Migration(DataMigration):
             for b in range(11, 21):
                 orm.Skill(name='%sx%s' % (a, b), parent=m2, level=4,
                           note='%sx%s' % (a, b)).save()
-        # Fractions:
-        # ----------
-        fractions = orm.Skill(name='fractions', parent=math, note=u'Dělení',
+        # Division:
+        # ---------
+        division = orm.Skill(name='division', parent=math, note=u'Dělení',
                               level=2)
-        fractions.save()
-        d1 = orm.Skill(name='division1', parent=fractions, level=3,
+        division.save()
+        d1 = orm.Skill(name='division1', parent=division, level=3,
                        note=u'Dělení malých čísel')  # mala nasobilka inverzne
         d1.save()
         for a in range(11):
