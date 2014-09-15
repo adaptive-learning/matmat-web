@@ -30,7 +30,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'raven.contrib.django.raven_compat',
     'south',
     'lazysignup',
     'social_auth',
@@ -106,10 +105,6 @@ GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH2_CLIENT_SECRET", "WDLtIQEn
 FACEBOOK_APP_ID = os.getenv('FACEBOOK_APP_ID', '300944176721659')
 FACEBOOK_API_SECRET = os.getenv('FACEBOOK_API_SECRET', '5a4b653aba18f4b589d6003ec569efb3')
 
-# Sentry logging
-RAVEN_CONFIG = {
-    'dsn': os.getenv('RAVEN_DSN')
-}
 
 # Debug toolbar
 if DEBUG:
@@ -118,3 +113,25 @@ if DEBUG:
 
 if ON_VIPER:
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
+    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+    # Sentry logging
+    RAVEN_CONFIG = {
+        'dsn': os.getenv('RAVEN_DSN')
+    }
+else:
+    LOGGING = {
+        'version': 1,
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'loggers': {
+            'django.request': {
+                'handlers': ['console'],
+                'propagate': True,
+                'level': 'DEBUG',
+            }
+        },
+    }
