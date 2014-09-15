@@ -11,6 +11,7 @@ app.directive("freeanswer", function(){
             $("#simulator-input").focus();
 
             $scope.check_answer = function(){
+                $scope.answer = $scope.answer.replace(/\s*-\s*/g,'-').trim();  
                 var correct = $scope.answer == $scope.data.answer;
                 $scope.interface.finish(correct);
             };

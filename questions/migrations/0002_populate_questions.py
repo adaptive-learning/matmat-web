@@ -57,6 +57,24 @@ class Migration(DataMigration):
                 if total > 20 and total <= 100:
                     orm.Question(type='c', skill=skill, player=free_answer,
                                  data='{"question": "%s+%s", "answer": "%s"}' % (a, b, total)).save()
+
+        # Subtraction:
+        # ------------
+        skill = orm['model.Skill'].objects.get(name='subtraction')
+        x = set([])
+        # up to 20
+        for a in range(21):
+            for b in range(21):
+                x.add((a, b))
+        # multiples of 5:
+        for a in range(10, 101, 5):
+            for b in range(10, 101, 5):
+                x.add((a, b))
+        # create the questions
+        for a, b in x:
+            total = a - b
+            orm.Question(type='c', skill=skill, player=free_answer,
+                         data='{"question": "%s - %s", "answer": "%s"}' % (a, b, total)).save()
         # Multiplication:
         # ---------------
         for a in range(11):

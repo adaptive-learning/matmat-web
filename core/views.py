@@ -8,7 +8,8 @@ from model.models import Skill
 @allow_lazy_user
 def home(request):
     def order(skill):
-        skill_names = [u"numbers", u"addition", u"multiplication", u"division"]
+        skill_names = [u"numbers", u"addition", u"subtraction",
+                       u"multiplication", u"division"]
         for index, name in enumerate(skill_names):
             if skill.name == name:
                 return index

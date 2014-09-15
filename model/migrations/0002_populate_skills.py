@@ -63,6 +63,11 @@ class Migration(DataMigration):
         a4 = orm.Skill(name='addition <= 1000', parent=addition, level=3,
                        note=u'Sčítání do 1000')
         a4.save()
+        # Subtraction:
+        # ------------
+        subtr = orm.Skill(name='subtraction', parent=math, level=2,
+                          note=u'Odčítání')
+        subtr.save()
         # Multiplication:
         # ---------------
         multiplication = orm.Skill(name='multiplication', parent=math,
