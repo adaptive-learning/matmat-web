@@ -8,7 +8,7 @@ class Migration(DataMigration):
     def forwards(self, orm):
         # Main math skill:
         # ----------------
-        math = orm.Skill(name='math', parent=None, level=1, note='Superskill')
+        math = orm.Skill(name='math', parent=None, level=1, note='Všechno')
         math.save()
         # Numbers:
         # --------
