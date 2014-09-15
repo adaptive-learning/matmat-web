@@ -100,7 +100,11 @@ class Migration(DataMigration):
                 total = a * b
                 orm.Skill(name='%s/%s' % (total, b), parent=d1, level=4,
                           note='%s/%s' % (total, b)).save()
+        dm = orm.Skill(name='division modulo', parent=division, level=3,
+                       note=u'Dělení se zbytkem')
+        dm.save()
         #  update children
+        #-----------------
         for s in orm.Skill.objects.all():
             pk = s.pk
             list = ",".join([str(s.pk) for s in get_children(s)])

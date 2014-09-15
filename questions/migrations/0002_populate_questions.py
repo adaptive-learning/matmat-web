@@ -154,9 +154,20 @@ class Migration(DataMigration):
                     orm.Question(
                         type='c', skill=skill, player=fillin,
                         data='{"pre": "%s &divide; ", "answer": "%s", "post": " = %s"}' % (total, b, a)).save()
-
-
-
+        skill = orm['model.Skill'].objects.get(name='division modulo')
+        for a in range(1, 21):
+            for b in range(1, 11):
+                r = a / b
+                m = a % b
+                orm.Question(
+                    type='c', skill=skill, player=fillin,
+                    data=json.dumps({"pre": "%s &divide; %s = " % (a, b),
+                                     "answer": str(r),
+                                     "post": ", zbytek %s" % m})).save()
+                orm.Question(
+                    type='c', skill=skill, player=fillin,
+                    data=json.dumps({"pre": "%s &divide; %s = %s, zbytek " % (a, b, r),
+                                     "answer": str(m), "post": ""})).save()
 
     def backwards(self, orm):
         "Write your backwards methods here."
