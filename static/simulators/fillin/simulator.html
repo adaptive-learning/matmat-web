@@ -1,0 +1,11 @@
+<h2>{{ data.pre }}<span style="color: blue">{{ fill }}</span>{{ data.post }}</h2>
+<div class="row collapse">
+    <form ng-submit="check_answer()">
+        <div class="small-5 small-centered columns">
+            <input id="simulator-input" class="small-8 columns active" type="text" ng-change="change()" ng-model="answer" autocomplete="off" placeholder="Zadej svoji odpověď"/>
+        </div>
+        <div class="small-1 small-centered columns">
+            <input class="button postfix" type="submit" value="OK" />
+        </div>
+    </form>
+</div>
