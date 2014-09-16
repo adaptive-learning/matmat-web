@@ -6,11 +6,14 @@ class Migration(DataMigration):
 
     def forwards(self, orm):
         for q in orm.Question.objects.all():
-            question_data = json.loads(q.data)
-            if "answer" in question_data.keys():
-                value = int(question_data["answer"])
-                q.value = value
-                q.save()
+            if q.skill.level == 4:
+                q.value = q.skill.name
+            else:
+                question_data = json.loads(q.data)
+                if "answer" in question_data.keys():
+                    value = question_data["answer"]
+                    q.value = value
+            q.save()
 
     def backwards(self, orm):
         "Write your backwards methods here."
