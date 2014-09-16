@@ -6,103 +6,74 @@ from model.migrations import get_children
 class Migration(DataMigration):
 
     def forwards(self, orm):
+        # abbreviations
+        skill_level = {}
+
+        def S(name, parent, note=None):
+            level = 1 if parent is None else skill_level[parent.name] + 1
+            skill_level[name] = level
+            note = name if note is None else note
+            s = orm.Skill(name=name, parent=parent, level=level, note=note)
+            s.save()
+            return s
+
         # Main math skill:
         # ----------------
-        math = orm.Skill(name='math', parent=None, level=1, note='Všechno')
-        math.save()
+        math = S(name='math', parent=None, note='Všechno')
+
         # Numbers:
         # --------
-        numbers = orm.Skill(name='numbers', parent=math, level=2,
-                            note='Počítání')
-        numbers.save()
-        num10 = orm.Skill(name='numbers <= 10', parent=numbers, level=3,
-                          note='Počítání do 10')
-        num10.save()
-        num20 = orm.Skill(name='numbers <= 20', parent=numbers, level=3,
-                          note='Počítání do 20')
-        num20.save()
-        num100 = orm.Skill(name='numbers <= 100', parent=numbers, level=3,
-                           note='Počítání do 100')
-        num100.save()
+        numbers = S(name='numbers', parent=math, note='Počítání')
+        num10 = S(name='numbers <= 10', parent=numbers, note='Počítání do 10')
+        num20 = S(name='numbers <= 20', parent=numbers, note='Počítání do 20')
+        num100 = S(name='numbers <= 100', parent=numbers,
+                   note='Počítání do 100')
         for n in range(1, 101):
-            if n <= 10:
-                p = num10
-            elif n <= 20:
-                p = num20
-            else:
-                p = num100
-            orm.Skill(name=str(n), parent=p, level=4, note=str(n)).save()
+            S(name=str(n),
+              parent=num10 if n <= 10 else (num20 if n <= 20 else num100),
+              note=str(n))
+
         # Addition:
         # ---------
-        addition = orm.Skill(name='addition', parent=math, level=2,
-                             note=u'Sčítání')
-        addition.save()
-        # addition up to 10
-        a1 = orm.Skill(name='addition <= 10', parent=addition, level=3,
-                       note=u'Sčítání do 10')
-        a1.save()
-        for total in range(1, 11):
-            for a in range(total / 2 + 1):
-                b = total - a
-                orm.Skill(name='%s+%s' % (a, b), parent=a1, level=4,
-                          note='%s+%s' % (a, b)).save()
-        # addition up to 20
-        a2 = orm.Skill(name='addition <= 20', parent=addition, level=3,
-                       note=u'Sčítání do 20')
-        a2.save()
-        for total in range(11, 21):
-            for a in range(total / 2 + 1):
-                b = total - a
-                orm.Skill(name='%s+%s' % (a, b), parent=a2, level=4,
-                          note='%s+%s' % (a, b)).save()
-        # addition up to 100
-        a3 = orm.Skill(name='addition <= 100', parent=addition, level=3,
-                       note=u'Sčítání do 100')
-        a3.save()
-        # addition up to 1000
-        a4 = orm.Skill(name='addition <= 1000', parent=addition, level=3,
-                       note=u'Sčítání do 1000')
-        a4.save()
+        addition = S(name='addition', parent=math, note=u'Sčítání')
+        a1 = S(name='addition <= 10', parent=addition, note=u'Sčítání do 10')
+        a2 = S(name='addition <= 20', parent=addition, note=u'Sčítání do 20')
+        S(name='addition <= 100', parent=addition, note=u'Sčítání do 100')
+        for a in range(20):
+            for b in range(a, 21):
+                if a + b <= 20:
+                    S(name='%s+%s' % (a, b), parent=a1 if a + b <= 10 else a2)
+
         # Subtraction:
         # ------------
-        subtr = orm.Skill(name='subtraction', parent=math, level=2,
-                          note=u'Odčítání')
-        subtr.save()
+        subtr = S(name='subtraction', parent=math, note=u'Odčítání')
+        s1 = S(name='subtraction <= 10', parent=subtr, note=u'Odčítání do 10')
+        s2 = S(name='subtraction <= 20', parent=subtr, note=u'Odčítání do 20')
+        for a in range(1, 21):
+            for b in range(1, a + 1):
+                S(name='%s-%s' % (a, b), parent=s1 if a <= 10 else s2)
+
         # Multiplication:
         # ---------------
-        multiplication = orm.Skill(name='multiplication', parent=math,
-                                   note=u'Násobení', level=2)
-        multiplication.save()
-        m1 = orm.Skill(name='multiplication1', parent=multiplication, level=3,
-                       note=u'Malá násobilka')
-        m1.save()
+        m0 = S(name='multiplication', parent=math, note=u'Násobení')
+        m1 = S(name='multiplication1', parent=m0, note=u'Malá násobilka')
         for b in range(11):
             for a in range(b + 1):
-                orm.Skill(name='%sx%s' % (a, b), parent=m1, level=4,
-                          note='%sx%s' % (a, b)).save()
-        m2 = orm.Skill(name='multiplication2', parent=multiplication, level=3,
-                       note=u'Velká násobilka')
-        m2.save()
+                S(name='%sx%s' % (a, b), parent=m1)
+        m2 = S(name='multiplication2', parent=m0, note=u'Velká násobilka')
         for a in range(11):
             for b in range(11, 21):
-                orm.Skill(name='%sx%s' % (a, b), parent=m2, level=4,
-                          note='%sx%s' % (a, b)).save()
+                S(name='%sx%s' % (a, b), parent=m2)
+
         # Division:
         # ---------
-        division = orm.Skill(name='division', parent=math, note=u'Dělení',
-                             level=2)
-        division.save()
-        d1 = orm.Skill(name='division1', parent=division, level=3,
-                       note=u'Dělení malých čísel')  # mala nasobilka inverzne
-        d1.save()
+        d0 = S(name='division', parent=math, note=u'Dělení')
+        d1 = S(name='division1', parent=d0, note=u'Dělení malých čísel')
         for a in range(11):
             for b in range(1, 11):
                 total = a * b
-                orm.Skill(name='%s/%s' % (total, b), parent=d1, level=4,
-                          note='%s/%s' % (total, b)).save()
-        #dm = orm.Skill(name='division modulo', parent=division, level=3,
-        #               note=u'Dělení se zbytkem')
-        #dm.save()
+                S(name='%s/%s' % (total, b), parent=d1)
+
         #  update children
         #-----------------
         for s in orm.Skill.objects.all():
