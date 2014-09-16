@@ -1,60 +1,68 @@
 # -*- coding: utf-8 -*-
 from south.v2 import DataMigration
 import json
+import random
 
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
+        # abbreviations:
+        SKILLS = {}
+
+        def get_skill(name):
+            if name not in SKILLS:
+                SKILLS[name] = orm['model.Skill'].objects.get(name=name)
+            return SKILLS[name]
+
+        def Q(skill, player, data, type='c'):
+            data = json.dumps(data) if isinstance(data, dict) else data
+            skill = get_skill(skill) if isinstance(skill, str) else skill
+            q = orm.Question(type=type, skill=skill, player=player, data=data)
+            q.save()
+            return q
+
+        def Sim(name, note):
+            sim = orm.Simulator(name=name, note=note)
+            sim.save()
+            return sim
+
         # Simulators:
         # -----------
-        free_answer = orm.Simulator(name='free_answer', note='Written answer')
-        free_answer.save()
-        counting = orm.Simulator(name='counting', note='Counting objects')
-        counting.save()
-        selecting = orm.Simulator(name='selecting',
-                                  note='Selecting specified number of objects')
-        selecting.save()
-        numberline = orm.Simulator(name='numberline',
-                                   note='Choose answer on number-line')
-        numberline.save()
-        fillin = orm.Simulator(name='fillin', note='Fill in written answer')
-        fillin.save()
-        field = orm.Simulator(name='field', note='2D field')
-        field.save()
-        example_sim = orm.Simulator(name='example', note='Just an example')
-        example_sim.save()
+        free_answer = Sim('free_answer', 'Written answer')
+        counting = Sim('counting', 'Counting objects')
+        selecting = Sim('selecting', 'Selecting specified number of objects')
+        numberline = Sim('numberline', 'Choose answer on number-line')
+        fillin = Sim('fillin', 'Fill in written answer')
+        field = Sim('field', '2D field')
+        Sim('example', 'Just an example')
+
         # Numbers:
         # --------
         for n in range(1, 101):
-            skill = orm['model.Skill'].objects.get(name=str(n))
+            skill = str(n)
             # for numbers up to 7 ... choice up to 10
             # for numbers up to 17 ... choice up to 20
             # for numbers above .... choice up to a 100
             nr = 1 if n <= 7 else 2 if n <= 17 else 10
             # number -> select objects
-            orm.Question(type='c', skill=skill, player=selecting,
-                         data='{"question": %s, "answer": %s, "nrows": %s, '
-                         '"ncols": 10}' % (n, n, nr)).save()
+            Q(skill, selecting, {"question": n, "answer": n,
+                                 "nrows": nr, "ncols": 10})
             # objects -> number
-            orm.Question(type='c', skill=skill, player=counting,
-                         data='{"question": [%s], "answer": "%s", '
-                         '"width": 10}' % (n, n)).save()
+            Q(skill, counting, {"question": [n], "answer": str(n),
+                                "width": 10})
+        for n in range(1, 21):
+            skill = str(n)
             # number -> number-line
-            orm.Question(type='c', skill=skill, player=numberline,
-                         data='{{"question": "{0}", "answer": {0}}}'.
-                         format(n)).save()
+            Q(skill, numberline, {"question": str(n), "answer": n})
 
-        skill = orm['model.Skill'].objects.get(name='numbers <= 10')
+        skill = 'numbers <= 10'
         for n in range(1, 11):
             pre = ', '.join(map(str, range(1, n)))
             pre = pre + ', ' if pre else ''
             post = ', '.join(map(str, range(n + 1, 11)))
             post = ', ' + post if post else ''
-            orm.Question(
-                type='c', skill=skill, player=fillin,
-                data='{{"pre": "{0}", "post": "{1}", "answer": "{2}"}}'.
-                format(pre, post, n)).save()
+            Q(skill, fillin, {"pre": pre, "post": post, "answer": str(n)})
 
         # Addition:
         # ---------
@@ -63,111 +71,65 @@ class Migration(DataMigration):
                 total = a + b
                 if total <= 20:
                     x, y = (a, b) if a <= b else (b, a)
-                    skill = orm['model.Skill'].objects.get(name='%s+%s' % (x, y))
-                    orm.Question(type='c', skill=skill, player=free_answer,
-                                 data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
-                    orm.Question(type='c', skill=skill, player=counting,
-                                 data='{"question": [%s, "+", %s], "answer": "%s", "width": 10}' % (a, b, total)).save()
-                    orm.Question.objects.create(type='c', skill=skill, player=numberline,
-                                        data='{{"question": "{0} + {1}", "answer": {2}}}'.format(a, b, total))
-                    orm.Question(
-                        type='c', skill=skill, player=fillin,
-                        data='{"pre": "%s + ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
-        skill = orm['model.Skill'].objects.get(name='addition <= 100')
-        for a in range(1, 100):
-            for b in range(1, 100):
-                total = a + b
-                if total > 20 and total <= 100:
-                    orm.Question(type='c', skill=skill, player=free_answer,
-                                 data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
+                    skill = '%s+%s' % (x, y)
+                    Q(skill, free_answer,
+                      {"question": "%s + %s" % (a, b), "answer": str(total)})
+                    Q(skill, counting,
+                      {"question": [a, "+", b], "answer": str(total),
+                       "width": 10})
+        skill = 'addition <= 100'
+        random.seed(150 - 2)
+        X = set([])
+        while len(X) < 100:
+            a, b = random.randint(1, 100), random.randint(1, 100)
+            if (a > 20 or b > 20) and a + b <= 100:
+                X.add((a, b))
+        for a, b in X:
+            Q(skill, free_answer,
+              {"question": "%s + %s" % (a, b), "answer": str(a + b)})
 
         # Subtraction:
         # ------------
-        skill = orm['model.Skill'].objects.get(name='subtraction')
-        X = set([])
         # up to 20
-        for a in range(21):
-            for b in range(21):
-                X.add((a, b))
-                total = a - b
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s - ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
+        for a in range(1, 21):
+            for b in range(1, a + 1):
+                Q('%s-%s' % (a, b), free_answer,
+                  {"question": "%s - %s" % (a, b), "answer": str(a - b)})
         # multiples of 5:
         for a in range(10, 101, 5):
-            for b in range(10, 101, 5):
-                X.add((a, b))
-        # create the questions
-        for a, b in X:
-            total = a - b
-            orm.Question(type='c', skill=skill, player=free_answer,
-                         data='{"question": "%s - %s", "answer": "%s"}' % (a, b, total)).save()
+            for b in range(10, a + 1, 5):
+                Q('subtraction', free_answer,
+                  {"question": "%s - %s" % (a, b), "answer": str(a - b)})
+
         # Multiplication:
         # ---------------
+        # fillin removed for now
+        X = set([])
         for a in range(11):
-            for b in range(11):
-                total = a * b
-                x, y = (a, b) if a <= b else (b, a)
-                skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
-                if total:
-                    orm.Question(type='c', skill=skill, player=counting,
-                                 data='{"question": [%s], "answer": "%s", '
-                                 '"width": %s}' % (total, total, b)).save()
-        for a in range(11):
-            for b in range(11, 21):
-                total = a * b
-                skill = orm['model.Skill'].objects.get(name='%sx%s' % (a, b))
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (b, a, total)).save()
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
-        for a, b, x in MULTI_2D:
-            a, b = (b, a) if b < a else (a, b)
+            for b in range(21):
+                X.add((a, b))
+                X.add((b, a))
+        for a, b in X:
             total = a * b
-            skill = orm['model.Skill'].objects.get(name='%sx%s' % (a, b))
-            f = []
-            for _ in range(10):
-                l = []
-                for _ in range(10):
-                    l.append(x % 2)
-                    x /= 2
-                f.append(l)
-            orm.Question(type='c', skill=skill, player=field,
-                         data=json.dumps({"field": f, "answer": total})).save()
+            skill = '%sx%s' % ((a, b) if a <= b else (b, a))
+            Q(skill, free_answer,
+              {"question": "%s x %s" % (a, b), "answer": str(total)})
+            if total and a <= 5 and b <= 5:
+                Q(skill, counting,
+                  {"question": [total], "answer": str(total), "width": b})
+        for a, b, x in MULTI_2D:
+            skill = '%sx%s' % ((a, b) if a <= b else (b, a))
+            Q(skill, field, {"field": decode_field(x), "answer": a * b})
+
         # Division:
         # ---------------
         for a in range(11):
             for b in range(1, 11):
                 total = a * b
-                skill = orm['model.Skill'].objects.get(name='%s/%s' % (total, b))
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s &divide; %s", "answer": "%s"}' % (total, b, a)).save()
-                if total:
-                    orm.Question(
-                        type='c', skill=skill, player=fillin,
-                        data='{"pre": "%s &divide; ", "answer": "%s", "post": " = %s"}' % (total, b, a)).save()
-        skill = orm['model.Skill'].objects.get(name='division modulo')
-        for a in range(1, 21):
-            for b in range(1, 11):
-                r = a / b
-                m = a % b
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data=json.dumps({"pre": "%s &divide; %s = " % (a, b),
-                                     "answer": str(r),
-                                     "post": ", zbytek %s" % m})).save()
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data=json.dumps({"pre": "%s &divide; %s = %s, zbytek " % (a, b, r),
-                                     "answer": str(m), "post": ""})).save()
+                skill = '%s/%s' % (total, b)
+                Q(skill, free_answer,
+                  {"question": "%s &divide; %s" % (total, b),
+                   "answer": str(a)})
 
     def backwards(self, orm):
         "Write your backwards methods here."
@@ -246,6 +208,17 @@ class Migration(DataMigration):
 
     complete_apps = ['questions']
     symmetrical = True
+
+
+def decode_field(x):
+    f = []
+    for _ in range(10):
+        l = []
+        for _ in range(10):
+            l.append(x % 2)
+            x /= 2
+        f.append(l)
+    return f
 
 
 MULTI_2D = [(2, 3, 464378630459495837192945664L),

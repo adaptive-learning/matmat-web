@@ -25,7 +25,7 @@ app.directive("field", function(){
                     if (line[j] == 1) {
                         img.src = "/static/img/cube_orange.png";
                     } else {
-                        img.src = "/static/img/cube_grey.png";
+                        img.src = "/static/img/cube_white.png";
                     }
                 }
             }
