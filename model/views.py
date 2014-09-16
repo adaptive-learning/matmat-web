@@ -15,8 +15,6 @@ def my_skills(request):
 
     user_skills_cache = {}
 
-    print skills
-
     return render(request, 'model/my_skills.html', {
         "data": data,
         "skills": skills,
@@ -51,9 +49,9 @@ def get_user_skill_value(user, skill):
     """
     compute absolute skill of user
     """
-    #look to the cache
-    # if "{0}-{1}".format(user.pk, skill) in user_skills_cache.keys():
-    #     return user_skills_cache["{0}-{1}".format(user.pk, skill)]
+    # look to the cache
+    if "{0}-{1}".format(user.pk, skill) in user_skills_cache.keys():
+        return user_skills_cache["{0}-{1}".format(user.pk, skill)]
 
     skill = Skill.objects.get(pk=skill)
     user_skill = UserSkill.objects.get(user=user, skill=skill)
