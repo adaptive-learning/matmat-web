@@ -7,6 +7,7 @@ from model.models import Skill
 
 @allow_lazy_user
 def home(request):
+    request.session.set_expiry(0)
     order = [u"math", u"numbers", u"addition", u"subtraction",
              u"multiplication", u"division"]
     skills = list(Skill.objects.filter(level__in=[1, 2]))
