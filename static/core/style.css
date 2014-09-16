@@ -34,13 +34,13 @@
 }
 
 #playground.solved_correctly{
-    background-color: rgba(11, 87, 0, 0.3);
-    box-shadow: 0 0 40px rgba(11, 87, 0, 0.6);
+    background-color: rgba(11, 87, 0, 0.1);
+    box-shadow: 0 0 40px rgba(11, 87, 0, 0.3);
 }
 
 #playground.solved_incorrectly{
-    background-color: rgba(158, 20, 9, 0.3);
-    box-shadow: 0 0 40px rgba(158, 20, 9, 0.6);
+    background-color: rgba(158, 20, 9, 0.1);
+    box-shadow: 0 0 40px rgba(158, 20, 9, 0.3);
 }
 
 .result{
