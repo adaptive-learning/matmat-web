@@ -3,17 +3,16 @@ from lazysignup.decorators import allow_lazy_user
 import math
 from model.models import UserSkill, Skill
 
-user_skills_cache = {}
 @allow_lazy_user
 def my_skills(request):
+    get_user_skill_value.clear()    # clear cache for skill value getter
+
     data = {}
     skills = []
     for name, getter in zip(NAMES, GETTERS):
         skill = Skill.objects.get(name=name)
         data[skill] = getter(request.user)
         skills.append(skill)
-
-    user_skills_cache = {}
 
     return render(request, 'model/my_skills.html', {
         "data": data,
@@ -45,13 +44,24 @@ def get_user_skill_by_name(name, user):
 
     return user_skill
 
+def memoize(f):
+    """ Memoization decorator for functions taking one or more arguments. """
+    class memodict(dict):
+        def __init__(self, f):
+            self.f = f
+        def __call__(self, *args):
+            return self[args]
+        def __missing__(self, key):
+            ret = self[key] = self.f(*key)
+            return ret
+
+    return memodict(f)
+
+@memoize
 def get_user_skill_value(user, skill):
     """
     compute absolute skill of user
     """
-    # look to the cache
-    if "{0}-{1}".format(user.pk, skill) in user_skills_cache.keys():
-        return user_skills_cache["{0}-{1}".format(user.pk, skill)]
 
     skill = Skill.objects.get(pk=skill)
     user_skill = UserSkill.objects.get(user=user, skill=skill)
@@ -68,7 +78,6 @@ def get_user_skill_value(user, skill):
         user_skill = 0
 
     parent_user_skill_value = get_user_skill_value(user, skill.parent_id)
-    user_skills_cache["{0}-{1}".format(user.pk, skill.pk)] = user_skill.value + parent_user_skill_value
     return user_skill.value + parent_user_skill_value
 
 def my_skills_numbers(user):
