@@ -81,6 +81,8 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         )
         self.questions = {}
         for q in dictfetchall(cursor):
+            q["attempts"] = 0.
+            q["total_solving_time"] = 0.
             self.questions[q["pk"]] = q
 
         cursor.execute(
@@ -117,6 +119,8 @@ class CachingDatabaseDataProvider(DataProviderInterface):
     def mark_attempt(self, answer):
         user = self.get_user(answer)
         question = self.get_question(answer)
+        self.questions[question]["attempts"] += 1
+        self.questions[question]["total_solving_time"] += self.get_solving_time(answer)
         if question not in self.attempts_count.keys():
             self.attempts_count[question] = {}
         if user not in self.attempts_count[question].keys():
@@ -178,6 +182,11 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         for _, v in self.attempts_count[question].items():
             count += v
         return count
+
+    def get_avg_solving_time(self, question):
+        if self.questions[question]["attempts"] == 0:
+            return None
+        return self.questions[question]["total_solving_time"] / self.questions[question]["attempts"]
 
     def get_questions(self):
         return self.questions.keys()

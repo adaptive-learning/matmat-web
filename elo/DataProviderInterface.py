@@ -61,3 +61,7 @@ class DataProviderInterface():
     @abstractmethod
     def get_first_attempts_count(self, question):
         pass
+
+    @abstractmethod
+    def get_avg_solving_time(self, question):
+        pass

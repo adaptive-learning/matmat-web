@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Avg
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from elo.DataProviderInterface import DataProviderInterface
@@ -69,6 +70,10 @@ class QuestionDifficulty(models.Model):
     def get_first_attempts_count(self):
         return self.question.answers.values('user').distinct().count()
 
+    def get_average_answer_time(self):
+        if self.question.answers.count() == 0:
+            return None
+        return self.question.answers.aggregate(Avg('solving_time'))
 
 class UserSkill(models.Model):
     user = models.ForeignKey(User)
@@ -129,3 +134,6 @@ class DatabaseDataProvider(DataProviderInterface):
 
     def get_first_attempts_count(self, question):
         return question.difficulty.get_first_attempts_count()
+
+    def get_avg_solving_time(self, question):
+        return question.difficulty.get_average_answer_time()
