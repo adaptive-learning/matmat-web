@@ -90,7 +90,7 @@ class Migration(DataMigration):
         # Division:
         # ---------
         division = orm.Skill(name='division', parent=math, note=u'Dělení',
-                              level=2)
+                             level=2)
         division.save()
         d1 = orm.Skill(name='division1', parent=division, level=3,
                        note=u'Dělení malých čísel')  # mala nasobilka inverzne
@@ -100,9 +100,9 @@ class Migration(DataMigration):
                 total = a * b
                 orm.Skill(name='%s/%s' % (total, b), parent=d1, level=4,
                           note='%s/%s' % (total, b)).save()
-        dm = orm.Skill(name='division modulo', parent=division, level=3,
-                       note=u'Dělení se zbytkem')
-        dm.save()
+        #dm = orm.Skill(name='division modulo', parent=division, level=3,
+        #               note=u'Dělení se zbytkem')
+        #dm.save()
         #  update children
         #-----------------
         for s in orm.Skill.objects.all():

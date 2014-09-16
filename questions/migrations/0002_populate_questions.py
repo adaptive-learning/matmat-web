@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from south.v2 import DataMigration
 import json
+import random
 
 
 class Migration(DataMigration):
@@ -40,6 +41,9 @@ class Migration(DataMigration):
             orm.Question(type='c', skill=skill, player=counting,
                          data='{"question": [%s], "answer": "%s", '
                          '"width": 10}' % (n, n)).save()
+
+        for n in range(1, 21):
+            skill = orm['model.Skill'].objects.get(name=str(n))
             # number -> number-line
             orm.Question(type='c', skill=skill, player=numberline,
                          data='{{"question": "{0}", "answer": {0}}}'.
@@ -68,18 +72,17 @@ class Migration(DataMigration):
                                  data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
                     orm.Question(type='c', skill=skill, player=counting,
                                  data='{"question": [%s, "+", %s], "answer": "%s", "width": 10}' % (a, b, total)).save()
-                    orm.Question.objects.create(type='c', skill=skill, player=numberline,
-                                        data='{{"question": "{0} + {1}", "answer": {2}}}'.format(a, b, total))
-                    orm.Question(
-                        type='c', skill=skill, player=fillin,
-                        data='{"pre": "%s + ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
         skill = orm['model.Skill'].objects.get(name='addition <= 100')
-        for a in range(1, 100):
-            for b in range(1, 100):
-                total = a + b
-                if total > 20 and total <= 100:
-                    orm.Question(type='c', skill=skill, player=free_answer,
-                                 data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
+        random.seed(150 - 2)
+        X = set([])
+        while len(X) < 100:
+            a, b = random.randint(1, 100), random.randint(1, 100)
+            if (a > 20 or b > 20) and a + b <= 100:
+                X.add((a, b))
+        for a, b in X:
+            total = a + b
+            orm.Question(type='c', skill=skill, player=free_answer,
+                         data='{"question": "%s + %s", "answer": "%s"}' % (a, b, total)).save()
 
         # Subtraction:
         # ------------
@@ -87,15 +90,11 @@ class Migration(DataMigration):
         X = set([])
         # up to 20
         for a in range(21):
-            for b in range(21):
+            for b in range(b, 21):
                 X.add((a, b))
-                total = a - b
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s - ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
         # multiples of 5:
         for a in range(10, 101, 5):
-            for b in range(10, 101, 5):
+            for b in range(a, 101, 5):
                 X.add((a, b))
         # create the questions
         for a, b in X:
@@ -104,31 +103,22 @@ class Migration(DataMigration):
                          data='{"question": "%s - %s", "answer": "%s"}' % (a, b, total)).save()
         # Multiplication:
         # ---------------
+        # fillin removed for now
+        X = set([])
         for a in range(11):
-            for b in range(11):
-                total = a * b
-                x, y = (a, b) if a <= b else (b, a)
-                skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
-                if total:
-                    orm.Question(type='c', skill=skill, player=counting,
-                                 data='{"question": [%s], "answer": "%s", '
-                                 '"width": %s}' % (total, total, b)).save()
-        for a in range(11):
-            for b in range(11, 21):
-                total = a * b
-                skill = orm['model.Skill'].objects.get(name='%sx%s' % (a, b))
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
-                orm.Question(type='c', skill=skill, player=free_answer,
-                             data='{"question": "%s x %s", "answer": "%s"}' % (b, a, total)).save()
-                orm.Question(
-                    type='c', skill=skill, player=fillin,
-                    data='{"pre": "%s x ", "answer": "%s", "post": " = %s"}' % (a, b, total)).save()
+            for b in range(21):
+                X.add((a, b))
+                X.add((b, a))
+        for a, b in X:
+            total = a * b
+            x, y = (a, b) if a <= b else (b, a)
+            skill = orm['model.Skill'].objects.get(name='%sx%s' % (x, y))
+            orm.Question(type='c', skill=skill, player=free_answer,
+                         data='{"question": "%s x %s", "answer": "%s"}' % (a, b, total)).save()
+            if total and a <= 5 and b <= 5:
+                orm.Question(type='c', skill=skill, player=counting,
+                             data='{"question": [%s], "answer": "%s", '
+                             '"width": %s}' % (total, total, b)).save()
         for a, b, x in MULTI_2D:
             a, b = (b, a) if b < a else (a, b)
             total = a * b
@@ -150,10 +140,8 @@ class Migration(DataMigration):
                 skill = orm['model.Skill'].objects.get(name='%s/%s' % (total, b))
                 orm.Question(type='c', skill=skill, player=free_answer,
                              data='{"question": "%s &divide; %s", "answer": "%s"}' % (total, b, a)).save()
-                if total:
-                    orm.Question(
-                        type='c', skill=skill, player=fillin,
-                        data='{"pre": "%s &divide; ", "answer": "%s", "post": " = %s"}' % (total, b, a)).save()
+        # division with modulo left out for now:
+        '''
         skill = orm['model.Skill'].objects.get(name='division modulo')
         for a in range(1, 21):
             for b in range(1, 11):
@@ -168,6 +156,7 @@ class Migration(DataMigration):
                     type='c', skill=skill, player=fillin,
                     data=json.dumps({"pre": "%s &divide; %s = %s, zbytek " % (a, b, r),
                                      "answer": str(m), "post": ""})).save()
+        '''
 
     def backwards(self, orm):
         "Write your backwards methods here."
