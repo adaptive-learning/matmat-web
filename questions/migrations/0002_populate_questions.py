@@ -40,7 +40,7 @@ class Migration(DataMigration):
         # Numbers:
         # --------
         for n in range(1, 101):
-            skill = str(n)
+            skill = str(n) if n <= 20 else 'numbers <= 100'
             # for numbers up to 7 ... choice up to 10
             # for numbers up to 17 ... choice up to 20
             # for numbers above .... choice up to a 100
@@ -52,17 +52,16 @@ class Migration(DataMigration):
             Q(skill, counting, {"question": [n], "answer": str(n),
                                 "width": 10})
         for n in range(1, 21):
-            skill = str(n)
             # number -> number-line
-            Q(skill, numberline, {"question": str(n), "answer": n})
+            Q(str(n), numberline, {"question": str(n), "answer": n})
 
-        skill = 'numbers <= 10'
         for n in range(1, 11):
             pre = ', '.join(map(str, range(1, n)))
             pre = pre + ', ' if pre else ''
             post = ', '.join(map(str, range(n + 1, 11)))
             post = ', ' + post if post else ''
-            Q(skill, fillin, {"pre": pre, "post": post, "answer": str(n)})
+            Q('numbers <= 10', fillin,
+              {"pre": pre, "post": post, "answer": str(n)})
 
         # Addition:
         # ---------
