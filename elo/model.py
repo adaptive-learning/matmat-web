@@ -62,7 +62,6 @@ class EloModel():
                     response = 1
                 else:
                     response = TIME_PENALTY_SLOPE / (TIME_PENALTY_SLOPE - 1 + (solving_time / avg_solving_time))
-                print solving_time, avg_solving_time, (solving_time / avg_solving_time), response
                 return response
 
         if question_type == 't':
