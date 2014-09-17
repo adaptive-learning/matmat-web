@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <form action="{% url "questions.views.simulator_test" %} ">
+        {{ form.as_p }}
+        <input type="submit" value="Vybrat"/>
+    </form>
+
+    {% if question %}
+        <hr/>
+        <div ng-init="test=true; question_pk={{ question }}">
+            <div ng-controller="Loader" ng-show="!question.hide" class="animate-show">
+                <div class="result">
+                    &nbsp;
+                    <span style="color: darkgreen;" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
+                    <span style="color: darkred;" ng-cloak ng-show="solved=='solved_incorrectly'">Špatně</span>
+                </div>
+
+                <div ng-class="solved" id="playground"></div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block extrascripts %}
+    <script src="{% static "simulators/loader.js" %}"></script>
+    {% for simulator in simulators %}
+        <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
+    {% endfor %}
+{% endblock %}

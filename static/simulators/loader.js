@@ -4,6 +4,10 @@ var FADEOUT_DURATION = 500;
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
 app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile){
+    if ($scope.test){
+        QUESTIONS_IN_QUEUE = 0;
+        QUESTIONS_IN_SET = 1000;
+    }
     $scope.common = CommonData;
     $scope.skill_id = getURLParameter("skill");
     $scope.question = null;
@@ -26,15 +30,27 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
             for (var i in $scope.questions_queue){
                 in_queue.push($scope.questions_queue[i].pk);
             }
-            $http.get("/q/get_question/", {params: {count:count, skill:$scope.skill_id, in_queue: in_queue.join()} })
-                .success(function(data){
-                    for (var i in data){
-                        if (data[i].recommendation_log)
-                            console.log(data[i]);
-                    }
-                    $scope.questions_queue = $scope.questions_queue.concat(data);
-                    $scope.get_question();
-            });
+            if (!$scope.test) {
+                $http.get("/q/get_question/", {params: {count: count, skill: $scope.skill_id, in_queue: in_queue.join()} })
+                    .success(function (data) {
+                        for (var i in data) {
+                            if (data[i].recommendation_log)
+                                console.log(data[i]);
+                        }
+                        $scope.questions_queue = $scope.questions_queue.concat(data);
+                        $scope.get_question();
+                    });
+            }else{
+                $http.get("/q/get_selected_question/"+$scope.question_pk)
+                    .success(function (data) {
+                        for (var i in data) {
+                            if (data[i].recommendation_log)
+                                console.log(data[i]);
+                        }
+                        $scope.questions_queue = $scope.questions_queue.concat(data);
+                        $scope.get_question();
+                    });
+            }
         }
     };
 
@@ -54,6 +70,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
     };
 
     $scope.save_answer = function(){
+        if ($scope.test) return;
         $http.post("/q/save_answer/", $scope.question)
             .success(function(data){
                 $scope.chat = data;
