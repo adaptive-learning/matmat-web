@@ -86,7 +86,7 @@ def my_skills_numbers(user):
 
     return {
         "table": [[get_skill_repr(str(c + r * 10), user_skills)
-                   for c in range(1, 11)] for r in range(10)],
+                   for c in range(1, 11)] for r in range(2)],
         "skills": get_user_skills(user, ["numbers"]),
         "skill": get_user_skill_by_name("numbers", user),
     }

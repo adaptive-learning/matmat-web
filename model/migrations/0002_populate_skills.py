@@ -28,10 +28,8 @@ class Migration(DataMigration):
         num20 = S(name='numbers <= 20', parent=numbers, note='Počítání do 20')
         num100 = S(name='numbers <= 100', parent=numbers,
                    note='Počítání do 100')
-        for n in range(1, 101):
-            S(name=str(n),
-              parent=num10 if n <= 10 else (num20 if n <= 20 else num100),
-              note=str(n))
+        for n in range(1, 21):
+            S(name=str(n), parent=num10 if n <= 10 else num20)
 
         # Addition:
         # ---------
