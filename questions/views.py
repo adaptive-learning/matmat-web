@@ -22,6 +22,9 @@ def play(request):
 
 
 def get_question(request):
+    """
+    load questions from server as jason
+    """
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
@@ -32,13 +35,16 @@ def get_question(request):
 
 
 def get_question_test(request):
+    """
+    test page for question recommendation
+    """
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
     questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue)
 
-    return render(request, 'questions/test.html', {
+    return render(request, 'questions/get_question_test.html', {
         "questions": questions
     })
 
