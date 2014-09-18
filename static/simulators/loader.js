@@ -22,7 +22,6 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         var count = Math.min(QUESTIONS_IN_QUEUE - $scope.questions_queue.length,
             QUESTIONS_IN_SET - $scope.counter.current - $scope.questions_queue.length);
         count += $scope.question == null ? 1 : 0;
-
         if (count > 0){
             var in_queue = [];
             if ($scope.question)
@@ -41,15 +40,23 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                         $scope.get_question();
                     });
             }else{
-                $http.get("/q/get_selected_question/"+$scope.question_pk)
-                    .success(function (data) {
-                        for (var i in data) {
-                            if (data[i].recommendation_log)
-                                console.log(data[i]);
-                        }
-                        $scope.questions_queue = $scope.questions_queue.concat(data);
-                        $scope.get_question();
-                    });
+                if ($scope.own_question){
+                    q = {};
+                    q.data = $scope.own_question;
+                    q.simulator = $scope.simulator;
+                    $scope.questions_queue.push(q);
+                    $scope.get_question();
+                }else {
+                    $http.get("/q/get_selected_question/" + $scope.question_pk)
+                        .success(function (data) {
+                            for (var i in data) {
+                                if (data[i].recommendation_log)
+                                    console.log(data[i]);
+                            }
+                            $scope.questions_queue = $scope.questions_queue.concat(data);
+                            $scope.get_question();
+                        });
+                }
             }
         }
     };

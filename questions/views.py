@@ -79,22 +79,33 @@ class SimulatorTestView(View):
     test page for question recommendation
     """
     def get(self, request):
+        simulator=None
         if "simulator" in request.GET and request.GET["simulator"] != "":
             # skill = request.GET["skill"]
             simulator = request.GET["simulator"]
             questions = Question.objects.filter(player_id=simulator)
             form = SelectSkillForm(request.GET)
             form.fields["question"] = forms.ModelChoiceField(queryset=questions, required=False)
+            form.fields["own_question"] = forms.CharField(initial="{}", required=False, )
         else:
             form = SelectSkillForm()
+
+        own_question = None
+        simulator_name = None
+        if "own_question" in request.GET and request.GET["own_question"] != "":
+            own_question = request.GET["own_question"]
+            simulator_name = get_object_or_404(Simulator, pk=simulator).name
 
         question = None
         if "question" in request.GET and request.GET["question"] != "":
             question = request.GET["question"]
+            question = get_object_or_404(Question, pk=question)
 
         return render(request, 'questions/simulator_test.html', {
             "form": form,
             "question": question,
+            "own_question": own_question,
+            "simulator": simulator_name,
             "simulators": Simulator.objects.all(),
         })
 

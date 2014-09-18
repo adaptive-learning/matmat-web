@@ -8,9 +8,15 @@
         <input type="submit" value="Vybrat"/>
     </form>
 
-    {% if question %}
+    {% if question or own_question%}
+        <p>Selected question: {% if own_question %}{{ own_question }}{% else %}{{ question }}{% endif %}</p>
         <hr/>
-        <div ng-init="test=true; question_pk={{ question }}">
+        <div ng-init="
+                    test=true;
+                    {% if question %}question_pk={{ question.pk }}{% endif %};
+                    {% if own_question %}own_question='{{ own_question }}'{% endif %};
+                    simulator='{{ simulator }}';
+                    ">
             <div ng-controller="Loader" ng-show="!question.hide" class="animate-show">
                 <div class="result">
                     &nbsp;
