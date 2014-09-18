@@ -1,5 +1,6 @@
 import json
 from django import forms
+from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -22,7 +23,7 @@ def play(request):
         "simulators": simulators,
     })
 
-
+@login_required
 def get_questions(request):
     """
     load recommended questions from server as jason
