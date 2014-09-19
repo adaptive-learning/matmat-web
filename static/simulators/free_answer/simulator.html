@@ -1,4 +1,11 @@
-<h2>{{ data.question }} = {{ answer }} </h2>
+<h2 class="row collapse">
+    <div class="medium-6 text-right columns">{{ data.question }} =&nbsp;</div>
+    <div class="medium-6 text-left columns">
+        <span ng-hide="solved">{{ answer }}</span>
+        <span class="red" style="text-decoration: line-through">{{ incorrect_answer }}</span>
+        <span class="green">{{ correct_answer }}</span>
+    </div>
+</h2>
 <div class="row collapse">
     <form ng-submit="check_answer()">
         <div class="small-5 small-centered columns">
