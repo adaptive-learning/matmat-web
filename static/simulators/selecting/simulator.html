@@ -1,8 +1,10 @@
 <h2>{{data.question}}</h2>
-<div class="row collapse" style="height:33px;" ng-repeat="row in rows" ng-mouseleave="out()">
+<div class="row collapse" style="margin-bottom: 3px;" ng-repeat="row in rows" ng-mouseleave="out()">
     <span style="width:33px;" ng-repeat="cell in row">
         <img ng-src="{{getSrc(cell)}}" ng-click="click(cell)" ng-mouseenter="over(cell)"/>
+        <span ng-if="have_horizontal_gap(cell)" style="margin-right: 3px;"></span>
     </span>
+    <div class="" ng-if="have_vertical_gap(row)" style="margin-bottom: 3px;"></div>
 </div>
 <div style="height:30px;"></div>
 <form ng-submit="submit()"> 

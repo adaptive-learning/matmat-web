@@ -33,8 +33,14 @@ app.directive("counting", function(){
                         var div = document.createElement('div');
                         container.appendChild(div);
                         div.style.height = "33px";
+                        div.style.textAlign = "left";
+                        div.style.width = width*33 + 5 +"px";
+                        div.style.margin = "auto";
                         for (var j=0; j < num; j++) {
                             var span = document.createElement('span');
+                            if ((j + 1) % 5 == 0){
+                                span.style.marginRight = "5px";
+                            }
                             div.appendChild(span);
                             span.style.padding = "1px";
                             var img = document.createElement('img');

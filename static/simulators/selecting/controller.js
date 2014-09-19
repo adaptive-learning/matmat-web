@@ -38,7 +38,16 @@ app.directive("selecting", function(){
                     ret = "/static/img/cube_pink.png";
                 } 
                 return ret;
-            }
+            };
+
+            $scope.have_horizontal_gap = function(cell) {
+                return cell  % 5 == 0;
+            };
+
+            $scope.have_vertical_gap = function(row) {
+                console.log(row[row.length-1]);
+                return row[row.length-1] % 50 == 0;
+            };
 
             $scope.click = function(cell) {
                 $scope.selected = cell;
