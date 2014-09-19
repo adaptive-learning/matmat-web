@@ -20,8 +20,8 @@
             <div ng-controller="Loader" ng-show="!question.hide" class="animate-show">
                 <div class="result">
                     &nbsp;
-                    <span style="color: darkgreen;" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
-                    <span style="color: darkred;" ng-cloak ng-show="solved=='solved_incorrectly'">Špatně</span>
+                    <span class="green" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
+                    <span class="red" ng-cloak ng-show="solved=='solved_incorrectly'">Špatně</span>
                 </div>
 
                 <div ng-class="solved" id="playground"></div>
