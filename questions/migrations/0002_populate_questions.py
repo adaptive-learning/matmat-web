@@ -87,6 +87,23 @@ class Migration(DataMigration):
             Q(skill, free_answer,
               {"question": "%s + %s" % (a, b), "answer": str(a + b)})
 
+        X = set([])
+        for a in range(1, 11):
+            for b in range(1, 11):
+                X.add((a, b))
+        while len(X) < 150:
+            a, b = random.randint(1, 50), random.randint(1, 50)
+            X.add((a, b))
+        for a, b in X:
+            if a <= 20 and b <= 20 and a + b <= 20:
+                x, y = (a, b) if a <= b else (b, a)
+                skill = '%s+%s' % (x, y)
+            else:
+                skill = "addition <= 100"
+            Q(skill, counting,
+              {"question": [a, b], "answer": str(a + b),
+               "prefix": "%s + %s" % (a, b), "width": 10})
+
         # Subtraction:
         # ------------
         # up to 20
@@ -116,6 +133,9 @@ class Migration(DataMigration):
             if total and a <= 5 and b <= 5:
                 Q(skill, counting,
                   {"question": [total], "answer": str(total), "width": b})
+                Q(skill, counting,
+                  {"question": [total], "answer": str(total), "width": b,
+                   "prefix": "%s x %s" % (a, b)})
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, field, {"field": decode_field(x), "answer": a * b})
