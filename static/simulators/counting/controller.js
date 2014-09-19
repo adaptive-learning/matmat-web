@@ -11,6 +11,8 @@ app.directive("counting", function(){
             $scope.showForm = true;
             $scope.show10 = false;
             $scope.show20 = false;
+            $scope.prefix = $scope.data.prefix || '';
+            if ($scope.prefix != '') $scope.prefix += ' = ';
 
             var ans = parseInt($scope.data.answer);
             if (ans <= 7) {
@@ -22,11 +24,19 @@ app.directive("counting", function(){
                 $scope.show20 = true;
             } 
 
+
             var width = $scope.data.width;
             var container = document.getElementById('count_display');
             var q = $scope.data.question;
+            var prev = "string";
             for (var i=0; i < q.length; i++) {
                 if (typeof q[i] == "number") {
+                    if (prev == "number") {
+                        // add some vertical space
+                        var div = document.createElement('div');
+                        container.appendChild(div);
+                        div.style.height = "20px";
+                    }
                     var ctr = q[i];
                     while (ctr > 0) {
                         var num = Math.min(ctr, width);
@@ -46,6 +56,12 @@ app.directive("counting", function(){
                             var img = document.createElement('img');
                             span.appendChild(img);
                             img.src = "/static/img/cube_orange.png";
+                            alpha = Math.floor(Math.random() * 100 / 0.5) + 50;
+                            //img.style.filter       = "alpha(opacity=" + str(alpha) + ");";
+                            alpha = alpha / 100;
+                            img.style.MozOpacity   = alpha;
+                            img.style.opacity      = alpha;
+                            img.style.KhtmlOpacity = alpha;
                         }
                         ctr = ctr - width;
                     }
@@ -54,6 +70,7 @@ app.directive("counting", function(){
                     container.appendChild(h2);
                     h2.textContent = q[i];
                 }
+                prev = typeof q[i];
             }
 
             $scope.set_text = function(n){
