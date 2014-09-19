@@ -8,22 +8,8 @@ app.directive("counting", function(){
         templateUrl: static_url + "simulators/counting/simulator.html",
         controller: function($scope){
             $scope.response = '';
-            $scope.showForm = true;
-            $scope.show10 = false;
-            $scope.show20 = false;
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
-
-            var ans = parseInt($scope.data.answer);
-            if (ans <= 7) {
-                $scope.showForm = false;
-                $scope.show10 = true;
-            } else if (ans <= 17) {
-                $scope.showForm = false;
-                $scope.show10 = true;
-                $scope.show20 = true;
-            } 
-
 
             var width = $scope.data.width;
             var container = document.getElementById('count_display');
