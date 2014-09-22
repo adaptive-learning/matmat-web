@@ -13,6 +13,12 @@ app.directive("field", function(){
             var field = $scope.data.field;
             for (var i=0; i < field.length; i++) {
                 var line = field[i];
+                var sum = 0;
+                for (var j=0; j < line.length; j++) {
+                    sum += line[j];
+                }
+                if (sum == 0)
+                    continue;
                 var div = document.createElement('div');
                 container.appendChild(div);
                 div.style.height = "33px";
