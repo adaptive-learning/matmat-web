@@ -55,14 +55,10 @@
 
 .numpad {
     padding: 10px;
-    width: 50px;
-    height: 50px;
     font-size: 16pt;
-}
-
-.numpadrow {
-    margin: 4px;
-    height: 50px;
+    margin-bottom: 0;
+    border: solid white 1px;
+    display: block;
 }
 
 

@@ -9,22 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <div ng-controller="Loader">
-        <div style="width: 170px; float: right;">
-            {% verbatim %}
-            <div style="width: 170px;" class="row collapse">
-                <div class="small-5 small columns">
-                    <input class="text-center" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
-                </div>
-                <div class="small-7 small columns">
-                    <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
-                </div>
-            </div>
-            <keyboard />
-            {% endverbatim %}
-        </div>
-
-        <div style="margin-right: 170px; margin-top: 30px;">
+    <div class="row" ng-controller="Loader">
+        <div class="medium-10 columns">
             <div ng-show="!question.hide" class="animate-show">
                 <div class="result">
                     &nbsp;
@@ -38,6 +24,21 @@
             <div ng-show="loading" class="animate-show">
                 <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
             </div>
+        </div>
+
+
+        <div class="medium-2 columns">
+            {% verbatim %}
+            <div class="row collapse">
+                <div class="small-centered small-5 medium-12 medium-uncentered large-5 columns">
+                    <input class="text-center" style="margin: 0;" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+                </div>
+                <div class="small-centered small-5 medium-12 medium-uncentered large-7 columns">
+                    <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
+                </div>
+            </div>
+            <keyboard />
+            {% endverbatim %}
         </div>
     </div>
 {% endblock %}
