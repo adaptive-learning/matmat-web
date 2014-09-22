@@ -77,7 +77,10 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
     };
 
     $scope.save_answer = function(){
-        if ($scope.test) return;
+        if ($scope.test){
+            console.log($scope.question);
+            return;
+        }
         $http.post("/q/save_answer/", $scope.question)
             .success(function(data){
                 $scope.chat = data;
@@ -125,8 +128,11 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
     };
 
     $scope.log_something = function(data){
-        $scope.question.log.push([(new Date().getTime() - $scope.question.start_time), data]);
-//        console.log($scope.question.log);
+        var log = [(new Date().getTime() - $scope.question.start_time), data];
+        $scope.question.log.push(log);
+        if ($scope.test) {
+            console.log(log);
+        }
     };
 
 
