@@ -27,11 +27,11 @@
                     {% endif %}
                 {% endfor %}
                 <hr/>
-                <table>
+                <table style="display: block;">
                 {% for row in skill_data.table %}
                     <tr>
                     {% for skill in row %}
-                        <td style="{{skill.style}}">
+                        <td style="display: inline-block; {{skill.style}}">
                             {{ skill.name }}
                         </td>
                     {% endfor %}
