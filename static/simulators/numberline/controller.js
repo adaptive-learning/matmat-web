@@ -12,7 +12,7 @@ app.directive("numberline", function(){
             $scope.selected_number = null;
 
             $scope.settings = {
-                width: 800,
+                width: $("#playground").width(),
                 height: 50,
                 offset: 50,
                 top: 15,
