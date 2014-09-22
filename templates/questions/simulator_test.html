@@ -48,6 +48,7 @@
 
 {% block extrascripts %}
     <script src="{% static "simulators/loader.js" %}"></script>
+    <script src="{% static "simulators/directives.js" %}"></script>
     {% for simulator in simulators %}
         <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
     {% endfor %}
