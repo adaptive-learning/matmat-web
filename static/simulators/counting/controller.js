@@ -65,8 +65,12 @@ app.directive("counting", function(){
             };
 
             $scope.submit = function() {
+                $scope.response = $scope.response.replace(/\s*-\s*/g,'-').trim();
                 var correct = $scope.response == $scope.data.answer;
-                $scope.interface.finish(correct);
+                var wait = correct ? 1000 : 3000;
+                $scope.solved = true;
+                $("#playground").find("input").prop('disabled', true);
+                $scope.interface.finish(correct, wait);
             };
 
             $scope.change = function(){

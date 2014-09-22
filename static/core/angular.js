@@ -61,6 +61,22 @@ app.directive("responseinput", function($timeout){
 });
 
 
+app.directive("responsespan", function($timeout){
+    return {
+        restrict: "E",
+        scope: {
+            answer: "=",
+            response: "=",
+            solved: "=",
+            default: "@"
+        },
+        templateUrl: static_url + "core/response-span.html",
+        controller: function($scope){
+        }
+    }
+});
+
+
 add_text = function(s){
     var input = $("#playground input.active");
     if (s == 'larr'){

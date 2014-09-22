@@ -14,7 +14,10 @@ app.directive("fillin", function(){
             $scope.check_answer = function(){
                 $scope.answer = $scope.answer.replace(/\s*-\s*/g,'-').trim();  
                 var correct = $scope.answer == $scope.data.answer;
-                $scope.interface.finish(correct);
+                var wait = correct ? 1000 : 3000;
+                $scope.solved = true;
+                $("#playground").find("input").prop('disabled', true);
+                $scope.interface.finish(correct, wait);
             };
 
             $scope.change = function(){

@@ -1,10 +1,6 @@
 <h2 class="row collapse">
     <div class="small-6 text-right columns">{{ data.question }} =&nbsp;</div>
-    <div class="small-6 text-left columns">
-        <span ng-hide="solved">{{ answer }}</span>
-        <span class="red" style="text-decoration: line-through">{{ incorrect_answer }}</span>
-        <span class="green">{{ correct_answer }}</span>
-    </div>
+    <div class="small-6 text-left columns"><responsespan answer="data.answer" response="answer" solved="solved" /></div>
 </h2>
 
 <responseinput ng-model="answer" submit="check_answer()" ng-change="change()" />
