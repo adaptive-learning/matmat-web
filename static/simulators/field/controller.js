@@ -8,6 +8,7 @@ app.directive("field", function(){
         templateUrl: static_url + "simulators/field/simulator.html",
         controller: function($scope){
             $scope.response = '';
+            $("#simulator-input").focus();
 
             var container = document.getElementById('count_display');
             var field = $scope.data.field;
