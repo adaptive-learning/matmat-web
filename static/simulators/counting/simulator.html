@@ -3,12 +3,11 @@
 </div>
 <div style="height:30px;"></div>
 <form ng-submit="submit()">
-    <div class="row collapse">
-        <div class="small-5 small-centered columns">
-            <input class="small-8 columns active" focus type="text" ng-model="response" autocomplete="off"  placeholder="Zadej svoji odpověď"/>
-        </div>
-        <div class="small-1 small-centered columns">
-            <input class="button postfix" type="submit" value="OK" />
-        </div>
+    <div class="small-8 medium-5 large-3 small-centered columns">
+        <input id="simulator-input" class="columns active" type="text" ng-change="change()" ng-model="answer" autocomplete="off" placeholder="Zadej svoji odpověď"/>
+    </div>
+    <div class="small-2 large-1 small-centered columns">
+        <input class="button postfix" type="submit" value="OK" />
     </div>
 </form>
+    
