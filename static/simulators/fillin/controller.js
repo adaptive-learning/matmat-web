@@ -19,7 +19,7 @@ app.directive("fillin", function(){
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer);
-                $scope.fill = ($scope.answer == '') ? '__' : $scope.answer;
+                $scope.fill = ($scope.answer == '') ? '_' : $scope.answer;
             };
         }
     }

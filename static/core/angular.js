@@ -43,6 +43,24 @@ app.directive("keyboard", function(){
     }
 });
 
+app.directive("responseinput", function($timeout){
+    return {
+        restrict: "E",
+        scope: {
+            ngModel: "=",
+            submit: "&",
+            ngChange: "&"
+        },
+        templateUrl: static_url + "core/response-input.html",
+        controller: function($scope){
+            $scope.change = function(){
+                $timeout($scope.ngChange, 0);
+            }
+        }
+    }
+});
+
+
 add_text = function(s){
     var input = $("#playground input.active");
     if (s == 'larr'){

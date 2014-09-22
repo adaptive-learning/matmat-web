@@ -69,7 +69,9 @@ app.directive("counting", function(){
                 $scope.interface.finish(correct);
             };
 
-//          TODO - logging
+            $scope.change = function(){
+                $scope.interface.log($scope.response);
+            };
         }
     }
 });

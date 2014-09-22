@@ -49,6 +49,7 @@ app.directive("selecting", function(){
             };
 
             $scope.click = function(cell) {
+                $scope.interface.log(cell);
                 $scope.selected = cell;
             };
 
@@ -60,7 +61,6 @@ app.directive("selecting", function(){
                 $scope.mover = 0;
             };
 
-//          TODO - logging
         }
     }
 });
