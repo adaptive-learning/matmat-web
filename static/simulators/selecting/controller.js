@@ -45,7 +45,6 @@ app.directive("selecting", function(){
             };
 
             $scope.have_vertical_gap = function(row) {
-                console.log(row[row.length-1]);
                 return row[row.length-1] % 50 == 0;
             };
 
