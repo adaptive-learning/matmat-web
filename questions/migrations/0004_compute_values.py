@@ -6,7 +6,7 @@ class Migration(DataMigration):
 
     def forwards(self, orm):
         for q in orm.Question.objects.all():
-            if q.skill.level == 4:
+            if q.skill.level == 4 and (q.skill.parent.parent.name == "addition"):
                 q.value = q.skill.name
             else:
                 question_data = json.loads(q.data)
