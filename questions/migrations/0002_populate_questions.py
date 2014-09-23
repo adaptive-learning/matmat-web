@@ -129,13 +129,13 @@ class Migration(DataMigration):
             total = a * b
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, free_answer,
-              {"question": "%s x %s" % (a, b), "answer": str(total)})
+              {"question": "%s &times; %s" % (a, b), "answer": str(total)})
             if total and a <= 5 and b <= 5:
                 Q(skill, counting,
                   {"question": [total], "answer": str(total), "width": b})
                 Q(skill, counting,
                   {"question": [total], "answer": str(total), "width": b,
-                   "prefix": "%s x %s" % (a, b)})
+                   "prefix": "%s &times; %s" % (a, b)})
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, field, {"field": decode_field(x), "answer": a * b})
