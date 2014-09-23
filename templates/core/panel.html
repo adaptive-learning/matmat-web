@@ -1,12 +1,14 @@
 {% load staticfiles %}
 {% load i18n core_tags %}
-<div class="contain-to-grid">
-    <nav class="top-bar" data-topbar>
+<div class="contain-to-grid" role="navigation">
+    <nav class="top-bar" data-topbar data-options="back_text: Zpět">
         <ul class="title-area">
             <li class="name">
                 <h1><a href="{% url "home" %}">MatMat</a></h1>
             </li>
         </ul>
+        <div class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></div>
+
         <section class="top-bar-section">
         <ul class="left">
             <li class="name">
