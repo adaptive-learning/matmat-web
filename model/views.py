@@ -1,3 +1,4 @@
+import colorsys
 from django.shortcuts import render
 from lazysignup.decorators import allow_lazy_user
 import math
@@ -17,6 +18,7 @@ def my_skills(request):
         skill = Skill.objects.get(name=name)
         getter = globals()['my_skills_' + name]
         data[skill] = getter(request.user)
+        skill.style = get_style(data[skill]["skill"])
         skills.append(skill)
 
     return render(request, 'model/my_skills.html', {
@@ -36,6 +38,7 @@ def get_user_skills(user, parent_list):
         # compute skill from parents:
         us.value = us.value + get_user_skill_value(user, us.skill.parent_id)
         us.value_percent = int(100. / (1 + math.exp(-us.value)))
+        us.style = get_style(us)
     return user_skills
 
 
@@ -48,6 +51,7 @@ def get_user_skill_by_name(name, user):
             get_user_skill_value(user, user_skill.skill.parent_id)
         user_skill.value_percent = \
             int(100. / (1 + math.exp(-user_skill.value)))
+        user_skill.style = get_style(user_skill)
     else:
         user_skill = None
 
@@ -158,10 +162,8 @@ def get_style(user_skill):
     ''' for now scale values from -5 to +5'''
     if user_skill is None:
         return 'background-color: rgba(127, 127, 127, 0);'
-    value = user_skill.value
-    if value >= 0:
-        value = min(value, 5)
-        return 'background-color: rgba(44, 160, 44, %.2f);' % (value / 5.)
-    if value < 0:
-        value = max(value, -5)
-        return 'background-color: rgba(214, 39, 40, %.2f);' % (-value / 5.)
+
+    value = (1 / (1 + math.exp(-user_skill.value)))
+    color = colorsys.hsv_to_rgb(1./12 + value * 2 / 9., 1, 0.8)
+    color = [int(c*255) for c in color]
+    return "background-color: rgba({0[0]}, {0[1]}, {0[2]}, 1);".format(color)

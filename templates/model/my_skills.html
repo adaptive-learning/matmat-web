@@ -5,7 +5,7 @@
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
              <dd {% if active == skill.name %}class="active"{% endif %}>
-                 <a style="background-image: url('{% static "core/imgs/skill_" %}{{ skill.name }}.png')"
+                 <a style="{{ skill.style }} background-image: url('{% static "core/imgs/skill_" %}{{ skill.name }}.png')"
                      href="#panel{{ skill.pk }}"
                      >
                      {{ skill.note }}</a></dd>
@@ -18,20 +18,28 @@
             {% if skill_data.skill %}
 
 
-                <h3>{{ skill_data.skill.skill.note }}:</h3>
-                <div class="progress large-5 alert round"> <span class="meter" style="width: {{ skill_data.skill.value_percent }}%"></span></div>
+                <h3>{{ skill_data.skill.skill.note }}</h3>
+                <div class="progress small-12 medium-10 large-8 small-centered round">
+                    <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
+                        {{ skill_data.skill.value_percent }}%
+                    </span>
+                </div>
                 {% for _, user_skill in skill_data.skills.items %}
                     {% if user_skill %}
-                        <b>{{ user_skill.skill.note }}</b>:<br/>
-                         <div class="progress large-5 round"> <span class="meter" style="width: {{ user_skill.value_percent }}%"></span></div>
+                        <b>{{ user_skill.skill.note }}</b>
+                         <div class="progress small-12 medium-10 large-8 small-centered round">
+                             <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
+                                 {{ user_skill.value_percent }}%
+                             </span>
+                         </div>
                     {% endif %}
                 {% endfor %}
                 <hr/>
-                <table style="display: block;">
+                <table class="user_skills" style="display: block;">
                 {% for row in skill_data.table %}
                     <tr>
                     {% for skill in row %}
-                        <td style="display: inline-block; {{skill.style}}">
+                        <td style="{{skill.style}}">
                             {{ skill.name }}
                         </td>
                     {% endfor %}

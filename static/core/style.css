@@ -134,7 +134,23 @@
 }
 
 .skill-tabs dd.active a{
-    background-color: rgba(52, 183, 255, 0.37);
+    box-shadow: 0 0 10px rgba(25, 167, 174, 0.88);
+}
+
+table.user_skills td{
+    border: 1px solid white;
+    text-align: center;
+}
+
+.progress{
+    height: 40px;
+}
+.progress .meter{
+    padding-top: 8px;
+    text-align: right;
+    padding-right: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 /* Table - alternating rows not colored */
