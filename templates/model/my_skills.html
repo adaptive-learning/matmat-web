@@ -26,7 +26,8 @@
                 </div>
                 {% for _, user_skill in skill_data.skills.items %}
                     {% if user_skill %}
-                        <b>{{ user_skill.skill.note }}</b>
+                        <b>{{ user_skill.skill.note }}</b> -
+                            <a href="{% url "play"%}?skill={{  user_skill.skill.pk }}">procvičit</a>
                          <div class="progress small-12 medium-10 large-8 small-centered round">
                              <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
                                  {{ user_skill.value_percent }}%
