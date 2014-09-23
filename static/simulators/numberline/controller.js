@@ -34,22 +34,33 @@ app.directive("numberline", function(){
             if ($scope.data.answer > 17) bound += 10 * (hash % 3);
 
             $scope.points = [];
-            $scope.range = [0, bound];
+            if ($scope.data.answer <= 10)
+                $scope.range = [0, 10];
+            else
+                $scope.range = [0, bound];
 
 
             $scope.populate_points = function(){
                 var line_length = $scope.settings.width - 2 * $scope.settings.offset;
                 var delta = line_length / ($scope.range[1] - $scope.range[0]);
+                var left = 0;
                 for (var i=$scope.range[0]; i<=$scope.range[1]; i++){
                     var point = {};
-                    point.number = $scope.range[0] + i;
-                    point.x = $scope.settings.offset + i * delta;
+                    point.number = i;
+                    point.x = $scope.settings.offset + left;
+                    left += delta;
                     point.y = $scope.settings.top;
                     point.r = 3;
                     if (point.number % 5 == 0) point.r = 4;
                     if (point.number % 10 == 0) point.r = 5;
                     point.display = "none";
-                    if (i == $scope.range[0] || i == $scope.range[1]) point.display = "block";
+                    if ($scope.data.answer <= 10) {
+                        if (i == 1 || i == 5 || i == 10) point.display = "block";
+                        if (i == $scope.data.answer) point.display = "none";
+                        if (i == 0 ) point.r = 2;
+                    }else{
+                        if (i == $scope.range[0] || i == $scope.range[1]) point.display = "block";
+                    }
                     $scope.points.push(point);
                 }
             };
@@ -72,15 +83,19 @@ app.directive("numberline", function(){
 
             };
 
-            $scope.check_answer = function(){
+            $scope.check_answer = function() {
                 var correct = $scope.selected_number == $scope.data.answer;
                 $(".numberline-point text").show();
-                $("#point"+$scope.data.answer+" text").css("font-weight", "bold");
-                $("#point"+$scope.data.answer+" circle.shadow").css("opacity", 1).css("fill", "green");
-                $("#point"+$scope.data.answer+" circle.point").css("fill", "green");
+                $("#point" + $scope.data.answer + " text").css("font-weight", "bold");
+                $("#point" + $scope.data.answer + " circle.shadow").css("opacity", 1).css("fill", "green");
+                $("#point" + $scope.data.answer + " circle.point").css("fill", "green");
+                if (!correct) {
+                    $("#point" + $scope.selected_number + " circle.shadow").css("opacity", 1).css("fill", "red");
+                    $("#point" + $scope.selected_number + " circle.point").css("fill", "red");
+                }
                 $scope.okShow = correct;
                 $scope.nokShow = !correct;
-                $scope.interface.finish(correct, 1500);
+                $scope.interface.finish(correct, 2000);
             };
 
             $scope.populate_points();
