@@ -159,13 +159,15 @@ def get_skill_repr(name, user_skills):
     if name in user_skills:
         return {'name': name, 'style': get_style(user_skills[name])}
     else:
-        return {'name': '', 'style': get_style(None)}
+        return {'name': '', 'style': get_style(None, name)}
 
 
-def get_style(user_skill):
-    ''' for now scale values from -5 to +5'''
+def get_style(user_skill, name=None):
+    ''' return css style of user skill'''
     if user_skill is None:
-        return 'background-color: rgba(127, 127, 127, 0);'
+        if name is None:
+            return 'background-color: rgba(127, 127, 0, 0.2);'
+        return 'background-color: rgba(127, 127, 0, 0);'
 
     value = (1 / (1 + math.exp(-user_skill.value)))
     color = colorsys.hsv_to_rgb(1./12 + value * 2 / 9., 1, 0.8)
