@@ -113,7 +113,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                 $("#playground").empty();
                 $scope.question = null;
                 if ($scope.counter.current == $scope.counter.total){
-                    window.location.replace("/");
+                    window.location.replace("/m/my_skills/"+$scope.skill_id);
                 }else{
                     $scope.next_question();
                 }

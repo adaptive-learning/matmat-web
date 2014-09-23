@@ -9,8 +9,10 @@ NAMES = ('numbers', 'addition', 'subtraction', 'multiplication', 'division')
 
 
 @allow_lazy_user
-def my_skills(request):
+def my_skills(request, pk=None):
     get_user_skill_value.clear()    # clear cache for skill value getter
+
+    active = "numbers"
 
     data = {}
     skills = []
@@ -20,11 +22,13 @@ def my_skills(request):
         data[skill] = getter(request.user)
         skill.style = get_style(data[skill]["skill"])
         skills.append(skill)
+        if pk in skill.children_list.split(","):
+            active = name
 
     return render(request, 'model/my_skills.html', {
         "data": data,
         "skills": skills,
-        "active": "numbers",
+        "active": active,
     })
 
 
