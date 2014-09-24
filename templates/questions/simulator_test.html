@@ -18,6 +18,7 @@
                     simulator='{{ simulator }}';
                     ">
             <div ng-controller="Loader" ng-show="!question.hide" class="animate-show medium-10 columns">
+                <div class="text-center show-for-small-only">{{ counter.current }} z {{ counter.total }}</div>
                 <div class="result" >
                     &nbsp;
                     <span class="green" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
@@ -29,12 +30,12 @@
 
             <div class="medium-2 columns">
                 {% verbatim %}
-                <div class="row collapse">
+                <div class="row collapse show-for-medium-up">
                     <div class="small-centered small-5 medium-12 medium-uncentered large-5 columns">
                         <input class="text-center" style="margin: 0;" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
                     </div>
                     <div class="small-centered small-5 medium-12 medium-uncentered large-7 columns">
-                        <input class="button postfix" type="button" ng-click="skip()" value="Přeskočit" />
+                        <input class="button postfix" type="button" ng-click="skip()" value="Nevím" />
                     </div>
                 </div>
                 <keyboard />

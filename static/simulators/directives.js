@@ -19,6 +19,10 @@ app.directive("keyboard", function(){
                 CommonData.submit();
             };
 
+            $scope.skip = function(){
+                CommonData.skip();
+            };
+
             $scope.switch_visibility = function(){
                 $("#keyboard-buttons").addClass("animate-show-drop");
                 if ($scope.hidden) {

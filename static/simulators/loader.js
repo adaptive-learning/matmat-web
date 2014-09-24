@@ -122,7 +122,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         }, wait_time);
     };
 
-    $scope.skip = function(){
+    CommonData.skip = $scope.skip = function(){
         $scope.log_something("skipped");
         $scope.finish_question(false, 0);
     };
@@ -135,12 +135,9 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         }
     };
 
-
     $scope.interface = {};
     $scope.interface.finish = $scope.finish_question;
     $scope.interface.log = $scope.log_something;
 
     $scope.next_question();
-
-
 });
