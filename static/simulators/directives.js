@@ -7,11 +7,17 @@ app.directive('focus', function(){
 app.directive("keyboard", function(){
     return {
         restrict: "E",
+        submit: "=",
         scope: {
         },
         templateUrl: static_url + "simulators/keyboard.html",
-        controller: function($scope, $cookieStore){
+        controller: function($scope, $cookieStore, CommonData){
             $scope.hidden = !$cookieStore.get("keyboard");
+            $scope.submit = CommonData.submit;
+
+            $scope.submit = function(){
+                CommonData.submit();
+            };
 
             $scope.switch_visibility = function(){
                 $("#keyboard-buttons").addClass("animate-show-drop");

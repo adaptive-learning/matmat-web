@@ -6,7 +6,7 @@ app.directive("field", function(){
             interface: "=interface"
         },
         templateUrl: static_url + "simulators/field/simulator.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
             $scope.response = '';
             $("#simulator-input").focus();
 
@@ -50,6 +50,7 @@ app.directive("field", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
+            CommonData.submit = $scope.submit;
 
             $scope.change = function(){
                 $scope.interface.log($scope.response);

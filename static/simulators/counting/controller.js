@@ -6,7 +6,7 @@ app.directive("counting", function(){
             interface: "=interface"
         },
         templateUrl: static_url + "simulators/counting/simulator.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
             $scope.response = '';
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
@@ -72,6 +72,7 @@ app.directive("counting", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
+            CommonData.submit = $scope.submit;
 
             $scope.change = function(){
                 $scope.interface.log($scope.response);

@@ -6,7 +6,7 @@ app.directive("freeanswer", function(){
             interface: "=interface"
         },
         templateUrl: static_url + "simulators/free_answer/simulator.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
             $scope.answer = '';
             $("#simulator-input").focus();
 
@@ -18,6 +18,7 @@ app.directive("freeanswer", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
+            CommonData.submit = $scope.check_answer;
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer);

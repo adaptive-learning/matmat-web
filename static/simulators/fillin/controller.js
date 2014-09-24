@@ -6,7 +6,7 @@ app.directive("fillin", function(){
             interface: "=interface"
         },
         templateUrl: static_url + "simulators/fillin/simulator.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
             $scope.fill = '_';
             $scope.answer = '';
             $("#simulator-input").focus();
@@ -19,6 +19,7 @@ app.directive("fillin", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
+            CommonData.submit = $scope.check_answer;
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer);

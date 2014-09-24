@@ -2,7 +2,8 @@ var app = angular.module('matmat', ["ngCookies", "ngAnimate"]);
 
 app.factory("CommonData", function(){
         return {
-            test: "hello world"
+            test: "hello world",
+            submit: null        // function which ends question in simulator
         }
     }
 );
