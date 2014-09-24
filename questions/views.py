@@ -86,7 +86,8 @@ class SimulatorTestView(View):
             simulator = request.GET["simulator"]
             questions = Question.objects.filter(player_id=simulator)
             form = SelectSkillForm(request.GET)
-            form.fields["question"] = forms.ModelChoiceField(queryset=questions, required=False)
+            form.fields["question"] = forms.ModelChoiceField(queryset=questions, required=False,
+                                                             widget=forms.Select(attrs={"onChange": "submit()"}))
             form.fields["own_question"] = forms.CharField(initial="{}", required=False, )
         else:
             form = SelectSkillForm()
@@ -101,6 +102,9 @@ class SimulatorTestView(View):
         if "question" in request.GET and request.GET["question"] != "":
             question = request.GET["question"]
             question = get_object_or_404(Question, pk=question)
+        if question is None or question.player != simulator:
+            if Question.objects.filter(player=simulator).count() > 0:
+                question = Question.objects.filter(player=simulator)[0]
 
         return render(request, 'questions/simulator_test.html', {
             "form": form,
@@ -115,4 +119,5 @@ simulator_test = SimulatorTestView.as_view()
 
 class SelectSkillForm(forms.Form):
     # skill = forms.ModelChoiceField(queryset=Skill.objects.all())
-    simulator = forms.ModelChoiceField(queryset=Simulator.objects.all(), required=True)
+    simulator = forms.ModelChoiceField(queryset=Simulator.objects.all(), required=True
+                                       , widget=forms.Select(attrs={"onChange": "submit()"}))
