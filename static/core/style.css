@@ -148,6 +148,8 @@
 table.user_skills td{
     border: 1px solid white;
     text-align: center;
+    display: inline-block;
+    width: 60px;
 }
 
 .progress{

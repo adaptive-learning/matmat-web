@@ -39,11 +39,11 @@
                 <table class="user_skills" style="display: block;">
                 {% for row in skill_data.table %}
                     <tr>
-                    {% for skill in row %}
-                        <td style="{{skill.style}}">
+                    {% for skill in row %}<!-- to avoid whitespaces in inline-block
+                --><td style="{{skill.style}}">
                             {{ skill.name }}
-                        </td>
-                    {% endfor %}
+                        </td><!--
+                 -->{% endfor %}
                     </tr>
                 {% endfor %}
                 </table>
