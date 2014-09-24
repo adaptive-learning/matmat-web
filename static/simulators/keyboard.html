@@ -1,10 +1,8 @@
 <div id="keyboard">
     <p ng-click="switch_visibility()" class="keyboard-text">
         {{ text }}
-        <div class="hide-for-small-only">
-            <span ng-hide="hidden">Skrýt</span>
-            <span ng-show="hidden">Zobrazit klávesnici</span>
-        </div>
+        <span ng-hide="hidden">Skrýt</span>
+        <span ng-show="hidden">Zobrazit klávesnici</span>
     </p>
     <div id="keyboard-buttons" ng-hide="hidden">
     <div>
