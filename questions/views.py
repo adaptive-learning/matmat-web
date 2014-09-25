@@ -102,7 +102,7 @@ class SimulatorTestView(View):
         if "question" in request.GET and request.GET["question"] != "":
             question = request.GET["question"]
             question = get_object_or_404(Question, pk=question)
-        if question is None or question.player != simulator:
+        if question is None or str(question.player.pk) != simulator:
             if Question.objects.filter(player=simulator).count() > 0:
                 question = Question.objects.filter(player=simulator)[0]
 
