@@ -1,4 +1,5 @@
 from django import template
+from core.models import is_user_logged
 
 register = template.Library()
 
@@ -8,6 +9,6 @@ def is_auth(value):
     if not value.is_authenticated or value.is_anonymous():
         return False
 
-    return value.social_auth.exists()
+    return is_user_logged(value)
 
 

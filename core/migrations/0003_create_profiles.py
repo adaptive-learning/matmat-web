@@ -13,7 +13,7 @@ class Migration(DataMigration):
         # Creating profiles for current Users
 
         for user in User.objects.all():
-            create_profile(User, created=True, instance=user)
+            create_profile(user)
 
     def backwards(self, orm):
         "Write your backwards methods here."
