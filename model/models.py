@@ -7,7 +7,7 @@ from elo.DataProviderInterface import DataProviderInterface
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     note = models.TextField(blank=True, null=True)
     parent = models.ForeignKey("self", null=True, blank=True, related_name="children")
     level = models.IntegerField()
