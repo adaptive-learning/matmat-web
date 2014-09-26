@@ -2,6 +2,6 @@
 
 {% block extrascripts%}
     <script type="text/javascript">
-        closePopupAndUpdateOpener("{% url "home" %}");
+        closePopupAndUpdateOpener("{% if user.profile.has_children %}{% url "supervisor_overview" %}{% else %}{% url "home" %}{% endif %}");
     </script>
 {% endblock %}
