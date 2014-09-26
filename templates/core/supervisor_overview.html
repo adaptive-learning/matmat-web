@@ -2,25 +2,44 @@
 {% load staticfiles %}
 
 {% block content%}
-    <h4>Děti</h4>
+    <h4>Přihlásit se jako</h4>
+    <div class="button-bar">
     {% for child in user.profile.children.all    %}
-        <div>
-           <a href="{% url "log_as_child" child.user.pk %}"> {{ child.user.first_name }}</a>
-            - <a href="{% url "edit_child" child.user.pk %}">upravit</a>
-        </div>
+        <ul class="button-group round">
+            <li><a class="button"  href="{% url "log_as_child" child.user.pk %}">
+                  {{ child.user.first_name }}
+            </a></li>
+            <li>
+                <div class="dropdown_arrow button dropdown" data-dropdown="drop{{ child.pk }}"
+                     aria-controls="drop{{ child.pk }}" aria-expanded="true">&nbsp;</div>
+            </li>
+        </ul>
+
+        <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+            <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
+        </ul>
     {% endfor %}
-
+    </div>
     <hr/>
-    <h4>{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}</h4>
-    {% if child_pk %}
-        <form action="{% url "edit_child" child_pk %}" method="post">
-    {% else %}
-        <form action="{% url "supervisor_overview" %}" method="post">
-    {% endif %}
 
-        {% csrf_token %}
-        {{ child_form }}
-        <input type="submit" class="button" value="{{ child_pk|yesno:"Upravit, Přidat" }}"/>
-    </form>
+    <dl class="accordion" data-accordion>
+        <dd class="accordion-navigation">
+            <a href="#panel1">{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}</a>
+            <div id="panel1" class="content {{ child_pk|yesno:"active," }}">
+
+                {% if child_pk %}
+                    <form action="{% url "edit_child" child_pk %}" method="post">
+                {% else %}
+                    <form action="{% url "supervisor_overview" %}" method="post">
+                {% endif %}
+
+                    {% csrf_token %}
+                    {{ child_form }}
+                    <input type="submit" class="button radius" value="{{ child_pk|yesno:"Upravit, Přidat" }}"/>
+                </form>
+
+            </div>
+        </dd>
+    </dl>
 
 {% endblock %}

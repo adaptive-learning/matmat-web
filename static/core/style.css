@@ -200,3 +200,8 @@ p.keyboard-text{
 /* Colors */
 .red{ color: darkred;}
 .green{ color: darkgreen;}
+
+
+.dropdown_arrow{
+    padding-right: 10px !important;
+}
