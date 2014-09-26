@@ -1,2 +1,2 @@
-<h2>{{ data.pre }}<span style="color: blue"><responsespan answer="data.answer" response="answer" solved="solved" default="_"/></span>{{ data.post }}</h2>
-<responseinput ng-model="answer" submit="check_answer()" ng-change="change()" />
+<h2>{{ data.pre }}<span style="color: blue"><responsespan answer="data.answer" response="answer.value" solved="solved" default="_"/></span>{{ data.post }}</h2>
+<responseinput ng-model="answer.value" submit="check_answer()" ng-change="change()" />

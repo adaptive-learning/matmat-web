@@ -1,39 +1,48 @@
-<div id="keyboard">
+<div id="keyboard" ng-hide="global.keyboard == 'gone'">
     <p ng-click="switch_visibility()" class="keyboard-text">
         {{ text }}
         <span ng-hide="hidden">Skrýt</span>
         <span ng-show="hidden">Zobrazit klávesnici</span>
     </p>
     <div id="keyboard-buttons" ng-hide="hidden">
-    <div>
-        <input type="button" class="button numpad small-2 small-offset-3 medium-offset-0 medium-4 columns" value="1" onclick="add_text('1')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="2" onclick="add_text('2')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="3" onclick="add_text('3')" />
-        <div></div>
-    </div>
-    <div>
-        <input type="button" class="button numpad small-2 small-offset-3 medium-offset-0 medium-4 columns" value="4" onclick="add_text('4')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="5" onclick="add_text('5')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="6" onclick="add_text('6')" />
-        <div></div>
-    </div>
-    <div>
-        <input type="button" class="button numpad small-2 small-offset-3 medium-offset-0 medium-4 columns" value="7" onclick="add_text('7')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="8" onclick="add_text('8')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="9" onclick="add_text('9')" />
-        <div></div>
-    </div>
-    <div>
-        <input type="button" class="button numpad small-2 small-offset-3 medium-offset-0 medium-4 columns" value="." onclick="add_text('.')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="0" onclick="add_text('0')" />
-        <input type="button" class="button numpad small-2 medium-4 columns" value="&larr;" onclick="add_text('larr')" />
-        <div></div>
-    </div>
-    <div>
-        <input type="button" class="button numpad small-4 small-offset-5 medium-8 medium-offset-4 columns" value="OK" ng-click="submit()" />
-    </div>
-    <div>
-        <input type="button" class="button numpad small-4 small-offset-5 medium-8 medium-offset-4 columns show-for-small-only" value="Nevím" ng-click="skip()" />
-    </div>
+        <div ng-cloak ng-show="global.keyboard == 'full'" class="small-8 medium-6 large-4 small-centered column">
+            <div>
+                <input type="button" class="button numpad small-4 columns" value="1" ng-click="add_text('1')" />
+                <input type="button" class="button numpad small-4 columns" value="2" ng-click="add_text('2')" />
+                <input type="button" class="button numpad small-4 columns" value="3" ng-click="add_text('3')" />
+                <div></div>
+            </div>
+            <div>
+                <input type="button" class="button numpad small-4 columns" value="4" ng-click="add_text('4')" />
+                <input type="button" class="button numpad small-4 columns" value="5" ng-click="add_text('5')" />
+                <input type="button" class="button numpad small-4 columns" value="6" ng-click="add_text('6')" />
+                <div></div>
+            </div>
+            <div>
+                <input type="button" class="button numpad small-4 columns" value="7" ng-click="add_text('7')" />
+                <input type="button" class="button numpad small-4 columns" value="8" ng-click="add_text('8')" />
+                <input type="button" class="button numpad small-4 columns" value="9" ng-click="add_text('9')" />
+                <div></div>
+            </div>
+            <div>
+                <input type="button" class="button numpad small-4 columns" value="." ng-click="add_text('.')" />
+                <input type="button" class="button numpad small-4 columns" value="0" ng-click="add_text('0')" />
+                <input type="button" class="button numpad small-4 columns" value="&larr;" ng-click="add_text('larr')" />
+                <div></div>
+            </div>
+            <div>
+                <input type="button" class="button numpad small-8 small-offset-4 columns" value="OK" ng-click="submit()" />
+            </div>
+            <div>
+                <input type="button" class="button numpad small-8 small-offset-4 columns show-for-small-only" value="Nevím" ng-click="skip()" />
+            </div>
+        </div>
+
+        <div ng-cloak ng-show="global.keyboard == 'choices'" class="text-center choices">
+            <input type="button" class="button numpad small-1"
+                   value="{{ choice }}" ng-repeat="choice in global.choices"
+                   ng-click="submit_answer(choice)"
+                    />
+        </div>
     </div>
 </div>

@@ -7,8 +7,9 @@ app.directive("numberline", function(){
             interface: "=interface"     // interface of loader
         },
         templateUrl: static_url + "simulators/numberline/simulator.html",  // html
-        controller: function($scope){
+        controller: function($scope, CommonData){
 
+            CommonData.keyboard = "empty";
             $scope.selected_number = null;
 
             $scope.settings = {

@@ -7,9 +7,17 @@ app.directive("counting", function(){
         },
         templateUrl: static_url + "simulators/counting/simulator.html",
         controller: function($scope, CommonData){
-            $scope.response = '';
+            $scope.response = CommonData.input;
+            $scope.response.value = '';
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
+
+            if ($scope.data.answer <= 10){
+                CommonData.keyboard = "choices";
+                CommonData.choices = _.range(1, 11);
+            }else{
+                CommonData.keyboard = "full";
+            }
 
             var width = $scope.data.width;
             var container = document.getElementById('count_display');
@@ -60,13 +68,13 @@ app.directive("counting", function(){
             }
 
             $scope.set_text = function(n){
-                $scope.response = n;
+                $scope.response.value = n;
                 $scope.submit();
             };
 
             $scope.submit = function() {
-                $scope.response = $scope.response.replace(/\s*-\s*/g,'-').trim();
-                var correct = $scope.response == $scope.data.answer;
+                $scope.response.value = $scope.response.value.replace(/\s*-\s*/g,'-').trim();
+                var correct = $scope.response.value == $scope.data.answer;
                 var wait = correct ? 1000 : 3000;
                 $scope.solved = true;
                 $("#playground").find("input").prop('disabled', true);
@@ -75,7 +83,7 @@ app.directive("counting", function(){
             CommonData.submit = $scope.submit;
 
             $scope.change = function(){
-                $scope.interface.log($scope.response);
+                $scope.interface.log($scope.response.value);
             };
         }
     }

@@ -6,7 +6,8 @@ app.directive("selecting", function(){
             interface: "=interface"
         },
         templateUrl: static_url + "simulators/selecting/simulator.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
+            CommonData.keyboard = "empy";
             $scope.selected = 0;
             $scope.mover = 0;
 

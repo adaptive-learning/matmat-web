@@ -7,8 +7,16 @@ app.directive("field", function(){
         },
         templateUrl: static_url + "simulators/field/simulator.html",
         controller: function($scope, CommonData){
-            $scope.response = '';
+            $scope.response = CommonData.input;
+            $scope.response.value = '';
             $("#simulator-input").focus();
+
+            if ($scope.data.answer <= 10){
+                CommonData.keyboard = "choices";
+                CommonData.choices = _.range(1, 10);
+            }else{
+                CommonData.keyboard = "full";
+            }
 
             var container = document.getElementById('count_display');
             var field = $scope.data.field;
@@ -37,14 +45,9 @@ app.directive("field", function(){
                 }
             }
 
-            $scope.set_text = function(n){
-                $scope.response = n;
-                $scope.submit();
-            };
-
             $scope.submit = function() {
-                $scope.response = $scope.response.replace(/\s*-\s*/g,'-').trim();
-                var correct = $scope.response == $scope.data.answer;
+                $scope.response.value = $scope.response.value.replace(/\s*-\s*/g,'-').trim();
+                var correct = $scope.response.value == $scope.data.answer;
                 var wait = correct ? 1000 : 3000;
                 $scope.solved = true;
                 $("#playground").find("input").prop('disabled', true);
@@ -53,7 +56,7 @@ app.directive("field", function(){
             CommonData.submit = $scope.submit;
 
             $scope.change = function(){
-                $scope.interface.log($scope.response);
+                $scope.interface.log($scope.response.value);
             };
 
 //          TODO - show correct answer after incorrect response

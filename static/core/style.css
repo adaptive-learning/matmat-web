@@ -61,14 +61,6 @@
     margin: 150px auto auto;
 }
 
-.numpad {
-    padding: 10px;
-    font-size: 16pt;
-    margin-bottom: 0;
-    border: solid white 1px;
-    display: block;
-}
-
 
 /* Skill selection*/
 #skill_selector{
@@ -187,10 +179,6 @@ table tr:nth-of-type(2n) {
 .numberline-point:hover circle.point{ fill: black; }
 
 /* Keyboard */
-#keyboard .button{
-    border-radius: 3px;
-}
-
 p.keyboard-text{
     text-align: right;
     color: grey;
@@ -198,6 +186,18 @@ p.keyboard-text{
     margin-right: 10px;
 }
 
+.numpad {
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 16pt;
+    margin-bottom: 0;
+    border: solid white 1px;
+    display: block;
+}
+
+#keyboard .choices input{
+    display: inline-block;
+}
 
 /* Colors */
 .red{ color: darkred;}

@@ -4,7 +4,7 @@ app.directive('focus', function(){
     };
 });
 
-app.directive("keyboard", function(){
+app.directive("keyboard", function($timeout){
     return {
         restrict: "E",
         submit: "=",
@@ -13,10 +13,24 @@ app.directive("keyboard", function(){
         templateUrl: static_url + "simulators/keyboard.html",
         controller: function($scope, $cookieStore, CommonData){
             $scope.hidden = !$cookieStore.get("keyboard");
-            $scope.submit = CommonData.submit;
+            $scope.global = CommonData;
 
             $scope.submit = function(){
                 CommonData.submit();
+            };
+
+            $scope.submit_answer = function(answer){
+                $scope.add_text(answer);
+                $scope.submit();
+            };
+
+            $scope.add_text = function(s){
+                var value = $scope.global.input.value;
+                if (s == 'larr'){
+                    $scope.global.input.value = value.substring(0, input.val().length - 1);
+                }else{
+                    $scope.global.input.value = value + s;
+                }
             };
 
             $scope.skip = function(){
@@ -46,7 +60,8 @@ app.directive("responseinput", function($timeout){
             ngChange: "&"
         },
         templateUrl: static_url + "simulators/response-input.html",
-        controller: function($scope){
+        controller: function($scope, CommonData){
+            $scope.global = CommonData;
             $scope.change = function(){
                 $timeout($scope.ngChange, 0);
             }
@@ -55,7 +70,7 @@ app.directive("responseinput", function($timeout){
 });
 
 
-app.directive("responsespan", function($timeout){
+app.directive("responsespan", function(){
     return {
         restrict: "E",
         scope: {
@@ -69,15 +84,3 @@ app.directive("responsespan", function($timeout){
         }
     }
 });
-
-
-add_text = function(s){
-    var input = $("#playground input.active");
-    if (s == 'larr'){
-        input.val(input.val().substring(0, input.val().length - 1));
-    }else{
-        input.val(input.val() + s);
-    }
-    input.focus();
-    angular.element(input).triggerHandler('input');
-};
