@@ -49,7 +49,7 @@ class SupervisorOverviewView(View):
                 username = "child_" + rand
                 child = User(username=username, first_name=name)
                 child.save()
-                create_profile(child, forced=True)
+                create_profile(child)
                 request.user.profile.children.add(child.profile)
             else:
                 child = request.user.profile.children.get(user__pk=child_pk)

@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from core.models import is_user_logged
+from core.models import is_user_registred
 
 
 def non_lazy_required(view_function, redirect_to=None):
@@ -13,6 +13,6 @@ class NonLazyRequired(object):
         self.redirect_to = redirect_to
 
     def __call__(self, request, *args, **kwargs):
-        if not is_user_logged(request.user):
+        if not is_user_registred(request.user):
             return HttpResponseRedirect(self.redirect_to)
         return self.view_function(request, *args, **kwargs)

@@ -17,8 +17,8 @@ class UserProfile(models.Model):
         return self.children.exists()
 
 
-def is_user_logged(user):
-    if not user.is_authenticated or user.is_anonymous():
+def is_user_registred(user):
+    if not user.is_authenticated() or user.is_anonymous():
         return False
     if user.social_auth.exists():
         return True
@@ -30,13 +30,8 @@ def after_log_in(sender, **kwargs):
         create_profile(kwargs["user"])
 
 
-@receiver(post_save, sender=User)
-def post_user_save(sender, **kwargs):
-    user = kwargs["instance"]
-    create_profile(user)
-
-
-def create_profile(user, forced=False):
-    if forced or (not hasattr(user, "profile") and is_user_logged(user)):
+def create_profile(user):
+    if not hasattr(user, "profile") and is_user_registred(user):
         profile = UserProfile(user=user)
         profile.save()
+        return profile
