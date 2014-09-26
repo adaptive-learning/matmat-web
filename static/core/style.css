@@ -187,8 +187,10 @@ table tr:nth-of-type(2n) {
 .numberline-point:hover circle.point{ fill: black; }
 
 /* Keyboard */
-#keyboard{
+#keyboard .button{
+    border-radius: 3px;
 }
+
 p.keyboard-text{
     text-align: right;
     color: grey;
