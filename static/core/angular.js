@@ -4,11 +4,14 @@ app.factory("CommonData", function(){
         return {
             test: "hello world",
 
-//            for sumulators
-            submit: null,       // function which ends question in simulator
-            skip: null,        // skip question in simulator
-            input: {"value": ""},        // curent input
-            keyboard: 'gone'     // keyboard mode
+//            for simulators
+            submit: null,                   // function which ends question in simulator
+            skip: null,                     // function which skip question in simulator
+            simulator_active: false,        // indicate if simulator is active
+            input: {"value": ""},           // current input
+            keyboard: 'gone',               // keyboard mode
+            log_something: null             // simulator logger
+
         }
     }
 );
