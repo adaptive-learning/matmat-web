@@ -16,6 +16,9 @@ class Skill(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_image_name(self):
+        return "core/imgs/skill_{}.png".format(self.name)
+
 
 @receiver(pre_save, sender=Skill)
 def compute_level(sender, instance, **kwargs):

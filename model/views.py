@@ -21,7 +21,7 @@ SKILL_TABLES = {
     [['%s/%s' % (a * b, b) for a in range(11)] for b in range(1, 11)],
 }
 
-skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style']
+skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name']
 SkillTuple = namedtuple('Skill', ', '.join(skill_keys))
 skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
@@ -41,6 +41,7 @@ def my_skills(request, pk=None):
         skill = get_skill_obj_by_name(name, all_skills)
         skills.append(skill)
         data.append(get_my_skills(name, all_skills))
+        print skill
 
     ret = render(request, 'model/my_skills.html', {
         "data": data,
@@ -103,6 +104,7 @@ def get_children(parent_list, skills):
 def get_skill_obj(sid, skills):
     obj = {'name': skills['id_name'][sid],
            'value': skills['id_val'][sid],
+           'image_name': "core/imgs/skill_{}.png".format(skills['id_name'][sid]),
            'pk': sid,
            'note': skills['id_note'][sid]}
     obj['value_percent'] = int(100. / (1 + math.exp(-obj['value'])))

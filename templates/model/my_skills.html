@@ -5,7 +5,7 @@
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
              <dd {% if active == skill.name %}class="active"{% endif %}>
-                 <a style="{{ skill.style }} background-image: url('{% static "core/imgs/skill_" %}{{ skill.name }}.png')"
+                 <a style="{{ skill.style }} background-image: url('{% static skill.image_name %}')"
                      href="#panel{{ skill.pk }}"
                      >
                      {{ skill.note }}</a></dd>
