@@ -207,3 +207,10 @@ p.keyboard-text{
 .dropdown_arrow{
     padding-right: 10px !important;
 }
+
+.tick{
+    background-image: url("imgs/tick.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 70%;
+}
