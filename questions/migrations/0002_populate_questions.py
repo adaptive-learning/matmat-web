@@ -55,14 +55,6 @@ class Migration(DataMigration):
             # number -> number-line
             Q(str(n), numberline, {"question": str(n), "answer": n})
 
-        for n in range(1, 11):
-            pre = ', '.join(map(str, range(1, n)))
-            pre = pre + ', ' if pre else ''
-            post = ', '.join(map(str, range(n + 1, 11)))
-            post = ', ' + post if post else ''
-            Q('numbers <= 10', fillin,
-              {"pre": pre, "post": post, "answer": str(n)})
-
         # Addition:
         # ---------
         for a in range(1, 21):
