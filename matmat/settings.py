@@ -79,6 +79,8 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
 STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 STATIC_URL = '/static/'
 
