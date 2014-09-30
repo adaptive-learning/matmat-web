@@ -10,6 +10,7 @@ app.directive("selecting", function(){
             CommonData.keyboard = "empy";
             $scope.selected = 0;
             $scope.mover = 0;
+            $scope.simple = $scope.data.answer < 10;
 
             $scope.rows = [];
             var nrows = $scope.data.nrows;
@@ -20,15 +21,40 @@ app.directive("selecting", function(){
                     row.push(r * ncols + c + 1);
                 }
                 $scope.rows.push(row);
-            };
+            }
 
             $scope.submit = function() {
                 var correct = $scope.selected == $scope.data.answer;
-                $scope.interface.finish(correct);
+                if (correct){
+                    $scope.finished = true;
+                    $scope.interface.finish(correct);
+                }else{
+                    $scope.finished_wrong = true;
+                    setTimeout(function() {
+                        $scope.finished = true;
+                        $scope.$digest();
+                    }, 1000);
+                    $scope.interface.finish(correct, 2500);
+                }
             };
 
             $scope.getSrc = function(cell) {
                 var ret = "/static/img/cube_grey.png";
+
+                if ($scope.finished){
+                    if (cell <= $scope.data.answer){
+                        ret = "/static/img/cube_green.png";
+                    }
+                    return ret;
+                }
+
+                if ($scope.finished_wrong){
+                    if (cell <= $scope.selected){
+                        ret = "/static/img/cube_red.png";
+                    }
+                    return ret;
+                }
+
                 if (cell <= $scope.selected) {
                     ret = "/static/img/cube_orange.png";
                 } 
@@ -37,7 +63,8 @@ app.directive("selecting", function(){
                 } 
                 if (cell <= $scope.selected && cell <= $scope.mover) {
                     ret = "/static/img/cube_pink.png";
-                } 
+                }
+
                 return ret;
             };
 
@@ -52,6 +79,9 @@ app.directive("selecting", function(){
             $scope.click = function(cell) {
                 $scope.interface.log(cell);
                 $scope.selected = cell;
+                if ($scope.simple){
+                    $scope.submit();
+                }
             };
 
             $scope.over = function(cell) {

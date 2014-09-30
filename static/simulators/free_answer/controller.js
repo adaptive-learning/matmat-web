@@ -11,7 +11,7 @@ app.directive("freeanswer", function(){
             $scope.answer.value = '';
             $("#simulator-input").focus();
 
-            if ($scope.data.answer <= 10){
+            if ($scope.data.answer <= 10 && $scope.data.question.indexOf("+") > -1){
                 CommonData.keyboard = "choices";
                 CommonData.choices = _.range(1, 11);
             }else{

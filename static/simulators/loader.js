@@ -72,6 +72,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
             $compile(questionDirective)($scope);
             $scope.question.start_time = new Date().getTime();
             $scope.loading = false;
+            CommonData.simulator_active = true;
         }
         $scope.get_questions_from_server();
     };
@@ -96,6 +97,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
 
 
     $scope.finish_question = function(correctly_solved, wait_time){
+        CommonData.simulator_active = false;
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
         $scope.log_something("finished");
@@ -134,6 +136,7 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
             console.log(log);
         }
     };
+    CommonData.log_something = $scope.log_something;
 
     $scope.interface = {};
     $scope.interface.finish = $scope.finish_question;

@@ -7,7 +7,6 @@ app.directive('focus', function(){
 app.directive("keyboard", function($timeout){
     return {
         restrict: "E",
-        submit: "=",
         scope: {
         },
         templateUrl: static_url + "simulators/keyboard.html",
@@ -20,17 +19,23 @@ app.directive("keyboard", function($timeout){
             };
 
             $scope.submit_answer = function(answer){
+                if (!$scope.global.simulator_active)
+                    return;
                 $scope.add_text(answer);
                 $scope.submit();
             };
 
             $scope.add_text = function(s){
+                if (!$scope.global.simulator_active)
+                    return;
                 var value = $scope.global.input.value;
                 if (s == 'larr'){
-                    $scope.global.input.value = value.substring(0, input.val().length - 1);
+                    $scope.global.input.value = value.substring(0, $scope.global.input.value.length - 1);
                 }else{
                     $scope.global.input.value = value + s;
                 }
+                $scope.global.log_something("soft-kyeborad:"+s);
+                $scope.global.log_something($scope.global.input.value)
             };
 
             $scope.skip = function(){
