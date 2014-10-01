@@ -22,7 +22,19 @@
     <script src="{% static "core/scripts.js" %}"></script>
     <script src="{% static "core/angular.js" %}"></script>
     <script>
-        var static_url = '{{ STATIC_URL }}';
+        var template_urls = {
+            "keyboard": "{% static "simulators/keyboard.html" %}",
+            "response-input": "{% static "simulators/response-input.html" %}",
+            "response-span": "{% static "simulators/response-span.html" %}",
+
+            "counting": "{% static "simulators/counting/simulator.html" %}",
+            "example": "{% static "simulators/example/simulator.html" %}",
+            "field": "{% static "simulators/field/simulator.html" %}",
+            "fillin": "{% static "simulators/fillin/simulator.html" %}",
+            "free_answer": "{% static "simulators/free_answer/simulator.html" %}",
+            "numberline": "{% static "simulators/numberline/simulator.html" %}",
+            "selecting": "{% static "simulators/selecting/simulator.html" %}"
+        }
     </script>
     {% include "core/googleanalytics.html" %}
     {% block extrascripts %}{% endblock %}

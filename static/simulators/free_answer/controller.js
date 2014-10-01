@@ -5,7 +5,7 @@ app.directive("freeanswer", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: static_url + "simulators/free_answer/simulator.html",
+        templateUrl: template_urls["free_answer"],
         controller: function($scope, CommonData){
             $scope.answer = CommonData.input;
             $scope.answer.value = '';

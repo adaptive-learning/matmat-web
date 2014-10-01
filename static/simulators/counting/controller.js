@@ -5,7 +5,7 @@ app.directive("counting", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: static_url + "simulators/counting/simulator.html",
+        templateUrl: template_urls["counting"],
         controller: function($scope, CommonData){
             $scope.response = CommonData.input;
             $scope.response.value = '';

@@ -6,7 +6,7 @@ app.directive("example", function(){
             data: "=data",              // json data from database
             interface: "=interface"     // interface of loader
         },
-        templateUrl: static_url + "simulators/example/simulator.html",  // html
+        templateUrl: template_urls["example"],  // html
         controller: function($scope){
                 /*
                     During solving log interesting actions

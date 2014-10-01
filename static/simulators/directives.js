@@ -9,7 +9,7 @@ app.directive("keyboard", function($timeout){
         restrict: "E",
         scope: {
         },
-        templateUrl: static_url + "simulators/keyboard.html",
+        templateUrl: template_urls["keyboard"],
         controller: function($scope, $cookieStore, CommonData){
             $scope.hidden = !$cookieStore.get("keyboard");
             $scope.global = CommonData;
@@ -64,7 +64,8 @@ app.directive("responseinput", function($timeout){
             submit: "&",
             ngChange: "&"
         },
-        templateUrl: static_url + "simulators/response-input.html",
+        templateUrl: template_urls["response-input"],
+
         controller: function($scope, CommonData){
             $scope.global = CommonData;
             $scope.change = function(){
@@ -84,7 +85,7 @@ app.directive("responsespan", function(){
             solved: "=",
             default: "@"
         },
-        templateUrl: static_url + "simulators/response-span.html",
+        templateUrl: template_urls["response-span"],
         controller: function($scope){
         }
     }

@@ -6,7 +6,7 @@ app.directive("numberline", function(){
             data: "=data",              // json data from database
             interface: "=interface"     // interface of loader
         },
-        templateUrl: static_url + "simulators/numberline/simulator.html",  // html
+        templateUrl: template_urls["numberline"],  // html
         controller: function($scope, CommonData){
 
             CommonData.keyboard = "empty";

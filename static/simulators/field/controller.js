@@ -5,7 +5,7 @@ app.directive("field", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: static_url + "simulators/field/simulator.html",
+        templateUrl: template_urls["field"],
         controller: function($scope, CommonData){
             $scope.response = CommonData.input;
             $scope.response.value = '';

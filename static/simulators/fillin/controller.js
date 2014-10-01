@@ -5,7 +5,7 @@ app.directive("fillin", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: static_url + "simulators/fillin/simulator.html",
+        templateUrl: template_urls["fillin"],
         controller: function($scope, CommonData){
             $scope.fill = '_';
             $scope.answer = CommonData.input;
