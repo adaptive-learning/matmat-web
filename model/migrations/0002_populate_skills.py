@@ -47,9 +47,9 @@ class Migration(DataMigration):
         subtr = S(name='subtraction', parent=math, note=u'Odčítání')
         s1 = S(name='subtraction <= 10', parent=subtr, note=u'Odčítání do 10')
         s2 = S(name='subtraction <= 20', parent=subtr, note=u'Odčítání do 20')
-        for a in range(1, 21):
+        for a in range(1, 11):
             for b in range(1, a + 1):
-                S(name='%s-%s' % (a, b), parent=s1 if a <= 10 else s2)
+                S(name='%s-%s' % (a, b), parent=s1)
 
         # Multiplication:
         # ---------------
