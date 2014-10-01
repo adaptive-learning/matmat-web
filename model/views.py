@@ -1,4 +1,5 @@
 from collections import defaultdict
+from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.shortcuts import render
 from lazysignup.decorators import allow_lazy_user
@@ -27,6 +28,7 @@ skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
 
 @allow_lazy_user
+@login_required
 def my_skills(request, pk=None):
     all_skills = get_all_skills(request.user)
 
