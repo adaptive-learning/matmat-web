@@ -11,7 +11,8 @@ app.directive("keyboard", function($timeout){
         },
         templateUrl: template_urls["keyboard"],
         controller: function($scope, $cookieStore, CommonData){
-            $scope.hidden = !$cookieStore.get("keyboard");
+//            $scope.hidden = !$cookieStore.get("keyboard");
+            $scope.hidden = false;
             $scope.global = CommonData;
 
             $scope.submit = function(){

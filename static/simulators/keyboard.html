@@ -1,5 +1,5 @@
 <div id="keyboard" ng-hide="global.keyboard == 'gone' || global.simulator_active == false">
-    <p ng-click="switch_visibility()" class="keyboard-text">
+    <p ng-click="switch_visibility()" class="keyboard-text" ng-cloak ng-hide="true">
         {{ text }}
         <span ng-hide="hidden">Skrýt</span>
         <span ng-show="hidden">Zobrazit klávesnici</span>
