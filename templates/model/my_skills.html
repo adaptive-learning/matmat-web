@@ -14,37 +14,46 @@
 
     <div class="tabs-content">
         {% for skill_data in data %}
-            <div class="content{% if active == skill_data.skill.name %} active{% endif %}" 
-                id="panel{{ skill_data.skill.pk }}">
-                <h3>{{ skill_data.skill.note }}</h3>
-                <div class="progress small-12 medium-10 large-8 small-centered round">
-                    <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
-                        {{ skill_data.skill.value_percent }}%
-                    </span>
-                </div>
-                {% for _, user_skill in skill_data.skills.items %}
-                    {% if user_skill.used %}
-                        <b>{{ user_skill.note }}</b> -
-                            <a href="{% url "play"%}?skill={{  user_skill.pk }}">procvičit</a>
-                         <div class="progress small-12 medium-10 large-8 small-centered round">
-                             <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
-                                 {{ user_skill.value_percent }}%
-                             </span>
-                         </div>
-                    {% endif %}
-                {% endfor %}
-                <hr/>
-                <table class="user_skills" style="display: block;">
-                    {% for row in skill_data.table %}
-                        <tr>
-                        {% for skill in row %}<!-- to avoid whitespaces in inline-block
-                    --><td style="{{skill.style}}">
-                                {{ skill.name }}
-                            </td><!--
-                    -->{% endfor %}
-                        </tr>
+            <div class="content{% if active == skill_data.skill.name %} active{% endif %}"
+                 id="panel{{ skill_data.skill.pk }}">
+                {% if skill_data.skill.used %}
+
+                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play"%}?skill={{ skill_data.skill.pk }}">procvičit</a></h3>
+                    <div class="progress small-12 medium-10 large-8 small-centered round">
+                        <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
+                            {{ skill_data.skill.value_percent }}%
+                        </span>
+                    </div>
+                    {% for _, user_skill in skill_data.skills.items %}
+                        {% if user_skill.used %}
+                            <b>{{ user_skill.note }}</b> -
+                                <a href="{% url "play"%}?skill={{ user_skill.pk }}">procvičit</a>
+                             <div class="progress small-12 medium-10 large-8 small-centered round">
+                                 <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
+                                     {{ user_skill.value_percent }}%
+                                 </span>
+                             </div>
+                        {% endif %}
                     {% endfor %}
-                </table>
+                    <hr/>
+                    <table class="user_skills" style="display: block;">
+                        {% for row in skill_data.table %}
+                            <tr>
+                            {% for skill in row %}<!-- to avoid whitespaces in inline-block
+                        --><td style="{{skill.style}}">
+                                    {{ skill.name }}
+                                </td><!--
+                        -->{% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <div class="text-center">
+                        Zatím žádné procvičené úlohy z této dovednosti
+                        <br/><br/>
+                        <a href="{% url "play"%}?skill={{ skill_data.skill.pk }}"><button>Procvičit</button></a>
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

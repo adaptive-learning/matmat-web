@@ -22,7 +22,7 @@ SKILL_TABLES = {
     [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
 }
 
-skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name']
+skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name', 'used']
 SkillTuple = namedtuple('Skill', ', '.join(skill_keys))
 skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
@@ -37,7 +37,6 @@ def my_skills(request, pk=None):
         pk = int(pk)
         while pk!=1:
             par, pk = pk, all_skills['id_parid'][int(pk)]
-            print par, pk
     active = all_skills['id_name'][par] if par is not None else 'numbers'
 
     data = []
