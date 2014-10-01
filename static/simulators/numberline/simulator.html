@@ -14,16 +14,18 @@
             id="point{{ point.number }}"
             class="numberline-point"
             ng-repeat="point in points"
-            onclick="angular.element(this).scope().select(this)
-            ">
+            onclick="angular.element(this).scope().select(this)"
+            onmouseover="angular.element(this).scope().hover(this)"
+            onmouseleave="angular.element(this).scope().leave()"
+            >
         <circle class="shadow" class="numberline-point" ng-attr-cx="{{ point.x }}" ng-attr-cy="{{ point.y }}" ng-attr-r="{{ point.r*2 }}" filter="url(#shadow)"/>
         <circle class="point" class="numberline-point" ng-attr-cx="{{ point.x }}" ng-attr-cy="{{ point.y }}" ng-attr-r="{{ point.r }}" fill="grey"/>
         <rect onmousedown="return false" ng-attr-width="{{ settings.hover_size }}" ng-attr-height="{{ settings.hover_size }}" ng-attr-x="{{ point.x-settings.hover_size/2}}" ng-attr-y="{{ point.y -settings.hover_size/2}}" />
         <text ng-attr-x="{{ point.x }}" ng-attr-y="{{ point.y + 20 }}" text-anchor="middle" display="{{ point.display }}">{{ point.number }}</text>
     </g>
+    <rect ng-show="rect.number < hovered_number" style="fill: #ff5913" ng-repeat="rect in rects" ng-attr-height="{{ rect.size }}" ng-attr-width="{{ rect.size }}" ng-attr-x="{{ rect.x }}" ng-attr-y="{{ rect.y }}"/>
 </svg>
 <br/>
-
 <form ng-submit="check_answer()" ng-hide="simple">
     <input ng-hide="okShow || nokShow" class="button" ng-disabled="!selected_number && selected_number!=0" type="submit" value="OK" />
 </form>

@@ -17,8 +17,7 @@ app.directive("numberline", function(){
                 width: $("#playground").width(),
                 height: 50,
                 offset: 50,
-                top: 15,
-                hover_size: 30
+                top: 30
             };
 
             // pseudo random range
@@ -36,6 +35,7 @@ app.directive("numberline", function(){
             if ($scope.data.answer > 17) bound += 10 * (hash % 3);
 
             $scope.points = [];
+            $scope.rects = [];
             if ($scope.data.answer <= 10)
                 $scope.range = [0, 10];
             else
@@ -45,12 +45,12 @@ app.directive("numberline", function(){
             $scope.populate_points = function(){
                 var line_length = $scope.settings.width - 2 * $scope.settings.offset;
                 var delta = line_length / ($scope.range[1] - $scope.range[0]);
+                $scope.settings.hover_size = delta;
                 var left = 0;
                 for (var i=$scope.range[0]; i<=$scope.range[1]; i++){
                     var point = {};
                     point.number = i;
                     point.x = $scope.settings.offset + left;
-                    left += delta;
                     point.y = $scope.settings.top;
                     point.r = 3;
                     if (point.number % 5 == 0) point.r = 4;
@@ -64,6 +64,18 @@ app.directive("numberline", function(){
                         if (i == $scope.range[0] || i == $scope.range[1]) point.display = "block";
                     }
                     $scope.points.push(point);
+
+                    if ($scope.simple && i< $scope.range[1]){
+                        var rect = {};
+                        rect.size = Math.min(delta/2, $scope.settings.top -2);
+                        rect.y = $scope.settings.top - rect.size - 2;
+                        rect.x = $scope.settings.offset + left + (delta - rect.size) / 2;
+                        rect.number = i;
+
+                        $scope.rects.push(rect);
+                    }
+
+                    left += delta;
                 }
             };
 
@@ -88,6 +100,20 @@ app.directive("numberline", function(){
 
             };
 
+            $scope.hover = function(point){
+                if ($scope.simple && !$scope.nokShow && !$scope.okShow) {
+                    $scope.hovered_number = parseInt(point.id.replace("point", ""));
+                    $scope.$apply();
+                }
+            };
+
+            $scope.leave = function(){
+                if ($scope.simple && !$scope.nokShow && !$scope.okShow) {
+                    $scope.hovered_number = null;
+                    $scope.$apply();
+                }
+            };
+
             $scope.check_answer = function() {
                 var correct = $scope.selected_number == $scope.data.answer;
                 $(".numberline-point text").show();
@@ -100,6 +126,8 @@ app.directive("numberline", function(){
                 }
                 $scope.okShow = correct;
                 $scope.nokShow = !correct;
+                $scope.hovered_number = $scope.data.answer;
+                $scope.$apply();
                 $scope.interface.finish(correct, 2000);
             };
 
