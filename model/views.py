@@ -106,7 +106,8 @@ def get_skill_obj(sid, skills):
            'value': skills['id_val'][sid],
            'image_name': "core/imgs/skill_{}.png".format(skills['id_name'][sid]),
            'pk': sid,
-           'note': skills['id_note'][sid]}
+           'note': skills['id_note'][sid],
+           'used': skills['id_used'][sid]}
     obj['value_percent'] = int(100. / (1 + math.exp(-obj['value'])))
     obj['style'] = get_style(obj['value'], used=skills['id_used'][sid])
     return skill_as_tuple(obj)
