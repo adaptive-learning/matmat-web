@@ -55,11 +55,11 @@ class Migration(DataMigration):
         # ---------------
         m0 = S(name='multiplication', parent=math, note=u'Násobení')
         m1 = S(name='multiplication1', parent=m0, note=u'Malá násobilka')
-        for b in range(11):
-            for a in range(b + 1):
+        for b in range(1, 11):
+            for a in range(1, b + 1):
                 S(name='%sx%s' % (a, b), parent=m1)
         m2 = S(name='multiplication2', parent=m0, note=u'Velká násobilka')
-        for a in range(11):
+        for a in range(1, 11):
             for b in range(11, 21):
                 S(name='%sx%s' % (a, b), parent=m2)
 
@@ -67,7 +67,7 @@ class Migration(DataMigration):
         # ---------
         d0 = S(name='division', parent=math, note=u'Dělení')
         d1 = S(name='division1', parent=d0, note=u'Dělení malých čísel')
-        for a in range(11):
+        for a in range(1, 11):
             for b in range(1, 11):
                 total = a * b
                 S(name='%s/%s' % (total, b), parent=d1)

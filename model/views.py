@@ -16,9 +16,9 @@ SKILL_TABLES = {
     'subtraction':
     [['%s-%s' % (r, c) for c in range(1, r + 1)] for r in range(1, 11)],
     'multiplication':
-    [['%sx%s' % (c, r) for c in range(11)] for r in range(21)],
+    [['%sx%s' % (c, r) for c in range(1, 11)] for r in range(1, 21)],
     'division':
-    [['%s/%s' % (a * b, b) for a in range(11)] for b in range(1, 11)],
+    [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
 }
 
 skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name']

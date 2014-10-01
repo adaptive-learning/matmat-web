@@ -114,8 +114,8 @@ class Migration(DataMigration):
         # ---------------
         # fillin removed for now
         X = set([])
-        for a in range(11):
-            for b in range(21):
+        for a in range(1, 11):
+            for b in range(1, 21):
                 X.add((a, b))
                 X.add((b, a))
         for a, b in X:
@@ -135,7 +135,7 @@ class Migration(DataMigration):
 
         # Division:
         # ---------------
-        for a in range(11):
+        for a in range(1, 11):
             for b in range(1, 11):
                 total = a * b
                 skill = '%s/%s' % (total, b)
