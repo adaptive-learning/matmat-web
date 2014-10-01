@@ -11,6 +11,7 @@ app.directive("numberline", function(){
 
             CommonData.keyboard = "empty";
             $scope.selected_number = null;
+            $scope.simple = $scope.data.answer <= 10;
 
             $scope.settings = {
                 width: $("#playground").width(),
@@ -81,6 +82,9 @@ app.directive("numberline", function(){
                 }
 
                 $scope.$apply();
+                if ($scope.simple){
+                    $scope.check_answer();
+                }
 
             };
 

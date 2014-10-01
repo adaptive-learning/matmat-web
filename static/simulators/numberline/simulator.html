@@ -24,6 +24,6 @@
 </svg>
 <br/>
 
-<form ng-submit="check_answer()">
+<form ng-submit="check_answer()" ng-hide="simple">
     <input ng-hide="okShow || nokShow" class="button" ng-disabled="!selected_number && selected_number!=0" type="submit" value="OK" />
 </form>
