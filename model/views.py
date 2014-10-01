@@ -15,11 +15,11 @@ SKILL_TABLES = {
     'addition':
     [['%s+%s' % (c, r) for c in range(1, 11)] for r in range(1, 21)],
     'subtraction':
-    [['%s-%s' % (r, c) for c in range(1, r + 1)] for r in range(1, 21)],
+    [['%s-%s' % (r, c) for c in range(1, r + 1)] for r in range(1, 11)],
     'multiplication':
-    [['%sx%s' % (c, r) for c in range(11)] for r in range(21)],
+    [['%sx%s' % (c, r) for c in range(1, 11)] for r in range(1, 21)],
     'division':
-    [['%s/%s' % (a * b, b) for a in range(11)] for b in range(1, 11)],
+    [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
 }
 
 skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name']
@@ -108,7 +108,8 @@ def get_skill_obj(sid, skills):
            'value': skills['id_val'][sid],
            'image_name': "core/imgs/skill_{}.png".format(skills['id_name'][sid]),
            'pk': sid,
-           'note': skills['id_note'][sid]}
+           'note': skills['id_note'][sid],
+           'used': skills['id_used'][sid]}
     obj['value_percent'] = int(100. / (1 + math.exp(-obj['value'])))
     obj['style'] = get_style(obj['value'], used=skills['id_used'][sid])
     return skill_as_tuple(obj)

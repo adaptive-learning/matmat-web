@@ -101,7 +101,8 @@ class Migration(DataMigration):
         # up to 20
         for a in range(1, 21):
             for b in range(1, a + 1):
-                Q('%s-%s' % (a, b), free_answer,
+		skill = '%s-%s' % (a, b) if a <= 10 else 'subtraction <= 20'
+                Q(skill, free_answer,
                   {"question": "%s - %s" % (a, b), "answer": str(a - b)})
         # multiples of 5:
         for a in range(10, 101, 5):
@@ -113,8 +114,8 @@ class Migration(DataMigration):
         # ---------------
         # fillin removed for now
         X = set([])
-        for a in range(11):
-            for b in range(21):
+        for a in range(1, 11):
+            for b in range(1, 21):
                 X.add((a, b))
                 X.add((b, a))
         for a, b in X:
@@ -134,7 +135,7 @@ class Migration(DataMigration):
 
         # Division:
         # ---------------
-        for a in range(11):
+        for a in range(1, 11):
             for b in range(1, 11):
                 total = a * b
                 skill = '%s/%s' % (total, b)
