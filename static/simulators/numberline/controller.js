@@ -7,7 +7,7 @@ app.directive("numberline", function(){
             interface: "=interface"     // interface of loader
         },
         templateUrl: template_urls["numberline"],  // html
-        controller: function($scope, CommonData){
+        controller: function($scope, CommonData, $timeout){
 
             CommonData.keyboard = "empty";
             $scope.selected_number = null;
@@ -95,7 +95,8 @@ app.directive("numberline", function(){
 
                 $scope.$apply();
                 if ($scope.simple){
-                    $scope.check_answer();
+                    $scope.hovered_number = $scope.data.answer;
+                    $timeout($scope.check_answer, 0);
                 }
 
             };
@@ -126,8 +127,6 @@ app.directive("numberline", function(){
                 }
                 $scope.okShow = correct;
                 $scope.nokShow = !correct;
-                $scope.hovered_number = $scope.data.answer;
-                $scope.$apply();
                 $scope.interface.finish(correct, 2000);
             };
 
