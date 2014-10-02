@@ -14,7 +14,7 @@ app.directive("numberline", function(){
             $scope.simple = $scope.data.answer <= 10;
 
             $scope.settings = {
-                width: $("#playground").width(),
+                width: $("#playground").width() ? $("#playground").width() : $("#content").width() - 200,
                 height: 50,
                 offset: 50,
                 top: 30
