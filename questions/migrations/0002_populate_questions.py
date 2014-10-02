@@ -29,12 +29,12 @@ class Migration(DataMigration):
 
         # Simulators:
         # -----------
-        free_answer = Sim('free_answer', 'Written answer')
-        counting = Sim('counting', 'Counting objects')
-        selecting = Sim('selecting', 'Selecting specified number of objects')
-        numberline = Sim('numberline', 'Choose answer on number-line')
-        fillin = Sim('fillin', 'Fill in written answer')
-        field = Sim('field', '2D field')
+        free_answer = Sim('free_answer', 'Volná odpověd')
+        counting = Sim('counting', 'Počítání předmětů')
+        selecting = Sim('selecting', 'Výběr správného počtu předmětů')
+        numberline = Sim('numberline', 'Výběr odpovědi na číselné ose')
+        fillin = Sim('fillin', 'Doplnění čísla do řady')
+        field = Sim('field', 'Počítání předmětů v mřížce')
         Sim('example', 'Just an example')
 
         # Numbers:
