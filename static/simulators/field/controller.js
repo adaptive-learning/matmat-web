@@ -20,14 +20,16 @@ app.directive("field", function(){
 
             var container = document.getElementById('count_display');
             var field = $scope.data.field;
+            var previous_blank = true;
             for (var i=0; i < field.length; i++) {
                 var line = field[i];
                 var sum = 0;
                 for (var j=0; j < line.length; j++) {
                     sum += line[j];
                 }
-                if (sum == 0)
+                if (sum == 0 && (previous_blank || i + 1 == field.length))
                     continue;
+                previous_blank = sum == 0;
                 var div = document.createElement('div');
                 container.appendChild(div);
                 div.style.height = "33px";
