@@ -3,7 +3,7 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
-app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile){
+app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $compile){
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 1000;
@@ -30,7 +30,13 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
                 in_queue.push($scope.questions_queue[i].pk);
             }
             if (!$scope.test) {
-                $http.get("/q/get_question/", {params: {count: count, skill: $scope.skill_id, in_queue: in_queue.join()} })
+                $http.get("/q/get_question/",
+                    {params: {
+                        count: count,
+                        skill: $scope.skill_id,
+                        in_queue: in_queue.join(),
+                        simulators: $scope.get_simulator_list()
+                    } })
                     .success(function (data) {
                         for (var i in data) {
                             if (data[i].recommendation_log)
@@ -137,6 +143,23 @@ app.controller("Loader", function($scope, $cookies, CommonData, $http, $compile)
         }
     };
     CommonData.log_something = $scope.log_something;
+
+    $scope.get_simulator_list = function(){
+        var pks = [];
+        for (var i=0; i < simulators.length; i++){
+            var simulator = simulators[i];
+            var state = $cookieStore.get("simulator" + simulator.pk);
+            if (state || state==null){
+                pks.push(simulator.pk);
+            }
+        }
+        return pks.join();
+    };
+
+    $scope.clear_queue = function(){
+        $scope.questions_queue = [];
+    };
+    CommonData.clear_queue = $scope.clear_queue;
 
     $scope.interface = {};
     $scope.interface.finish = $scope.finish_question;

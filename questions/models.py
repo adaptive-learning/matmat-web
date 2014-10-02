@@ -16,7 +16,7 @@ class Question(models.Model):
         ('c', 'correctness')
     )
 
-    player = models.ForeignKey(Simulator, verbose_name="Simulator")
+    player = models.ForeignKey(Simulator, verbose_name="Simulator", related_name="questions")
     skill = models.ForeignKey('model.Skill')
     data = models.TextField(verbose_name="Data as JSON")
     type = models.CharField(max_length=1, choices=TYPES, default='c')

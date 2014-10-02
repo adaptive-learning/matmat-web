@@ -17,7 +17,8 @@ from questions.models import Question, Answer, Simulator
 @ensure_csrf_cookie
 @allow_lazy_user
 def play(request):
-    simulators = Simulator.objects.all()
+    skill = get_object_or_404(Skill, pk=request.GET["skill"])
+    simulators = Simulator.objects.filter(questions__skill__in=skill.children_list.split(",")).distinct()
 
     return render(request, 'questions/play.html', {
         "simulators": simulators,
@@ -32,7 +33,9 @@ def get_questions(request):
     subskills = skill.children_list
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
-    questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue)
+    simulators = [] if request.GET["simulators"] == "" else request.GET["simulators"].split(",")
+
+    questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue, simulators)
 
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
 

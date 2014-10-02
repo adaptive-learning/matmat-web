@@ -10,8 +10,9 @@ app.factory("CommonData", function(){
             simulator_active: false,        // indicate if simulator is active
             input: {"value": ""},           // current input
             keyboard: 'gone',               // keyboard mode
-            log_something: null             // simulator logger
-
+            log_something: null,            // simulator logger
+            get_simulator_list: null,       // list of selected simulator pk
+            clear_queue: null                // clear questions from queue
         }
     }
 );

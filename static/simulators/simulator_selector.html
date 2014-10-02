@@ -1,0 +1,5 @@
+<div class="switch radius small" ng-repeat="simulator in simulators">
+    <input ng-model="simulator.selected" id="simulator{{ simulator.pk }}" ng-change="change(simulator)" type="checkbox">
+    <label for="simulator{{ simulator.pk }}"></label>
+    <span>{{ simulator.note }}</span>
+</div>

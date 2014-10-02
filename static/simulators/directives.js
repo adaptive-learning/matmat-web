@@ -91,3 +91,29 @@ app.directive("responsespan", function(){
         }
     }
 });
+
+
+app.directive("simulatorselector", function(){
+    return {
+        restrict: "E",
+        scope: {
+        },
+        templateUrl: template_urls["simulator-selector"],
+        controller: function($scope, $cookieStore, CommonData){
+            $scope.simulators = simulators;
+
+            for (var i=0; i<$scope.simulators.length; i++){
+                var simulator = $scope.simulators[i];
+                var state = $cookieStore.get("simulator" + simulator.pk);
+                if (state == null)
+                    state = true;
+                simulator.selected = state;
+            }
+
+            $scope.change = function(simulator){
+                $cookieStore.put("simulator" + simulator.pk, simulator.selected);
+                CommonData.clear_queue();
+            };
+        }
+    }
+});

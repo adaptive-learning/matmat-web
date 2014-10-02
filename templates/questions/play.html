@@ -7,9 +7,21 @@
     {% for simulator in simulators %}
         <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
     {% endfor %}
+    <script>
+        var simulators = [
+            {% for simulator in simulators %}
+                {
+                pk: {{ simulator.pk }},
+                namee: "{{ simulator.name }}",
+                note: "{{ simulator.note }}"},
+            {% endfor %}
+        ]
+    </script>
 {% endblock %}
 
 {% block content %}
+
+
     <div class="row collapse" ng-controller="Loader">
         {% verbatim %}
             <div class="text-center show-for-small-only">{{ counter.current }} z {{ counter.total }}</div>
@@ -44,6 +56,14 @@
                 </div>
             </div>
             {% endverbatim %}
+            <a href="#" data-reveal-id="simulator-selector" class="radius button">Typy příkladů</a>
         </div>
     </div>
+
+    <div id="simulator-selector" class="reveal-modal small" data-reveal>
+        <a class="close-reveal-modal">&#215;</a>
+        <h3 class="text-center">Výběr typů úloh</h3>
+        <simulatorselector></simulatorselector>
+    </div>
+
 {% endblock %}
