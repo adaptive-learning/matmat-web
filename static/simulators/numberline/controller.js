@@ -132,6 +132,8 @@ app.directive("numberline", function(){
 
             $scope.populate_points();
 
+
+            CommonData.description.top = "Najdi číslo na číselné ose."
         }
     }
 });

@@ -85,6 +85,8 @@ app.directive("counting", function(){
             $scope.change = function(){
                 $scope.interface.log($scope.response.value);
             };
+
+            CommonData.description.top = "Kolik je to čtverečků?"
         }
     }
 });

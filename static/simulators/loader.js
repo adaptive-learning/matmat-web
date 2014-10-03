@@ -76,6 +76,7 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
                     .format($scope.question.simulator.replace("_",""), $scope.question.data));
             $("#playground").append(questionDirective);
             $compile(questionDirective)($scope);
+            $scope.question_description = CommonData.description;
             $scope.question.start_time = new Date().getTime();
             $scope.loading = false;
             CommonData.simulator_active = true;

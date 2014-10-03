@@ -12,7 +12,8 @@ app.factory("CommonData", function(){
             keyboard: 'gone',               // keyboard mode
             log_something: null,            // simulator logger
             get_simulator_list: null,       // list of selected simulator pk
-            clear_queue: null                // clear questions from queue
+            clear_queue: null,              // clear questions from queue
+            description: {top: ""}          // description
         }
     }
 );

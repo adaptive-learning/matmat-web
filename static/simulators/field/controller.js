@@ -61,7 +61,7 @@ app.directive("field", function(){
                 $scope.interface.log($scope.response.value);
             };
 
-//          TODO - show correct answer after incorrect response
+            CommonData.description.top = "Kolik je to čtverečků?"
         }
     }
 });

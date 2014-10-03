@@ -25,39 +25,38 @@
     <div class="row collapse" ng-controller="Loader">
         {% verbatim %}
             <div class="text-center show-for-small-only">{{ counter.current }} z {{ counter.total }}</div>
+            <div class="medium-10 columns">
+                <div ng-show="!question.hide" class="animate-show">
+                    <div class="result">
+                        &nbsp;
+                        <span class="green" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
+                        <span class="red" ng-cloak ng-show="solved=='solved_incorrectly'">Špatně</span>
+                        <p ng-cloak ng-hide="solved">{{ question_description.top }}</p>
+                    </div>
+
+                    <div ng-class="solved" id="playground"></div>
+                </div>
+
+                <div ng-show="loading" ng-cloak class="">
+                    <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
+                </div>
+
+                <keyboard />
+            </div>
+
+
+            <div class="medium-2 columns">
+                <div class="row collapse show-for-medium-up">
+                    <div class="small-centered small-5 medium-12 medium-uncentered large-5 columns">
+                        <input class="text-center" style="margin: 0;" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
+                    </div>
+                    <div class="small-centered small-5 medium-12 medium-uncentered large-7 columns">
+                        <input class="button postfix" type="button" ng-click="skip()" value="Nevím" />
+                    </div>
+                </div>
+                <a href="#" data-reveal-id="simulator-selector" class="radius button">Typy příkladů</a>
+            </div>
         {% endverbatim %}
-        <div class="medium-10 columns">
-            <div ng-show="!question.hide" class="animate-show">
-                <div class="result">
-                    &nbsp;
-                    <span class="green" ng-cloak ng-show="solved=='solved_correctly'">Správně</span>
-                    <span class="red" ng-cloak ng-show="solved=='solved_incorrectly'">Špatně</span>
-                </div>
-
-                <div ng-class="solved" id="playground"></div>
-            </div>
-
-            <div ng-show="loading" ng-cloak class="">
-                <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
-            </div>
-
-            <keyboard />
-        </div>
-
-
-        <div class="medium-2 columns">
-            {% verbatim %}
-            <div class="row collapse show-for-medium-up">
-                <div class="small-centered small-5 medium-12 medium-uncentered large-5 columns">
-                    <input class="text-center" style="margin: 0;" type="text" value="{{ counter.current }} z {{ counter.total }}" disabled  />
-                </div>
-                <div class="small-centered small-5 medium-12 medium-uncentered large-7 columns">
-                    <input class="button postfix" type="button" ng-click="skip()" value="Nevím" />
-                </div>
-            </div>
-            {% endverbatim %}
-            <a href="#" data-reveal-id="simulator-selector" class="radius button">Typy příkladů</a>
-        </div>
     </div>
 
     <div id="simulator-selector" class="reveal-modal small" data-reveal>

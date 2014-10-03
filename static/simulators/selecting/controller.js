@@ -92,6 +92,7 @@ app.directive("selecting", function(){
                 $scope.mover = 0;
             };
 
+            CommonData.description.top = "Vyber zadaný počet čtverečků."
         }
     }
 });
