@@ -1,6 +1,6 @@
 var QUESTIONS_IN_SET = 10;
 var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
-var FADEOUT_DURATION = 500;
+var FADEOUT_DURATION = 500;         // animation time after finish question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
 app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile){
@@ -8,9 +8,8 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 1000;
     }
-    $scope.common = SimulatorGlobal;
-    $scope.skill_id = getURLParameter("skill");
-    $scope.question = null;
+    $scope.skill_id = getURLParameter("skill");         // selected skill from GET
+    $scope.question = null;                             // active question
     $scope.counter = {
         total: QUESTIONS_IN_SET,
         current: 0
@@ -18,17 +17,22 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
     $scope.questions_queue = [];
 
+    // get question from server
     $scope.get_questions_from_server = function(){
+        // find out required question count
         var count = Math.min(QUESTIONS_IN_QUEUE - $scope.questions_queue.length,
             QUESTIONS_IN_SET - $scope.counter.current - $scope.questions_queue.length);
         count += $scope.question == null ? 1 : 0;
+
         if (count > 0){
+            // find out question's pk already loaded (in queue or showed)
             var in_queue = [];
             if ($scope.question)
                 in_queue.push($scope.question.pk);
             for (var i in $scope.questions_queue){
                 in_queue.push($scope.questions_queue[i].pk);
             }
+
             if (!$scope.test) {
                 $http.get("/q/get_question/",
                     {params: {
@@ -43,9 +47,11 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                                 console.log(data[i]);
                         }
                         $scope.questions_queue = $scope.questions_queue.concat(data);
+                        // try to show next question of any
                         $scope.get_question();
                     });
             }else{
+                // fo simulator tester
                 if ($scope.own_question){
                     q = {};
                     q.data = $scope.own_question;
@@ -67,15 +73,19 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         }
     };
 
+    // show next question or get it from server
     $scope.get_question = function(){
         if ($scope.question == null && $scope.questions_queue.length > 0){
             $scope.question = $scope.questions_queue.shift();
             $scope.question.log = [];
+
+            // load question to playground
             var questionDirective = angular.element(
                 '<{0} interface=\'interface\' data=\'{1}\' />'
                     .format($scope.question.simulator.replace("_",""), $scope.question.data));
             $("#playground").append(questionDirective);
             $compile(questionDirective)($scope);
+
             $scope.question_description = SimulatorGlobal.description;
             $scope.question.start_time = new Date().getTime();
             $scope.loading = false;
@@ -84,6 +94,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.get_questions_from_server();
     };
 
+    // send answer and log to server
     $scope.save_answer = function(){
         if ($scope.test){
             console.log($scope.question);
@@ -91,17 +102,16 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         }
         $http.post("/q/save_answer/", $scope.question)
             .success(function(data){
-                $scope.chat = data;
+                // console.log(data);
             });
     };
 
-
+    // go to next question
     $scope.next_question = function(){
         $scope.loading = true;
         $scope.counter.current++;
         $scope.get_question()
     };
-
 
     $scope.finish_question = function(correctly_solved, wait_time){
         SimulatorGlobal.simulator_active = false;
@@ -109,21 +119,24 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
         $scope.log_something("finished");
 
-        $scope.solved= correctly_solved ? "solved_correctly" : "solved_incorrectly";
+        $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
 
+        // wait to show correct answer
         setTimeout(function() {
             $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
             $scope.question.correctly_solved =  correctly_solved;
             $scope.save_answer();
 
-
             $scope.question.hide = true;
+            // wait to finish fade-out animation
             setTimeout(function() {
                 $("#playground").empty();
                 $scope.question = null;
                 if ($scope.counter.current == $scope.counter.total){
+                    // if last question: redirect to "my skills" page
                     window.location.replace("/m/my_skills/"+$scope.skill_id);
                 }else{
+                    // load next question
                     $scope.next_question();
                 }
             $scope.solved = ""
@@ -131,11 +144,13 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         }, wait_time);
     };
 
+    // skip question
     SimulatorGlobal.skip = $scope.skip = function(){
         $scope.log_something("skipped");
         $scope.finish_question(false, 0);
     };
 
+    // log step while solving process
     $scope.log_something = function(data){
         var log = [(new Date().getTime() - $scope.question.start_time), data];
         $scope.question.log.push(log);
@@ -145,6 +160,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     };
     SimulatorGlobal.log_something = $scope.log_something;
 
+    // return list of simulator's pk as a string
     $scope.get_simulator_list = function(){
         var pks = [];
         for (var i=0; i < simulators.length; i++){
@@ -157,14 +173,17 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         return pks.join();
     };
 
+    // remove all preloaded questions
     $scope.clear_queue = function(){
         $scope.questions_queue = [];
     };
     SimulatorGlobal.clear_queue = $scope.clear_queue;
 
+    // define interface
     $scope.interface = {};
     $scope.interface.finish = $scope.finish_question;
     $scope.interface.log = $scope.log_something;
 
+    // start loading questions
     $scope.next_question();
 });
