@@ -122,5 +122,5 @@ simulator_test = SimulatorTestView.as_view()
 
 class SelectSkillForm(forms.Form):
     # skill = forms.ModelChoiceField(queryset=Skill.objects.all())
-    simulator = forms.ModelChoiceField(queryset=Simulator.objects.all(), required=True
+    simulator = forms.ModelChoiceField(queryset=Simulator.objects.all().order_by("name"), required=True
                                        , widget=forms.Select(attrs={"onChange": "submit()"}))
