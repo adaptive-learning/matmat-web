@@ -11,7 +11,7 @@ app.directive("keyboard", function($timeout){
         },
         templateUrl: template_urls["keyboard"],
         controller: function($scope, $cookieStore, SimulatorGlobal){
-//            $scope.hidden = !$cookieStore.get("keyboard");
+            //  $scope.hidden = !$cookieStore.get("keyboard");
             $scope.hidden = false;
             $scope.global = SimulatorGlobal;
 
@@ -26,6 +26,7 @@ app.directive("keyboard", function($timeout){
                 $scope.submit();
             };
 
+            // change response after click to keyboard
             $scope.add_text = function(s){
                 if (!$scope.global.simulator_active)
                     return;
@@ -57,13 +58,14 @@ app.directive("keyboard", function($timeout){
     }
 });
 
+// input field with submit button
 app.directive("responseinput", function($timeout){
     return {
         restrict: "E",
         scope: {
-            ngModel: "=",
-            submit: "&",
-            ngChange: "&"
+            ngModel: "=",       // model for input
+            submit: "&",        // submit function
+            ngChange: "&"       // function to call after input change
         },
         templateUrl: template_urls["response-input"],
 
@@ -76,15 +78,15 @@ app.directive("responseinput", function($timeout){
     }
 });
 
-
+// show current response, after finish question show correct solution
 app.directive("responsespan", function(){
     return {
         restrict: "E",
         scope: {
-            answer: "=",
-            response: "=",
-            solved: "=",
-            default: "@"
+            answer: "=",        // right answer
+            response: "=",      // current response
+            solved: "=",        // indicator of question finish
+            default: "@"        // default string to show if answer is empty
         },
         templateUrl: template_urls["response-span"],
         controller: function($scope){
