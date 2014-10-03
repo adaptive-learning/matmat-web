@@ -6,17 +6,17 @@ app.directive("fillin", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["fillin"],
-        controller: function($scope, CommonData){
+        controller: function($scope, SimulatorGlobal){
             $scope.fill = '_';
-            $scope.answer = CommonData.input;
+            $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
             $("#simulator-input").focus();
 
             if ($scope.data.answer <= 10){
-                CommonData.keyboard = "choices";
-                CommonData.choices = _.range(1, 11);
+                SimulatorGlobal.keyboard = "choices";
+                SimulatorGlobal.choices = _.range(1, 11);
             }else{
-                CommonData.keyboard = "full";
+                SimulatorGlobal.keyboard = "full";
             }
 
             $scope.check_answer = function(){
@@ -27,7 +27,7 @@ app.directive("fillin", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
-            CommonData.submit = $scope.check_answer;
+            SimulatorGlobal.submit = $scope.check_answer;
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer.value);

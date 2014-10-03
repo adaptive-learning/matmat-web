@@ -6,8 +6,8 @@ app.directive("selecting", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["selecting"],
-        controller: function($scope, CommonData){
-            CommonData.keyboard = "empy";
+        controller: function($scope, SimulatorGlobal){
+            SimulatorGlobal.keyboard = "empy";
             $scope.selected = 0;
             $scope.mover = 0;
             $scope.simple = $scope.data.answer < 10;
@@ -92,7 +92,7 @@ app.directive("selecting", function(){
                 $scope.mover = 0;
             };
 
-            CommonData.description.top = "Vyber zadaný počet čtverečků."
+            SimulatorGlobal.description.top = "Vyber zadaný počet čtverečků."
         }
     }
 });

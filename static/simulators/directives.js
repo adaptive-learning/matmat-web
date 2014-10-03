@@ -10,13 +10,13 @@ app.directive("keyboard", function($timeout){
         scope: {
         },
         templateUrl: template_urls["keyboard"],
-        controller: function($scope, $cookieStore, CommonData){
+        controller: function($scope, $cookieStore, SimulatorGlobal){
 //            $scope.hidden = !$cookieStore.get("keyboard");
             $scope.hidden = false;
-            $scope.global = CommonData;
+            $scope.global = SimulatorGlobal;
 
             $scope.submit = function(){
-                CommonData.submit();
+                SimulatorGlobal.submit();
             };
 
             $scope.submit_answer = function(answer){
@@ -40,7 +40,7 @@ app.directive("keyboard", function($timeout){
             };
 
             $scope.skip = function(){
-                CommonData.skip();
+                SimulatorGlobal.skip();
             };
 
             $scope.switch_visibility = function(){
@@ -67,8 +67,8 @@ app.directive("responseinput", function($timeout){
         },
         templateUrl: template_urls["response-input"],
 
-        controller: function($scope, CommonData){
-            $scope.global = CommonData;
+        controller: function($scope, SimulatorGlobal){
+            $scope.global = SimulatorGlobal;
             $scope.change = function(){
                 $timeout($scope.ngChange, 0);
             }
@@ -99,7 +99,7 @@ app.directive("simulatorselector", function(){
         scope: {
         },
         templateUrl: template_urls["simulator-selector"],
-        controller: function($scope, $cookieStore, CommonData){
+        controller: function($scope, $cookieStore, SimulatorGlobal){
             $scope.simulators = simulators;
 
             for (var i=0; i<$scope.simulators.length; i++){
@@ -112,7 +112,7 @@ app.directive("simulatorselector", function(){
 
             $scope.change = function(simulator){
                 $cookieStore.put("simulator" + simulator.pk, simulator.selected);
-                CommonData.clear_queue();
+                SimulatorGlobal.clear_queue();
             };
         }
     }

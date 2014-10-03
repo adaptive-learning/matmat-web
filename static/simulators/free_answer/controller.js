@@ -6,16 +6,16 @@ app.directive("freeanswer", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["free_answer"],
-        controller: function($scope, CommonData){
-            $scope.answer = CommonData.input;
+        controller: function($scope, SimulatorGlobal){
+            $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
             $("#simulator-input").focus();
 
             if ($scope.data.answer <= 10 && $scope.data.question.indexOf("+") > -1){
-                CommonData.keyboard = "choices";
-                CommonData.choices = _.range(1, 11);
+                SimulatorGlobal.keyboard = "choices";
+                SimulatorGlobal.choices = _.range(1, 11);
             }else{
-                CommonData.keyboard = "full";
+                SimulatorGlobal.keyboard = "full";
             }
 
             $scope.check_answer = function(){
@@ -26,7 +26,7 @@ app.directive("freeanswer", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
-            CommonData.submit = $scope.check_answer;
+            SimulatorGlobal.submit = $scope.check_answer;
 
             $scope.change = function(){
                 $scope.interface.log($scope.answer.value);

@@ -6,17 +6,17 @@ app.directive("counting", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["counting"],
-        controller: function($scope, CommonData){
-            $scope.response = CommonData.input;
+        controller: function($scope, SimulatorGlobal){
+            $scope.response = SimulatorGlobal.input;
             $scope.response.value = '';
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
 
             if ($scope.data.answer <= 10){
-                CommonData.keyboard = "choices";
-                CommonData.choices = _.range(1, 11);
+                SimulatorGlobal.keyboard = "choices";
+                SimulatorGlobal.choices = _.range(1, 11);
             }else{
-                CommonData.keyboard = "full";
+                SimulatorGlobal.keyboard = "full";
             }
 
             var width = $scope.data.width;
@@ -80,13 +80,13 @@ app.directive("counting", function(){
                 $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, wait);
             };
-            CommonData.submit = $scope.submit;
+            SimulatorGlobal.submit = $scope.submit;
 
             $scope.change = function(){
                 $scope.interface.log($scope.response.value);
             };
 
-            CommonData.description.top = "Kolik je to čtverečků?"
+            SimulatorGlobal.description.top = "Kolik je to čtverečků?"
         }
     }
 });

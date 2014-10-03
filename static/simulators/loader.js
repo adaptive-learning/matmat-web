@@ -3,12 +3,12 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
-app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $compile){
+app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile){
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 1000;
     }
-    $scope.common = CommonData;
+    $scope.common = SimulatorGlobal;
     $scope.skill_id = getURLParameter("skill");
     $scope.question = null;
     $scope.counter = {
@@ -76,10 +76,10 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
                     .format($scope.question.simulator.replace("_",""), $scope.question.data));
             $("#playground").append(questionDirective);
             $compile(questionDirective)($scope);
-            $scope.question_description = CommonData.description;
+            $scope.question_description = SimulatorGlobal.description;
             $scope.question.start_time = new Date().getTime();
             $scope.loading = false;
-            CommonData.simulator_active = true;
+            SimulatorGlobal.simulator_active = true;
         }
         $scope.get_questions_from_server();
     };
@@ -104,7 +104,7 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
 
 
     $scope.finish_question = function(correctly_solved, wait_time){
-        CommonData.simulator_active = false;
+        SimulatorGlobal.simulator_active = false;
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
         $scope.log_something("finished");
@@ -131,7 +131,7 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
         }, wait_time);
     };
 
-    CommonData.skip = $scope.skip = function(){
+    SimulatorGlobal.skip = $scope.skip = function(){
         $scope.log_something("skipped");
         $scope.finish_question(false, 0);
     };
@@ -143,7 +143,7 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
             console.log(log);
         }
     };
-    CommonData.log_something = $scope.log_something;
+    SimulatorGlobal.log_something = $scope.log_something;
 
     $scope.get_simulator_list = function(){
         var pks = [];
@@ -160,7 +160,7 @@ app.controller("Loader", function($scope, $cookieStore, CommonData, $http, $comp
     $scope.clear_queue = function(){
         $scope.questions_queue = [];
     };
-    CommonData.clear_queue = $scope.clear_queue;
+    SimulatorGlobal.clear_queue = $scope.clear_queue;
 
     $scope.interface = {};
     $scope.interface.finish = $scope.finish_question;
