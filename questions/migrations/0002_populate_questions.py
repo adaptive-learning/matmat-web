@@ -101,9 +101,11 @@ class Migration(DataMigration):
         # up to 20
         for a in range(1, 21):
             for b in range(1, a + 1):
-		skill = '%s-%s' % (a, b) if a <= 10 else 'subtraction <= 20'
+                skill = '%s-%s' % (a, b) if a <= 10 else 'subtraction <= 20'
                 Q(skill, free_answer,
                   {"question": "%s - %s" % (a, b), "answer": str(a - b)})
+                Q(skill, counting,
+                  {"question": [a, "-", b], "answer": str(a - b), "width": 10})
         # multiples of 5:
         for a in range(10, 101, 5):
             for b in range(10, a + 1, 5):
