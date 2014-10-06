@@ -11,9 +11,9 @@ app.directive("freeanswer", function(){
             $scope.answer.value = '';
             $("#simulator-input").focus();
 
-            if ($scope.data.answer <= 10 && $scope.data.question.indexOf("+") > -1){
+            if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
-                SimulatorGlobal.choices = _.range(1, 11);
+                SimulatorGlobal.choices = $scope.data.kb;
             }else{
                 SimulatorGlobal.keyboard = "full";
             }

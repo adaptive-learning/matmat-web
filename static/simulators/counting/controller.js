@@ -12,9 +12,9 @@ app.directive("counting", function(){
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
 
-            if ($scope.data.answer <= 10){
+            if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
-                SimulatorGlobal.choices = _.range(1, 11);
+                SimulatorGlobal.choices = $scope.data.kb;
             }else{
                 SimulatorGlobal.keyboard = "full";
             }

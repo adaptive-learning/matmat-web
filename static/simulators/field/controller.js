@@ -11,9 +11,9 @@ app.directive("field", function(){
             $scope.response.value = '';
             $("#simulator-input").focus();
 
-            if ($scope.data.answer <= 10){
+            if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
-                SimulatorGlobal.choices = _.range(1, 10);
+                SimulatorGlobal.choices = $scope.data.kb;
             }else{
                 SimulatorGlobal.keyboard = "full";
             }

@@ -4,6 +4,9 @@ import json
 import random
 
 
+KB_FULL = "full"
+KB_10 = range(1, 11)
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
@@ -39,18 +42,19 @@ class Migration(DataMigration):
 
         # Numbers:
         # --------
-        for n in range(1, 101):
+        for n in range(1, 21):
             skill = str(n) if n <= 20 else 'numbers <= 100'
             # for numbers up to 7 ... choice up to 10
             # for numbers up to 17 ... choice up to 20
             # for numbers above .... choice up to a 100
-            nr = 1 if n <= 7 else 2 if n <= 17 else 10
+            nr = 1 if n <= 7 else 2
             # number -> select objects
             Q(skill, selecting, {"question": n, "answer": n,
                                  "nrows": nr, "ncols": 10})
             # objects -> number
             Q(skill, counting, {"question": [n], "answer": str(n),
-                                "width": 10})
+                                "width": 10,
+                                "kb": KB_10 if n <= 10 else KB_FULL})
         for n in range(1, 21):
             # number -> number-line
             Q(str(n), numberline, {"question": str(n), "answer": n})
@@ -63,11 +67,13 @@ class Migration(DataMigration):
                 if total <= 20:
                     x, y = (a, b) if a <= b else (b, a)
                     skill = '%s+%s' % (x, y)
+                    kb = KB_10 if total <= 10 else KB_FULL
                     Q(skill, free_answer,
-                      {"question": "%s + %s" % (a, b), "answer": str(total)})
+                      {"question": "%s + %s" % (a, b), "answer": str(total),
+                       "kb": kb})
                     Q(skill, counting,
                       {"question": [a, "+", b], "answer": str(total),
-                       "width": 10})
+                       "width": 10, "kb": kb})
         skill = 'addition <= 100'
         random.seed(150 - 2)
         X = set([])
@@ -77,7 +83,8 @@ class Migration(DataMigration):
                 X.add((a, b))
         for a, b in X:
             Q(skill, free_answer,
-              {"question": "%s + %s" % (a, b), "answer": str(a + b)})
+              {"question": "%s + %s" % (a, b), "answer": str(a + b),
+               "kb": KB_FULL})
 
         X = set([])
         for a in range(1, 11):
@@ -87,14 +94,15 @@ class Migration(DataMigration):
             a, b = random.randint(1, 50), random.randint(1, 50)
             X.add((a, b))
         for a, b in X:
-            if a <= 20 and b <= 20 and a + b <= 20:
+            if a <= 20 and a + b <= 20:
                 x, y = (a, b) if a <= b else (b, a)
                 skill = '%s+%s' % (x, y)
             else:
                 skill = "addition <= 100"
             Q(skill, counting,
               {"question": [a, b], "answer": str(a + b),
-               "prefix": "%s + %s" % (a, b), "width": 10})
+               "prefix": "%s + %s" % (a, b), "width": 10,
+               "kb": KB_FULL if a + b > 10 else KB_10})
 
         # Subtraction:
         # ------------
@@ -102,15 +110,19 @@ class Migration(DataMigration):
         for a in range(1, 21):
             for b in range(1, a + 1):
                 skill = '%s-%s' % (a, b) if a <= 10 else 'subtraction <= 20'
+                kb = KB_10 if a <= 10 else KB_FULL
                 Q(skill, free_answer,
-                  {"question": "%s - %s" % (a, b), "answer": str(a - b)})
+                  {"question": "%s - %s" % (a, b), "answer": str(a - b),
+                   "kb": kb})
                 Q(skill, counting,
-                  {"question": [a, "-", b], "answer": str(a - b), "width": 10})
+                  {"question": [a, "-", b], "answer": str(a - b), "width": 10,
+                   "kb": kb})
         # multiples of 5:
-        for a in range(10, 101, 5):
+        for a in range(25, 101, 5):
             for b in range(10, a + 1, 5):
                 Q('subtraction', free_answer,
-                  {"question": "%s - %s" % (a, b), "answer": str(a - b)})
+                  {"question": "%s - %s" % (a, b), "answer": str(a - b),
+                   "kb": KB_FULL})
 
         # Multiplication:
         # ---------------
@@ -124,16 +136,18 @@ class Migration(DataMigration):
             total = a * b
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, free_answer,
-              {"question": "%s &times; %s" % (a, b), "answer": str(total)})
+              {"question": "%s &times; %s" % (a, b), "answer": str(total),
+               "kb": KB_FULL})
             if total and a <= 5 and b <= 5:
                 Q(skill, counting,
-                  {"question": [total], "answer": str(total), "width": b})
+                  {"question": [total], "answer": str(total), "width": b,
+                   "kb": KB_FULL})
                 Q(skill, counting,
                   {"question": [total], "answer": str(total), "width": b,
-                   "prefix": "%s &times; %s" % (a, b)})
+                   "prefix": "%s &times; %s" % (a, b), "kb": KB_FULL})
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
-            Q(skill, field, {"field": decode_field(x), "answer": a * b})
+            Q(skill, field, {"field": decode_field(x), "answer": a * b, "kb": KB_FULL})
 
         # Division:
         # ---------------
@@ -143,7 +157,7 @@ class Migration(DataMigration):
                 skill = '%s/%s' % (total, b)
                 Q(skill, free_answer,
                   {"question": "%s &divide; %s" % (total, b),
-                   "answer": str(a)})
+                   "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL})
 
     def backwards(self, orm):
         "Write your backwards methods here."
