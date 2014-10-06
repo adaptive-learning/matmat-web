@@ -115,8 +115,14 @@ class Migration(DataMigration):
                   {"question": "%s - %s" % (a, b), "answer": str(a - b),
                    "kb": kb})
                 Q(skill, counting,
-                  {"question": [a, "-", b], "answer": str(a - b), "width": 10,
-                   "kb": kb})
+                  {"question": [a, b], "answer": str(a - b),
+                   "prefix": "%s - %s" % (a, b), "width": 10,
+                   "kb": KB_FULL if a > 10 else KB_10,
+                   "special": ["+", "-"]})
+                if a <= 10:
+                    Q(skill, counting,
+                      {"question": [a, "-", b], "answer": str(a - b),
+                       "width": 10, "kb": kb})
         # multiples of 5:
         for a in range(25, 101, 5):
             for b in range(10, a + 1, 5):
