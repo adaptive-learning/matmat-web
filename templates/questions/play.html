@@ -24,6 +24,9 @@
 
     <div class="row collapse" ng-controller="Loader">
         {% verbatim %}
+            <div class="show-for-small-only">
+                <a href="#" data-reveal-id="simulator-selector" class="radius button right">Typy příkladů</a>
+            </div>
             <div class="text-center show-for-small-only">{{ counter.current }} z {{ counter.total }}</div>
             <div class="medium-10 columns">
                 <div ng-show="!question.hide" class="animate-show">
@@ -54,12 +57,14 @@
                         <input class="button postfix" type="button" ng-click="skip()" value="Nevím" />
                     </div>
                 </div>
-                <a href="#" data-reveal-id="simulator-selector" class="radius button">Typy příkladů</a>
+                <div class="show-for-medium-up">
+                    <a href="#" data-reveal-id="simulator-selector" class="radius button">Typy příkladů</a>
+                </div>
             </div>
         {% endverbatim %}
     </div>
 
-    <div id="simulator-selector" class="reveal-modal small" data-reveal>
+    <div id="simulator-selector" class="reveal-modal medium" data-reveal>
         <a class="close-reveal-modal">&#215;</a>
         <h3 class="text-center">Výběr typů úloh</h3>
         <simulatorselector></simulatorselector>
