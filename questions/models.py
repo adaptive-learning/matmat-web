@@ -26,10 +26,14 @@ class Question(models.Model):
         return self.data
 
     def as_json(self):
+        avg_time = self.difficulty.get_average_answer_time()
+        avg_time = avg_time.get("solving_time__avg") if avg_time != None else None
+
         return dict(
             pk=self.pk,
             data=self.data,
             simulator=self.player.name,
+            avg_time=avg_time,
             recommendation_log=self.recommendation_log if hasattr(self, "recommendation_log") else None
         )
 

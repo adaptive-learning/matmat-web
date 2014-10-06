@@ -59,6 +59,9 @@
 .result span{
     font-size: 2.5em;
 }
+.result span span{
+    font-size: 1em;
+}
 .result p{
     margin-top: -20px;
     color: #999;
