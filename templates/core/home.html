@@ -8,7 +8,7 @@
         <div class="skill"
              style="background-image: url('{% static skill.get_image_name %}')">
             <span class="title">{{ skill.note }}</span>
-            <span class="subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:true">Podoblasti &raquo;</span>
+            <span class="subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
         </div></a>
 
         <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
