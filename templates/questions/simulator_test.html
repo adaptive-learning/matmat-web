@@ -3,13 +3,16 @@
 
 
 {% block content %}
-    <form action="{% url "questions.views.simulator_test" %} ">
-        {{ form.as_p }}
-        <input type="submit" value="Vybrat"/>
+    <form action="{% url "questions.views.simulator_test" %}" bg ng-controller="Hider">
+        Schovat: <input type="checkbox" ng-model="hide">
+        <div ng-hide="hide">
+            {{ form.as_p }}
+            <input type="submit" value="Vybrat"/>
+            <p>Selected question: {% if own_question %}{{ own_question }}{% else %}{{ question }}{% endif %}</p>
+        </div>
     </form>
 
     {% if question or own_question%}
-        <p>Selected question: {% if own_question %}{{ own_question }}{% else %}{{ question }}{% endif %}</p>
         <hr/>
         <div class="row collapse" ng-init="
                     test=true;
@@ -57,4 +60,9 @@
     {% for simulator in simulators %}
         <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
     {% endfor %}
+    <script>
+        app.controller('Hider', ['$scope', function($scope) {
+            $scope.hide=false;
+        }]);
+    </script>
 {% endblock %}
