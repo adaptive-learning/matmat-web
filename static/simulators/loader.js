@@ -122,13 +122,11 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
         $scope.fast_solution = $scope.question.time < $scope.question.avg_time;
-        console.log($scope.fast_solution);
+        $scope.question.correctly_solved =  correctly_solved;
+        $scope.save_answer();
 
         // wait to show correct answer
         setTimeout(function() {
-            $scope.question.correctly_solved =  correctly_solved;
-            $scope.save_answer();
-
             $scope.question.hide = true;
             // wait to finish fade-out animation
             setTimeout(function() {
