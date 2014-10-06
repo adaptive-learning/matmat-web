@@ -10,7 +10,8 @@ app.directive("selecting", function(){
             SimulatorGlobal.keyboard = "empy";
             $scope.selected = 0;
             $scope.mover = 0;
-            $scope.simple = $scope.data.answer < 10;
+//            $scope.simple = $scope.data.answer < 10;
+            $scope.simple = false;
 
             $scope.rows = [];
             var nrows = $scope.data.nrows;
