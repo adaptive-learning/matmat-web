@@ -164,9 +164,9 @@ table.user_skills td{
     height: 40px;
 }
 .progress .meter{
-    padding-top: 8px;
+    padding-top: 5px;
     text-align: right;
-    padding-right: 5px;
+    padding-right: 10px;
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -263,4 +263,19 @@ p.keyboard-text{
     margin-left: 10px;
     top: -5px;
     position: relative;
+}
+
+.cubes{
+    height: 150px;
+    border: solid lightgrey 1px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cubes div{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: solid #000000 1px;
 }

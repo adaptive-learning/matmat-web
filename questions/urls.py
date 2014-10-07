@@ -10,4 +10,5 @@ urlpatterns = patterns('questions.views',
     url(r'^get_question_test/$', "get_question_test",),
     url(r'^simulator_test/$', "simulator_test"),
     url(r'^save_answer/$', "save_answer", name="save_answer"),
+    url(r'^my_statistics/$', "my_stats", name="my_stats"),
 )

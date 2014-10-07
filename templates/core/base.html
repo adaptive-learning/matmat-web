@@ -21,23 +21,7 @@
     <script src="{% static "angular/angular-animate.min.js" %}"></script>
     <script src="{% static "core/scripts.js" %}"></script>
     <script src="{% static "core/angular.js" %}"></script>
-    <script>
-        var template_urls = {
-            "keyboard": "{% static "simulators/keyboard.html" %}",
-            "response-input": "{% static "simulators/response-input.html" %}",
-            "response-span": "{% static "simulators/response-span.html" %}",
-            "simulator-selector": "{% static "simulators/simulator_selector.html" %}",
 
-            "counting": "{% static "simulators/counting/simulator.html" %}",
-            "example": "{% static "simulators/example/simulator.html" %}",
-            "field": "{% static "simulators/field/simulator.html" %}",
-            "fillin": "{% static "simulators/fillin/simulator.html" %}",
-            "free_answer": "{% static "simulators/free_answer/simulator.html" %}",
-            "numberline": "{% static "simulators/numberline/simulator.html" %}",
-            "selecting": "{% static "simulators/selecting/simulator.html" %}",
-            "pairing": "{% static "simulators/pairing/simulator.html" %}",
-        }
-    </script>
     {% include "core/googleanalytics.html" %}
     {% block extrascripts %}{% endblock %}
 </head>
@@ -53,5 +37,6 @@
 <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
 <script src="{% static "foundation/js/foundation.min.js" %}"></script>
 <script>$(document).foundation();</script>
+{% block postextrascripts %}{% endblock %}
 </body>
 </html>
