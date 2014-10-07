@@ -12,9 +12,9 @@ app.directive("counting", function(){
             $scope.prefix = $scope.data.prefix || '';
             if ($scope.prefix != '') $scope.prefix += ' = ';
 
-            if ($scope.data.answer <= 10){
+            if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
-                SimulatorGlobal.choices = _.range(1, 11);
+                SimulatorGlobal.choices = $scope.data.kb;
             }else{
                 SimulatorGlobal.keyboard = "full";
             }
@@ -50,6 +50,12 @@ app.directive("counting", function(){
                             var img = document.createElement('img');
                             span.appendChild(img);
                             img.src = "/static/img/cube_orange.png";
+                            if ($scope.data['special'] != undefined) {
+                                if ($scope.data.special[i] == "-")
+                                    img.src = "/static/img/cube_red.png";
+                                if ($scope.data.special[i] == "+")
+                                    img.src = "/static/img/cube_green.png";
+                            }
                             alpha = Math.floor(Math.random() * 100 / 0.5) + 50;
                             //img.style.filter       = "alpha(opacity=" + str(alpha) + ");";
                             alpha = alpha / 100;
