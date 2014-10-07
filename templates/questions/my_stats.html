@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<h2>Moje statistiky</h2>
+Celkově řešeno <b>{{ math.answers_count }}</b> úloh z toho vyřešeno <span class="green"><b>{{ math.correct_answers_count }}</b> správně</span>
+
+{% for skill in skills %}
+    <hr/>
+    <div class="row collapse">
+        <div class="columns medium-6"><h4>{{ skill.note }}</h4>
+            <a href="{% url "my_skills" skill.pk %}">Ukázat moje dovednosti</a><br/>
+            <b>{{ skill.correct_answers_count }} z {{ skill.answers_count }}</b> - řešeno <b>{{ skill.answers_count }}</b> úloh z toho vyřešeno <span class="green"><b>{{ skill.correct_answers_count }}</b> správně</span>
+        </div>
+        <div class="columns medium-6 cubes" id="cubes{{ skill.pk }}"></div>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+{% block postextrascripts %}
+    <script src="{% static "scripts.js" %}"></script>
+    <script>
+        {% for skill in skills %}
+        generate_cubes({{ skill.correct_answers_count }}, "cubes{{ skill.pk }}");
+        {% endfor %}
+    </script>
+{% endblock %}

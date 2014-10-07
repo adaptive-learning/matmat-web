@@ -4,6 +4,7 @@ from django.db.models import Avg
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from elo.DataProviderInterface import DataProviderInterface
+from questions.models import Answer
 
 
 class Skill(models.Model):
@@ -18,6 +19,12 @@ class Skill(models.Model):
 
     def get_image_name(self):
         return "core/imgs/skill_{}.png".format(self.name)
+
+    def get_answers_count(self, user, correctly_solved=None):
+        answers = Answer.objects.filter(question__skill__in=self.children_list.split(","), user=user)
+        if correctly_solved is not None:
+            answers = answers.filter(correctly_solved=correctly_solved)
+        return answers.count()
 
 
 @receiver(pre_save, sender=Skill)
