@@ -7,7 +7,7 @@ app.directive("selecting", function(){
         },
         templateUrl: template_urls["selecting"],
         controller: function($scope, SimulatorGlobal){
-            SimulatorGlobal.keyboard = "empy";
+            SimulatorGlobal.keyboard = "empty";
             $scope.selected = 0;
             $scope.mover = 0;
 //            $scope.simple = $scope.data.answer < 10;

@@ -177,7 +177,7 @@ table tr:nth-of-type(2n) {
 }
 
 
-/* Numberlin */
+/* Numberline */
 .numberline-point rect{
     opacity: 0;
     cursor: pointer;
@@ -193,6 +193,33 @@ table tr:nth-of-type(2n) {
 .numberline-point.selected circle.point{ fill: blue }
 .numberline-point.selected:hover circle.shadow{ opacity: 1; }
 .numberline-point:hover circle.point{ fill: black; }
+
+/* Pairing */
+.pairing-button {
+    width: 150px;
+    height: 150px;
+    font-size: 2.5em;
+    border-radius: 3px;
+    border: none;
+    margin: 1px;
+}
+.pairing-active{
+    color: #1f77b4;
+    background: #aec7e8;
+}
+.pairing-selected{
+    color: #9467bd;
+    background: #c5b0d5;
+}
+.pairing-off{
+    color: #2ca02c;
+    background: #98df8a;
+    opacity: 0.4;
+}
+.pairing-wrong{
+    color: #d62728;
+    background: #ff9896;
+}
 
 /* Keyboard */
 p.keyboard-text{

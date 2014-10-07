@@ -38,6 +38,7 @@ class Migration(DataMigration):
         numberline = Sim('numberline', 'Výběr odpovědi na číselné ose')
         fillin = Sim('fillin', 'Doplnění čísla do řady')
         field = Sim('field', 'Počítání předmětů v mřížce')
+        pairing = Sim('pairing', 'Matematické pexeso')
         Sim('example', 'Just an example')
 
         # Numbers:
@@ -103,6 +104,36 @@ class Migration(DataMigration):
               {"question": [a, b], "answer": str(a + b),
                "prefix": "%s + %s" % (a, b), "width": 10,
                "kb": KB_FULL if a + b > 10 else KB_10})
+        # end random.seed(150 - 2)
+
+        # pairings:
+        random.seed(8)
+        opts = range(2, 11)
+
+        def gen0(k):
+            ret = []
+            for s in random.sample(opts, k):
+                n = random.randint(1, s - 1)
+                ret.append([str(s), "%s + %s" % (n, s - n)])
+            return ret
+        for k in [2, 3]:
+            for _ in range(5):
+                Q("addition <= 10", pairing,
+                  {"question": gen0(k), "answer": 1})
+
+        gen = lambda k: [["%s + %s" % (n, s - n) if n else str(s)
+                          for n in random.sample(range(s), 2)]
+                         for s in random.sample(opts, k)]
+        for k in [2, 3]:
+            for _ in range(10):
+                Q("addition <= 10", pairing,
+                  {"question": gen(k), "answer": 1})
+
+        opts = range(2, 21)
+        for _ in range(10):
+            Q("addition <= 10", pairing,
+              {"question": gen(3), "answer": 1})
+        # end random.seed(8)
 
         # Subtraction:
         # ------------
