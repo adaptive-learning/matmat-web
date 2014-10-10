@@ -22,7 +22,7 @@ SKILL_TABLES = {
     [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
 }
 
-skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name', 'used']
+skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name', 'used', 'active']
 SkillTuple = namedtuple('Skill', ', '.join(skill_keys))
 skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
@@ -58,7 +58,7 @@ def my_skills(request, pk=None):
 def get_all_skills(user):
     cursor = connection.cursor()
     cursor.execute(
-        '''SELECT s.id, s.parent_id, s.name, usk.val, s.note
+        '''SELECT s.id, s.parent_id, s.name, usk.val, s.note, s.active
         FROM model_skill s LEFT JOIN
             (SELECT us.skill_id as sid, us.value as val
              FROM model_userskill us
@@ -66,22 +66,24 @@ def get_all_skills(user):
         ON (s.id = usk.sid)
         '''.format(user.pk))
     rows = cursor.fetchall()
-    skills = {sid: (parid, name, val, note)
-              for sid, parid, name, val, note in rows}
+    skills = {sid: (parid, name, val, note, active)
+              for sid, parid, name, val, note, active in rows}
     user_skills = {}
     name_id = {}
     id_name = {}
     id_parid = {}
     id_note = {}
     id_used = {}
+    id_active = {}
     children = defaultdict(list)
-    for sid, (parid, name, val, note) in skills.iteritems():
+    for sid, (parid, name, val, note, active) in skills.iteritems():
         get_skill_value(sid, skills, user_skills)
         name_id[name] = sid
         id_name[sid] = name
         id_parid[sid] = parid
         id_note[sid] = note
         id_used[sid] = val is not None
+        id_active[sid] = active
         if parid:
             children[parid].append(sid)
     return {'name_id': name_id,
@@ -91,6 +93,7 @@ def get_all_skills(user):
             'children': children,
             'id_note': id_note,
             'id_used': id_used,
+            'id_active': id_active,
             }
 
 
@@ -110,6 +113,7 @@ def get_skill_obj(sid, skills):
            'image_name': "core/imgs/skill_{}.png".format(skills['id_name'][sid]),
            'pk': sid,
            'note': skills['id_note'][sid],
+           'active': skills['id_active'][sid],
            'used': skills['id_used'][sid]}
     obj['value_percent'] = int(100. / (1 + math.exp(-obj['value'])))
     obj['style'] = get_style(obj['value'], used=skills['id_used'][sid])
@@ -121,7 +125,7 @@ def get_skill_value(sid, skills, user_skills):
     compute and save absolute skill of user
     """
     if sid not in user_skills:
-        parid, name, val, _ = skills[sid]
+        parid, name, val, _, _ = skills[sid]
         val = val or 0
         parval = get_skill_value(parid, skills, user_skills) if parid else 0
         user_skills[sid] = val + parval
