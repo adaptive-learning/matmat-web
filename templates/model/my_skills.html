@@ -18,7 +18,7 @@
                  id="panel{{ skill_data.skill.pk }}">
                 {% if skill_data.skill.used %}
 
-                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play"%}?skill={{ skill_data.skill.pk }}">procvičit</a></h3>
+                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play" skill_data.skill.name %}">procvičit</a></h3>
                     <div class="progress small-12 medium-10 large-8 small-centered round">
                         <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
                             {{ skill_data.skill.value_percent }}%
@@ -27,7 +27,7 @@
                     {% for _, user_skill in skill_data.skills.items %}
                         {% if user_skill.used %}
                             <b>{{ user_skill.note }}</b> -
-                                <a href="{% url "play"%}?skill={{ user_skill.pk }}">procvičit</a>
+                                <a href="{% url "play" skill_data.skill.name user_skill.pk%}">procvičit</a>
                              <div class="progress small-12 medium-10 large-8 small-centered round">
                                  <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
                                      {{ user_skill.value_percent }}%
