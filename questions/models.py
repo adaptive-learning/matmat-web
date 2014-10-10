@@ -21,6 +21,7 @@ class Question(models.Model):
     data = models.TextField(verbose_name="Data as JSON")
     type = models.CharField(max_length=1, choices=TYPES, default='c')
     value = models.CharField(max_length=255, null=True, blank=True)     # value for preventing repeating similar questions
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.data

@@ -15,7 +15,8 @@ def recommend_questions(count, user, skills, in_queue, simulators=None):
         "LEFT JOIN model_userskill ON ( model_userskill.skill_id = questions_question.skill_id AND model_userskill.user_id = %(user_id)s)"
         "LEFT JOIN questions_answer ON ( questions_question.id = questions_answer.question_id AND questions_answer.user_id = %(user_id)s) "
         "LEFT JOIN model_questiondifficulty ON ( model_questiondifficulty.question_id = questions_question.id) "
-        "WHERE questions_question.skill_id IN ( {0} ) {1} {2}"
+        "WHERE questions_question.skill_id IN ( {0} ) {1} {2} "
+        "AND questions_question.active "
         "GROUP BY questions_question.id ".format(
             skills,
             "AND questions_question.id NOT IN ( {0} ) ".format(",".join(in_queue)) if in_queue else "",
