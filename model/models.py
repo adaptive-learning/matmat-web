@@ -13,6 +13,7 @@ class Skill(models.Model):
     parent = models.ForeignKey("self", null=True, blank=True, related_name="children")
     level = models.IntegerField()
     children_list = models.TextField(default="")
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
@@ -25,6 +26,14 @@ class Skill(models.Model):
         if correctly_solved is not None:
             answers = answers.filter(correctly_solved=correctly_solved)
         return answers.count()
+
+    def active_children(self):
+        return self.children.filter(active=True)
+
+    def active_children_list(self):
+        # TODO - caching
+        deactivated_skills = set([pk for skill in Skill.objects.filter(active=False) for pk in skill.children_list.split(",")])
+        return set(self.children_list.split(",")) - deactivated_skills
 
 
 @receiver(pre_save, sender=Skill)

@@ -34,7 +34,7 @@ def get_questions(request):
     load recommended questions from server as jason
     """
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
-    subskills = skill.children_list
+    subskills = skill.active_children_list()
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
     simulators = [] if request.GET["simulators"] == "" else request.GET["simulators"].split(",")

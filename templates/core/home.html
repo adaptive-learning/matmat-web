@@ -12,7 +12,7 @@
         </div></a>
 
         <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
-            {% for subskill in skill.children.all %}
+            {% for subskill in skill.active_children.all %}
                 <li><a href="{% url "play" skill.name subskill.pk %}">{{ subskill.note }}</a></li>
             {% endfor %}
         </ul>
