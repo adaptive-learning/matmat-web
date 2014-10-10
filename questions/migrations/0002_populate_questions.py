@@ -109,20 +109,30 @@ class Migration(DataMigration):
         random.seed(8)
         opts = range(2, 11)
 
+        def shuffle(pairs):
+            l = [(e, i) for i, p in enumerate(pairs) for e in p]
+            random.shuffle(l)
+            a = len(l) / 2
+            return [l[:a], l[a:]]
+
         def gen0(k):
             ret = []
             for s in random.sample(opts, k):
                 n = random.randint(1, s - 1)
                 ret.append([str(s), "%s + %s" % (n, s - n)])
-            return ret
+            return shuffle(ret)
+
         for k in [2, 3]:
             for _ in range(5):
                 Q("addition <= 10", pairing,
                   {"question": gen0(k), "answer": 1})
 
-        gen = lambda k: [["%s + %s" % (n, s - n) if n else str(s)
-                          for n in random.sample(range(s), 2)]
-                         for s in random.sample(opts, k)]
+        def gen(k):
+            return shuffle(
+                [["%s + %s" % (n, s - n) if n else str(s)
+                  for n in random.sample(range(s), 2)]
+                 for s in random.sample(opts, k)])
+
         for k in [2, 3]:
             for _ in range(10):
                 Q("addition <= 10", pairing,

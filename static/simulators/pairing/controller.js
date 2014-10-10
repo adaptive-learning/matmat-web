@@ -12,23 +12,16 @@ app.directive("pairing", function(){
 
 
             var q = $scope.data.question;
-            $scope.todo = q.length;
-            var cells = [];
-            for (var i=0; i < q.length; i++) {
-                var pair = q[i];
-                for (var j=0; j < pair.length; j++) 
-                    cells.push({'text': pair[j], 'pair': i,
-                                'disabled': false, 'state': 'active'});
-            }
-            cells = _.shuffle(cells);
+            $scope.todo = q.length * q[0].length / 2;
             $scope.rows = [];
-            for (var i=0; i <= 2; i++) {
+            for (var i=0; i < q.length; i++) {
                 var row = [];
-                for (var j=0; j < q.length; j++) {
-                   row.push(cells.pop());
+                for (var j=0; j < q[i].length; j++) {
+                    row.push({'text': q[i][j][0], 'pair': q[i][j][1],
+                            'disabled': false, 'state': 'active'});
                 }
-               $scope.rows.push(row);
-            } 
+                $scope.rows.push(row);
+            }
 
             $scope.selected = undefined;
             $scope.click = function(cell) {
