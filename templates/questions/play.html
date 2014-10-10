@@ -8,6 +8,7 @@
         <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
     {% endfor %}
     <script>
+        var skill = {{ skill.pk }};
         var simulators = [
             {% for simulator in simulators %}
                 {

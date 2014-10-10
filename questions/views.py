@@ -16,12 +16,16 @@ from questions.models import Question, Answer, Simulator
 
 @ensure_csrf_cookie
 @allow_lazy_user
-def play(request):
-    skill = get_object_or_404(Skill, pk=request.GET["skill"])
+def play(request, skill, pk=None):
+    if pk:
+        skill = get_object_or_404(Skill, pk=pk, parent__name=skill)
+    else:
+        skill = get_object_or_404(Skill, name=skill)
     simulators = Simulator.objects.filter(questions__skill__in=skill.children_list.split(",")).distinct()
 
     return render(request, 'questions/play.html', {
         "simulators": simulators,
+        "skill": skill,
     })
 
 @login_required

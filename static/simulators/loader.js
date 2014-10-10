@@ -8,7 +8,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 1000;
     }
-    $scope.skill_id = getURLParameter("skill");         // selected skill from GET
+    if (!$scope.test) $scope.skill_id = skill;         // selected skill from global
     $scope.question = null;                             // active question
     $scope.counter = {
         total: QUESTIONS_IN_SET,

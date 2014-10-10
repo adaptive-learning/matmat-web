@@ -4,7 +4,7 @@
 {% block content%}
         <div id="skill_selector">
     {% for skill in skills%}
-        <a href="{% url "play" %}?skill={{ skill.pk }}">
+        <a href="{% url "play" skill.name %}">
         <div class="skill"
              style="background-image: url('{% static skill.get_image_name %}')">
             <span class="title">{{ skill.note }}</span>
@@ -13,7 +13,7 @@
 
         <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
             {% for subskill in skill.children.all %}
-                <li><a href="{% url "play" %}?skill={{ subskill.pk }}">{{ subskill.note }}</a></li>
+                <li><a href="{% url "play" skill.name subskill.pk %}">{{ subskill.note }}</a></li>
             {% endfor %}
         </ul>
     {% endfor %}
