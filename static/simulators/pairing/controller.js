@@ -51,16 +51,16 @@ app.directive("pairing", function(){
                     cell.state = 'off';
                     $scope.selected = undefined;
                     $scope.todo--;
-                    if ($scope.todo == 1) {
+                    if ($scope.todo == 0) {
                         $scope.submit(true);
                     }
                 } else {
                     // wrong
                     $scope.interface.log("WRONG: " + cell.text);
-                    $scope.selected.state = 'wrong';
-                    cell.state = 'wrong';
+                    $scope.interface.save_partial_answer(false);
+                    $scope.selected.state = ($scope.selected.state != 'wactive') ? 'wactive' : 'wwactive';
+                    cell.state = (cell.state != 'wactive') ? 'wactive' : 'wwactive';
                     $scope.selected = undefined;
-                    $scope.submit(false);
                 }
                 console.log($scope);
             }
@@ -72,10 +72,6 @@ app.directive("pairing", function(){
                 $scope.interface.finish(correct, wait);
             };
             SimulatorGlobal.submit = $scope.submit;
-
-            $scope.change = function(){
-                $scope.interface.log("lala");
-            };
 
             SimulatorGlobal.description.top = "Vyznač kartičky se stejnou hodnotou."
         }
