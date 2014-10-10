@@ -244,8 +244,7 @@ class Migration(DataMigration):
 
         for k in [2, 3]:
             for _ in range(5):
-                Q("multiplication1", pairing,
-                  {"question": gen0(k), "answer": 1})
+                Q("multiplication1", pairing, {"question": gen0(k), "answer": 1})
 
         def gen(k):
             ret = []
@@ -255,8 +254,7 @@ class Migration(DataMigration):
 
         for k in [2, 3]:
             for _ in range(10):
-                Q("multiplication1", pairing,
-                  {"question": gen(k), "answer": 1})
+                Q("multiplication1", pairing, {"question": gen(k), "answer": 1})
 
         resmap2 = defaultdict(set)
         for a in range(2, 11):
@@ -266,13 +264,11 @@ class Migration(DataMigration):
                 resmap2[t].add('%s x %s' % (a, b))
 
         for _ in range(10):
-            Q("multiplication", pairing,
-              {"question": gen(3), "answer": 1})
+            Q("multiplication", pairing, {"question": gen(3), "answer": 1})
 
         resmap = resmap2
         for _ in range(10):
-            Q("multiplication2", pairing,
-              {"question": gen0(3), "answer": 1})
+            Q("multiplication2", pairing, {"question": gen0(3), "answer": 1})
         # end random.seed(300000)
 
         # Division:
@@ -284,6 +280,21 @@ class Migration(DataMigration):
                 Q(skill, free_answer,
                   {"question": "%s &divide; %s" % (total, b),
                    "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL})
+
+        # pairings:
+        random.seed(30)
+        resmap = defaultdict(set)
+        for r in range(1, 11):
+            for b in range(2, 11):
+                a = r * b
+                resmap[r].add('%s &divide; %s' % (a, b))
+
+        for k in [2, 3]:
+            for _ in range(5):
+                Q("division1", pairing, {"question": gen0(k), "answer": 1})
+            for _ in range(10):
+                Q("division1", pairing, {"question": gen(k), "answer": 1})
+        # end random.seed(30)
 
     def backwards(self, orm):
         "Write your backwards methods here."
