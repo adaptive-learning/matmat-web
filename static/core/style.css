@@ -223,10 +223,10 @@ table tr:nth-of-type(2n) {
     transition:all linear 0.5s;
 }
 .pairing-wactive-add, .pairing-wwactive-add {
-    -webkit-animation:0.5s pairing_wrong_animation;
-    -moz-animation:0.5s pairing_wrong_animation;
-    -o-animation:0.5s pairing_wrong_animation;
-    animation:0.5s pairing_wrong_animation;
+    -webkit-animation:1.5s pairing_wrong_animation;
+    -moz-animation:1.5s pairing_wrong_animation;
+    -o-animation:1.5s pairing_wrong_animation;
+    animation:1.5s pairing_wrong_animation;
 }
 @keyframes pairing_wrong_animation {
     from { color: #d62728; background: #ff9896; }

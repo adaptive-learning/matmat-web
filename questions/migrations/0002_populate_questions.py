@@ -140,7 +140,7 @@ class Migration(DataMigration):
 
         opts = range(2, 21)
         for _ in range(10):
-            Q("addition <= 10", pairing,
+            Q("addition <= 20", pairing,
               {"question": gen(3), "answer": 1})
         # end random.seed(8)
 
@@ -169,6 +169,38 @@ class Migration(DataMigration):
                 Q('subtraction', free_answer,
                   {"question": "%s - %s" % (a, b), "answer": str(a - b),
                    "kb": KB_FULL})
+
+        # pairings:
+        random.seed(4.5)
+
+        def gen0(k, a=1, b=10):
+            ret = []
+            for t in random.sample(range(a, b), k):
+                x = random.randint(t + 1, b)
+                y = x - t  # x - y == t
+                ret.append([str(t), "%s - %s" % (x, y)])
+            return shuffle(ret)
+
+        for k in [2, 3]:
+            for _ in range(5):
+                Q("subtraction <= 10", pairing,
+                  {"question": gen0(k), "answer": 1})
+
+        def gen(k, a=1, b=10):
+            return shuffle(
+                [["%s - %s" % (x, x - t) if x != t else str(t)
+                  for x in random.sample(range(t, b + 1), 2)]
+                 for t in random.sample(range(a, b), k)])
+
+        for k in [2, 3]:
+            for _ in range(10):
+                Q("subtraction <= 10", pairing,
+                  {"question": gen(k), "answer": 1})
+
+        for _ in range(10):
+            Q("subtraction <= 20", pairing,
+              {"question": gen(3, a=1, b=20), "answer": 1})
+        # end random.seed(4.5)
 
         # Multiplication:
         # ---------------
