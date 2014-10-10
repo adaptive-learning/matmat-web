@@ -2,6 +2,7 @@
 from south.v2 import DataMigration
 import json
 import random
+from collections import defaultdict
 
 
 KB_FULL = "full"
@@ -226,6 +227,53 @@ class Migration(DataMigration):
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, field, {"field": decode_field(x), "answer": a * b, "kb": KB_FULL})
+
+        # pairings:
+        random.seed(300000)
+        resmap = defaultdict(set)
+        for a in range(2, 11):
+            for b in range(a, 11):
+                t = a * b
+                resmap[t].add('%s x %s' % (a, b))
+
+        def gen0(k):
+            ret = []
+            for t in random.sample(resmap.keys(), k):
+                ret.append([t, random.choice(list(resmap[t]))])
+            return shuffle(ret)
+
+        for k in [2, 3]:
+            for _ in range(5):
+                Q("multiplication1", pairing,
+                  {"question": gen0(k), "answer": 1})
+
+        def gen(k):
+            ret = []
+            for t in random.sample(resmap.keys(), k):
+                ret.append(random.sample([t] + list(resmap[t]), 2))
+            return shuffle(ret)
+
+        for k in [2, 3]:
+            for _ in range(10):
+                Q("multiplication1", pairing,
+                  {"question": gen(k), "answer": 1})
+
+        resmap2 = defaultdict(set)
+        for a in range(2, 11):
+            for b in range(11, 21):
+                t = a * b
+                resmap[t].add('%s x %s' % (a, b))
+                resmap2[t].add('%s x %s' % (a, b))
+
+        for _ in range(10):
+            Q("multiplication", pairing,
+              {"question": gen(3), "answer": 1})
+
+        resmap = resmap2
+        for _ in range(10):
+            Q("multiplication2", pairing,
+              {"question": gen0(3), "answer": 1})
+        # end random.seed(300000)
 
         # Division:
         # ---------------
