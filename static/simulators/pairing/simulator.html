@@ -1,7 +1,7 @@
 <br>
 <div>
     <div ng-repeat="row in rows">
-        <input class="pairing-button pairing-{{cell.state}}" type="button" 
+        <input class="pairing-button" ng-class="'pairing-' + cell.state" type="button" 
         ng-repeat="cell in row" value="{{cell.text}}" ng-click="click(cell)" 
         ng-disabled="cell.disabled || gameover"/>
     </div>

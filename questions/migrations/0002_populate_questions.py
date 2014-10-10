@@ -36,10 +36,9 @@ class Migration(DataMigration):
         counting = Sim('counting', 'Počítání předmětů')
         selecting = Sim('selecting', 'Výběr správného počtu předmětů')
         numberline = Sim('numberline', 'Výběr odpovědi na číselné ose')
-        fillin = Sim('fillin', 'Doplnění čísla do řady')
+        fillin = Sim('fillin', 'Doplnění čísla')
         field = Sim('field', 'Počítání předmětů v mřížce')
         pairing = Sim('pairing', 'Matematické pexeso')
-        Sim('example', 'Just an example')
 
         # Numbers:
         # --------

@@ -203,7 +203,7 @@ table tr:nth-of-type(2n) {
     border: none;
     margin: 1px;
 }
-.pairing-active{
+.pairing-active, .pairing-wactive, .pairing-wwactive {
     color: #1f77b4;
     background: #aec7e8;
 }
@@ -211,15 +211,40 @@ table tr:nth-of-type(2n) {
     color: #9467bd;
     background: #c5b0d5;
 }
-.pairing-off{
+.pairing-off {
     color: #2ca02c;
     background: #98df8a;
-    opacity: 0.4;
+    opacity: 0;
 }
-.pairing-wrong{
-    color: #d62728;
-    background: #ff9896;
+.pairing-off-add {
+    -webkit-transition:all linear 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    transition:all linear 0.5s;
 }
+.pairing-wactive-add, .pairing-wwactive-add {
+    -webkit-animation:0.5s pairing_wrong_animation;
+    -moz-animation:0.5s pairing_wrong_animation;
+    -o-animation:0.5s pairing_wrong_animation;
+    animation:0.5s pairing_wrong_animation;
+}
+@keyframes pairing_wrong_animation {
+    from { color: #d62728; background: #ff9896; }
+    to { color: #1f77b4; background: #aec7e8; }
+}
+@-webkit-keyframes pairing_wrong_animation {
+    from { color: #d62728; background: #ff9896; }
+    to { color: #1f77b4; background: #aec7e8; }
+}
+@-moz-keyframes pairing_wrong_animation {
+    from { color: #d62728; background: #ff9896; }
+    to { color: #1f77b4; background: #aec7e8; }
+}
+@-o-keyframes pairing_wrong_animation {
+    from { color: #d62728; background: #ff9896; }
+    to { color: #1f77b4; background: #aec7e8; }
+}
+
 
 /* Keyboard */
 p.keyboard-text{
