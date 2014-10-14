@@ -4,7 +4,7 @@ from django.contrib.auth.views import logout
 from questions.views import SimulatorTestView
 
 urlpatterns = patterns('questions.views',
-    url(r'^play/$', "play", name="play"),
+    url(r'^play/$', "play", name="play", kwargs={"skill": "math"}),
     url(r'^play/(?P<skill>\w+)$', "play", name="play"),
     url(r'^play/(?P<skill>\w+)/(?P<pk>\w+)$', "play", name="play"),
     url(r'^get_question/$', "get_questions", name="get_question"),
