@@ -113,11 +113,17 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
     # compute user skill
     user_skill = 0
     current_skill_pk = question.skill_id
-    while skill_tree[current_skill_pk].parent is not None:
+    while True:
+        skill = skill_tree[current_skill_pk]
         if skill_tree[current_skill_pk].user_skill is not None:
-            user_skill += skill_tree[current_skill_pk].user_skill
+            user_skill += skill.user_skill
 
-        current_skill_pk = skill_tree[current_skill_pk].parent.pk
+        print skill, user_skill
+
+        if skill.parent is None:
+            break
+        current_skill_pk = skill.parent.pk
+    print
 
     # difficulty score
     difficulty = question.questiondifficulty if question.questiondifficulty is not None else 0
