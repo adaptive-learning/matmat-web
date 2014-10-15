@@ -101,6 +101,7 @@ class EloModel():
         question_type = self.data.get_question_type(question)
         leaf_skill = self.data.get_skill(question)
         response = self.response(answer, question, question_type)
+        original_user_skill, _ = self.get_user_skill(user, leaf_skill)
 
         # get question difficulty
         difficulty = self.data.get_difficulty(question)
@@ -121,6 +122,13 @@ class EloModel():
 
             user_skill_delta = self.compute_user_skill_delta(response, expected_response, question_type, level)
             self.data.set_user_skill(user, skill, relative_user_skill + user_skill_delta)
+
+        # update difficulty
+        expected_response = self.expected_response(
+                                    user_skill=original_user_skill,
+                                    difficulty=difficulty,
+                                    question_type=question_type
+                                )
 
         if self.data.is_first_attempt(answer):
             difficulty_delta = self.compute_difficulty_delta(
