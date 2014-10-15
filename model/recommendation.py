@@ -121,7 +121,6 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
         if skill.parent is None:
             break
         current_skill_pk = skill.parent.pk
-    print
 
     # difficulty score
     difficulty = question.questiondifficulty if question.questiondifficulty is not None else 0
