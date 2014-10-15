@@ -53,10 +53,13 @@ def get_question_test(request):
     test page for question recommendation
     """
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
-    subskills = skill.children_list
+    subskills = skill.active_children_list()
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
 
     questions = recommend_questions(int(request.GET["count"]), request.user, subskills, in_queue)
+
+    if "json" in request.GET:
+        return HttpResponse(json.dumps([q.as_json() for q in questions]), content_type="application/json")
 
     return render(request, 'questions/get_question_test.html', {
         "questions": questions
