@@ -49,19 +49,19 @@ class EloModel():
         return delta
 
     def response(self, answer, question, question_type):
-        TIME_PENALTY_SLOPE = 4.     # smaller for larger slope
+        TIME_PENALTY_SLOPE = 0.8    # smaller for larger slope
 
         if question_type == 'c':
             if not self.data.get_correctness(answer):
                 return 0
             else:
-                # avg_solving_time = self.data.get_avg_solving_time(question)
-                avg_solving_time = 3.        # until enough data
+                avg_solving_time = self.data.get_avg_solving_time(question)
+                # avg_solving_time = 3.        # until enough data
                 solving_time = self.data.get_solving_time(answer)
                 if avg_solving_time > solving_time:
                     response = 1
                 else:
-                    response = TIME_PENALTY_SLOPE / (TIME_PENALTY_SLOPE - 1 + (solving_time / avg_solving_time))
+                    response = TIME_PENALTY_SLOPE ** ((solving_time / avg_solving_time) - 1)
                 return response
 
         if question_type == 't':
