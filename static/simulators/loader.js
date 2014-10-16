@@ -3,7 +3,7 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;         // animation time after finish question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
-app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile){
+app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 1000;
@@ -126,10 +126,10 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.save_answer();
 
         // wait to show correct answer
-        setTimeout(function() {
+        $timeout(function() {
             $scope.question.hide = true;
             // wait to finish fade-out animation
-            setTimeout(function() {
+            $timeout(function() {
                 $("#playground").empty();
                 $scope.question = null;
                 if ($scope.counter.current == $scope.counter.total){
