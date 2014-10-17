@@ -1,6 +1,6 @@
 # coding=utf-8
 import string
-from django.contrib.auth import user_logged_in, login, authenticate
+from django.contrib.auth import user_logged_in, login
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django import forms
@@ -9,7 +9,6 @@ from django.views.generic import View
 from lazysignup.decorators import allow_lazy_user
 from core.decorators import non_lazy_required
 from core.models import create_profile
-from matmat import settings
 from model.models import Skill
 
 
@@ -20,6 +19,8 @@ def home(request):
              u"multiplication", u"division"]
     skills = list(Skill.objects.filter(level__in=[1, 2]))
     skills.sort(key=lambda s: order.index(s.name))
+
+    remember_user(request)
 
     return render(request, 'core/home.html', {
         "skills": skills,
