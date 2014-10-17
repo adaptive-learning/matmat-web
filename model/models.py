@@ -82,6 +82,7 @@ class QuestionDifficulty(models.Model):
     question = models.OneToOneField('questions.Question', primary_key=True,
                                     related_name='difficulty')
     value = models.FloatField(default=0)
+    time_intensity = models.FloatField(default=1.)
 
     def __unicode__(self):
         return self.value
@@ -154,5 +155,14 @@ class DatabaseDataProvider(DataProviderInterface):
     def get_first_attempts_count(self, question):
         return question.difficulty.get_first_attempts_count()
 
-    def get_avg_solving_time(self, question):
-        return question.difficulty.get_average_answer_time()
+    def get_time_intensity(self, question):
+        try:
+            difficulty = question.difficulty.time_intensity
+        except QuestionDifficulty.DoesNotExist:
+            difficulty = None
+        return difficulty
+
+    def set_time_intensity(self, question, value):
+        difficulty, _ = QuestionDifficulty.objects.get_or_create(question=question)
+        difficulty.time_intensity = value
+        difficulty.save()

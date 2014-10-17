@@ -121,7 +121,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
-        $scope.fast_solution = $scope.question.time < $scope.question.avg_time;
+        $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
         $scope.question.correctly_solved =  correctly_solved;
         $scope.save_answer();
 

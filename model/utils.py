@@ -102,7 +102,10 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         data = []
         for pk, q in self.questions.items():
             if "difficulty" in q.keys() and q["difficulty"] is not None:
-                data.append(QuestionDifficulty(question_id=pk, value=q["difficulty"]))
+                qd = QuestionDifficulty(question_id=pk, value=q["difficulty"])
+                if "time_intensity" in q.keys() and q["time_intensity"] is not None:
+                    qd.time_intensity=q["time_intensity"]
+                data.append(qd)
         QuestionDifficulty.objects.bulk_create(data)
 
         data = []
@@ -183,13 +186,17 @@ class CachingDatabaseDataProvider(DataProviderInterface):
             count += v
         return count
 
-    def get_avg_solving_time(self, question):
-        if self.questions[question]["attempts"] == 0:
-            return None
-        return self.questions[question]["total_solving_time"] / self.questions[question]["attempts"]
-
     def get_questions(self):
         return self.questions.keys()
 
     def get_questions_data(self, question):
         return self.questions[question]["data"]
+
+    def get_time_intensity(self, question):
+        try:
+            return self.questions[question]["time_intensity"]
+        except:
+            return None
+
+    def set_time_intensity(self, question, value):
+        self.questions[question]["time_intensity"] = value

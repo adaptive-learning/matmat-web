@@ -1,6 +1,7 @@
 import math
 
 INITIAL_DIFFICULTY = 0
+INITIAL_TIME_INTENSITY = 2
 INITIAL_SKILL = 0
 
 
@@ -48,20 +49,30 @@ class EloModel():
 
         return delta
 
-    def response(self, answer, question, question_type):
+    @staticmethod
+    def compute_time_intensity_delta(response_time, time_intensity, first_attempts_count):
+        ALPHA = .4
+        DYNAMIC_ALPHA = 0.05
+        K = ALPHA / (1 + DYNAMIC_ALPHA * (first_attempts_count - 1))
+        if response_time == 0: response_time = 1        # hack for zero response times
+        delta = K * (math.log(response_time) - time_intensity)
+
+        return delta
+
+    def response(self, answer, question, time_intensity, question_type="c"):
         TIME_PENALTY_SLOPE = 0.8    # smaller for larger slope
 
         if question_type == 'c':
             if not self.data.get_correctness(answer):
                 return 0
             else:
-                avg_solving_time = self.data.get_avg_solving_time(question)
-                # avg_solving_time = 3.        # until enough data
                 solving_time = self.data.get_solving_time(answer)
-                if avg_solving_time > solving_time:
+                expected_solving_time = math.exp(time_intensity)
+                if expected_solving_time > solving_time:
                     response = 1
                 else:
-                    response = TIME_PENALTY_SLOPE ** ((solving_time / avg_solving_time) - 1)
+                    response = TIME_PENALTY_SLOPE ** ((solving_time / expected_solving_time) - 1)
+                print response, expected_solving_time, solving_time
                 return response
 
         if question_type == 't':
@@ -100,7 +111,6 @@ class EloModel():
         question = self.data.get_question(answer)
         question_type = self.data.get_question_type(question)
         leaf_skill = self.data.get_skill(question)
-        response = self.response(answer, question, question_type)
         original_user_skill, _ = self.get_user_skill(user, leaf_skill)
 
         # get question difficulty
@@ -108,6 +118,22 @@ class EloModel():
         if difficulty is None:
             difficulty = INITIAL_DIFFICULTY
             self.data.set_difficulty(question, difficulty)
+
+        # get and update time intensity
+        time_intensity = self.data.get_time_intensity (question)
+        if time_intensity is None:
+            time_intensity = INITIAL_TIME_INTENSITY
+            self.data.set_time_intensity(question, time_intensity)
+
+
+        time_intensity += self.compute_time_intensity_delta(
+                self.data.get_solving_time(answer),
+                time_intensity,
+                self.data.get_first_attempts_count(question),
+            )
+        self.data.set_time_intensity(question, time_intensity)
+
+        response = self.response(answer, question, time_intensity, question_type)
 
         # update skills
         level = 0   # level of updated skill
@@ -123,7 +149,7 @@ class EloModel():
             user_skill_delta = self.compute_user_skill_delta(response, expected_response, question_type, level)
             self.data.set_user_skill(user, skill, relative_user_skill + user_skill_delta)
 
-        # update difficulty
+        # update difficulty and time intensity
         expected_response = self.expected_response(
                                     user_skill=original_user_skill,
                                     difficulty=difficulty,

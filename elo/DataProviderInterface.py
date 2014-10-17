@@ -47,6 +47,14 @@ class DataProviderInterface():
         pass
 
     @abstractmethod
+    def get_time_intensity(self, question):
+        pass
+
+    @abstractmethod
+    def set_time_intensity(self, question, value):
+        pass
+
+    @abstractmethod
     def get_solving_time(self, answer):
         pass
 
@@ -60,8 +68,4 @@ class DataProviderInterface():
 
     @abstractmethod
     def get_first_attempts_count(self, question):
-        pass
-
-    @abstractmethod
-    def get_avg_solving_time(self, question):
         pass
