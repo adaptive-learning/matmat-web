@@ -72,7 +72,6 @@ class EloModel():
                     response = 1
                 else:
                     response = TIME_PENALTY_SLOPE ** ((solving_time / expected_solving_time) - 1)
-                print response, expected_solving_time, solving_time
                 return response
 
         if question_type == 't':
