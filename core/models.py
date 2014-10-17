@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from lazysignup.utils import is_lazy_user
+from social_auth.db.django_models import UserSocialAuth
 
 
 class UserProfile(models.Model):
@@ -28,6 +29,11 @@ def is_user_registred(user):
 def after_log_in(sender, **kwargs):
     if "user" in kwargs:    # user logged in - check profile
         create_profile(kwargs["user"])
+
+
+@receiver(post_save, sender=UserSocialAuth)
+def my_handler(sender, instance, created=False, **kwargs):
+    create_profile(instance.user)
 
 
 def create_profile(user):
