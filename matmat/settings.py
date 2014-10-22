@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'core',
     'model',
     'questions',
+    'administration'
 )
 
 MIDDLEWARE_CLASSES = (

@@ -17,6 +17,11 @@
             <li>
                 <a href="{% url "my_stats" %}">Moje statistiky</a>
             </li>
+            {% if user.is_staff %}
+                <li>
+                    <a href="{% url "admin-overview" %}">Administrace</a>
+                </li>
+            {% endif %}
         </ul>
 
         <ul class="right">
