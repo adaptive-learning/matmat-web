@@ -11,6 +11,15 @@
                      {{ skill.note }}</a></dd>
         {% endfor %}
     </dl>
+    <hr/>
+    <div class="right text-right">
+        Pokračovat v procvičování <br/>
+        {% if proceed_skill.level < 3 %}
+            <a href="{% url "play" proceed_skill.name %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+        {% else %}
+            <a href="{% url "play" proceed_skill.parent.name proceed_skill.pk %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+        {% endif %}
+    </div>
 
     <div class="tabs-content">
         {% for skill_data in data %}

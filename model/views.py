@@ -1,11 +1,12 @@
 from collections import defaultdict
 from django.contrib.auth.decorators import login_required
 from django.db import connection
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from lazysignup.decorators import allow_lazy_user
 import colorsys
 import math
 from collections import namedtuple
+from model.models import Skill
 
 
 NAMES = ('numbers', 'addition', 'subtraction', 'multiplication', 'division')
@@ -35,6 +36,7 @@ def my_skills(request, pk=None):
     par = None
     if pk is not None:
         pk = int(pk)
+        proceed_skill = get_object_or_404(Skill, pk=pk)
         while pk!=1:
             par, pk = pk, all_skills['id_parid'][int(pk)]
     active = all_skills['id_name'][par] if par is not None else None
@@ -55,6 +57,7 @@ def my_skills(request, pk=None):
         "data": data,
         "skills": skills,
         "active": active,
+        "proceed_skill": proceed_skill
     })
 
     return ret
