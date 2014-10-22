@@ -37,7 +37,7 @@ def my_skills(request, pk=None):
         pk = int(pk)
         while pk!=1:
             par, pk = pk, all_skills['id_parid'][int(pk)]
-    active = all_skills['id_name'][par] if par is not None else 'numbers'
+    active = all_skills['id_name'][par] if par is not None else None
 
     data = []
     skills = []
@@ -45,6 +45,11 @@ def my_skills(request, pk=None):
         skill = get_skill_obj_by_name(name, all_skills)
         skills.append(skill)
         data.append(get_my_skills(name, all_skills))
+        if skill.used and active is None:
+            active = skill.name
+
+    if active is None:
+        active = NAMES[0]
 
     ret = render(request, 'model/my_skills.html', {
         "data": data,
