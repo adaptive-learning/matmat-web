@@ -69,3 +69,7 @@ class DataProviderInterface():
     @abstractmethod
     def get_first_attempts_count(self, question):
         pass
+
+    @abstractmethod
+    def get_attempts_count(self, question):
+        pass

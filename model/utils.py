@@ -186,6 +186,9 @@ class CachingDatabaseDataProvider(DataProviderInterface):
             count += v
         return count
 
+    def get_attempts_count(self, question):
+        return sum(self.attempts_count[question].values())
+
     def get_questions(self):
         return self.questions.keys()
 

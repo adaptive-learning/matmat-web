@@ -1,7 +1,7 @@
 import math
 
 INITIAL_DIFFICULTY = 0
-INITIAL_TIME_INTENSITY = 2
+INITIAL_TIME_INTENSITY = 0
 INITIAL_SKILL = 0
 
 
@@ -50,13 +50,11 @@ class EloModel():
         return delta
 
     @staticmethod
-    def compute_time_intensity_delta(response_time, time_intensity, first_attempts_count):
-        ALPHA = .4
-        DYNAMIC_ALPHA = 0.05
-        K = ALPHA / (1 + DYNAMIC_ALPHA * (first_attempts_count - 1))
-        if response_time == 0: response_time = 1        # hack for zero response times
-        delta = K * (math.log(response_time) - time_intensity)
+    def compute_time_intensity_delta(response_time, time_intensity, attempts_count):
+        if response_time == 0:
+            response_time = 1
 
+        delta = (math.log(response_time) - time_intensity) / (attempts_count)
         return delta
 
     def response(self, answer, question, time_intensity, question_type="c"):
@@ -128,7 +126,7 @@ class EloModel():
         time_intensity += self.compute_time_intensity_delta(
                 self.data.get_solving_time(answer),
                 time_intensity,
-                self.data.get_first_attempts_count(question),
+                self.data.get_attempts_count(question),
             )
         self.data.set_time_intensity(question, time_intensity)
 
