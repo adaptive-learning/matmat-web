@@ -13,11 +13,13 @@
     </dl>
     <hr/>
     <div class="right text-right">
-        Pokračovat v procvičování <br/>
-        {% if proceed_skill.level < 3 %}
-            <a href="{% url "play" proceed_skill.name %}"><button class="radius">{{ proceed_skill.note }}</button></a>
-        {% else %}
-            <a href="{% url "play" proceed_skill.parent.name proceed_skill.pk %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+        {% if proceed_skill %}
+            Pokračovat v procvičování <br/>
+            {% if proceed_skill.level < 3 %}
+                <a href="{% url "play" proceed_skill.name %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+            {% else %}
+                <a href="{% url "play" proceed_skill.parent.name proceed_skill.pk %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+            {% endif %}
         {% endif %}
     </div>
 
@@ -60,7 +62,7 @@
                     <div class="text-center">
                         Zatím žádné procvičené úlohy z této dovednosti
                         <br/><br/>
-                        <a href="{% url "play" skill_data.skill.name%}"><button>Procvičit</button></a>
+                        <a href="{% url "play" skill_data.skill.name%}"><button class="radius">Procvičit</button></a>
                     </div>
                 {% endif %}
             </div>

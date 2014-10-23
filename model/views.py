@@ -34,9 +34,10 @@ def my_skills(request, pk=None):
     all_skills = get_all_skills(request.user)
 
     par = None
+    proceed_skill = None
     if pk is not None:
         pk = int(pk)
-        proceed_skill = get_object_or_404(Skill, pk=pk)
+        proceed_skill = get_object_or_404(Skill, pk=pk, level__lte=3)
         while pk!=1:
             par, pk = pk, all_skills['id_parid'][int(pk)]
     active = all_skills['id_name'][par] if par is not None else None
