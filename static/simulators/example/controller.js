@@ -20,7 +20,7 @@ app.directive("example", function(){
                     - true or false depending of correctness of answer
                     - optional time of waiting before loading next question. Initial 1000ms
                  */
-                $scope.interface.finish(answer, 1234);
+                $scope.interface.finish(answer, "my answer", 1234);
             }
 
         }

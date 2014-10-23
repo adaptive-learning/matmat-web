@@ -28,14 +28,14 @@ app.directive("selecting", function(){
                 var correct = $scope.selected == $scope.data.answer;
                 if (correct){
                     $scope.finished = true;
-                    $scope.interface.finish(correct);
+                    $scope.interface.finish(correct, $scope.selected);
                 }else{
                     $scope.finished_wrong = true;
                     setTimeout(function() {
                         $scope.finished = true;
                         $scope.$digest();
                     }, 1000);
-                    $scope.interface.finish(correct, 2500);
+                    $scope.interface.finish(correct, $scope.selected, 2500);
                 }
             };
 

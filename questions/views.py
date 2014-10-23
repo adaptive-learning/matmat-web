@@ -78,6 +78,7 @@ def save_answer(request):
             log=data["log"],
             solving_time=data["time"],
             correctly_solved=data["correctly_solved"],
+            answer=data["answer"],
         )
 
         process_answer(answer)

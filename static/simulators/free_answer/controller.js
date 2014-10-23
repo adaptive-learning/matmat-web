@@ -24,7 +24,7 @@ app.directive("freeanswer", function(){
                 var wait = correct ? 1000 : 3000;
                 $scope.solved = true;
                 $("#playground").find("input").prop('disabled', true);
-                $scope.interface.finish(correct, wait);
+                $scope.interface.finish(correct, $scope.answer.value, wait);
             };
             SimulatorGlobal.submit = $scope.check_answer;
 

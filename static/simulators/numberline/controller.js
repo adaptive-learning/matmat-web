@@ -127,7 +127,7 @@ app.directive("numberline", function(){
                 }
                 $scope.okShow = correct;
                 $scope.nokShow = !correct;
-                $scope.interface.finish(correct, 2000);
+                $scope.interface.finish(correct, $scope.selected_number, 2000);
             };
 
             $scope.populate_points();

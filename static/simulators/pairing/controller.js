@@ -62,7 +62,7 @@ app.directive("pairing", function(){
                 $scope.gameover = true;
                 var wait = correct ? 1000 : 3000;
                 $scope.solved = correct;
-                $scope.interface.finish(correct, wait);
+                $scope.interface.finish(correct, null, wait);
             };
             SimulatorGlobal.submit = $scope.submit;
 

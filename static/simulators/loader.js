@@ -113,7 +113,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.get_question()
     };
 
-    $scope.finish_question = function(correctly_solved, wait_time){
+    $scope.finish_question = function(correctly_solved, answer, wait_time){
         SimulatorGlobal.simulator_active = false;
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
@@ -123,6 +123,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
         $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
         $scope.question.correctly_solved =  correctly_solved;
+        $scope.question.answer =  answer;
         $scope.save_answer();
 
         // wait to show correct answer
@@ -154,7 +155,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     // skip question
     SimulatorGlobal.skip = $scope.skip = function(){
         $scope.log_something("skipped");
-        $scope.finish_question(false, 0);
+        $scope.finish_question(false, null, 0);
     };
 
     // log step while solving process
