@@ -19,7 +19,7 @@
         Průměrný skill uživatelů (rozdíl oproti nadskilu): <b>{{ selected_skill.user_skill|floatformat:4 }}</b><br/>
         <br/>
         Průměrná obtížnost otázek pod skillem: <b>{{ selected_skill.difficulty.value|floatformat:4 }}</b><br/>
-        Počet otázek pod skillem: <b>{{ selected_skill.questions }}</b><br/>
+        Počet otázek pod skillem: <b>{{ selected_skill.questions_count }}</b><br/>
         Průměr očekávaného času otázek pod skillem: <b>{{ selected_skill.difficulty.time|floatformat:1 }}s</b><br/>
         <br/>
         Počet otázek přímo pod skillem: <b>{{ selected_skill.questions_direct }}</b><br/>

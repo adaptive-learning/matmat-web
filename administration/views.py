@@ -58,7 +58,7 @@ def skills(request):
         selected_skill = Skill.objects.get(level=1)
 
     selected_skill.questions_direct = Question.objects.filter(skill=selected_skill).count()
-    selected_skill.questions = Question.objects.filter(skill__in=selected_skill.children_list.split(",")).count()
+    selected_skill.questions_count = Question.objects.filter(skill__in=selected_skill.children_list.split(",")).count()
     selected_skill.answers = Answer.objects.filter(question__skill__pk__in=selected_skill.children_list.split(",")).count()
     selected_skill.user_skill = UserSkill.objects.filter(skill=selected_skill).aggregate(Avg("value"))["value__avg"]
     selected_skill.difficulty_direct = QuestionDifficulty.objects.filter(question__skill=selected_skill).aggregate(value=Avg("value"), time=Avg("time_intensity"))
