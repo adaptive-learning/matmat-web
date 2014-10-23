@@ -3,5 +3,20 @@
 
 {% block content%}
 <h3>Administrace</h3>
+    <a href="{% url "admin-skills" %}">Podrobnosti skillů a otázek</a><br/>
+    <a href="{% url "admin-skill-tables" %}">Tabulky skillů - obtížnost</a><br/>
+    <a href="{% url "admin-skill-tables-counts" %}">Tabulky skillů - počty odpovědí</a>
+    <hr/>
+    <h4>Uživatelé</h4>
+    
+    <b>Ragistrovaní:</b> {{ registred_users }} ({{ profiles }})<br/>
+    <b>Neregistrovaní:</b> {{ lazy_users }}<br/>
+    <b>Děti:</b> {{ children }}<br/>
+
+    <hr/>
+    <h4>Data</h4>
+    <b>Otázky:</b> {{ questions }}<br/>
+    <b>Odpovědi:</b> {{ answers }}<br/>
+
 
 {% endblock %}

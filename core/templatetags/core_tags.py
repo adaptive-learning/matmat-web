@@ -7,4 +7,8 @@ register = template.Library()
 def is_auth(value):
     return is_user_registred(value)
 
+@register.filter
+def keyvalue(dict, key):
+    return dict[key]
+
 

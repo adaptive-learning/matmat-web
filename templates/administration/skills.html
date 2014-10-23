@@ -1,0 +1,80 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block content%}
+
+    <a href="{% url "admin-skills" %}"><span class="right">Reset</span></a>
+
+    <form action="{% url "admin-skills" %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+
+    <hr/>
+    <div class="row">
+    <div class="medium-6 columns">
+    <h5>Vybraný skill: {{ selected_skill.note|default:"žádný"}}</h5>
+    {% if selected_skill %}
+        Počet odpovědí pod tímto skillem: <b>{{ selected_skill.answers }}</b><br/>
+        Průměrný skill uživatelů (rozdíl oproti nadskilu): <b>{{ selected_skill.user_skill|floatformat:4 }}</b><br/>
+        <br/>
+        Průměrná obtížnost otázek pod skillem: <b>{{ selected_skill.difficulty.value|floatformat:4 }}</b><br/>
+        Počet otázek pod skillem: <b>{{ selected_skill.questions }}</b><br/>
+        Průměr očekávaného času otázek pod skillem: <b>{{ selected_skill.difficulty.time|floatformat:1 }}s</b><br/>
+        <br/>
+        Počet otázek přímo pod skillem: <b>{{ selected_skill.questions_direct }}</b><br/>
+        Průměrná obtížnost otázek přímo pod skillem: <b>{{ selected_skill.difficulty_direct.value|floatformat:4 }}</b><br/>
+        Průměr očekávaného času otázek přímo pod skillem: <b>{{ selected_skill.difficulty_direct.time|floatformat:1 }}s</b><br/>
+
+    {% endif %}
+    </div>
+
+    <div class="medium-6 columns">
+    {% if question %}
+        <h5>Vybraná otázka:</h5>
+        data: {{ question.data }}<br/>
+        simulator: <b>{{ question.player }}</b><br/>
+        obtížnost: <b>{{ question.difficulty.value }}</b><br/>
+        očekávaný čas řešení: <b>{{ question.time }}s</b><br/>
+        odpovědí: <b>{{ question.answer_count }}</b> (z toho <b>{{ question.correct_answer_count  }}</b> správných)<br/>
+
+        <h6>Špatné odpovědi: </h6>
+        {% for answer in question.wrong_answers %}
+            {{ answer.answer__count }}&times;"<b>{{ answer.answer|default:"skipped" }}</b>";
+        {% endfor %}
+
+        <h6>Časy:</h6>
+        <div id="times_hist" style="height: 300px;"></div>
+
+    {% endif %}
+    </div>
+
+    </div>
+
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Čas', 'Počet'],
+                {% for time in question.times %}
+                    [{{ time.solving_time }}, {{ time.solving_time__count }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Histogram časů',
+                vAxis: {title: 'Čas'}
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('times_hist'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+{% endblock %}

@@ -17,7 +17,7 @@ class Question(models.Model):
     )
 
     player = models.ForeignKey(Simulator, verbose_name="Simulator", related_name="questions")
-    skill = models.ForeignKey('model.Skill')
+    skill = models.ForeignKey('model.Skill', related_name="questions")
     data = models.TextField(verbose_name="Data as JSON")
     type = models.CharField(max_length=1, choices=TYPES, default='c')
     value = models.CharField(max_length=255, null=True, blank=True)     # value for preventing repeating similar questions

@@ -158,6 +158,14 @@ table.user_skills td{
     text-align: center;
     display: inline-block;
     width: 60px;
+    position: relative;
+}
+table.user_skills td span{
+    position: absolute;
+    font-size: 0.6em;
+    color: grey;
+    top: 0;
+    right: 2px;
 }
 
 .progress{
