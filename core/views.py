@@ -13,7 +13,6 @@ from core.models import create_profile, is_user_registred, convert_lazy_user
 from model.models import Skill
 
 
-@allow_lazy_user
 def home(request):
     request.session.set_expiry(0)
     order = [u"math", u"numbers", u"addition", u"subtraction",

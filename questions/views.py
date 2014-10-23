@@ -132,6 +132,7 @@ class SelectSkillForm(forms.Form):
     simulator = forms.ModelChoiceField(queryset=Simulator.objects.all().order_by("name"), required=True
                                        , widget=forms.Select(attrs={"onChange": "submit()"}))
 
+@allow_lazy_user
 @login_required
 def my_stats(request):
     math = Skill.objects.get(level=1)
