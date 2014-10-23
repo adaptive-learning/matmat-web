@@ -44,7 +44,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='answers')
     log = models.TextField()
     solving_time = models.IntegerField()
     timestamp = models.DateTimeField(auto_now_add=True)

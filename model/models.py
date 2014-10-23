@@ -99,8 +99,8 @@ class QuestionDifficulty(models.Model):
         return self.question.answers.aggregate(Avg('solving_time'))
 
 class UserSkill(models.Model):
-    user = models.ForeignKey(User)
-    skill = models.ForeignKey(Skill)
+    user = models.ForeignKey(User, related_name="user_skills")
+    skill = models.ForeignKey(Skill, related_name="user_skills")
     value = models.FloatField(default=0)
 
     class Meta:
