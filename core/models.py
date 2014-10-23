@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from lazysignup.models import LazyUser
 from lazysignup.utils import is_lazy_user
 from social_auth.db.django_models import UserSocialAuth
 
@@ -24,6 +25,11 @@ def is_user_registred(user):
     if user.social_auth.exists():
         return True
     return not is_lazy_user(user)
+
+def convert_lazy_user(user):
+    LazyUser.objects.get(user=user.pk).delete()
+    user.username = user.first_name + " " + user.last_name
+    user.save()
 
 @receiver(user_logged_in)
 def after_log_in(sender, **kwargs):

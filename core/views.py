@@ -7,8 +7,9 @@ from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from lazysignup.decorators import allow_lazy_user
+from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
-from core.models import create_profile
+from core.models import create_profile, is_user_registred, convert_lazy_user
 from model.models import Skill
 
 
@@ -21,6 +22,8 @@ def home(request):
     skills.sort(key=lambda s: order.index(s.name))
 
     remember_user(request)
+    if is_lazy_user(request.user) and is_user_registred(request.user):
+        convert_lazy_user(request.user)
 
     return render(request, 'core/home.html', {
         "skills": skills,
