@@ -145,9 +145,10 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         }, wait_time);
     };
 
-    $scope.save_partial_answer = function (correctly_solved) {
+    $scope.save_partial_answer = function (correctly_solved, answer) {
         $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
         $scope.question.correctly_solved =  correctly_solved;
+        $scope.question.answer =  answer;
         $scope.log_something("partial_solution");
         $scope.save_answer();
     };

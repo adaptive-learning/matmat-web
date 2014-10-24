@@ -50,7 +50,7 @@ app.directive("pairing", function(){
                 } else {
                     // wrong
                     $scope.interface.log("WRONG: " + cell.text);
-                    $scope.interface.save_partial_answer(false);
+                    $scope.interface.save_partial_answer(false, null);
                     $scope.selected.state = ($scope.selected.state != 'wactive') ? 'wactive' : 'wwactive';
                     cell.state = (cell.state != 'wactive') ? 'wactive' : 'wwactive';
                     $scope.selected = undefined;
