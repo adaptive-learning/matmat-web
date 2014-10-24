@@ -1,5 +1,6 @@
 import json
 from django import forms
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
@@ -28,6 +29,7 @@ def play(request, skill, pk=None):
         "skill": skill,
     })
 
+
 @login_required
 def get_questions(request):
     """
@@ -44,10 +46,13 @@ def get_questions(request):
     return HttpResponse(json.dumps([q.as_json() for q in questions]))
 
 
+@login_required
 def get_selected_question(request, question_pk):
     q = get_object_or_404(Question, pk=question_pk)
     return HttpResponse(json.dumps([q.as_json()]))
 
+
+@staff_member_required
 def get_question_test(request):
     """
     test page for question recommendation
@@ -66,6 +71,7 @@ def get_question_test(request):
     })
 
 
+@login_required
 def save_answer(request):
     """
     save answer to question and process it
@@ -125,7 +131,7 @@ class SimulatorTestView(View):
             "simulators": Simulator.objects.all(),
         })
 
-simulator_test = SimulatorTestView.as_view()
+simulator_test = staff_member_required(SimulatorTestView.as_view())
 
 
 class SelectSkillForm(forms.Form):

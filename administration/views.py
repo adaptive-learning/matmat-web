@@ -24,6 +24,7 @@ def overview(request):
     })
 
 
+@staff_member_required
 def skills(request):
 
     selected_skill = None
@@ -93,15 +94,18 @@ class NoteModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.note
 
+
 class QuestionModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return "{0} - {1}".format(obj.player, obj.data)
+
 
 class SelectSkillForm(forms.Form):
     skill2 = NoteModelChoiceField(queryset=Skill.objects.filter(level=2).order_by("name"), required=True,
                                     widget=forms.Select(attrs={"onChange": "submit()"}))
 
 
+@staff_member_required
 def skill_tables(request):
     skills = {}
     for skill in Skill.objects.filter(level=4).annotate(difficulty=Avg("questions__difficulty__value")):
@@ -116,6 +120,8 @@ def skill_tables(request):
         "names": NAMES,
     })
 
+
+@staff_member_required
 def skill_tables_counts(request):
 
     skills = {}
