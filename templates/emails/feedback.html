@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+    <title>MatMat - Feedback</title>
+</head>
+
+<body>
+    <b>email:</b> {{ data.email }}<br/>
+    <b>feedback:</b> {{ data.text }}<br/>
+
+    <br/><br/>
+    <b>url:</b> {{ data.url }}
+    <b>user id:</b> {{ user.id }}<br/>
+    <b>user name:</b> {{ user.username }}<br/>
+    <b>time:</b> {% now "d. m. Y - H:i:s"%}<br/>
+
+    <p>Tvůj MatMat</p>
+</body>
+</html>

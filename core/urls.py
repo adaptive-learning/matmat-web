@@ -5,6 +5,7 @@ from django.contrib.auth.views import logout
 urlpatterns = patterns('core.views',
     url(r'^$', "home", name="home"),
     url(r'^about$', TemplateView.as_view(template_name="core/about.html"), name="about"),
+    url(r'^feedback$', "feedback", name="feedback"),
     url(r'^supervisor_overview$', "supervisor_overview", name="supervisor_overview"),
     url(r'^supervisor_overview/(?P<child_pk>\d+)$', "supervisor_overview", name="edit_child"),
     url(r'^log_as_child/(?P<child_pk>\d+)$', "log_as_child", name="log_as_child"),
