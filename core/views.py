@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
-from lazysignup.decorators import allow_lazy_user
 from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
 from core.models import create_profile, is_user_registred, convert_lazy_user
@@ -76,6 +75,7 @@ class SupervisorOverviewView(View):
         return render(request, 'core/supervisor_overview.html', {
             "child_form": child_form,
             "child_pk": child_pk,
+            "children": request.user.profile.children.all(),
             })
 
 supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view())
