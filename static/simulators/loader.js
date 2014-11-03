@@ -124,6 +124,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
         $scope.question.correctly_solved =  correctly_solved;
         $scope.question.answer =  answer;
+        SimulatorGlobal.description.top = "";
         $scope.save_answer();
 
         // wait to show correct answer
