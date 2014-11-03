@@ -1,8 +1,11 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 
+{% block title %}Administrace{% endblock %}
+
 {% block content%}
-<h3>Administrace</h3>
+    <div class="heading"><i class="fi-eye"></i><h1>Administrace</h1></div>
+
     <a href="{% url "admin-skills" %}">Podrobnosti skillů a otázek</a><br/>
     <a href="{% url "admin-skill-tables" %}">Tabulky skillů - obtížnost</a><br/>
     <a href="{% url "admin-skill-tables-counts" %}">Tabulky skillů - počty odpovědí</a><br/>

@@ -1,7 +1,11 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 
+{% block title %}Moje vědomosti{% endblock %}
+
 {% block content %}
+{#    <h1>Moje vědomosti</h1>#}
+
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
              <dd {% if active == skill.name %}class="active"{% endif %}>

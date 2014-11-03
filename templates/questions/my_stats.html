@@ -1,8 +1,11 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 
+{% block title %}Moje statistiky{% endblock %}
+
 {% block content %}
-<h2>Moje statistiky</h2>
+<div class="heading"><i class="fi-graph-bar"></i><h1>Moje statistiky</h1></div>
+
 Celkově řešeno <b>{{ math.answers_count }}</b> úloh z toho vyřešeno <span class="green"><b>{{ math.correct_answers_count }}</b> správně</span>
 
 {% for skill in skills %}

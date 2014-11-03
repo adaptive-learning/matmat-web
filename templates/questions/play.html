@@ -1,6 +1,8 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 
+{% block title %}{{ skill.note }}{% endblock %}
+
 {% block extrascripts %}
     <script src="{% static "simulators/loader.js" %}"></script>
     <script src="{% static "simulators/directives.js" %}"></script>

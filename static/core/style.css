@@ -2,6 +2,10 @@ body, p, li{
     font-size: 1.2rem;
 }
 
+h1{
+    font-size: 2.3rem;
+}
+
 #content{
     padding: 5px;
     min-height: 700px;
@@ -136,6 +140,12 @@ body, p, li{
     color: #000000;
 }
 
+.heading h1{
+    padding-top: 0.2em;
+    margin-bottom: 0.7em;
+    font-size: 2rem;
+}
+
 .paragraph-with-icon{
     clear: both;
     margin-bottom: 50px;
@@ -145,7 +155,7 @@ body, p, li{
     padding-top: 0.5em;
 }
 
-.paragraph-with-icon i{
+.paragraph-with-icon i, .heading i{
     font-size: 3em;
     float: left;
     margin: -0.2em 20px -0.5em;
