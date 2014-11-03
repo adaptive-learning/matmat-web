@@ -145,3 +145,10 @@ else:
             }
         },
     }
+
+# Emails
+
+EMAIL_SELF = 'web@matmat.cz'
+EMAIL_CONTACT = 'matmat-web@googlegroups.com'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25

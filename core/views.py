@@ -1,15 +1,19 @@
 # coding=utf-8
+import json
 import string
 from django.contrib.auth import user_logged_in, login
 from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives
 from django.dispatch import receiver
 from django import forms
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.views.generic import View
-from lazysignup.decorators import allow_lazy_user
 from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
 from core.models import create_profile, is_user_registred, convert_lazy_user
+from matmat import settings
 from model.models import Skill
 
 
@@ -76,6 +80,7 @@ class SupervisorOverviewView(View):
         return render(request, 'core/supervisor_overview.html', {
             "child_form": child_form,
             "child_pk": child_pk,
+            "children": request.user.profile.children.all(),
             })
 
 supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view())
@@ -86,3 +91,32 @@ def log_as_child(request, child_pk):
     child.backend = 'django.contrib.auth.backends.ModelBackend'
     print login(request, child)
     return redirect("home")
+
+
+def feedback(request):
+    msg = "Někde se stala chyba"
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        subject = u"MatMat - feedback"
+        from_email = settings.EMAIL_SELF
+        to = settings.EMAIL_CONTACT
+        text_content = render_to_string("emails/feedback.plain", {
+            "data": data,
+            "user": request.user,
+        })
+        html_content = render_to_string("emails/feedback.html", {
+            "data": data,
+            "user": request.user,
+        })
+
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to], )
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+
+        msg = "Úspěšně odesláno. Děkujeme!"
+
+
+    return HttpResponse(json.dumps({
+        "msg": msg,
+        }), content_type="application/json")

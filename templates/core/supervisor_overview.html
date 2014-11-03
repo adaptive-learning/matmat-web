@@ -2,9 +2,29 @@
 {% load staticfiles %}
 
 {% block content%}
-    <h4>Přihlásit se jako</h4>
+    <div class="paragraph-with-icon">
+            <i class="fi-torsos-all"></i>
+        <h3>Učitelský - rodičovský režim</h3>
+        <p>
+            Zde můžete k vašemu účtu připojit několik dětí.
+            Ty pak mohou snadno procvičovat ve vlastní verzi systému, která se jim bude přizpůsobovat na míru a bude zobrazovat jejich vlastní postup a statistiky.
+            To vše bez nutnosti pamatovaní přihlašovacích údajů pro každé dítě  zvlášť.
+        </p>
+    </div>
+
+    <b>Proč mít pro každé dítě zvláštní účet?</b>
+    <p>
+        MatMat se učí o dětech z jejich odpovědí a vybírá jim otázky, které jsou pro ně vhodné.
+        Pokud tedy dítě má vlastní účet, procvičovaní s MatMatem je efektivnější.
+        Navíc děti mohou sledovat svoje dlouhodobé zlepšovaní.
+        Z těchto důvodů je také důležité, aby děti odpovídali samostatně.
+        Není ostuda se splést nebo nevědět - z chyb se učíme všichni včetně doporučovacího algoritmu MatMatu.
+    </p>
+
+
+    {% if children %}<h4>Přihlásit se jako</h4>{% endif %}
     <div class="button-bar">
-    {% for child in user.profile.children.all    %}
+    {% for child in children %}
         <ul class="button-group round">
             <li><a class="button"  href="{% url "log_as_child" child.user.pk %}">
                   {{ child.user.first_name }}
@@ -18,14 +38,17 @@
         <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
             <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
         </ul>
+    {% empty %}
+        K tomuto účtu nejsou zatím přiřazeny žádné děti.
     {% endfor %}
+
     </div>
     <hr/>
 
     <dl class="accordion" data-accordion>
         <dd class="accordion-navigation">
             <a href="#panel1">{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}</a>
-            <div id="panel1" class="content {{ child_pk|yesno:"active," }}">
+            <div id="panel1" class="content {{ child_pk|yesno:"active," }} {{ children|yesno:",active" }}">
 
                 {% if child_pk %}
                     <form action="{% url "edit_child" child_pk %}" method="post">

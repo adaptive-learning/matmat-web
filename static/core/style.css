@@ -1,5 +1,22 @@
+body, p, li{
+    font-size: 1.2rem;
+}
+
 #content{
     padding: 5px;
+    min-height: 700px;
+}
+
+#footer{
+    background-color: #333;
+    clear: both;
+    font-size: 0.8em;
+    color: #eee;
+    display: block;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    z-index: 10;
 }
 
 /* Login providers*/
@@ -82,8 +99,8 @@
 #skill_selector{
     text-align: center;
     align-content: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #skill_selector div.skill{
@@ -107,16 +124,31 @@
 
 #skill_selector div.skill span.subskills{
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     right: 50px;
     color: #2BA6CB;
 }
 
 
 #skill_selector div.skill span.title{
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #000000;
+}
+
+.paragraph-with-icon{
+    clear: both;
+    margin-bottom: 50px;
+}
+
+.paragraph-with-icon h3{
+    padding-top: 0.5em;
+}
+
+.paragraph-with-icon i{
+    font-size: 3em;
+    float: left;
+    margin: -0.2em 20px -0.5em;
 }
 
 .skill-tabs{
@@ -311,4 +343,21 @@ p.keyboard-text{
     height: 30px;
     width: 30px;
     border: solid #000000 1px;
+}
+
+#feedback{
+    right: -50px;
+    position: fixed;
+    top: 250px;
+    z-index: 999;
+
+    background: #333;
+    border-radius: 6px 6px 0 0;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    transform: rotate(-90deg);
+    width: 140px;
 }
