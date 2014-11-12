@@ -50,6 +50,7 @@ class Answer(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     correctly_solved = models.BooleanField(default=False)
     answer = models.CharField(max_length=255, null=True)
+    device = models.CharField(max_length=10, null=True)
 
     def is_first_attempt(self):
         return Answer.objects.filter(user=self.user, question=self.question, timestamp__lt=self.timestamp).count() == 0

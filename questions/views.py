@@ -8,6 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import View
 from lazysignup.decorators import allow_lazy_user
+from core import mdetect
 from model.utils import process_answer, recalculate_model
 from model.models import Skill
 from model.recommendation import recommend_questions
@@ -76,6 +77,8 @@ def save_answer(request):
     """
     save answer to question and process it
     """
+    device = get_device_info(request)
+
     if request.method == "POST":
         data = json.loads(request.body)
         answer = Answer.objects.create(
@@ -85,6 +88,7 @@ def save_answer(request):
             solving_time=data["time"],
             correctly_solved=data["correctly_solved"],
             answer=data["answer"],
+            device=device,
         )
 
         process_answer(answer)
@@ -155,3 +159,29 @@ def my_stats(request):
         "math": math,
         "skills": skills,
     })
+
+
+def get_device_info(request):
+
+    is_mobile = False
+    is_tablet = False
+    is_phone = False
+
+    user_agent = request.META.get("HTTP_USER_AGENT")
+    http_accept = request.META.get("HTTP_ACCEPT")
+    if user_agent and http_accept:
+        agent = mdetect.UAgentInfo(userAgent=user_agent, httpAccept=http_accept)
+        is_tablet = agent.detectTierTablet()
+        is_phone = agent.detectTierIphone()
+        is_mobile = is_tablet or is_phone or agent.detectMobileQuick()
+
+    request.is_mobile = is_mobile
+    request.is_tablet = is_tablet
+    request.is_phone = is_phone
+
+    if is_tablet:
+        return "tablet"
+    if is_phone:
+        return "phone"
+
+    return "desktop"
