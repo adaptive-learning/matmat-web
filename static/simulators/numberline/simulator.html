@@ -26,6 +26,6 @@
     <rect ng-show="rect.number < hovered_number" style="fill: #ff5913" ng-repeat="rect in rects" ng-attr-height="{{ rect.size }}" ng-attr-width="{{ rect.size }}" ng-attr-x="{{ rect.x }}" ng-attr-y="{{ rect.y }}"/>
 </svg>
 <br/>
-<form ng-submit="check_answer()" ng-hide="simple">
+<form ng-submit="check_answer()">
     <input ng-hide="okShow || nokShow" class="button tick" ng-disabled="!selected_number && selected_number!=0" type="submit" value="&nbsp;" />
 </form>

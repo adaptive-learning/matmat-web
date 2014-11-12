@@ -94,10 +94,6 @@ app.directive("numberline", function(){
                 }
 
                 $scope.$apply();
-                if ($scope.simple){
-                    $scope.hovered_number = $scope.data.answer;
-                    $timeout($scope.check_answer, 0);
-                }
 
             };
 
