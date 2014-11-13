@@ -27,6 +27,8 @@ def is_user_registred(user):
     return not is_lazy_user(user)
 
 def convert_lazy_user(user):
+    if LazyUser.objects.filter(user=user).count() == 0:
+        return
     LazyUser.objects.get(user=user.pk).delete()
     user.username = user.first_name + " " + user.last_name
     user.save()
