@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'uevk2coz&16)x-r(5c_f0njs+9!$j&_(8)f20fa1*pu(&lvr08'
 
 ON_VIPER = os.getenv('ON_VIPER', "False") == "True"
+DEVEL = os.getenv('DEVEL', "False") == "True"
 DEBUG = os.getenv('DJANGO_DEBUG', "False") == "True"
 
 if not ON_VIPER:
