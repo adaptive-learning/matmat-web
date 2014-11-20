@@ -1,6 +1,10 @@
 app.directive('focus', function(){
     return function(scope, element){
-        element[0].focus();
+        if (device == "desktop"){
+            element[0].focus();
+        }else{
+            element[0].blur();
+        }
     };
 });
 

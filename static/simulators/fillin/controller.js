@@ -10,7 +10,6 @@ app.directive("fillin", function(){
             $scope.fill = '_';
             $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
-            $("#simulator-input").focus();
 
             if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
