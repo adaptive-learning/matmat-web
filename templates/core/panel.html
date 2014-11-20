@@ -26,7 +26,7 @@
 
         <ul class="right">
 {#            <li class="active"><a href="#">Right Button Active</a></li>#}
-            {% if not user.profile.is_child %}
+            {% if not user.profile.is_child and user|is_auth %}
                 <li><a style="height: 45px" href="{% url "supervisor_overview" %}"><i style="font-size: 1.8em;" class="fi-torsos-all"></i></a></li>
             {% endif %}
             <li class="has-dropdown">
