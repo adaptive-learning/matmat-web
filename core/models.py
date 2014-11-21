@@ -1,11 +1,24 @@
+# coding=utf-8
 from django.contrib.auth import user_logged_in
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django import forms
+from lazysignup.forms import UserCreationForm
 from lazysignup.models import LazyUser
 from lazysignup.utils import is_lazy_user
 from social_auth.db.django_models import UserSocialAuth
+
+class NameUserCreationForm(UserCreationForm):
+
+    first_name = forms.CharField(label=u"Zobrazované jméno", max_length=30)
+    email = forms.EmailField(label=u"E-mail", required=False, widget=forms.TextInput(attrs={"placeholder": "nepovinné"}))
+
+    class Meta:
+        model = User
+        fields = ("username", "password1", "password2", "first_name", "email")
+
 
 
 class UserProfile(models.Model):

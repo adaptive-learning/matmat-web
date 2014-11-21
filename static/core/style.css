@@ -52,6 +52,17 @@ h1{
     background: #4476bb none;
 }
 
+#login-email i{
+    font-size: 1.4rem;
+    position: absolute;
+}
+#login-email span{
+    margin-left: 27px;
+}
+#login-email:hover{
+    background: #555 none;
+}
+
 #content{
     margin-top: 20px;
 }

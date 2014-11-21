@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Registrovat{% endblock %}
+
+{% block content%}
+
+    <div class="medium-offset-2 medium-8 large-6 large-offset-3">
+    <div class="heading"><i class="fi-arrow-down"></i><h1>Registrovat</h1></div>
+
+    <form method="post" action="{% url "lazysignup_convert" %}">
+        {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <div {% if field.errors %}class="error"{% endif %}>{{ field }}</div>
+            {% for error in field.errors %}
+                <small class="error">{{ error }}</small>
+            {% endfor %}
+        {% endfor %}
+
+
+        {% csrf_token %}
+        <input type="hidden" name="redirect_to" value="home">
+        <input class="right button" type="submit" value="Registrovat" />
+    </form>
+    </div>
+
+{% endblock %}
