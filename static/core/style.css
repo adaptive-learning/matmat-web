@@ -311,6 +311,14 @@ table tr:nth-of-type(2n) {
     color: #9467bd;
     background: #c5b0d5;
 }
+.moving.correct {
+    color: #2ca02c;
+    background: #98df8a;
+}
+.moving.incorrect {
+    color: #d62728; 
+    background: #ff9896; 
+}
 
 /* Keyboard */
 p.keyboard-text{

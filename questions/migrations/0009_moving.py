@@ -38,6 +38,33 @@ class Migration(DataMigration):
             random.shuffle(tokens)
             Q(skill, {'tokens': tokens, 'answer': [ans], 'nboxes': 1, 'free_answer': False}, val)
 
+        sim = orm.Simulator(name='choice', note='Výběr z možností')
+        sim.save()
+
+        l = range(1, 11)
+        tokens = set()
+        while len(tokens) < 10:
+            x = tuple(sorted(random.sample(l, 2)))
+            tokens.add(x)
+        for tok in tokens:
+            val = max(tok)
+            tok = map(str, tok)
+            random.shuffle(tok)
+            Q(skill, {'tokens': tok, 'answer': str(val), 'text': 'Vyber vetší číslo'}, val)
+
+        tokens = set()
+        while len(tokens) < 5:
+            x = tuple(sorted(random.sample(l, 3)))
+            tokens.add(x)
+        while len(tokens) < 10:
+            x = tuple(sorted(random.sample(l, 4)))
+            tokens.add(x)
+        for tok in tokens:
+            val = max(tok)
+            tok = map(str, tok)
+            random.shuffle(tok)
+            Q(skill, {'tokens': tok, 'answer': str(val), 'text': 'Vyber nejvetší číslo'}, val)
+
 
     def backwards(self, orm):
         "Write your backwards methods here."
