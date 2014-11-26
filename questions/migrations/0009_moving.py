@@ -9,7 +9,7 @@ import random
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        sim = orm.Simulator(name='dragdrop', note='Přesunování')
+        sim = orm.Simulator(name='moving', note='Přesunování')
         sim.save()
 
         SKILLS = {}
@@ -28,7 +28,9 @@ class Migration(DataMigration):
 
         random.seed(12345)
         skill = 'numbers <= 10'
-        token_list = [range(1, 4), range(1, 6), range(1, 10, 2), range(2, 10, 2)]
+        token_list = [range(1, 4), range(1, 6), range(1, 10, 2), range(2, 10, 2),
+                      [2, 3, 5, 7], range(2, 11, 2), range(6, 10), [1, 5, 6, 9, 10],
+                      range(3, 8), [2, 3, 7, 9, 10]]
         for tokens in token_list:
             val = max(tokens)
             tokens = map(str, tokens)

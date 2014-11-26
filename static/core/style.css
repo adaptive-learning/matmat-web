@@ -248,7 +248,7 @@ table tr:nth-of-type(2n) {
 .pairing-button {
     width: 150px;
     height: 150px;
-    font-size: 2.5em;
+    font-size: 2em;
     border-radius: 3px;
     border: none;
     margin: 1px;
@@ -295,55 +295,21 @@ table tr:nth-of-type(2n) {
     to { color: #1f77b4; background: #aec7e8; }
 }
 
-/* Drag and Drop */
-[draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-}
-
-.mydrag {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+/* moving */
+.moving {
     width: 100px;
     height: 100px;
-    background: rgba(255, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding-top: 40px;
-    display: block;
-    cursor: move;
+    border-radius: 3px;
+    border: none;
+    margin: 1px;
 }
-
-.mydrop {
-    background: rgba(0, 0, 0, 0.25);
-    text-align: center;
-    display: block;
-    position: relative;
-    padding: 20px;
-    width: 140px;
-    height: 140px;
-    float: left;
+.moving.base {
+    color: #1f77b4;
+    background: #aec7e8;
 }
-
-.mydragged {
-    opacity: 0.4;  
-}
-
-.mydragover {
-    border: 2px dashed #000;
-}
-
-.mydraglist {
-    display: inline-block;
-    margin: 0 auto;
+.moving.selected{
+    color: #9467bd;
+    background: #c5b0d5;
 }
 
 /* Keyboard */
