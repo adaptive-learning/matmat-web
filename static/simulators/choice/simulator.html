@@ -1,0 +1,5 @@
+<br>
+<div class="row">
+    <input type="button" ng-repeat='item in list' ng-class="'moving ' + item.state" 
+    ng-click="click($event, $index)" value="{{item.text}}" />
+</div>
