@@ -9,7 +9,6 @@ app.directive("freeanswer", function(){
         controller: function($scope, SimulatorGlobal){
             $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
-            $("#simulator-input").focus();
 
             if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";

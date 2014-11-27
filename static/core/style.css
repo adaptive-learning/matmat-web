@@ -2,25 +2,30 @@ body, p, li{
     font-size: 1.2rem;
 }
 
+#wrapper{
+    position: relative;
+    min-height: 100%;
+}
+
 h1{
     font-size: 2.3rem;
 }
 
 #content{
     padding: 5px;
-    min-height: 700px;
+    padding-bottom: 50px;
 }
 
 #footer{
     background-color: #333;
-    clear: both;
     font-size: 0.8em;
     color: #eee;
-    display: block;
     padding: 10px;
-    position: relative;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 50px;
     text-align: center;
-    z-index: 10;
 }
 
 /* Login providers*/
@@ -45,6 +50,17 @@ h1{
 }
 #login-facebook:hover{
     background: #4476bb none;
+}
+
+#login-email i{
+    font-size: 1.4rem;
+    position: absolute;
+}
+#login-email span{
+    margin-left: 27px;
+}
+#login-email:hover{
+    background: #555 none;
 }
 
 #content{

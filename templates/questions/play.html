@@ -11,6 +11,7 @@
     {% endfor %}
     <script>
         var skill = {{ skill.pk }};
+        var device = "{{ device }}";
         var simulators = [
             {% for simulator in simulators %}
                 {

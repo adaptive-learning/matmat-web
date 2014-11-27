@@ -22,3 +22,26 @@ app.config(function($httpProvider){
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }
 );
+
+app.controller("singin", function($scope, $http){
+    $scope.submit = function(){
+        $http.post("/ajaxlogin/",
+            {
+                password: $scope.password,
+                username: $scope.username
+            })
+            .success(function (data) {
+                if (data.success){
+                    window.location.replace("/");
+                    $scope.msg =  "Přihlášeno";
+                    $scope.msg_color =  "green";
+                }else{
+                    $scope.msg =  data.error_msg;
+                    $scope.msg_color =  "red";
+                }
+            }).error(function (){
+                $scope.msg =  "Chyba při komunikaci se serverem.";
+                $scope.msg_color =  "red";
+        });
+    }
+});

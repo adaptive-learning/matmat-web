@@ -28,6 +28,7 @@ def play(request, skill, pk=None):
     return render(request, 'questions/play.html', {
         "simulators": simulators,
         "skill": skill,
+        "device": get_device_info(request)
     })
 
 

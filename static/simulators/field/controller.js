@@ -9,7 +9,6 @@ app.directive("field", function(){
         controller: function($scope, SimulatorGlobal){
             $scope.response = SimulatorGlobal.input;
             $scope.response.value = '';
-            $("#simulator-input").focus();
 
             if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";

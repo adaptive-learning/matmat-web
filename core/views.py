@@ -1,13 +1,15 @@
 # coding=utf-8
 import json
 import string
-from django.contrib.auth import user_logged_in, login
+from django.contrib.auth import user_logged_in, login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.dispatch import receiver
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.views.generic import View
 from lazysignup.utils import is_lazy_user
@@ -120,3 +122,27 @@ def feedback(request):
     return HttpResponse(json.dumps({
         "msg": msg,
         }), content_type="application/json")
+
+
+def ajax_login(request):
+    context = {}
+    if request.method == "POST":
+        body = json.loads(request.body)
+        user = None
+        if 'username' in body and 'password' in body:
+            username = body['username']
+            password = body['password']
+            user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                context['success'] = True
+            else:
+                context['success'] = False
+                context['error_msg'] = 'Uživatelský účet není aktviní.'
+        else:
+            context['success'] = False
+            context['error_msg'] = 'Špatné jméno nebo heslo'
+
+    return HttpResponse(json.dumps(context), content_type="application/json")

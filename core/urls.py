@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url, include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import logout
+from core.models import NameUserCreationForm as Form
 
 urlpatterns = patterns('core.views',
     url(r'^$', "home", name="home"),
@@ -11,10 +12,9 @@ urlpatterns = patterns('core.views',
     url(r'^log_as_child/(?P<child_pk>\d+)$', "log_as_child", name="log_as_child"),
 
     # authorization
-    url(r'^convert/', include('lazysignup.urls')),
+    url(r'^convert/', include('lazysignup.urls'), {"template_name": "core/convert.html", 'form_class': Form}, name="user_convert"),
     url(r'', include('social_auth.urls')),
-    url(r'^close_login_popup/$', TemplateView.as_view(template_name="core/close_login_popup.html"),
-        name='login_popup_close'),
-    url(r'^logout/$', logout, {"next_page": "home"},
-        name='logout'),
+    url(r'^close_login_popup/$', TemplateView.as_view(template_name="core/close_login_popup.html"), name='login_popup_close'),
+    url(r'^logout/$', logout, {"next_page": "home"}, name='logout'),
+    url(r'^ajaxlogin/$', "ajax_login", name='ajax_login'),
 )
