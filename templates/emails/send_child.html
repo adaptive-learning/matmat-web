@@ -6,9 +6,9 @@
 
 <body>
 <p>Dobrý den,<br/>
-    tento email byl automaticky vygenerovaný systémem <a href="{{ domain }}{% url "home" %}">MatMat.cz</a>.
+    tento e-mail byl automaticky vygenerován systémem <a href="{{ domain }}{% url "home" %}">MatMat.cz</a>.
     Uživatel <b>{{ user.first_name }} {{ user.last_name }}</b>
-    vám tímto emailem dává možnost spravovat dítě <b>{{ child.user.first_name }} {{ child.user.last_name }}</b> pod svým účtem.
+    vám tímto e-mailem dává možnost spravovat dítě <b>{{ child.user.first_name }} {{ child.user.last_name }}</b> pod vaším účtem.
 </p>
 <p>
     Pro přidání dítěte se prosím <a href="{{ domain }}{% url "home" %}">přihlašte</a> do systému a poté následujte tento odkaz:
@@ -23,7 +23,7 @@
 {% endif %}
 
 MatMat
-
+<br/>
 V případě problémů nebo dotazů prosím napište na <a href="mailto:matmat-web@googlegroups.com">matmat-web@googlegroups.com</a>
 </body>
 </html>

@@ -1,7 +1,7 @@
 Dobrý den,
-tento email byl automaticky vygenerovaný systémem MatMat.cz.
+tento e-mail byl automaticky vygenerován systémem MatMat.cz.
 Uživatel {{ user.first_name }} {{ user.last_name }}
-vám tímto emailem dává možnost spravovat dítě {{ child.user.first_name }} {{ child.user.last_name }} pod svým účtem.
+vám tímto e-mailem dává možnost spravovat dítě {{ child.user.first_name }} {{ child.user.last_name }} pod vaším účtem.
 
 
 Pro přidání dítěte se prosím přihlašte do systému a poté následujte tento odkaz:
