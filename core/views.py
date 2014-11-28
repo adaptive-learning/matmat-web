@@ -1,9 +1,7 @@
 # coding=utf-8
 import json
-import string
 from django.contrib import messages
 from django.contrib.auth import user_logged_in, login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.core.urlresolvers import reverse
@@ -11,12 +9,12 @@ from django.dispatch import receiver
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.views.generic import View
 from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
 from core.models import create_profile, is_user_registred, convert_lazy_user, UserProfile
+from core.utils import generate_random_string
 from matmat import settings
 from model.models import Skill
 
@@ -47,11 +45,6 @@ def remember_user(request, **kwargs):
 
 class ChildForm(forms.Form):
     name = forms.CharField(max_length=50, label="Jméno")
-
-
-def generate_random_string(lenght):
-    import random
-    return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(lenght))
 
 
 class SupervisorOverviewView(View):

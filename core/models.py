@@ -9,6 +9,8 @@ from lazysignup.forms import UserCreationForm
 from lazysignup.models import LazyUser
 from lazysignup.utils import is_lazy_user
 from social_auth.db.django_models import UserSocialAuth
+from core.utils import generate_random_string
+
 
 class NameUserCreationForm(UserCreationForm):
 
@@ -61,5 +63,6 @@ def my_handler(sender, instance, created=False, **kwargs):
 def create_profile(user):
     if not hasattr(user, "profile") and is_user_registred(user):
         profile = UserProfile(user=user)
+        profile.code = generate_random_string(10)
         profile.save()
         return profile
