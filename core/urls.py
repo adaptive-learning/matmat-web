@@ -9,6 +9,8 @@ urlpatterns = patterns('core.views',
     url(r'^feedback$', "feedback", name="feedback"),
     url(r'^supervisor_overview$', "supervisor_overview", name="supervisor_overview"),
     url(r'^supervisor_overview/(?P<child_pk>\d+)$', "supervisor_overview", name="edit_child"),
+    url(r'^send_child$', "send_child", name="send_child"),
+    url(r'^receive_child/(?P<code>\w{10})$', "receive_child", name="receive_child"),
     url(r'^log_as_child/(?P<child_pk>\d+)$', "log_as_child", name="log_as_child"),
 
     # authorization

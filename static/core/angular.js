@@ -45,3 +45,10 @@ app.controller("singin", function($scope, $http){
         });
     }
 });
+
+
+app.controller("send_child", function($scope){
+    $scope.neco = function(){
+        console.log($scope.name);
+    }
+});

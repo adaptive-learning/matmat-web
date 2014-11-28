@@ -1,0 +1,19 @@
+Dobrý den,
+tento email byl automaticky vygenerovaný systémem MatMat.cz.
+Uživatel {{ user.first_name }} {{ user.last_name }}
+vám tímto emailem dává možnost spravovat dítě {{ child.user.first_name }} {{ child.user.last_name }} pod svým účtem.
+
+
+Pro přidání dítěte se prosím přihlašte do systému a poté následujte tento odkaz:
+{{ domain }}{% url "receive_child" child.code %}
+
+
+{% if msg %}
+Zpráva od odesílatele
+{{ msg|linebreaksbr }}
+{% endif %}
+
+MatMat
+
+V případě problémů nebo dotazů prosím napište na matmat-web@googlegroups.com
+

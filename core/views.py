@@ -1,10 +1,12 @@
 # coding=utf-8
 import json
 import string
+from django.contrib import messages
 from django.contrib.auth import user_logged_in, login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
+from django.core.urlresolvers import reverse
 from django.dispatch import receiver
 from django import forms
 from django.http import HttpResponse
@@ -14,7 +16,7 @@ from django.template.loader import render_to_string
 from django.views.generic import View
 from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
-from core.models import create_profile, is_user_registred, convert_lazy_user
+from core.models import create_profile, is_user_registred, convert_lazy_user, UserProfile
 from matmat import settings
 from model.models import Skill
 
@@ -97,6 +99,53 @@ def log_as_child(request, child_pk):
     child.backend = 'django.contrib.auth.backends.ModelBackend'
     print login(request, child)
     return redirect("home")
+
+
+class SendChildView(View):
+    def post(self, request):
+        if "email" in request.POST and "pk" in request.POST:
+            child = UserProfile.objects.filter(pk=request.POST["pk"], supervisors=request.user.profile).first()
+            if child:
+                subject = u"MatMat - správa dítěte"
+                from_email = settings.EMAIL_SELF
+                to = request.POST["email"]
+                data = {
+                    "child": child,
+                    "user": request.user,
+                    "msg": request.POST["msg"],
+                    "domain": request.build_absolute_uri(reverse("home"))[:-1]
+                }
+                text_content = render_to_string("emails/send_child.plain", data)
+                html_content = render_to_string("emails/send_child.html", data)
+
+                msg = EmailMultiAlternatives(subject, text_content, "MatMat <{}>".format(from_email), [to])
+                if request.user.email:
+                    msg.extra_headers = {'Reply-To': request.user.email}
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+
+                messages.success(request, "Email úspěšně odeslán")
+                return redirect("supervisor_overview")
+
+        messages.error(request, "Bohuželo došlo k chybě")
+        return redirect("supervisor_overview")
+
+send_child = non_lazy_required(SendChildView.as_view())
+
+
+@non_lazy_required
+def receive_child(request, code):
+    child = UserProfile.objects.filter(code=code).first()
+    if child is None:
+        messages.error(request, "Bohuželo došlo k chybě při přidávání dítěte")
+        return redirect("supervisor_overview")
+
+    request.user.profile.children.add(child)
+
+    messages.success(request, "Dítě úspěšně přidáno")
+
+    return redirect("supervisor_overview")
+
 
 
 def feedback(request):

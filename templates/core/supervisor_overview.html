@@ -25,11 +25,11 @@
 
 
     {% if children %}<h4>Přihlásit se jako</h4>{% endif %}
-    <div class="button-bar">
+    <div class="button-bar" ng-controller="send_child">
     {% for child in children %}
         <ul class="button-group round">
             <li><a class="button"  href="{% url "log_as_child" child.user.pk %}">
-                  {{ child.user.first_name }}
+                  {{ child.user.first_name }} {{ child.user.last_name }}
             </a></li>
             <li>
                 <div class="dropdown_arrow button dropdown" data-dropdown="drop{{ child.pk }}"
@@ -40,7 +40,26 @@
         <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
             <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
             <li> <a href="{% url "user_skills" child.user.pk %}">náhled vědomostí</a></li>
+            <li> <a href="#" ng-click="name='{{ child.user.first_name }} {{ child.user.last_name }}'; pk='{{ child.pk }}'"
+                    data-reveal-id="send-child-modal">zpřístupnit dítě jinému úživateli</a></li>
         </ul>
+
+        <div id="send-child-modal" class="reveal-modal" data-reveal>
+
+            <form action="{% url "send_child" %}" method="post">
+                {% csrf_token %}
+                {% verbatim %}
+                <h3>Zpřístupnit dítě "{{ name }}" jinému úživateli</h3>
+                <p>Tento formulář odešle email, přes který si příjemce bude schopný přidat dítě ke svému účtu.</p>
+                <label for="email">e-mail:</label>
+                <input ng-required="true" name="email" type="email"/>
+                <textarea rows="3" placeholder="Zpráva pro příjemnce" name="msg"></textarea>
+                <input type="hidden" name="pk" ng-value="pk"/>
+                <button type="submit" class="right radius">Odeslat</button>
+                {% endverbatim %}
+            </form>
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
     {% empty %}
         K tomuto účtu nejsou zatím přiřazeny žádné děti.
     {% endfor %}
