@@ -39,6 +39,7 @@
 
         <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
             <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
+            <li> <a href="{% url "user_skills" child.user.pk %}">náhled vědomostí</a></li>
         </ul>
     {% empty %}
         K tomuto účtu nejsou zatím přiřazeny žádné děti.

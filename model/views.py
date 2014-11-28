@@ -1,5 +1,6 @@
 from collections import defaultdict
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.db import connection
 from django.shortcuts import render, get_object_or_404
 from lazysignup.decorators import allow_lazy_user
@@ -30,8 +31,13 @@ skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
 @allow_lazy_user
 @login_required
-def my_skills(request, pk=None):
-    all_skills = get_all_skills(request.user)
+def my_skills(request, pk=None, user_pk=None):
+    user = request.user
+    if user_pk:
+        user = get_object_or_404(User, pk=user_pk, profile__supervisors=request.user.profile)
+        user.as_child = True
+
+    all_skills = get_all_skills(user)
 
     par = None
     proceed_skill = None
@@ -58,7 +64,8 @@ def my_skills(request, pk=None):
         "data": data,
         "skills": skills,
         "active": active,
-        "proceed_skill": proceed_skill
+        "proceed_skill": proceed_skill,
+        "user_showed": user,
     })
 
     return ret

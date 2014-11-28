@@ -5,6 +5,9 @@
 
 {% block content %}
 {#    <h1>Moje vědomosti</h1>#}
+    {% if user_showed.as_child %}
+        <h1>{{ user_showed.first_name }} {{ user_showed.last_name }}</h1>
+    {% endif %}
 
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
