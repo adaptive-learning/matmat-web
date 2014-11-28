@@ -6,7 +6,8 @@
 
 <body>
     <b>email:</b> {{ data.email }}<br/>
-    <b>feedback:</b> {{ data.text }}<br/>
+    <b>feedback:</b><br/>
+    {{ data.text|linebreaksbr }}<br/>
 
     <br/><br/>
     <b>url:</b> {{ data.url }}<br/>
