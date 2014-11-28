@@ -112,7 +112,9 @@ def feedback(request):
             "user": request.user,
         })
 
-        msg = EmailMultiAlternatives(subject, text_content, from_email, [to], )
+        msg = EmailMultiAlternatives(subject, text_content, "MatMat <{}>".format(from_email), [to])
+        if "email" in data:
+            msg.extra_headers = {'Reply-To': data["email"]}
         msg.attach_alternative(html_content, "text/html")
         msg.send()
 
