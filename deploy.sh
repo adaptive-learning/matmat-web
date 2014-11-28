@@ -15,4 +15,4 @@ python $DIR/manage.py syncdb
 python $DIR/manage.py migrate
 
 # static files
-echo "yes" | python $DIR/manage.py collectstatic
+python $DIR/manage.py collectstatic --noinput
