@@ -24,6 +24,7 @@ class NameUserCreationForm(UserCreationForm):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="profile")
     children = models.ManyToManyField('self', related_name="supervisors", symmetrical=False)
+    code = models.CharField(max_length=10)
 
     def is_child(self):
         return self.supervisors.exists()

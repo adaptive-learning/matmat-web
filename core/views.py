@@ -47,14 +47,18 @@ class ChildForm(forms.Form):
     name = forms.CharField(max_length=50, label="Jméno")
 
 
+def generate_random_string(lenght):
+    import random
+    return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(lenght))
+
+
 class SupervisorOverviewView(View):
     def post(self, request, child_pk=None):
         child_form = ChildForm(request.POST)
         if child_form.is_valid():
             name = child_form.cleaned_data["name"]
             if child_pk is None:
-                import random
-                rand = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(15))
+                rand = generate_random_string(15)
                 username = "child_" + rand
                 child = User(username=username, first_name=name)
                 child.save()
