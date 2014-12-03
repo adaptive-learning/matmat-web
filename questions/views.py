@@ -54,7 +54,7 @@ def get_selected_question(request, question_pk):
     return HttpResponse(json.dumps([q.as_json()]))
 
 
-@staff_member_required
+# @staff_member_required
 def get_question_test(request):
     """
     test page for question recommendation

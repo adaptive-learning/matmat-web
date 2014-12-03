@@ -26,6 +26,20 @@ def recommend_questions(count, user, skills, in_queue, simulators=None):
         {"user_id": user.pk,}
     )
 
+    questions_total_counts = list(Question.objects.raw(
+        "SELECT questions_question.id, "
+        "COUNT(questions_answer.id) AS total_answers_count "
+        "FROM questions_question "
+        "LEFT JOIN questions_answer ON  questions_question.id = questions_answer.question_id "
+        "WHERE questions_question.skill_id IN ( {0} ) {1} {2}"
+        "AND questions_question.active "
+        "GROUP BY questions_question.id ".format(
+            ",".join(skills),
+            "AND questions_question.id NOT IN ( {0} ) ".format(",".join(in_queue)) if in_queue else "",
+            "AND questions_question.player_id IN ( {0} ) ".format(",".join(simulators)) if simulators else "",
+            )
+    ))
+
     skill_pks = set()
     skill_tree = {}
     for s in Skill.objects.filter(pk__in=skills).select_related("parent"):
@@ -41,6 +55,12 @@ def recommend_questions(count, user, skills, in_queue, simulators=None):
     similar_questions_times, similar_questions_counts = get_similar_questions_times(user, in_queue)
 
     questions = list(questions)
+    for q in questions:
+        for q2 in questions_total_counts:
+            if q.pk == q2.pk:
+                q.total_answers_count = q2.total_answers_count
+                print q.total_answers_count
+                break
 
     selected = []
     for i in range(count):
@@ -81,6 +101,9 @@ def get_similar_questions_times(user, in_queue):
         times[q.value] = 0
         counts[q.value] += 1
 
+    if None in counts:
+        counts[None] = 0
+
     return times, counts
 
 
@@ -89,12 +112,14 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
     ESTIMATE_WEIGHT = 5            # bonus for suitable difficult questions
     TIME_WEIGHT = 300               # seconds after which penalty for question is 1
     TIME_SIMILAR_WEIGHT = 300        # seconds after which penalty for similar question is 1
-    COUNT_WEIGHT = 5                # bonus for less answered questions
+    COUNT_WEIGHT = 5                # bonus for less answered questions by user
+    TOTAL_COUNT_WEIGHT = 5                # bonus for less answered questions - globaly
     COUNT_SIMILAR_WEIGHT = 5                # bonus for less answered questions
     RANDOM_WEIGHT = 0.001           # random bonus from [0, 1]
 
     # answer count score
     count_score = 1. / (sqrt(1 + question.answers_count))
+    total_count_score = 1. / (sqrt(1 + question.total_answers_count))
     count_similar_score = 1. / (sqrt(1 + similar_questions_counts[question.value]))
 
     # time from last answer to same question score
@@ -104,7 +129,7 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
         time_score = -1. / (question.time_form_last_answer) if question.time_form_last_answer > 0 else -1
 
     # time from last answer to similar question score
-    if question.value not in similar_questions_times.keys():
+    if question.value is not None or question.value not in similar_questions_times.keys():
         time_similar_score = 0
         time = None
     else:
@@ -131,11 +156,12 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
     else:
         estimate_score = (1 - expected_response) / (1 - GOAL_RESPONSE)
 
-    priority = count_score * COUNT_WEIGHT + count_similar_score * COUNT_SIMILAR_WEIGHT + time_score * TIME_WEIGHT + time_similar_score * TIME_SIMILAR_WEIGHT+ estimate_score * ESTIMATE_WEIGHT + RANDOM_WEIGHT * random()
+    priority = count_score * COUNT_WEIGHT + total_count_score * TOTAL_COUNT_WEIGHT+ count_similar_score * COUNT_SIMILAR_WEIGHT + time_score * TIME_WEIGHT + time_similar_score * TIME_SIMILAR_WEIGHT+ estimate_score * ESTIMATE_WEIGHT + RANDOM_WEIGHT * random()
 
     if log or settings.DEBUG:
         question.recommendation_log = {
             "count_score": "{0} * {1} = {2}".format(count_score, COUNT_WEIGHT, count_score * COUNT_WEIGHT),
+            "total_count_score": "{0} * {1} = {2}".format(total_count_score, TOTAL_COUNT_WEIGHT, total_count_score * TOTAL_COUNT_WEIGHT),
             "count_similar_score": "{0} * {1} = {2}".format(count_similar_score, COUNT_SIMILAR_WEIGHT, count_similar_score * COUNT_SIMILAR_WEIGHT),
             "time_score": "-{1} / {0}  = {2}".format(question.time_form_last_answer, TIME_WEIGHT, time_score * TIME_WEIGHT),
             "time_similar_score": "-{1} / {0}  = {2}".format(time, TIME_SIMILAR_WEIGHT, time_similar_score * TIME_SIMILAR_WEIGHT),
