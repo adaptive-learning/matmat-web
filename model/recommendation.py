@@ -1,6 +1,7 @@
 from math import sqrt
 from random import random
 from elo.model import EloModel
+from matmat import settings
 from model.models import UserSkill, Skill
 from questions.models import Question
 
@@ -132,7 +133,7 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
 
     priority = count_score * COUNT_WEIGHT + count_similar_score * COUNT_SIMILAR_WEIGHT + time_score * TIME_WEIGHT + time_similar_score * TIME_SIMILAR_WEIGHT+ estimate_score * ESTIMATE_WEIGHT + RANDOM_WEIGHT * random()
 
-    if log:
+    if log or settings.DEBUG:
         question.recommendation_log = {
             "count_score": "{0} * {1} = {2}".format(count_score, COUNT_WEIGHT, count_score * COUNT_WEIGHT),
             "count_similar_score": "{0} * {1} = {2}".format(count_similar_score, COUNT_SIMILAR_WEIGHT, count_similar_score * COUNT_SIMILAR_WEIGHT),
