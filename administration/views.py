@@ -138,6 +138,24 @@ def skill_tables_counts(request):
         "names": NAMES,
         })
 
+
+@staff_member_required
+def skill_tables_skills(request):
+
+    skills = {}
+    for skill in Skill.objects.filter(level=4).annotate(avg_skill=Avg("user_skills__value")):
+        skills[skill.name] = skill
+        if skill.avg_skill:
+            skill.style = get_style(skill.avg_skill*5)
+
+    return render(request, 'administration/skill_tables.html', {
+        "skills4": skills,
+        "skills2": Skill.objects.filter(level=2),
+        "skill_tables": SKILL_TABLES,
+        "names": NAMES,
+        })
+
+
 NAMES = ('numbers', 'addition', 'subtraction', 'multiplication', 'division')
 SKILL_TABLES = {
     'numbers':
