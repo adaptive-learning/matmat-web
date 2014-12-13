@@ -51,7 +51,7 @@ class EloModel():
 
     @staticmethod
     def compute_time_intensity_delta(response_time, time_intensity, attempts_count):
-        if response_time == 0:
+        if response_time <= 0:
             response_time = 1
 
         delta = (math.log(response_time) - time_intensity) / (attempts_count)
