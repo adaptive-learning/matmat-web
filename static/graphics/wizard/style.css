@@ -1,0 +1,8 @@
+body {
+    background: url("komnata.svg") 50% 100px no-repeat;
+}
+
+#content{
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
