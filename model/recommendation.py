@@ -59,7 +59,6 @@ def recommend_questions(count, user, skills, in_queue, simulators=None):
         for q2 in questions_total_counts:
             if q.pk == q2.pk:
                 q.total_answers_count = q2.total_answers_count
-                print q.total_answers_count
                 break
 
     selected = []
