@@ -22,11 +22,18 @@ class NameUserCreationForm(UserCreationForm):
         fields = ("username", "password1", "password2", "first_name", "email")
 
 
-
 class UserProfile(models.Model):
+    PLAIN = "pl"
+    WIZARD = "wi"
+    GRAPHICS = (
+        (PLAIN, "prostý"),
+        (WIZARD, "kouzelník")
+    )
+
     user = models.OneToOneField(User, related_name="profile")
     children = models.ManyToManyField('self', related_name="supervisors", symmetrical=False)
     code = models.CharField(max_length=10)
+    graphics = models.CharField(max_length=2, choices=GRAPHICS, default=WIZARD)
 
     def is_child(self):
         return self.supervisors.exists()
@@ -41,6 +48,7 @@ def is_user_registred(user):
     if user.social_auth.exists():
         return True
     return not is_lazy_user(user)
+
 
 def convert_lazy_user(user):
     if LazyUser.objects.filter(user=user).count() == 0:

@@ -14,6 +14,13 @@
     <link rel="stylesheet" href="{% static "foundation/icons/foundation-icons.css" %}">
     <link rel="stylesheet" href="{% static "core/style.css" %}">
     <link rel="stylesheet" href="{% static "core/animations.css" %}">
+
+    {% if user.profile.graphics == "wi" %}
+        <link rel="stylesheet" href="{% static "graphics/wizard/style.css" %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static "graphics/plain/style.css" %}">
+    {% endif %}
+
     {% block extrastyles %}{% endblock %}
 
 
