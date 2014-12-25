@@ -40,6 +40,8 @@ def get_questions(request):
     skill = get_object_or_404(Skill, pk=request.GET["skill"])
     subskills = skill.active_children_list()
     in_queue = [] if request.GET["in_queue"] == "" else request.GET["in_queue"].split(",")
+    if "" in in_queue:
+        in_queue.remove("")
 
     simulators = [] if request.GET["simulators"] == "" else request.GET["simulators"].split(",")
 
