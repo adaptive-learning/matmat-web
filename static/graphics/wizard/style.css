@@ -1,5 +1,9 @@
-body {
+#content-wrapper {
     background: url("komnata.svg") 50% 100px no-repeat;
+    background-size: contain;
+    max-width: 1500px;
+    margin: auto;
+    padding: 5px;
 }
 
 #content{

@@ -61,7 +61,7 @@
         <a class="close-reveal-modal">&#215;</a>
     </div>
 
-
+    <div id="content-wrapper">
     <div id="content" class="row">
     {% if messages %}
         {% for message in messages %}
@@ -73,6 +73,7 @@
     {% endif %}
     {% block content %}
     {% endblock %}
+    </div>
     </div>
 
     <div id="footer">
