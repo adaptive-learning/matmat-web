@@ -10,3 +10,50 @@
     background-color: rgba(255, 255, 255, 0.75);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 }
+
+/* Skill selection*/
+#skill_selector{
+    text-align: center;
+    align-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#skill_selector div.skill{
+    height: 237px;
+    width: 200px;
+    margin: 5px;
+    padding: 15px;
+    padding-top: 22px;
+    display: inline-block;
+    background: center center no-repeat;
+    opacity: 0.75;
+    position: relative;
+    top: 0;
+    transition: all 0.5s;
+}
+
+#skill_selector div.skill:hover{
+    opacity: 1;
+    top:-5px;
+}
+
+#skill_selector div.skill span.subskills{
+    position: absolute;
+    bottom: 58px;
+    right: 30px;
+    color: #000000;
+}
+
+
+#skill_selector div.skill span.title{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-left: 15px;
+    color: #000000;
+}
+
+.skill-tabs dd a, .skill-tabs dd a:hover, .skill-tabs dd.active a {
+    background: center 20px no-repeat;
+    background-size: 30%;
+}

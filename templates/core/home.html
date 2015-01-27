@@ -8,7 +8,7 @@
     {% for skill in skills%}
         <a href="{% url "play" skill.name %}">
         <div class="skill"
-             style="background-image: url('{% static skill.get_image_name %}')">
+             style="background-image: url('{% static skill.image %}')">
             <span class="title">{{ skill.note }}</span>
             <span class="subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
         </div></a>

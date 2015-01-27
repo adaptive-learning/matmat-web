@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
+{% load core_tags %}
 
 {% block title %}Moje vědomosti{% endblock %}
 
@@ -12,7 +13,7 @@
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
              <dd {% if active == skill.name %}class="active"{% endif %}>
-                 <a style="{{ skill.style }} background-image: url('{% static skill.image_name %}')"
+                 <a style="{{ skill.style }} background-image: url('{% static image_names|keyvalue:skill.name %}')"
                      href="#panel{{ skill.pk }}"
                      >
                      {{ skill.note }}</a></dd>

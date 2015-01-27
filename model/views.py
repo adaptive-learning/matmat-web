@@ -24,7 +24,7 @@ SKILL_TABLES = {
     [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
 }
 
-skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'image_name', 'used', 'active']
+skill_keys = ['pk', 'name', 'note', 'value', 'value_percent', 'style', 'used', 'active']
 SkillTuple = namedtuple('Skill', ', '.join(skill_keys))
 skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 
@@ -66,6 +66,7 @@ def my_skills(request, pk=None, user_pk=None):
         "active": active,
         "proceed_skill": proceed_skill,
         "user_showed": user,
+        "image_names": {skill.name: skill.get_image_name(request.user) for skill in Skill.objects.filter(level=2)},
     })
 
     return ret
@@ -126,7 +127,6 @@ def get_children(parent_list, skills):
 def get_skill_obj(sid, skills):
     obj = {'name': skills['id_name'][sid],
            'value': skills['id_val'][sid],
-           'image_name': "core/imgs/skill_{}.png".format(skills['id_name'][sid]),
            'pk': sid,
            'note': skills['id_note'][sid],
            'active': skills['id_active'][sid],

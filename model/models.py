@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import Avg
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
+from core.models import UserProfile, is_user_registred
 from elo.DataProviderInterface import DataProviderInterface
 from questions.models import Answer
 
@@ -18,8 +19,11 @@ class Skill(models.Model):
     def __unicode__(self):
         return self.name
 
-    def get_image_name(self):
-        return "core/imgs/skill_{}.png".format(self.name)
+    def get_image_name(self, user):
+        if not is_user_registred(user) or user.profile.graphics == UserProfile.PLAIN:
+            return "graphics/plain/skill_{}.png".format(self.name)
+        if user.profile.graphics == UserProfile.WIZARD:
+            return "graphics/wizard/skill_{}.png".format(self.name)
 
     def get_answers_count(self, user, correctly_solved=None):
         answers = Answer.objects.filter(question__skill__in=self.children_list.split(","), user=user)

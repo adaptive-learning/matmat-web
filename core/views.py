@@ -30,6 +30,9 @@ def home(request):
     if is_lazy_user(request.user) and is_user_registred(request.user):
         convert_lazy_user(request.user)
 
+    for skill in skills:
+        skill.image = skill.get_image_name(request.user)
+
     return render(request, 'core/home.html', {
         "skills": skills,
     })
