@@ -2,6 +2,7 @@
     background: url("komnata.svg") 50% 100px no-repeat;
     background-size: contain;
     max-width: 1500px;
+    min-height: 900px;
     margin: auto;
     padding: 5px;
 }
