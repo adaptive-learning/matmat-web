@@ -1,11 +1,13 @@
 #keyboard-wizard{
     text-align: center;
+    z-index: -1;
 }
 
 #scroll-left, #scroll-right{
-    width: 130px;
+    width: 119px;
     height: 273px;
     display: inline-block;
+    margin-top: -70px;
     content: '';
 }
 #scroll-left{
@@ -35,17 +37,16 @@
 
 #scroll-content > div{
     height: 110px;
-    /*border: solid 1px green;*/
-    width: 700px;
-    margin-left: -350px;
+    width: 660px;
+    margin-left: -330px;
     text-align: center;
     display: inline-block;
     padding: 5px;
 }
 
 #keyboard-wizard.open #scroll-center{
-    width: 700px;
-    /*border: solid black 1px;*/
+/*#keyboard-wizard:hover #scroll-center{*/
+    width: 660px;
 }
 
 #keyboard-wizard div.key{
