@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block extrascripts %}
+    {% include "questions/template_urls.html" %}
+    <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
+{% endblock %}
+
+{% block content%}
+    <keyboardwizard></keyboardwizard>
+{% endblock %}

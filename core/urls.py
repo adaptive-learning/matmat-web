@@ -13,6 +13,8 @@ urlpatterns = patterns('core.views',
     url(r'^receive_child/(?P<code>\w{10})$', "receive_child", name="receive_child"),
     url(r'^log_as_child/(?P<child_pk>\d+)$', "log_as_child", name="log_as_child"),
 
+    url(r'^playground/$', TemplateView.as_view(template_name="core/playground.html"), name='playground'),
+
     # authorization
     url(r'^convert/', include('lazysignup.urls'), {"template_name": "core/convert.html", 'form_class': Form}, name="user_convert"),
     url(r'', include('social_auth.urls')),
