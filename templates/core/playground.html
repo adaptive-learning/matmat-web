@@ -5,9 +5,20 @@
     {% include "questions/template_urls.html" %}
     <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
     <script src="{% static "simulators/roller-wizard.js" %}"></script>
+    <script>
+    app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
+
+    });
+    </script>
 {% endblock %}
 
 {% block content%}
-    <rollerwizard closed="true"></rollerwizard>
-    <keyboardwizard></keyboardwizard>
+    {% verbatim %}
+    <div ng-controller="playground">
+        <input type="checkbox" ng-model="close"/>
+        <rollerwizard closed="close"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>nějaký obsah<br/><br/><br/><br/><br/><br/></rollerwizard>
+
+        <keyboardwizard></keyboardwizard>
+    </div>
+    {% endverbatim %}
 {% endblock %}

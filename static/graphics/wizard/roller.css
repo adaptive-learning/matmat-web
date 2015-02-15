@@ -10,7 +10,7 @@
     height: 50px;
     background: url("roller.png") no-repeat top;
     position: relative;
-    z-index: 100;
+    z-index: 11;
 }
 
 #roller-wizard #roller-playground{
@@ -34,6 +34,7 @@
 }
 
 #roller-wizard #roller-bottom{
+    position: relative;
     height: 42px;
     width: 765px;
     margin: auto;
