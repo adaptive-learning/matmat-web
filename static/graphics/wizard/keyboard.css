@@ -1,0 +1,92 @@
+#keyboard-wizard{
+    text-align: center;
+}
+
+#scroll-left, #scroll-right{
+    width: 130px;
+    height: 273px;
+    display: inline-block;
+    content: '';
+}
+#scroll-left{
+    background-image: url('scroll-left.png');
+}
+#scroll-right{
+    background-image: url('scroll-right.png');
+}
+
+#scroll-center{
+    border: solid #b3b3b3;
+    border-width: 1px 0 1px 0;
+    height: 120px;
+    background-color: white;
+    margin-bottom: 73px;
+    width: 0;
+    transition: width 1s;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+}
+
+#scroll-content{
+    width: 0;
+    margin: auto;
+}
+
+#scroll-content > div{
+    height: 110px;
+    /*border: solid 1px green;*/
+    width: 700px;
+    margin-left: -350px;
+    text-align: center;
+    display: inline-block;
+    padding: 5px;
+}
+
+#keyboard-wizard.open #scroll-center{
+    width: 700px;
+    /*border: solid black 1px;*/
+}
+
+#keyboard-wizard div.key{
+    display: inline-block;
+    position: relative;
+    padding: 5px 15px;
+    height: 50px;
+    min-width: 50px;
+    top: 10px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: bold;
+    border: solid #003f54 1px;
+    border-radius: 25px;
+    background-color: #007095;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: background-color, box-shadow 0.5s;
+
+}
+#keyboard-wizard div.choices div.key:nth-child(even){ top: 50px; }
+
+#keyboard-wizard div.key.back{
+    top: 50px;
+    margin-right: -150px;
+}
+
+#keyboard-wizard div.key.submit{ background-color: darkgreen; }
+#keyboard-wizard div.key.submit:hover{ background-color: green; }
+
+#keyboard-wizard div.key.skip{
+    top: 70px;
+    margin-left: -50px;
+    height: 30px;
+    width: 50px;
+    background-color: darkred;
+}
+#keyboard-wizard div.key.skip i{position: absolute; top: -4px; left: 15px;}
+#keyboard-wizard div.key.skip:hover{background-color: red;}
+
+#keyboard-wizard div.key:hover{
+    background-color: #008cba;
+    box-shadow:0 0 7px rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,18 @@
+<div id="keyboard-wizard" class="open">
+    <div id="scroll-left"></div><div id="scroll-center">
+        <div id="scroll-content">
+            <div>
+                <div class="key left back" ng-cloak ng-show="global.keyboard == 'full'" ng-click="add_text('larr')"><i class="fi-arrow-left"></i></div>
+                <div class="key right skip" ng-click="skip()"><i class="fi-next"></i></div>
+                <div class="key right submit" ng-cloak ng-show="global.keyboard == 'full'" ng-click="submit()"><i class="fi-check"></i></div>
+                <div class="choices"  ng-cloak ng-show="global.keyboard == 'full'">
+                    <div class="key" ng-repeat="choice in choices" ng-click="add_text(choice)" >{{ choice }}</div>
+                </div>
+                <div class="choices" ng-cloak ng-show="global.keyboard == 'choices'">
+                    <div class="key" ng-repeat="choice in global.choices" ng-click="submit_answer(choice)" >{{ choice }}</div>
+                </div>
+            </div>
+        </div>
+    </div><div id="scroll-right"></div>
+</div>
+
