@@ -10,7 +10,6 @@ app.directive("rollerwizard", function($timeout){
             $scope.global = SimulatorGlobal;
 
             $scope.prepare_height = function(){
-                console.log($("#roller-wizard").find("#roller-playground > div").height());
                 $timeout( function() {
                     $('#roller-wizard').find("#roller-playground").css("height", $("#roller-wizard").find("#roller-playground > div").height())
                 }, 100);
