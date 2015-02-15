@@ -33,6 +33,9 @@
 <div class="row collapse" ng-controller="Loader">
     {% if user.profile.graphics == "wi" %}
         {% verbatim %}
+        <div ng-show="loading" ng-cloak class="loading-spinner">
+            {% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}
+        </div>
         <a href="#" data-reveal-id="simulator-selector" class="right">Typy příkladů</a><br/>
         <rollerwizard closed="loading || question.hide">
             <div id="playground"></div>
@@ -58,7 +61,7 @@
                 </div>
         {% endverbatim %}
                 <div ng-show="loading" ng-cloak class="">
-                    <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
+                    {% include "core/spinner.html" %}
                 </div>
 
                 <keyboard />

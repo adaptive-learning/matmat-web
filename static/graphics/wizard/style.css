@@ -58,3 +58,8 @@
     background: center 20px no-repeat;
     background-size: 30%;
 }
+
+.loading-spinner{
+    margin: 200px auto -200px;
+    height: 0;
+}

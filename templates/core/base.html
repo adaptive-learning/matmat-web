@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
     <link rel="stylesheet" href="{% static "foundation/icons/foundation-icons.css" %}">
     <link rel="stylesheet" href="{% static "core/style.css" %}">
+    <link rel="stylesheet" href="{% static "core/spinner.css" %}">
     <link rel="stylesheet" href="{% static "core/animations.css" %}">
 
     {% if user.profile.graphics == "wi" %}
@@ -59,7 +60,7 @@
             <input name="email" type="text" value="@" ng-model="feedback.email" />
             <button type="submit"class="right radius">Odeslat</button>
         </form>
-        <div class="text-center" ng-cloak ng-show="sending"><img  src="{% static "img/spinner.gif" %}" /></div>
+        <div class="text-center" ng-cloak ng-show="sending">{% include "core/spinner.html" %}</div>
         <a class="close-reveal-modal">&#215;</a>
     </div>
 
