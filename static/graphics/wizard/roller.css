@@ -21,7 +21,7 @@
     margin: -1px auto auto;
     z-index: 9;
     overflow: hidden;
-    height: 0;
+    height: 200px;
     width: 765px;
     transition: height 0.5s;
 }
