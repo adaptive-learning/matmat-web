@@ -4,8 +4,10 @@
 {% block extrascripts %}
     {% include "questions/template_urls.html" %}
     <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
+    <script src="{% static "simulators/roller-wizard.js" %}"></script>
 {% endblock %}
 
 {% block content%}
+    <rollerwizard closed="true"></rollerwizard>
     <keyboardwizard></keyboardwizard>
 {% endblock %}

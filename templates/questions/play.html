@@ -6,6 +6,11 @@
 {% block extrascripts %}
     <script src="{% static "simulators/loader.js" %}"></script>
     <script src="{% static "simulators/directives.js" %}"></script>
+    {% if user.profile.graphics == "wi" %}
+        <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
+        <script src="{% static "simulators/roller-wizard.js" %}"></script>
+    {% else %}
+    {% endif %}
     {% for simulator in simulators %}
         <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
     {% endfor %}
@@ -25,9 +30,16 @@
 {% endblock %}
 
 {% block content %}
-
-
-    <div class="row collapse" ng-controller="Loader">
+<div class="row collapse" ng-controller="Loader">
+    {% if user.profile.graphics == "wi" %}
+        {% verbatim %}
+        {{ loading }}
+        <rollerwizard closed="loading">
+            <div id="playground"></div>
+        </rollerwizard>
+        <keyboardwizard></keyboardwizard>
+        {% endverbatim %}
+    {% else %}
         {% verbatim %}
             <div class="show-for-small-only">
                 <a href="#" data-reveal-id="simulator-selector" class="radius button right">Typy příkladů</a>
@@ -44,7 +56,7 @@
 
                     <div ng-class="solved" id="playground"></div>
                 </div>
-            {% endverbatim %}
+        {% endverbatim %}
                 <div ng-show="loading" ng-cloak class="">
                     <div></div><img class="spinner" src="{% static "img/spinner.gif" %}" />
                 </div>
@@ -67,12 +79,13 @@
                 </div>
             </div>
         {% endverbatim %}
-    </div>
+    {% endif %}
+</div>
 
-    <div id="simulator-selector" class="reveal-modal medium" data-reveal>
-        <a class="close-reveal-modal">&#215;</a>
-        <h3 class="text-center">Výběr typů úloh</h3>
-        <simulatorselector></simulatorselector>
-    </div>
+<div id="simulator-selector" class="reveal-modal medium" data-reveal>
+    <a class="close-reveal-modal">&#215;</a>
+    <h3 class="text-center">Výběr typů úloh</h3>
+    <simulatorselector></simulatorselector>
+</div>
 
 {% endblock %}

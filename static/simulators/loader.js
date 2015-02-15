@@ -86,10 +86,12 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
             $("#playground").append(questionDirective);
             $compile(questionDirective)($scope);
 
-            $scope.question_description = SimulatorGlobal.description;
-            $scope.question.start_time = new Date().getTime();
-            $scope.loading = false;
-            SimulatorGlobal.simulator_active = true;
+            $timeout(function(){
+                $scope.question_description = SimulatorGlobal.description;
+                $scope.question.start_time = new Date().getTime();
+                $scope.loading = false;
+                SimulatorGlobal.simulator_active = true;
+            }, 1000);
         }
         $scope.get_questions_from_server();
     };
