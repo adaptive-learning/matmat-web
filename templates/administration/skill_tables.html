@@ -2,7 +2,7 @@
 {% load staticfiles core_tags %}
 
 {% block content%}
-    <h2>Průměrná obtížnost otázek</h2>
+    <h2>{{ title }}</h2>
 
     {% for row in skill_tables.numbers %}
         {% for cell in row %}

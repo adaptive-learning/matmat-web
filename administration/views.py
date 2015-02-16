@@ -1,3 +1,4 @@
+# coding=utf-8
 from math import e
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
@@ -136,6 +137,7 @@ def skill_tables_counts(request):
         "skills2": Skill.objects.filter(level=2),
         "skill_tables": SKILL_TABLES,
         "names": NAMES,
+        "title": "Průměrná obtížnost otázek",
         })
 
 
@@ -153,6 +155,7 @@ def skill_tables_skills(request):
         "skills2": Skill.objects.filter(level=2),
         "skill_tables": SKILL_TABLES,
         "names": NAMES,
+        "title": "Průměrný skill (rozdíl proti parent skillu)",
         })
 
 
