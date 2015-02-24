@@ -55,8 +55,7 @@ app.directive("pairing", function(){
                     cell.state = (cell.state != 'wactive') ? 'wactive' : 'wwactive';
                     $scope.selected = undefined;
                 }
-                console.log($scope);
-            }
+            };
 
             $scope.submit = function(correct) {
                 $scope.gameover = true;
