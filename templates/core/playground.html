@@ -7,7 +7,7 @@
     <script src="{% static "simulators/roller-wizard.js" %}"></script>
     <script>
     app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
-
+        $scope.q = "???"
     });
     </script>
 {% endblock %}
@@ -16,7 +16,7 @@
     {% verbatim %}
     <div ng-controller="playground">
         <input type="checkbox" ng-model="close"/>
-        <rollerwizard closed="close"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>nějaký obsah<br/><br/><br/><br/><br/><br/></rollerwizard>
+        <rollerwizard  question="q" closed="close"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>nějaký obsah<br/><br/><br/><br/><br/><br/></rollerwizard>
 
         <keyboardwizard></keyboardwizard>
     </div>

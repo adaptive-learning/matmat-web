@@ -37,7 +37,7 @@
             {% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}
         </div>
         <a href="#" data-reveal-id="simulator-selector" class="right">Typy příkladů</a><br/>
-        <rollerwizard closed="loading || question.hide">
+        <rollerwizard closed="loading || question.hide" question="question_description.top">
             <div id="playground"></div>
         </rollerwizard>
         <keyboardwizard></keyboardwizard>

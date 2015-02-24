@@ -3,7 +3,8 @@ app.directive("rollerwizard", function($timeout){
         restrict: "E",
         transclude: true,
         scope: {
-            closed: "="
+            closed: "=",
+            question: "="
         },
         templateUrl: template_urls["roller-wizard"],
         controller: function($scope, SimulatorGlobal, $timeout){

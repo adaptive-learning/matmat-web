@@ -11,7 +11,11 @@
     background: url("roller.png") no-repeat top;
     position: relative;
     z-index: 11;
+    color: grey;
+    padding: 10px;
+    font-weight: bold;
 }
+#roller-wizard #roller-top:hover{color: black}
 
 #roller-wizard #roller-playground{
     position: relative;
@@ -23,7 +27,7 @@
     overflow: hidden;
     height: 200px;
     width: 765px;
-    transition: height 0.5s;
+    transition: height 1.0s;
 }
 
 #roller-wizard #roller-playground > div{
