@@ -63,3 +63,14 @@
     margin: 200px auto -200px;
     height: 0;
 }
+
+.tick{
+    background-image: url('tick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-color: darkgreen !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: background-color, box-shadow 0.5s;
+}
+.tick:hover{ background-color: green !important; box-shadow:0 0 7px rgba(0, 0, 0, 1);}
