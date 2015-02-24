@@ -9,14 +9,13 @@ app.directive("rollerwizard", function($timeout){
         controller: function($scope, SimulatorGlobal, $timeout){
             $scope.global = SimulatorGlobal;
 
-            $scope.prepare_height = function(){
-                $timeout( function() {
-                    $('#roller-wizard').find("#roller-playground").css("height", $("#roller-wizard").find("#roller-playground > div").height())
-                }, 100);
+            $scope.fit_height = function(){
+                var roller = $('#roller-wizard');
+                roller.find("#roller-playground").css("height", roller.find("#roller-playground > div").height())
             };
 
             $scope.$watch("closed", function(o, n){
-                $scope.prepare_height();
+                $scope.fit_height();
             });
         }
     }

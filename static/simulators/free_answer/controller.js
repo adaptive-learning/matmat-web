@@ -6,7 +6,7 @@ app.directive("freeanswer", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["free_answer"],
-        controller: function($scope, SimulatorGlobal){
+        controller: function($scope, SimulatorGlobal, $timeout){
             $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
 
@@ -30,6 +30,8 @@ app.directive("freeanswer", function(){
             $scope.change = function(){
                 $scope.interface.log($scope.answer.value);
             };
+
+            $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
         }
     }
 });

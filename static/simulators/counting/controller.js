@@ -6,7 +6,7 @@ app.directive("counting", function(){
             interface: "=interface"
         },
         templateUrl: template_urls["counting"],
-        controller: function($scope, SimulatorGlobal){
+        controller: function($scope, SimulatorGlobal, $timeout){
             $scope.response = SimulatorGlobal.input;
             $scope.response.value = '';
             $scope.prefix = $scope.data.prefix || '';
@@ -92,7 +92,8 @@ app.directive("counting", function(){
                 $scope.interface.log($scope.response.value);
             };
 
-            SimulatorGlobal.description.top = "Kolik je to čtverečků?"
+            SimulatorGlobal.description.top = "Kolik je to čtverečků?";
+            $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
         }
     }
 });

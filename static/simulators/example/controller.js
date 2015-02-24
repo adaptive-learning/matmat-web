@@ -7,11 +7,11 @@ app.directive("example", function(){
             interface: "=interface"     // interface of loader
         },
         templateUrl: template_urls["example"],  // html
-        controller: function($scope){
-                /*
-                    During solving log interesting actions
-                 */
-                $scope.interface.log("log something this way");
+        controller: function($scope, $timeout){
+            /*
+                During solving log interesting actions
+             */
+            $scope.interface.log("log something this way");
 
             $scope.answer = function(answer){
                 $scope.interface.log("answer was " + answer);
@@ -21,7 +21,9 @@ app.directive("example", function(){
                     - optional time of waiting before loading next question. Initial 1000ms
                  */
                 $scope.interface.finish(answer, "my answer", 1234);
-            }
+            };
+
+            $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
 
         }
     }

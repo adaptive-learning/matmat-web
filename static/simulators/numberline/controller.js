@@ -133,7 +133,8 @@ app.directive("numberline", function(){
             $scope.populate_points();
 
 
-            SimulatorGlobal.description.top = "Najdi číslo na číselné ose."
+            SimulatorGlobal.description.top = "Najdi číslo na číselné ose.";
+            $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
         }
     }
 });

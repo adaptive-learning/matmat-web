@@ -44,3 +44,9 @@
 #roller-wizard.closed #roller-playground{
     height: 0 !important;
 }
+
+responseinput:before{
+    height: 57px;
+    float: left;
+    content: "";
+}

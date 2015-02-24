@@ -73,7 +73,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         }
     };
 
-    // show next question or get it from server
+    // prepare next question or get it from server
     $scope.get_question = function(){
         if ($scope.question == null && $scope.questions_queue.length > 0){
             $scope.question = $scope.questions_queue.shift();
@@ -83,15 +83,19 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
             var questionDirective = angular.element(
                 '<{0} interface=\'interface\' data=\'{1}\' />'
                     .format($scope.question.simulator.replace("_",""), $scope.question.data));
-            $("#playground").append(questionDirective);
             $compile(questionDirective)($scope);
-
-            $scope.question_description = SimulatorGlobal.description;
-            $scope.question.start_time = new Date().getTime();
-            $scope.loading = false;
-            SimulatorGlobal.simulator_active = true;
+            $("#playground").append(questionDirective);
         }
         $scope.get_questions_from_server();
+    };
+
+    // show and start prepared question
+    SimulatorGlobal.simulator_loaded_callback = function(){
+        console.log("ready");
+        $scope.question_description = SimulatorGlobal.description;
+        $scope.question.start_time = new Date().getTime();
+        $scope.loading = false;
+        SimulatorGlobal.simulator_active = true;
     };
 
     // send answer and log to server
