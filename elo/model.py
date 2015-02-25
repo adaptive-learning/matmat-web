@@ -117,18 +117,18 @@ class EloModel():
             self.data.set_difficulty(question, difficulty)
 
         # get and update time intensity
-        time_intensity = self.data.get_time_intensity (question)
+        time_intensity = self.data.get_time_intensity(question)
         if time_intensity is None:
             time_intensity = INITIAL_TIME_INTENSITY
             self.data.set_time_intensity(question, time_intensity)
 
-
-        time_intensity += self.compute_time_intensity_delta(
-                self.data.get_solving_time(answer),
-                time_intensity,
-                self.data.get_attempts_count(question),
-            )
-        self.data.set_time_intensity(question, time_intensity)
+        if self.data.is_first_attempt(answer):
+            time_intensity += self.compute_time_intensity_delta(
+                    self.data.get_solving_time(answer),
+                    time_intensity,
+                    self.data.get_attempts_count(question),
+                )
+            self.data.set_time_intensity(question, time_intensity)
 
         response = self.response(answer, question, time_intensity, question_type)
 

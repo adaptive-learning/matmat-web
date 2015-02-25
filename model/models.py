@@ -159,7 +159,7 @@ class DatabaseDataProvider(DataProviderInterface):
         return question.difficulty.get_first_attempts_count()
 
     def get_attempts_count(self, question):
-        return question.difficulty.get_first_attempts_count()
+        return question.difficulty.get_attempts_count()
 
     def get_time_intensity(self, question):
         try:
