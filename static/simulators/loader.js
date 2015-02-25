@@ -118,7 +118,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
         $scope.log_something("finished");
-        $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
+        $scope.question.time =  (new Date().getTime() - $scope.question.start_time) / 1000;
 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
         $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
@@ -147,7 +147,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     };
 
     $scope.save_partial_answer = function (correctly_solved, answer) {
-        $scope.question.time =  Math.round((new Date().getTime() - $scope.question.start_time) / 1000);
+        $scope.question.time =  (new Date().getTime() - $scope.question.start_time) / 1000;
         $scope.question.correctly_solved =  correctly_solved;
         $scope.question.answer =  answer;
         $scope.log_something("partial_solution");

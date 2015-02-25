@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
-import json
-from south.v2 import DataMigration
+from south.utils import datetime_utils as datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
 
-class Migration(DataMigration):
+
+class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        for q in orm.Question.objects.all():
-            if q.skill.level == 4 and (q.skill.parent.parent.name == "subtraction" or q.skill.parent.parent.name == "division"):
-                question_data = json.loads(q.data)
-                if "answer" in question_data.keys():
-                    value = question_data["answer"]
-                    q.value = value
-            elif q.skill.level == 4:
-                q.value = q.skill.name
-            else:
-                q.value = None
-            q.save()
+
+        # Changing field 'Answer.solving_time'
+        db.alter_column(u'questions_answer', 'solving_time', self.gf('django.db.models.fields.FloatField')())
 
     def backwards(self, orm):
-        "Write your backwards methods here."
+
+        # Changing field 'Answer.solving_time'
+        db.alter_column(u'questions_answer', 'solving_time', self.gf('django.db.models.fields.IntegerField')())
 
     models = {
         u'auth.group': {
@@ -59,10 +56,11 @@ class Migration(DataMigration):
         },
         u'model.skill': {
             'Meta': {'object_name': 'Skill'},
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'children_list': ('django.db.models.fields.TextField', [], {'default': "''"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'level': ('django.db.models.fields.IntegerField', [], {}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'}),
             'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': u"orm['model.Skill']"})
         },
@@ -74,7 +72,7 @@ class Migration(DataMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'log': ('django.db.models.fields.TextField', [], {}),
             'question': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'answers'", 'to': u"orm['questions.Question']"}),
-            'solving_time': ('django.db.models.fields.IntegerField', [], {}),
+            'solving_time': ('django.db.models.fields.FloatField', [], {}),
             'timestamp': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'answers'", 'to': u"orm['auth.User']"})
         },
@@ -97,4 +95,3 @@ class Migration(DataMigration):
     }
 
     complete_apps = ['questions']
-    symmetrical = True

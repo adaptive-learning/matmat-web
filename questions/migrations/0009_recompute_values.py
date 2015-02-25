@@ -63,20 +63,23 @@ class Migration(DataMigration):
         },
         u'questions.answer': {
             'Meta': {'object_name': 'Answer'},
+            'answer': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             'correctly_solved': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'device': ('django.db.models.fields.CharField', [], {'max_length': '10', 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'log': ('django.db.models.fields.TextField', [], {}),
             'question': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'answers'", 'to': u"orm['questions.Question']"}),
             'solving_time': ('django.db.models.fields.IntegerField', [], {}),
             'timestamp': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'answers'", 'to': u"orm['auth.User']"})
         },
         u'questions.question': {
             'Meta': {'object_name': 'Question'},
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'data': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'player': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['questions.Simulator']"}),
-            'skill': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['model.Skill']"}),
+            'player': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'questions'", 'to': u"orm['questions.Simulator']"}),
+            'skill': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'questions'", 'to': u"orm['model.Skill']"}),
             'type': ('django.db.models.fields.CharField', [], {'default': "'c'", 'max_length': '1'}),
             'value': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
         },
