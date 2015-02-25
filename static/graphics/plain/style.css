@@ -44,6 +44,24 @@
     background-size: 50%;
 }
 
+#playground{
+    text-align: center;
+    transition: background-color, box-shadow cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+#playground h2{
+    font-size: 4em;
+}
+
+#playground.solved_correctly{
+    background-color: rgba(11, 87, 0, 0.1);
+    box-shadow: 0 0 40px rgba(11, 87, 0, 0.3);
+}
+
+#playground.solved_incorrectly{
+    background-color: rgba(158, 20, 9, 0.1);
+    box-shadow: 0 0 40px rgba(158, 20, 9, 0.3);
+}
 
 .tick{
     background-image: url("tick.png") ;

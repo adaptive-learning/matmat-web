@@ -4,6 +4,7 @@
     min-height: 400px;
     z-index: 10;
     text-align: center;
+    position: relative;
 }
 
 #roller-wizard #roller-top{

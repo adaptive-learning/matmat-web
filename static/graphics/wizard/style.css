@@ -10,6 +10,8 @@
 #content{
     background-color: rgba(255, 255, 255, 0.75);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: visible;
 }
 
 /* Skill selection*/
@@ -74,3 +76,61 @@
     transition: background-color, box-shadow 0.5s;
 }
 .tick:hover{ background-color: green !important; box-shadow:0 0 7px rgba(0, 0, 0, 1);}
+
+#playground{
+    text-align: center;
+}
+
+#playground h2{
+    font-size: 4em;
+}
+
+#wizard{
+    position: absolute;
+    right: -50px;
+    top: 300px;
+    text-align: center;
+}
+
+#wizard #guy{
+    height: 220px;
+    width: 200px;
+    background-image: url('wizard.svg');
+    background-size: contain;
+    z-index: 0;
+}
+
+#wizard-bubble, #wizard-bubble1, #wizard-bubble2{
+    display: block;
+    position: absolute;
+    z-index: 100;
+    background: #ffffff;
+    border: solid black 1px;
+    border-radius: 15px;
+}
+
+#wizard-bubble{
+    padding: 15px;
+    right: 55px;
+    bottom: 220px;
+    min-height: 30px;
+    min-width: 50px;
+    font-weight: bold;
+}
+
+#wizard-bubble1{
+    padding: 10px;
+    right: 70px;
+    bottom: 195px;
+    border-radius: 10px;
+}
+
+#wizard-bubble2{
+    padding: 5px;
+    right: 65px;
+    bottom: 180px;
+    border-radius: 5px;
+}
+
+.solved_correctly{color: darkgreen}
+.solved_incorrectly{color: darkred}

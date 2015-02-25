@@ -9,6 +9,7 @@
     {% if user.profile.graphics == "wi" %}
         <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
         <script src="{% static "simulators/roller-wizard.js" %}"></script>
+        <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     {% else %}
     {% endif %}
     {% for simulator in simulators %}
@@ -41,6 +42,7 @@
             <div id="playground"></div>
         </rollerwizard>
         <keyboardwizard></keyboardwizard>
+        <wizard say="say" ng-class="solved"></wizard>
         {% endverbatim %}
     {% else %}
         {% verbatim %}

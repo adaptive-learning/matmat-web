@@ -1,6 +1,7 @@
 #keyboard-wizard{
     text-align: center;
-    z-index: -1;
+    position: relative;
+    z-index: 2;
 }
 
 #scroll-left, #scroll-right{

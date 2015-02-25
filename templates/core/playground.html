@@ -5,9 +5,11 @@
     {% include "questions/template_urls.html" %}
     <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
     <script src="{% static "simulators/roller-wizard.js" %}"></script>
+    <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     <script>
     app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
-        $scope.q = "???"
+        $scope.q = "???";
+        $scope.s = null;
     });
     </script>
 {% endblock %}
@@ -19,6 +21,8 @@
         <rollerwizard  question="q" closed="close"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>nějaký obsah<br/><br/><br/><br/><br/><br/></rollerwizard>
 
         <keyboardwizard></keyboardwizard>
+        <wizard class="green" say="s"></wizard>
+        <input type="text" ng-model="s"/>
     </div>
     {% endverbatim %}
 {% endblock %}

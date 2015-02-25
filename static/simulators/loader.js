@@ -1,6 +1,7 @@
 var QUESTIONS_IN_SET = 10;
 var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;         // animation time after finish question
+var FADEIN_DURATION = 1000;         // animation time of showing question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
 app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
@@ -91,11 +92,12 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
     // show and start prepared question
     SimulatorGlobal.simulator_loaded_callback = function(){
-        console.log("ready");
-        $scope.question_description = SimulatorGlobal.description;
-        $scope.question.start_time = new Date().getTime();
         $scope.loading = false;
-        SimulatorGlobal.simulator_active = true;
+        $timeout(function(){
+            $scope.question_description = SimulatorGlobal.description;
+            $scope.question.start_time = new Date().getTime();
+            SimulatorGlobal.simulator_active = true;
+        },FADEIN_DURATION);
     };
 
     // send answer and log to server
@@ -127,13 +129,17 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
         $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
         $scope.question.correctly_solved =  correctly_solved;
+        $scope.say = correctly_solved ? "Správně" : "Špatně";
+        if ($scope.fast_solution && correctly_solved) $scope.say += " a rychle";
         $scope.question.answer =  answer;
         SimulatorGlobal.description.top = "";
         $scope.save_answer();
 
+
         // wait to show correct answer
         $timeout(function() {
             $scope.question.hide = true;
+            $scope.say = "";
             // wait to finish fade-out animation
             $timeout(function() {
                 $("#playground").empty();
@@ -145,7 +151,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                     // load next question
                     $scope.next_question();
                 }
-            $scope.solved = ""
+            $scope.solved = "";
             }, FADEOUT_DURATION);
         }, wait_time);
     };
