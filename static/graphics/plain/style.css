@@ -46,6 +46,8 @@
 
 
 .tick{
-    background: url("tick.png") no-repeat center center;
+    background-image: url("tick.png") ;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: auto 70%;
 }
