@@ -88,7 +88,7 @@ def save_answer(request):
             question_id=data["pk"],
             user=request.user,
             log=data["log"],
-            solving_time=data["time"],
+            solving_time=data["time"] if data["time"] else "0",
             correctly_solved=data["correctly_solved"],
             answer=data["answer"],
             device=device,
