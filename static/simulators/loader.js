@@ -13,7 +13,8 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     $scope.question = null;                             // active question
     $scope.counter = {
         total: QUESTIONS_IN_SET,
-        current: 0
+        current: 0,
+        progress: Array.apply(null, new Array(QUESTIONS_IN_SET)).map(Number.prototype.valueOf,0)
     };
 
     $scope.questions_queue = [];
@@ -133,8 +134,9 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         if ($scope.fast_solution && correctly_solved) $scope.say += " a rychle";
         $scope.question.answer =  answer;
         SimulatorGlobal.description.top = "";
-        $scope.save_answer();
+        $scope.counter.progress[$scope.counter.current-1] = correctly_solved ? $scope.fast_solution ? 2 : 1 : -1;
 
+        $scope.save_answer();
 
         // wait to show correct answer
         $timeout(function() {

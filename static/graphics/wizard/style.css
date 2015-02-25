@@ -134,3 +134,38 @@
 
 .solved_correctly{color: darkgreen}
 .solved_incorrectly{color: darkred}
+
+#counter{
+    position: absolute;
+    left: 15px;
+    top: 80px;
+}
+
+#counter > div{
+    height: 60px;
+    width: 50px;
+    overflow: visible;
+    margin-bottom: -30px;
+    position: relative;
+}
+#counter > div div{
+    background: url("diamond-gray.svg") no-repeat center center;
+    background-size: contain;
+    height: 60px;
+    width: 50px;
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+#counter > div.green div{background-image: url("diamond-green.svg")}
+#counter > div.shine div{background-image: url("diamond-shine.svg")}
+#counter > div.red div{background-image: url("diamond-red.svg")}
+#counter > div:nth-child(even){ margin-left: 35px; }
+
+#counter > div.animated div{
+    height: 120px;
+    width: 100px;
+    margin-left: -25px;
+    margin-top: -30px;
+}

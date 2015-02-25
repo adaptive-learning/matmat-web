@@ -5,11 +5,14 @@
     {% include "questions/template_urls.html" %}
     <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
     <script src="{% static "simulators/roller-wizard.js" %}"></script>
+    <script src="{% static "simulators/counter-wizard.js" %}"></script>
     <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     <script>
     app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
         $scope.q = "???";
         $scope.s = null;
+
+        $scope.progress = [0, 1, 2 , -1, 0, 1, 0, 0, 0, 0]
     });
     </script>
 {% endblock %}
@@ -23,6 +26,8 @@
         <keyboardwizard></keyboardwizard>
         <wizard class="green" say="s"></wizard>
         <input type="text" ng-model="s"/>
+
+        <counterwizard progress="progress"></counterwizard>
     </div>
     {% endverbatim %}
 {% endblock %}
