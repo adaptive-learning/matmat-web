@@ -9,10 +9,22 @@
     <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     <script>
     app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
-        $scope.q = "???";
+        $scope.q = "Kolik je to čtverečků?";
         $scope.s = null;
+        $scope.n= 27;
 
-        $scope.progress = [0, 1, 2 , -1, 0, 1, 0, 0, 0, 0]
+        $scope.progress = [0, 1, 2 , -1, 0, 1, 0, 0, 0, 0];
+
+        $scope.o = function() {
+            return new Array($scope.n);
+        };
+
+        $scope.$watch("n", function(n, o){
+            $scope.close = true;
+            $timeout(function () {
+                $scope.close = false;
+            },0);
+        });
     });
     </script>
 {% endblock %}
@@ -21,13 +33,24 @@
     {% verbatim %}
     <div ng-controller="playground">
         <input type="checkbox" ng-model="close"/>
-        <rollerwizard  question="q" closed="close"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>nějaký obsah<br/><br/><br/><br/><br/><br/></rollerwizard>
+        <rollerwizard  question="q" closed="close">
+            <div class="objects">
+                <div ng-repeat="i in o() track by $index"></div>
+            </div>
+
+            <br/><br/>
+            <div class="objects">
+                <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+        </rollerwizard>
 
         <keyboardwizard></keyboardwizard>
         <wizard class="green" say="s"></wizard>
+        <input type="number" ng-model="n" value="23" />
         <input type="text" ng-model="s"/>
 
         <counterwizard progress="progress"></counterwizard>
     </div>
+
     {% endverbatim %}
 {% endblock %}
