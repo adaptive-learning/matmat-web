@@ -12,7 +12,7 @@ app.directive("rollerwizard", function($timeout){
 
             $scope.fit_height = function(){
                 var roller = $('#roller-wizard');
-                roller.find("#roller-playground").css("height", roller.find("#roller-playground > div").height())
+                roller.find("#roller-playground").css("height", roller.find("#roller-playground > div").height() + 10)
             };
 
             $scope.$watch("closed", function(o, n){
