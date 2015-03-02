@@ -81,12 +81,13 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+if ON_VIPER and not DEVEL:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
+        }
     }
-}
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
