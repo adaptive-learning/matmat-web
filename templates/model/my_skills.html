@@ -13,10 +13,11 @@
     <dl class="tabs skill-tabs" data-tab>
         {% for skill in skills %}
              <dd {% if active == skill.name %}class="active"{% endif %}>
-                 <a style="{{ skill.style }} background-image: url('{% static image_names|keyvalue:skill.name %}')"
+                 <a class="tab" style="{{ skill.style }} background-image: url('{% static image_names|keyvalue:skill.name %}')"
                      href="#panel{{ skill.pk }}"
                      >
                      {{ skill.note }}</a>
+                 <div><a href="{% url "play" skill.name %}" class="fi-pencil"></a></div>
                 <div class="gradient"></div>
              </dd>
         {% endfor %}
@@ -39,19 +40,17 @@
                  id="panel{{ skill_data.skill.pk }}">
                 {% if skill_data.skill.used %}
 
-                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play" skill_data.skill.name %}">procvičit</a></h3>
+                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play" skill_data.skill.name %}" class="fi-pencil"> procvičit</a></h3>
                     <div class="progress small-12 medium-10 large-8 small-centered round">
                         <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
-                            {{ skill_data.skill.value_percent }}%
                         </span>
                     </div>
                     {% for _, user_skill in skill_data.skills.items %}
                         {% if user_skill.used and user_skill.active %}
                             <b>{{ user_skill.note }}</b> -
-                                <a href="{% url "play" skill_data.skill.name user_skill.pk%}">procvičit</a>
+                                <a href="{% url "play" skill_data.skill.name user_skill.pk%}"><i class="fi-pencil"></i></a>
                              <div class="progress small-12 medium-10 large-8 small-centered round">
                                  <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
-                                     {{ user_skill.value_percent }}%
                                  </span>
                              </div>
                         {% endif %}

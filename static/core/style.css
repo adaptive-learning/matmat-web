@@ -128,7 +128,7 @@ h1{
     user-select: none;
 }
 
-.skill-tabs dd a, .skill-tabs dd a:hover, .skill-tabs dd.active a{
+.skill-tabs dd a.tab, .skill-tabs dd a.tab:hover, .skill-tabs dd.active a.tab{
     width: 150px;
     height: 80px;
     margin: 5px;
@@ -146,18 +146,18 @@ hr.skill-hr{
     border-color: black;
 }
 
-a:active, a:focus { outline-style: none; -moz-outline-style:none; }
+a.tab:active, a.tab:focus { outline-style: none; -moz-outline-style:none; }
 
 
-.skill-tabs dd a{
+.skill-tabs dd a.tab{
     box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.skill-tabs dd a:hover{
+.skill-tabs dd a.tab:hover{
     box-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
 }
 
-.skill-tabs dd.active a{
+.skill-tabs dd.active a.tab{
     box-shadow:  5px -5px 5px rgba(0, 0, 0, 0);
     border-bottom: solid 1px white;
 }
@@ -175,6 +175,13 @@ a:active, a:focus { outline-style: none; -moz-outline-style:none; }
     background: linear-gradient(rgba(255,255,255,0), white);
 }
 
+.skill-tabs > dd > div > a{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    z-index: 100;
+    color: #008cba !important;
+}
 
 table.user_skills td{
     border: 1px solid white;
