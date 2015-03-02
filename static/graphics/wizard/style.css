@@ -214,3 +214,23 @@
 .objects > div:nth-child(6n+3){opacity: 0.7}
 .objects > div:nth-child(7n+1){opacity: 0.6}
 .objects > div:nth-child(10n){opacity: 1}
+
+
+
+.cubes{
+    height: 150px;
+    border: solid lightgrey 1px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cubes div{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-image: url("diamond-green.svg") !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent !important;
+}

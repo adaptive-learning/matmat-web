@@ -314,21 +314,6 @@ p.keyboard-text{
     position: relative;
 }
 
-.cubes{
-    height: 150px;
-    border: solid lightgrey 1px;
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-}
-
-.cubes div{
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    border: solid #000000 1px;
-}
-
 #feedback{
     right: -50px;
     position: fixed;
