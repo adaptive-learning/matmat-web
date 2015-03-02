@@ -16,10 +16,12 @@
                  <a style="{{ skill.style }} background-image: url('{% static image_names|keyvalue:skill.name %}')"
                      href="#panel{{ skill.pk }}"
                      >
-                     {{ skill.note }}</a></dd>
+                     {{ skill.note }}</a>
+                <div class="gradient"></div>
+             </dd>
         {% endfor %}
     </dl>
-    <hr/>
+        <hr class="skill-hr"/>
     <div class="right text-right">
         {% if proceed_skill %}
             Pokračovat v procvičování <br/>

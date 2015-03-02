@@ -14,6 +14,7 @@ h1{
 #content{
     padding: 5px;
     padding-bottom: 50px;
+    min-width: 960px;
 }
 
 #footer{
@@ -124,30 +125,56 @@ h1{
 
 .skill-tabs {
     display: inline-block;
+    user-select: none;
 }
 
 .skill-tabs dd a, .skill-tabs dd a:hover, .skill-tabs dd.active a{
     width: 150px;
     height: 80px;
     margin: 5px;
-    border-radius: 7px;
+    margin-bottom: 0px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     padding: 0;
     border: solid #000000 1px;
     font-weight: bold;
+    user-select: none;
 }
+
+hr.skill-hr{
+    margin-top: -9px;
+    border-color: black;
+}
+
+a:active, a:focus { outline-style: none; -moz-outline-style:none; }
 
 
 .skill-tabs dd a{
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .skill-tabs dd a:hover{
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .skill-tabs dd.active a{
-    box-shadow: 0 0 10px rgba(25, 167, 174, 0.88);
+    box-shadow:  5px -5px 5px rgba(0, 0, 0, 0);
+    border-bottom: solid 1px white;
 }
+
+.skill-tabs dd div.gradient{ display: none; }
+.skill-tabs dd.active div.gradient{
+    display: block;
+    position: absolute;
+    height: 25px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 6px;
+    margin-right: 6px;
+    background: linear-gradient(rgba(255,255,255,0), white);
+}
+
 
 table.user_skills td{
     border: 1px solid white;
