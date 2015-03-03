@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load staticfiles %}
+{% load staticfiles  %}
 
 {% block title %}Administrace{% endblock %}
 
@@ -13,6 +13,8 @@
     <br/>
     <a href="{% url "admin:index" %}">Django admin</a><br/>
     <a href="{% url "simulator_tester" %}">Simulator tester</a><br/>
+    <br/>
+    <a href="{{ MEDIA_URL }}matmat_export.zip">Exportovaná data</a><br/>
     <hr/>
     <h4>Uživatelé</h4>
     
