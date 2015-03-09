@@ -13,6 +13,8 @@
         $scope.s = null;
         $scope.n= 27;
 
+        SimulatorGlobal.keyboard = "full";
+
         $scope.progress = [0, 1, 2 , -1, 0, 1, 0, 0, 0, 0];
 
         $scope.o = function() {
@@ -44,7 +46,7 @@
             </div>
         </rollerwizard>
 
-        <keyboardwizard></keyboardwizard>
+        <keyboardwizard closed="close"></keyboardwizard>
         <wizard class="green" say="s"></wizard>
         <input type="number" ng-model="n" value="23" />
         <input type="text" ng-model="s"/>

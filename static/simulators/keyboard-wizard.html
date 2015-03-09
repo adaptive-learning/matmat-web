@@ -1,4 +1,4 @@
-<div id="keyboard-wizard" class="unselectable" ng-class="{open: global.keyboard != 'gone' && global.keyboard != 'empty' && global.simulator_active}">
+<div id="keyboard-wizard" class="unselectable" ng-class="{open: global.keyboard != 'gone' && global.keyboard != 'empty' && !closed}">
     <div id="scroll-left"></div><div id="scroll-center">
         <div id="scroll-content">
             <div>
@@ -16,4 +16,3 @@
     </div><div id="scroll-right"></div>
     <div class="key skip" style="margin-left: -140px; position:absolute; top: 150px;" ng-click="skip()"><i class="fi-next"></i></div>
 </div>
-

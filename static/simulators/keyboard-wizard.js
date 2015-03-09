@@ -2,6 +2,7 @@ app.directive("keyboardwizard", function($timeout){
     return {
         restrict: "E",
         scope: {
+            closed: "="
         },
         templateUrl: template_urls["keyboard-wizard"],
         controller: function($scope, $cookieStore, SimulatorGlobal){

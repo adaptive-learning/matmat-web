@@ -1,7 +1,7 @@
 var QUESTIONS_IN_SET = 10;
 var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;         // animation time after finish question
-var FADEIN_DURATION = 1000;         // animation time of showing question
+var FADEIN_DURATION = 500;         // animation time of showing question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 
 app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
@@ -10,7 +10,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         QUESTIONS_IN_SET = 1000;
     }
     if (!$scope.test) $scope.skill_id = skill;         // selected skill from global
-    $scope.question = null;                             // active question
+    $scope.question = null;                             // 17 question
     $scope.counter = {
         total: QUESTIONS_IN_SET,
         current: 0,
