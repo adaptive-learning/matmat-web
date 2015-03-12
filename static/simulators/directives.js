@@ -130,10 +130,15 @@ app.directive("cubes", function(){
         scope: {
             count: "=",        // right answer
             height: "=",        // right answer
-            width: "="        // right answer
+            width: "=",        // right answer
+            size: "="        // right answer
         },
         templateUrl: template_urls["cubes"],
         controller: function($scope){
+            if ($scope.size){
+                $(".objects").css("font-size", $scope.size+"px")
+            }
+
             $scope.repeater = function(n) {
                 return new Array(n);
             };
