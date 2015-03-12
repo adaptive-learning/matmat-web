@@ -1,3 +1,8 @@
-<div class="objects">
+<div class="objects" ng-show="count">
     <div ng-repeat="i in repeater(count) track by $index"></div>
+</div>
+<div class="block-objects" ng-show="height && width">
+    <div ng-repeat="i in repeater(height) track by $index">
+        <div ng-repeat="j in repeater(width) track by $index"></div>
+    </div>
 </div>

@@ -171,6 +171,22 @@
     margin-top: -30px;
 }
 
+.block-objects{
+    font-size: 15px;
+    margin: auto;
+    display: inline-block;
+}
+
+.block-objects > div > div{
+    height: 2em;
+    width: 2em;
+    background-color: #ff7f0e;
+    margin-right: 0.2em;
+    position: relative;
+    display: inline-block;
+    /*border-radius: 3px;*/
+}
+
 .objects{
     font-size: 15px;
     max-width: 23.2em;
