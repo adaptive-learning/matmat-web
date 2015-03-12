@@ -173,7 +173,7 @@
 
 .objects{
     font-size: 0;
-    width: 336px;
+    width: 339px;
     padding: 5px;
     margin: auto;
     text-align: left;
@@ -184,36 +184,36 @@
     width: 30px;
     background-color: #ff7f0e;
     margin-right: 2px;
-    margin-bottom: 13px;
+    margin-bottom: 18px;
     position: relative;
     display: inline-block;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
 }
 
 .objects > div:nth-child(10n):after{
     content: "";
-    width: 326px;
-    left: -294px;
+    width: 329px;
+    left: -297px;
     top: -2px;
     height: 34px;
     display: block;
     background-color: #ffd080;
     position: absolute;
     z-index: -1;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     box-shadow: 0 0 5px orange;
 }
 .objects > div:nth-child(10n+1){
 }
 
 .objects > div:nth-child(10n+5){
-    margin-right: 6px;
+    margin-right: 9px;
 }
-.objects > div:nth-child(3n+2){opacity: 0.9}
-.objects > div:nth-child(4n+1){opacity: 0.8}
-.objects > div:nth-child(6n+3){opacity: 0.7}
-.objects > div:nth-child(7n+1){opacity: 0.6}
-.objects > div:nth-child(10n){opacity: 1}
+/*.objects > div:nth-child(3n+2){opacity: 0.9}*/
+/*.objects > div:nth-child(4n+1){opacity: 0.8}*/
+/*.objects > div:nth-child(6n+3){opacity: 0.7}*/
+/*.objects > div:nth-child(7n+1){opacity: 0.6}*/
+/*.objects > div:nth-child(10n){opacity: 1}*/
 
 
 
