@@ -123,3 +123,20 @@ app.directive("simulatorselector", function(){
         }
     }
 });
+
+app.directive("cubes", function(){
+    return {
+        restrict: "E",
+        scope: {
+            count: "=",        // right answer
+            height: "=",        // right answer
+            width: "="        // right answer
+        },
+        templateUrl: template_urls["cubes"],
+        controller: function($scope){
+            $scope.repeater = function(n) {
+                return new Array(n);
+            };
+        }
+    }
+});

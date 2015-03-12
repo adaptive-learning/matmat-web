@@ -6,6 +6,7 @@
     <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
     <script src="{% static "simulators/roller-wizard.js" %}"></script>
     <script src="{% static "simulators/counter-wizard.js" %}"></script>
+    <script src="{% static "simulators/directives.js" %}"></script>
     <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     <script>
     app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
@@ -17,9 +18,6 @@
 
         $scope.progress = [0, 1, 2 , -1, 0, 1, 0, 0, 0, 0];
 
-        $scope.o = function() {
-            return new Array($scope.n);
-        };
 
         $scope.$watch("n", function(n, o){
             $scope.close = true;
@@ -36,9 +34,7 @@
     <div ng-controller="playground">
         <input type="checkbox" ng-model="close"/>
         <rollerwizard  question="q" closed="close">
-            <div class="objects">
-                <div ng-repeat="i in o() track by $index"></div>
-            </div>
+            <cubes count="n"></cubes>
 
             <br/><br/>
             <div class="objects">
