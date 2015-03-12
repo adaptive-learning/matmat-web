@@ -7,7 +7,7 @@ var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, 
 app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
-        QUESTIONS_IN_SET = 1000;
+        QUESTIONS_IN_SET = 10;
     }
     if (!$scope.test) $scope.skill_id = skill;         // selected skill from global
     $scope.question = null;                             // 17 question
@@ -148,6 +148,11 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                 $scope.question = null;
                 if ($scope.counter.current == $scope.counter.total){
                     // if last question: redirect to "my skills" page
+                    if ($scope.test){
+                        $scope.counter.current = 1;
+                        $scope.next_question();
+                        return;
+                    }
                     window.location.replace("/m/my_skills/"+$scope.skill_id);
                 }else{
                     // load next question
