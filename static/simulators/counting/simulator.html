@@ -1,5 +1,40 @@
-<h2>&nbsp;{{prefix}}<responsespan answer="data.answer" response="response.value" solved="solved" /></h2>
-<div id="count_display">
-</div>
+<style>
+    table#counting-simulator{
+        margin:auto;
+        background: none;
+        border: none;
+        margin-top: 10px;
+    }
+    table#counting-simulator td{ font-size: 3rem; text-align: center;}
+    table#counting-simulator td.eq{ width: 2rem; }
+    table#counting-simulator td.re{ width: 10rem; text-align: left; }
+    table#counting-simulator cubes > div{margin-top: 10px;}
+</style>
+
+<table id="counting-simulator">
+    <tr ng-show="data.with_text || block">
+        <td ng-repeat="part in data.question track by $index" ng-hide="block">
+            <div ng-show="type(part) == 'number'"> {{ part }}</div>
+            <span ng-show="type(part) == 'string'"></span>
+        </td>
+        <td ng-show="block"></td>
+        <td ng-show="block">{{ data.question.2 }}</td>
+        <td class="eq"></td>
+        <td class="re"></td>
+    </tr>
+    <tr>
+        <td ng-repeat="part in data.question track by $index" ng-hide="block">
+            <div ng-show="type(part) == 'number'"> <cubes size="size" count="part"></cubes> </div>
+            <span ng-show="type(part) == 'string'"> {{ part }} </span>
+        </td>
+        <td ng-show="block">{{ data.question.0 }}</td>
+        <td ng-show="block"><cubes width="data.question.2" height="data.question.0"></cubes></td>
+        <td class="eq"> = </td>
+        <td class="re">
+            <responsespan answer="data.answer" response="response.value" solved="solved" />
+        </td>
+    </tr>
+</table>
+
 <div style="height:30px;"></div>
 <responseinput ng-model="response.value" submit="submit()" ng-change="change()" />

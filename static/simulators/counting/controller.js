@@ -9,8 +9,6 @@ app.directive("counting", function(){
         controller: function($scope, SimulatorGlobal, $timeout){
             $scope.response = SimulatorGlobal.input;
             $scope.response.value = '';
-            $scope.prefix = $scope.data.prefix || '';
-            if ($scope.prefix != '') $scope.prefix += ' = ';
 
             if ($scope.data.kb != "full"){
                 SimulatorGlobal.keyboard = "choices";
@@ -19,59 +17,13 @@ app.directive("counting", function(){
                 SimulatorGlobal.keyboard = "full";
             }
 
-            var width = $scope.data.width;
-            var container = document.getElementById('count_display');
-            var q = $scope.data.question;
-            var prev = "string";
-            for (var i=0; i < q.length; i++) {
-                if (typeof q[i] == "number") {
-                    if (prev == "number") {
-                        // add some vertical space
-                        var div = document.createElement('div');
-                        container.appendChild(div);
-                        div.style.height = "20px";
-                    }
-                    var ctr = q[i];
-                    while (ctr > 0) {
-                        var num = Math.min(ctr, width);
-                        var div = document.createElement('div');
-                        container.appendChild(div);
-                        div.style.height = "33px";
-                        div.style.textAlign = "left";
-                        div.style.width = width*33 + 5 +"px";
-                        div.style.margin = "auto";
-                        for (var j=0; j < num; j++) {
-                            var span = document.createElement('span');
-                            if ((j + 1) % 5 == 0){
-                                span.style.marginRight = "5px";
-                            }
-                            div.appendChild(span);
-                            span.style.padding = "1px";
-                            var img = document.createElement('img');
-                            span.appendChild(img);
-                            img.src = "/static/img/cube_orange.png";
-                            if ($scope.data['special'] != undefined) {
-                                if ($scope.data.special[i] == "-")
-                                    img.src = "/static/img/cube_red.png";
-                                if ($scope.data.special[i] == "+")
-                                    img.src = "/static/img/cube_green.png";
-                            }
-                            alpha = Math.floor(Math.random() * 100 / 0.5) + 50;
-                            //img.style.filter       = "alpha(opacity=" + str(alpha) + ");";
-                            alpha = alpha / 100;
-                            img.style.MozOpacity   = alpha;
-                            img.style.opacity      = alpha;
-                            img.style.KhtmlOpacity = alpha;
-                        }
-                        ctr = ctr - width;
-                    }
-                } else if (typeof q[i] == "string") {
-                    var h2 = document.createElement('h2');
-                    container.appendChild(h2);
-                    h2.textContent = q[i];
-                }
-                prev = typeof q[i];
-            }
+            $scope.size = $scope.data.question.length >=3 && ($scope.data.question[0] > 7 || $scope.data.question[2] > 7) ? 10 : 15;
+
+            $scope.block = $scope.data.question.length == 3 && $scope.data.question[1]=="×";
+
+            $scope.type = function(part){
+                return typeof part;
+            };
 
             $scope.set_text = function(n){
                 $scope.response.value = n;
@@ -92,7 +44,7 @@ app.directive("counting", function(){
                 $scope.interface.log($scope.response.value);
             };
 
-            SimulatorGlobal.description.top = "Kolik je to čtverečků?";
+            if (!$scope.data.with_text) SimulatorGlobal.description.top = "Kolik je to čtverečků?";
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
         }
     }
