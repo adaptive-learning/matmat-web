@@ -93,6 +93,8 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
     // show and start prepared question
     SimulatorGlobal.simulator_loaded_callback = function(){
+        if (SimulatorGlobal.keyboard == "full")
+            $("responseinput").addClass("phantom");
         $scope.loading = false;
         $timeout(function(){
             $scope.question_description = SimulatorGlobal.description;

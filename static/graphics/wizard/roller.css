@@ -49,7 +49,7 @@
     height: 0 !important;
 }
 
-responseinput:before{
+responseinput.phantom:before{
     height: 57px;
     float: left;
     content: "";
