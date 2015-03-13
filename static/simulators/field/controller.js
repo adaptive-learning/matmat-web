@@ -17,33 +17,18 @@ app.directive("field", function(){
                 SimulatorGlobal.keyboard = "full";
             }
 
-            var container = document.getElementById('count_display');
-            var field = $scope.data.field;
+            $scope.field = [];
             var previous_blank = true;
-            for (var i=0; i < field.length; i++) {
-                var line = field[i];
+            for (var i=0; i < $scope.data.field.length; i++) {
+                var line = $scope.data.field[i];
                 var sum = 0;
                 for (var j=0; j < line.length; j++) {
                     sum += line[j];
                 }
-                if (sum == 0 && (previous_blank || i + 1 == field.length))
+                if (sum == 0 && (previous_blank || i + 1 == $scope.data.field.length)){
                     continue;
-                previous_blank = sum == 0;
-                var div = document.createElement('div');
-                container.appendChild(div);
-                div.style.height = "33px";
-                for (var j=0; j < line.length; j++) {
-                    var span = document.createElement('span');
-                    div.appendChild(span);
-                    span.style.padding = "1px";
-                    var img = document.createElement('img');
-                    span.appendChild(img);
-                    if (line[j] == 1) {
-                        img.src = "/static/img/cube_orange.png";
-                    } else {
-                        img.src = "/static/img/cube_white.png";
-                    }
                 }
+                $scope.field.push($scope.data.field[i]);
             }
 
             $scope.submit = function() {

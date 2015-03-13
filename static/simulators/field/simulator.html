@@ -1,5 +1,21 @@
-<h2>&nbsp;<responsespan answer="data.answer" response="response.value" solved="solved" />&nbsp;</h2>
-<div id="count_display">
-</div>
-<div style="height:30px;"></div>
+<style>
+    table#field-simulator{
+        margin:auto;
+        background: none;
+        border: none;
+        margin-top: 10px;
+    }
+    table#field-simulator td{ font-size: 3rem; text-align: center;}
+    table#field-simulator td.eq{ width: 2rem; }
+    table#field-simulator td.re{ width: 10rem; text-align: left; }
+</style>
+
+<table id="field-simulator">
+    <tr>
+        <td><cubes field="field"></cubes></td>
+        <td class="eq"></td>
+        <td class="re"><responsespan answer="data.answer" response="response.value" solved="solved" /></td>
+    </tr>
+</table>
+
 <responseinput ng-model="response.value" submit="submit()" ng-change="change()" />
