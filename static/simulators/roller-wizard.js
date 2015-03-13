@@ -17,6 +17,8 @@ app.directive("rollerwizard", function($timeout){
 
             $scope.$watch("closed", function(o, n){
                 $scope.fit_height();
+                $timeout($scope.fit_height, 100);
+                $timeout($scope.fit_height, 1000);
             });
         }
     }
