@@ -21,7 +21,7 @@
                     simulator='{{ simulator }}';
                     ">
             <div ng-controller="Loader">
-                {% if user.profile.graphics == "wi" %}
+                {% if graphics == "wi" %}
                     <div style="position: relative">
                     {% verbatim %}
                     <div ng-show="loading" ng-cloak class="loading-spinner">
@@ -73,7 +73,7 @@
 {% block extrascripts %}
     <script src="{% static "simulators/loader.js" %}"></script>
     <script src="{% static "simulators/directives.js" %}"></script>
-    {% if user.profile.graphics == "wi" %}
+    {% if graphics == "wi" %}
         <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
         <script src="{% static "simulators/roller-wizard.js" %}"></script>
         <script src="{% static "simulators/counter-wizard.js" %}"></script>

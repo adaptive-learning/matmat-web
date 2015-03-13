@@ -5,6 +5,7 @@ from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from core.models import UserProfile, is_user_registred
 from elo.DataProviderInterface import DataProviderInterface
+from matmat import settings
 from questions.models import Answer
 
 
@@ -20,9 +21,10 @@ class Skill(models.Model):
         return self.name
 
     def get_image_name(self, user):
-        if not is_user_registred(user) or user.profile.graphics == UserProfile.PLAIN:
+        graphics = user.profile.graphics if is_user_registred(user) else settings.DEFAULT_GRAPHICS
+        if graphics == UserProfile.PLAIN:
             return "graphics/plain/skill_{}.png".format(self.name)
-        if user.profile.graphics == UserProfile.WIZARD:
+        if graphics == UserProfile.WIZARD:
             return "graphics/wizard/skill_{}.png".format(self.name)
 
     def get_answers_count(self, user, correctly_solved=None):
