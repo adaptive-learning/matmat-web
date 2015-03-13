@@ -6,3 +6,8 @@
         <div ng-repeat="j in repeater(width) track by $index"></div>
     </div>
 </div>
+<div class="block-objects" ng-show="field">
+    <div ng-repeat="row in field track by $index">
+        <div ng-repeat="cube in row track by $index" ng-class="{hide: cube == 0}"></div>
+    </div>
+</div>

@@ -176,7 +176,7 @@
     margin: auto;
     display: inline-block;
 }
-
+.block-objects > div{height: 2.2em}
 .block-objects > div > div{
     height: 2em;
     width: 2em;
@@ -186,6 +186,8 @@
     display: inline-block;
     /*border-radius: 3px;*/
 }
+
+.block-objects > div > div.hide{background-color: #ffffff}
 
 .objects{
     font-size: 15px;

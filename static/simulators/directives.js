@@ -128,10 +128,11 @@ app.directive("cubes", function(){
     return {
         restrict: "E",
         scope: {
-            count: "=",        // right answer
-            height: "=",        // right answer
-            width: "=",        // right answer
-            size: "="        // right answer
+            count: "=",
+            height: "=",
+            width: "=",
+            size: "=",
+            field: "="
         },
         templateUrl: template_urls["cubes"],
         controller: function($scope){
