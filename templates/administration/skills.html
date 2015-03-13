@@ -40,7 +40,7 @@
 
         <h6>Špatné odpovědi: </h6>
         {% for answer in question.wrong_answers %}
-            {{ answer.answer__count }}&times;"<b>{{ answer.answer|default:"skipped" }}</b>";
+            {{ answer.answer__count }}&times;"<b>{% if answer.answer != None %}{{ answer.answer }}{% else %}skipped{% endif %}</b>";
         {% endfor %}
 
         <h6>Časy:</h6>

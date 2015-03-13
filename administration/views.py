@@ -77,6 +77,8 @@ def skills(request):
 
     if question:
         question.wrong_answers = Answer.objects.filter(correctly_solved=False, question=question).values("answer").annotate(Count("answer"))
+        for wa in question.wrong_answers:
+            if wa["answer"] == None: wa["answer__count"] = Answer.objects.filter(correctly_solved=False, question=question, answer=None).count()
         question.answer_count = Answer.objects.filter(question=question).count()
         question.correct_answer_count = Answer.objects.filter(question=question, correctly_solved=True).count()
         question.time = e**question.difficulty.time_intensity
