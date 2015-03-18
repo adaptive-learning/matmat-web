@@ -10,7 +10,8 @@ app.directive("keyboardwizard", function($timeout){
             $scope.global = SimulatorGlobal;
 
             $scope.submit = function(){
-                SimulatorGlobal.submit();
+                if ($scope.global.input.value)
+                    SimulatorGlobal.submit();
             };
 
             $scope.submit_answer = function(answer){

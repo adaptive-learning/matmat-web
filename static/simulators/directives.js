@@ -77,7 +77,12 @@ app.directive("responseinput", function($timeout){
             $scope.global = SimulatorGlobal;
             $scope.change = function(){
                 $timeout($scope.ngChange, 0);
-            }
+            };
+
+            $scope.local_submit = function(){
+                if ($scope.global.input.value)
+                    $scope.submit()
+            };
         }
     }
 });
