@@ -1,9 +1,9 @@
 app.directive('focus', function(){
     return function(scope, element){
-        if (device == "desktop"){
-            element[0].focus();
-        }else{
+        if ($.mobile_device){
             element[0].blur();
+        }else{
+            element[0].focus();
         }
     };
 });

@@ -97,6 +97,7 @@
 </div>
 
 <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+<script>$.mobile_device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())); </script>
 <script src="{% static "foundation/js/foundation.min.js" %}"></script>
 <script>$(document).foundation();</script>
 {% block postextrascripts %}{% endblock %}
