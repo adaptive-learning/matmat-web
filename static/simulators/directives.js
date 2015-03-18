@@ -135,14 +135,18 @@ app.directive("cubes", function(){
             field: "="
         },
         templateUrl: template_urls["cubes"],
-        controller: function($scope){
+        controller: function($scope, $element){
             if ($scope.size){
-                $(".objects").css("font-size", $scope.size+"px")
+                $($element).find(".objects").css("font-size", $scope.size+"px")
             }
 
             $scope.repeater = function(n) {
                 return new Array(n);
             };
+
+            if ($scope.input != null){
+
+            }
         }
     }
 });
