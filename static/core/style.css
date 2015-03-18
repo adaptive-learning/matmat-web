@@ -414,3 +414,5 @@ p.keyboard-text{
 .objects.selectable > div:nth-child(10n):after{display: none; }
 .objects.selectable > div.selected{ background-color: #ff7f0e; }
 .objects.selectable > div.hovered{ background-color: orange; }
+.objects.selectable > div.correct{ background-color: darkgreen; }
+.objects.selectable > div.incorrect{ background-color: darkred; }

@@ -133,7 +133,8 @@ app.directive("cubes", function(){
             width: "=",
             size: "=",
             field: "=",
-            input: "="
+            input: "=",
+            correct: "="
         },
         templateUrl: template_urls["cubes"],
         controller: function($scope, $element, $timeout){
@@ -146,16 +147,35 @@ app.directive("cubes", function(){
                 $timeout(function(){$scope.cubes = $($element).find("div > div")});
 
                 $scope.hover = function(n){
+                    if ($scope.correct) return;
                     $scope.cubes.removeClass("hovered");
                     $scope.cubes.slice(0, n).addClass("hovered");
                 };
 
                 $scope.select = function(n){
+                    if ($scope.correct) return;
                     $scope.input  = n;
                     $scope.cubes.removeClass("selected");
                     $scope.cubes.removeClass("hovered");
                     $scope.cubes.slice(0, n).addClass("selected");
                 };
+
+                $scope.$watch("correct", function(n, o){
+                    if (n){
+                        $scope.cubes.removeClass("selected");
+                        $scope.cubes.removeClass("hovered");
+                        if (n == $scope.input){
+                            $scope.cubes.slice(0, n).addClass("correct");
+                        }else{
+                            $scope.cubes.slice(0, $scope.input).addClass("incorrect");
+                            $timeout(function () {
+                                $scope.cubes.removeClass("incorrect");
+                                $scope.cubes.slice(0, n).addClass("correct");
+                            }, 1000);
+                        }
+                    }
+
+                });
             }
 
             $scope.repeater = function(n) {
