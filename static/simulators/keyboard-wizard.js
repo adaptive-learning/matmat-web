@@ -49,6 +49,17 @@ app.directive("keyboardwizard", function($timeout){
                     $cookieStore.put("keyboard", false);
                 }
             };
+
+            var submit_button = $("#keyboard-wizard").find(".key.submit");
+            $scope.$watch("global.input.value", function(n, o){
+                submit_button.removeClass("blink");
+                if (n) {
+                    $timeout(function () {
+                        if ($scope.global.input.value == n)
+                            submit_button.addClass("blink");
+                    }, 3000);
+                }
+            });
         }
     }
 });
