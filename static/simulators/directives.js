@@ -132,21 +132,35 @@ app.directive("cubes", function(){
             height: "=",
             width: "=",
             size: "=",
-            field: "="
+            field: "=",
+            input: "="
         },
         templateUrl: template_urls["cubes"],
-        controller: function($scope, $element){
+        controller: function($scope, $element, $timeout){
             if ($scope.size){
                 $($element).find(".objects").css("font-size", $scope.size+"px")
+            }
+
+            if ($scope.input != null){
+                $scope.selectable = true;
+                $timeout(function(){$scope.cubes = $($element).find("div > div")});
+
+                $scope.hover = function(n){
+                    $scope.cubes.removeClass("hovered");
+                    $scope.cubes.slice(0, n).addClass("hovered");
+                };
+
+                $scope.select = function(n){
+                    $scope.input  = n;
+                    $scope.cubes.removeClass("selected");
+                    $scope.cubes.removeClass("hovered");
+                    $scope.cubes.slice(0, n).addClass("selected");
+                };
             }
 
             $scope.repeater = function(n) {
                 return new Array(n);
             };
-
-            if ($scope.input != null){
-
-            }
         }
     }
 });

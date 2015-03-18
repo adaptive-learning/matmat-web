@@ -20,7 +20,7 @@
 
         $scope.field = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 1, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
 
-
+        $scope.input = "";
         $scope.$watch("n", function(n, o){
             $scope.close = true;
             $timeout(function () {
@@ -48,6 +48,10 @@
         <wizard class="green" say="s"></wizard>
         <input type="number" ng-model="n" value="23" />
         <input type="text" ng-model="s"/>
+
+        <cubes count="25" input="input"></cubes>
+        {{ input }}
+        <br/>
 
         <counterwizard progress="progress"></counterwizard>
 

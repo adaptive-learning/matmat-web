@@ -410,3 +410,7 @@ p.keyboard-text{
 /*.objects > div:nth-child(7n+1){opacity: 0.6}*/
 /*.objects > div:nth-child(10n){opacity: 1}*/
 
+.objects.selectable > div { background-color: gray; }
+.objects.selectable > div:nth-child(10n):after{display: none; }
+.objects.selectable > div.selected{ background-color: #ff7f0e; }
+.objects.selectable > div.hovered{ background-color: orange; }
