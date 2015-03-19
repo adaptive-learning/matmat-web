@@ -80,7 +80,7 @@
     height: 70px;
     width: 70px;
     font-size:  2.5rem;
-    border-radius: 50%;
+    border-radius: 40%;
     margin-left: -20px;
     margin-right: 5px;
 }
@@ -92,10 +92,14 @@
     -webkit-animation: hightlight 1s infinite; /* Chrome, Safari, Opera */
     animation: hightlight 1s infinite;
 }
-@keyframes hightlight { 50% {background-color: green; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
+@keyframes hightlight { 50% {background-color: darkseagreen; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
 @-webkit-keyframes hightlight { 50% {background-color: green; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
 
-
+#keyboard-wizard div.key.choice{
+    border-radius: 40%;
+    background-color: darkgreen;
+}
+#keyboard-wizard div.key.choice:hover{background-color: green;}
 
 #keyboard-wizard div.key.skip{
     top: 70px;

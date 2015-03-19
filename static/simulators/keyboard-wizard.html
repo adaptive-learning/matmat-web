@@ -9,7 +9,7 @@
                     <div class="key" ng-repeat="choice in choices" ng-click="add_text(choice)" >{{ choice }}</div>
                 </div>
                 <div class="choices" ng-cloak ng-show="global.keyboard == 'choices'">
-                    <div class="key" ng-repeat="choice in global.choices" ng-click="submit_answer(choice)" >{{ choice }}</div>
+                    <div class="key choice" ng-repeat="choice in global.choices" ng-click="submit_answer(choice)" >{{ choice }}</div>
                 </div>
             </div>
         </div>
