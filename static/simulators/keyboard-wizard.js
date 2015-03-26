@@ -10,6 +10,7 @@ app.directive("keyboardwizard", function($timeout){
             $scope.global = SimulatorGlobal;
 
             $scope.submit = function(){
+                submit_button.removeClass("blink");
                 if ($scope.global.input.value)
                     SimulatorGlobal.submit();
             };
@@ -19,6 +20,11 @@ app.directive("keyboardwizard", function($timeout){
                     return;
                 $scope.add_text(answer);
                 $scope.submit();
+            };
+
+            $scope.choose_answer = function(answer){
+                $scope.global.log_something("choose: " + answer);
+                $scope.global.input.value = "" + answer;
             };
 
             // change response after click to keyboard
@@ -31,8 +37,8 @@ app.directive("keyboardwizard", function($timeout){
                 }else{
                     $scope.global.input.value = value + s;
                 }
-                $scope.global.log_something("soft-kyeborad:"+s);
-                $scope.global.log_something($scope.global.input.value)
+                $scope.global.log_something("soft-kyeborad:" + s);
+                $scope.global.log_something($scope.global.input.value);
             };
 
             $scope.skip = function(){
@@ -55,9 +61,9 @@ app.directive("keyboardwizard", function($timeout){
                 submit_button.removeClass("blink");
                 if (n) {
                     $timeout(function () {
-                        if ($scope.global.input.value == n)
+                        if ($scope.global.input.value == n && $scope.global.simulator_active)
                             submit_button.addClass("blink");
-                    }, 3000);
+                    }, $scope.global.keyboard == 'choices' ? 500: 3000);
                 }
             });
         }

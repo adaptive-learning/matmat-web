@@ -97,7 +97,6 @@
 
 #keyboard-wizard div.key.choice{
     border-radius: 40%;
-    background-color: darkgreen;
 }
 #keyboard-wizard div.key.choice:hover{background-color: green;}
 
