@@ -23,7 +23,6 @@ app.directive("fillin", function(){
                 var correct = $scope.answer.value == $scope.data.answer;
                 var wait = correct ? 1000 : 3000;
                 $scope.solved = true;
-                $("#playground").find("input").prop('disabled', true);
                 $scope.interface.finish(correct, $scope.answer.value, wait);
             };
             SimulatorGlobal.submit = $scope.check_answer;
