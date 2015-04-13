@@ -10,6 +10,8 @@ KB_10 = range(1, 11)
 
 class Migration(DataMigration):
 
+    depends_on = (("model", "0005_auto__add_field_questiondifficulty_time_intensity"),)
+
     def forwards(self, orm):
         # abbreviations:
         SKILLS = {}

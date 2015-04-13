@@ -6,6 +6,8 @@ from django.db import models
 
 class Migration(DataMigration):
 
+    depends_on = (("questions", "0008_auto__add_field_answer_device"),)
+
     def forwards(self, orm):
         orm.Skill.objects.get(name="numbers <= 100").delete()
 
