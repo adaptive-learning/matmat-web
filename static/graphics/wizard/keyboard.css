@@ -2,14 +2,13 @@
     text-align: center;
     position: relative;
     z-index: 2;
+    margin-top: -70px;
 }
 
 #scroll-left, #scroll-right{
     width: 119px;
     height: 273px;
     display: inline-block;
-    margin-top: -70px;
-    content: '';
 }
 #scroll-left{
     background-image: url('scroll-left.png');
@@ -23,7 +22,8 @@
     border-width: 1px 0 1px 0;
     height: 120px;
     background-color: white;
-    margin-bottom: 73px;
+    vertical-align: top;
+    margin-top: 80px;
     width: 0;
     transition: width 0.5s;
     overflow: hidden;
@@ -101,10 +101,9 @@
 #keyboard-wizard div.key.choice:hover{background-color: green;}
 
 #keyboard-wizard div.key.skip{
-    top: 70px;
-    margin-left: -50px;
     height: 30px;
     width: 50px;
+    margin-top: 55px;
     background-color: darkred;
 }
 #keyboard-wizard div.key.skip i{position: absolute; top: -4px; left: 15px;}
