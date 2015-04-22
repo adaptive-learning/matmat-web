@@ -335,6 +335,7 @@ p.keyboard-text{
     text-align: center;
     text-decoration: none;
     transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
     width: 140px;
 }
 

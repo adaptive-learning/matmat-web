@@ -65,6 +65,7 @@
     border-radius: 25px;
     background-color: #007095;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     transition: background-color, box-shadow 0.5s;
 
 }
@@ -85,15 +86,15 @@
     margin-right: 5px;
 }
 #keyboard-wizard div.key.submit:hover{ background-color: green; }
-#keyboard-wizard div.key.submit.disabled{ background-color: gray; box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);}
+#keyboard-wizard div.key.submit.disabled{ background-color: gray; box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);}
 #keyboard-wizard div.key.submit.disabled:hover{ background-color: gray; }
 
 #keyboard-wizard div.key.blink{
     -webkit-animation: hightlight 1s infinite; /* Chrome, Safari, Opera */
     animation: hightlight 1s infinite;
 }
-@keyframes hightlight { 50% {background-color: darkseagreen; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
-@-webkit-keyframes hightlight { 50% {background-color: green; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
+@keyframes hightlight { 50% {background-color: darkseagreen; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7); -webkit-box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
+@-webkit-keyframes hightlight { 50% {background-color: green; box-shadow: 0 0 15px rgba(0, 50, 0, 0.7); -webkit-box-shadow: 0 0 15px rgba(0, 50, 0, 0.7);} }
 
 #keyboard-wizard div.key.choice{
     border-radius: 40%;
@@ -112,4 +113,5 @@
 #keyboard-wizard div.key:hover{
     background-color: #008cba;
     box-shadow:0 0 7px rgba(0, 0, 0, 1);
+    -webkit-box-shadow:0 0 7px rgba(0, 0, 0, 1);
 }
