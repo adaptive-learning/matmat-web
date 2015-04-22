@@ -10,6 +10,7 @@ from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import View
 from lazysignup.utils import is_lazy_user
 from core.decorators import non_lazy_required
@@ -18,7 +19,7 @@ from core.utils import generate_random_string
 from matmat import settings
 from model.models import Skill
 
-
+@ensure_csrf_cookie
 def home(request):
     request.session.set_expiry(0)
     order = [u"math", u"numbers", u"addition", u"subtraction",
