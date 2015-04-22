@@ -95,7 +95,7 @@ app.directive("responsespan", function(){
             answer: "=",        // right answer
             response: "=",      // current response
             solved: "=",        // indicator of question finish
-            default: "@"        // default string to show if answer is empty
+            def: "@"        // default string to show if answer is empty
         },
         templateUrl: template_urls["response-span"],
         controller: function($scope){
