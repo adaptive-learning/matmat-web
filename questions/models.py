@@ -22,6 +22,7 @@ class Question(models.Model):
     type = models.CharField(max_length=1, choices=TYPES, default='c')
     value = models.CharField(max_length=255, null=True, blank=True)     # value for preventing repeating similar questions
     active = models.BooleanField(default=True)
+    identifier = models.CharField(max_length=255, null=True, blank=True)
 
     def __unicode__(self):
         return self.data
