@@ -247,7 +247,7 @@ class Command(BaseCommand):
                    "kb": KB_FULL if a > 10 else kb}, value=value)
                 if a <= 10:
                     Q(skill, counting,
-                      {"question": [a, "-", b], "answer": str(a - b), "kb": kb, "with_text": False}, value=value)
+                      {"question": [a, "-", b], "answer": str(a - b), "kb": kb, "with_text": True}, value=value)
         # multiples of 5:
         for a in range(25, 101, 5):
             for b in range(10, a + 1, 5):
