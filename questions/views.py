@@ -23,7 +23,7 @@ def play(request, skill, pk=None):
         skill = get_object_or_404(Skill, pk=pk, parent__name=skill)
     else:
         skill = get_object_or_404(Skill, name=skill)
-    simulators = Simulator.objects.filter(questions__skill__in=skill.children_list.split(",")).distinct()
+    simulators = Simulator.objects.filter(questions__skill__in=skill.children_list.split(","), questions__active=True).distinct()
 
     return render(request, 'questions/play.html', {
         "simulators": simulators,
