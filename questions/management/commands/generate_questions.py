@@ -213,8 +213,7 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(5):
-                Q("addition <= 10", pairing,
-                  {"question": gen0(k), "answer": 1})
+                Q("addition <= 10", pairing, {"question": gen0(k), "answer": 1}, active=False)
 
         def gen(k):
             return shuffle(
@@ -224,13 +223,11 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(10):
-                Q("addition <= 10", pairing,
-                  {"question": gen(k), "answer": 1})
+                Q("addition <= 10", pairing, {"question": gen(k), "answer": 1}, active=False)
 
         opts = range(2, 21)
         for _ in range(10):
-            Q("addition <= 20", pairing,
-              {"question": gen(3), "answer": 1})
+            Q("addition <= 20", pairing, {"question": gen(3), "answer": 1}, active=False)
         # end random.seed(8)
 
         # Subtraction:
@@ -271,8 +268,7 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(5):
-                Q("subtraction <= 10", pairing,
-                  {"question": gen0(k), "answer": 1})
+                Q("subtraction <= 10", pairing, {"question": gen0(k), "answer": 1}, active=False)
 
         def gen(k, a=1, b=10):
             return shuffle(
@@ -282,12 +278,10 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(10):
-                Q("subtraction <= 10", pairing,
-                  {"question": gen(k), "answer": 1})
+                Q("subtraction <= 10", pairing, {"question": gen(k), "answer": 1}, active=False)
 
         for _ in range(10):
-            Q("subtraction <= 20", pairing,
-              {"question": gen(3, a=1, b=20), "answer": 1})
+            Q("subtraction <= 20", pairing, {"question": gen(3, a=1, b=20), "answer": 1}, active=False)
         # end random.seed(4.5)
 
         # Multiplication:
@@ -331,7 +325,7 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(5):
-                Q("multiplication1", pairing, {"question": gen0(k), "answer": 1})
+                Q("multiplication1", pairing, {"question": gen0(k), "answer": 1}, active=False)
 
         def gen(k):
             ret = []
@@ -341,7 +335,7 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(10):
-                Q("multiplication1", pairing, {"question": gen(k), "answer": 1})
+                Q("multiplication1", pairing, {"question": gen(k), "answer": 1}, active=False)
 
         resmap2 = defaultdict(set)
         for a in range(2, 11):
@@ -351,11 +345,11 @@ class Command(BaseCommand):
                 resmap2[t].add('%s x %s' % (a, b))
 
         for _ in range(10):
-            Q("multiplication", pairing, {"question": gen(3), "answer": 1})
+            Q("multiplication", pairing, {"question": gen(3), "answer": 1}, active=False)
 
         resmap = resmap2
         for _ in range(10):
-            Q("multiplication2", pairing, {"question": gen0(3), "answer": 1})
+            Q("multiplication2", pairing, {"question": gen0(3), "answer": 1}, active=False)
         # end random.seed(300000)
 
         # Division:
@@ -378,9 +372,9 @@ class Command(BaseCommand):
 
         for k in [2, 3]:
             for _ in range(5):
-                Q("division1", pairing, {"question": gen0(k), "answer": 1})
+                Q("division1", pairing, {"question": gen0(k), "answer": 1}, active=False)
             for _ in range(10):
-                Q("division1", pairing, {"question": gen(k), "answer": 1})
+                Q("division1", pairing, {"question": gen(k), "answer": 1}, active=False)
 
         return json_data
 
