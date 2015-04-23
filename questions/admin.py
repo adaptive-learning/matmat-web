@@ -7,7 +7,7 @@ class SimulatorManager(admin.ModelAdmin):
 
 
 class QuestionManager(admin.ModelAdmin):
-    list_display = ('player', 'skill', 'data', 'difficulty')
+    list_display = ("identifier", 'player', 'skill', 'data', "difficulty")
 
 class AnswerManager(admin.ModelAdmin):
     list_display = ('question', 'user', 'log', 'timestamp', 'solving_time', 'correctly_solved')

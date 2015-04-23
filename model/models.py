@@ -91,7 +91,7 @@ class QuestionDifficulty(models.Model):
     time_intensity = models.FloatField(default=0.)
 
     def __unicode__(self):
-        return self.value
+        return str(self.value)
 
     def get_first_attempts_count(self):
         return self.question.answers.values('user').distinct().count()

@@ -1,0 +1,30 @@
+[
+    {
+        "note": "Voln\u00e1 odpov\u011bd", 
+        "name": "free_answer"
+    }, 
+    {
+        "note": "Po\u010d\u00edt\u00e1n\u00ed p\u0159edm\u011bt\u016f", 
+        "name": "counting"
+    }, 
+    {
+        "note": "V\u00fdb\u011br spr\u00e1vn\u00e9ho po\u010dtu p\u0159edm\u011bt\u016f", 
+        "name": "selecting"
+    }, 
+    {
+        "note": "V\u00fdb\u011br odpov\u011bdi na \u010d\u00edseln\u00e9 ose", 
+        "name": "numberline"
+    }, 
+    {
+        "note": "Dopln\u011bn\u00ed \u010d\u00edsla", 
+        "name": "fillin"
+    }, 
+    {
+        "note": "Po\u010d\u00edt\u00e1n\u00ed p\u0159edm\u011bt\u016f v m\u0159\u00ed\u017ece", 
+        "name": "field"
+    }, 
+    {
+        "note": "Matematick\u00e9 pexeso", 
+        "name": "pairing"
+    }
+]
