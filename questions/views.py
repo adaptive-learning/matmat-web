@@ -20,9 +20,9 @@ from questions.models import Question, Answer, Simulator
 @allow_lazy_user
 def play(request, skill, pk=None):
     if pk:
-        skill = get_object_or_404(Skill, note=pk, parent__note=skill)
+        skill = get_object_or_404(Skill, note=Skill.from_url(pk), parent__note=Skill.from_url(skill))
     else:
-        skill = get_object_or_404(Skill, note=skill)
+        skill = get_object_or_404(Skill, note=Skill.from_url(skill))
     simulators = Simulator.objects.filter(questions__skill__in=skill.children_list.split(","), questions__active=True).distinct()
 
     return render(request, 'questions/play.html', {

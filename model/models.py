@@ -20,6 +20,13 @@ class Skill(models.Model):
     def __unicode__(self):
         return self.name
 
+    def to_url(self):
+        return self.note.replace(" ", "_")
+
+    @staticmethod
+    def from_url(url):
+        return url.replace("_", " ")
+
     def get_image_name(self, user):
         graphics = user.profile.graphics if is_user_registred(user) else settings.DEFAULT_GRAPHICS
         if graphics == UserProfile.PLAIN:

@@ -17,7 +17,7 @@
                      href="#panel{{ skill.pk }}"
                      >
                      {{ skill.note }}</a>
-                 <div><a href="{% url "play" skill.note %}" class="fi-pencil"></a></div>
+                 <div><a href="{% url "play" skill.note.split|join:"_" %}" class="fi-pencil"></a></div>
                 <div class="gradient"></div>
              </dd>
         {% endfor %}
@@ -27,9 +27,9 @@
         {% if proceed_skill %}
             Pokračovat v procvičování <br/>
             {% if proceed_skill.level < 3 %}
-                <a href="{% url "play" proceed_skill.note %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+                <a href="{% url "play" proceed_skill.note.split|join:"_" %}"><button class="radius">{{ proceed_skill.note }}</button></a>
             {% else %}
-                <a href="{% url "play" proceed_skill.parent.note proceed_skill.note %}"><button class="radius">{{ proceed_skill.note }}</button></a>
+                <a href="{% url "play" proceed_skill.parent.note.split|join:"_" proceed_skill.note.split|join:"_" %}"><button class="radius">{{ proceed_skill.note }}</button></a>
             {% endif %}
         {% endif %}
     </div>
@@ -40,7 +40,7 @@
                  id="panel{{ skill_data.skill.pk }}">
                 {% if skill_data.skill.used %}
 
-                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play" skill_data.skill.note %}" class="fi-pencil"> procvičit</a></h3>
+                    <h3>{{ skill_data.skill.note }} - <a style="font-size: 0.7eM" href="{% url "play" skill_data.skill.note.split|join:"_" %}" class="fi-pencil"> procvičit</a></h3>
                     <div class="progress small-12 medium-10 large-8 small-centered round">
                         <span class="meter" style="{{ skill_data.skill.style }} width: {{ skill_data.skill.value_percent }}%">
                         </span>
@@ -48,7 +48,7 @@
                     {% for _, user_skill in skill_data.skills.items %}
                         {% if user_skill.used and user_skill.active %}
                             <b>{{ user_skill.note }}</b> -
-                                <a href="{% url "play" skill_data.skill.note user_skill.note%}"><i class="fi-pencil"></i></a>
+                                <a href="{% url "play" skill_data.skill.note.split|join:"_" user_skill.note.split|join:"_"%}"><i class="fi-pencil"></i></a>
                              <div class="progress small-12 medium-10 large-8 small-centered round">
                                  <span class="meter" style="{{ user_skill.style }} width: {{ user_skill.value_percent }}%">
                                  </span>
@@ -71,7 +71,7 @@
                     <div class="text-center">
                         Zatím žádné procvičené úlohy z této dovednosti
                         <br/><br/>
-                        <a href="{% url "play" skill_data.skill.note%}"><button class="radius">Procvičit</button></a>
+                        <a href="{% url "play" skill_data.skill.note.split|join:"_" %}"><button class="radius">Procvičit</button></a>
                     </div>
                 {% endif %}
             </div>

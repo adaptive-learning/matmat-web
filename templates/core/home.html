@@ -6,7 +6,7 @@
     <hr/>
     <div id="skill_selector">
     {% for skill in skills%}
-        <a href="{% url "play" skill.note %}">
+        <a href="{% url "play" skill.to_url %}">
         <div class="skill"
              style="background-image: url('{% static skill.image %}')">
             <span class="title">{{ skill.note }}</span>
@@ -15,7 +15,7 @@
 
         <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
             {% for subskill in skill.active_children.all %}
-                <li><a href="{% url "play" skill.note subskill.note %}">{{ subskill.note }}</a></li>
+                <li><a href="{% url "play" skill.to_url subskill.to_url %}">{{ subskill.note }}</a></li>
             {% endfor %}
         </ul>
     {% endfor %}
