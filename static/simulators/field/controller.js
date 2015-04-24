@@ -28,6 +28,7 @@ app.directive("field", function(){
                 if (sum == 0 && (previous_blank || i + 1 == $scope.data.field.length)){
                     continue;
                 }
+                previous_blank = sum == 0;
                 $scope.field.push($scope.data.field[i]);
             }
 

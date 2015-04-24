@@ -7,14 +7,14 @@
     }
     table#field-simulator td{ font-size: 3rem; text-align: center;}
     table#field-simulator td.eq{ width: 2rem; }
-    table#field-simulator td.re{ width: 10rem; text-align: left; }
+    table#field-simulator td.re{ width: 20rem; text-align: left; }
 </style>
 
 <table id="field-simulator">
     <tr>
         <td><cubes field="field"></cubes></td>
         <td class="eq"></td>
-        <td class="re"><responsespan answer="data.answer" response="response.value" solved="solved" /></td>
+        <td class="re">{{ data.text }} = <responsespan answer="data.answer" response="response.value" solved="solved" /></td>
     </tr>
 </table>
 

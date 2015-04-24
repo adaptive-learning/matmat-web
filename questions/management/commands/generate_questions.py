@@ -307,7 +307,7 @@ class Command(BaseCommand):
                    "kb": KB_FULL}, value=skill)
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
-            Q(skill, field, {"field": decode_field(x), "answer": a * b, "kb": KB_FULL}, value=skill)
+            Q(skill, field, {"field": decode_field(x), "answer": a * b, "text": "{}&times;{}".format(a, b), "kb": KB_FULL}, value=skill)
 
         # pairings:
         random.seed(300000)
