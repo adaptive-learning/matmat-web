@@ -5,6 +5,8 @@
     z-index: 10;
     text-align: center;
     position: relative;
+    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px);
 }
 
 #roller-wizard #roller-top{
