@@ -19,8 +19,8 @@ class EloModel():
     @staticmethod
     def compute_user_skill_delta(response, expected_response, question_type, level):
         K = 0.7
-        K_correct = 1
-        K_incorrect = 0.5
+        K_correct = 3.5
+        K_incorrect = 2.5
         delta = 0
 
         if question_type == 'c':
@@ -37,8 +37,8 @@ class EloModel():
 
     @staticmethod
     def compute_difficulty_delta(response, expected_response, first_attempts_count, question_type):
-        ALPHA = 1.0
-        DYNAMIC_ALPHA = 0.05
+        ALPHA = 1.2
+        DYNAMIC_ALPHA = 0.1
         K = ALPHA / (1 + DYNAMIC_ALPHA * (first_attempts_count - 1))
         delta = 0
 
@@ -58,7 +58,7 @@ class EloModel():
         return delta
 
     def response(self, answer, question, time_intensity, question_type="c"):
-        TIME_PENALTY_SLOPE = 0.8    # smaller for larger slope
+        TIME_PENALTY_SLOPE = 0.9    # smaller for larger slope
 
         if question_type == 'c':
             if not self.data.get_correctness(answer):
