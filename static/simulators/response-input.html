@@ -1,7 +1,7 @@
 <form ng-submit="local_submit()" ng-hide="global.keyboard == 'choices'">
     <div class="row collapse hide-for-small-only">
         <div class="small-8 small-offset-1 medium-5 medium-offset-3 large-3 large-offset-4 columns">
-            <input class="active" ng-disabled="!global.simulator_active" id="simulator-input" type="text" focus ng-change="change()" ng-model="ngModel" autocomplete="off" placeholder="Zadej svoji odpověď"/>
+            <input class="active" ng-disabled="!global.simulator_active" id="simulator-input" type="text" focus-me="global.simulator_active" ng-change="change()" ng-model="ngModel" autocomplete="off" placeholder="Zadej svoji odpověď"/>
         </div>
         <div class="small-2 large-1 columns">
             <input class="button postfix tick" ng-class="{disabled: !global.input.value}" type="submit" value="" />

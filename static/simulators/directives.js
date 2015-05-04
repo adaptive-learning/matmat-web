@@ -8,6 +8,26 @@ app.directive('focus', function(){
     };
 });
 
+app.directive('focusMe', function($timeout) {
+    return {
+        scope: {
+            trigger: '=focusMe'
+        },
+        priority: -1,
+        link: function($scope, element) {
+            $scope.$watch('trigger', function(value) {
+                if (value === true) {
+                    if ($.mobile_device){
+                        element[0].blur();
+                    }else{
+                        element[0].focus();
+                    }
+                }
+            });
+        }
+    };
+});
+
 app.directive("keyboard", function($timeout){
     return {
         restrict: "E",
