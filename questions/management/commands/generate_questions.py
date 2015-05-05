@@ -161,7 +161,7 @@ class Command(BaseCommand):
                       {"question": "%s + %s" % (a, b), "answer": str(total),
                        "kb": kb}, value=skill)
                     Q(skill, counting,
-                      {"question": [a, "+", b], "answer": str(total), "kb": kb, "with_text": False}, value=skill,)
+                      {"question": [a, "+", b], "answer": str(total), "kb": kb, "with_text": True}, value=skill,)
         skill = 'addition <= 100'
         random.seed(150 - 2)
         X = set([])
