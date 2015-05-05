@@ -4,13 +4,14 @@ app.directive("rollerwizard", function($timeout){
         transclude: true,
         scope: {
             closed: "=",
-            question: "="
+            question: "=",
+            control: "="
         },
         templateUrl: template_urls["roller-wizard"],
         controller: function($scope, SimulatorGlobal, $timeout){
             $scope.global = SimulatorGlobal;
 
-            $scope.fit_height = function(){
+            $scope.control.fit_height = $scope.fit_height = function(){
                 var roller = $('#roller-wizard');
                 roller.find("#roller-playground").css("height", roller.find("#roller-playground > div").height() + 10)
             };

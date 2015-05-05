@@ -27,7 +27,7 @@
                     <div ng-show="loading" ng-cloak class="loading-spinner">
                         {% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}
                     </div>
-                    <rollerwizard closed="loading || question.hide" question="question_description.top">
+                    <rollerwizard closed="loading || question.hide" control="roller" question="question_description.top">
                         <div id="playground"></div>
                     </rollerwizard>
                     <keyboardwizard closed="loading || question.hide"></keyboardwizard>

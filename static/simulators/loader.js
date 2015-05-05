@@ -137,6 +137,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.question.answer =  answer;
         SimulatorGlobal.description.top = "";
         $scope.counter.progress[$scope.counter.current-1] = correctly_solved ? $scope.fast_solution ? 2 : 1 : -1;
+        $timeout($scope.roller.fit_height, 0);
 
         $scope.save_answer();
 
@@ -210,6 +211,8 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.questions_queue = [];
     };
     SimulatorGlobal.clear_queue = $scope.clear_queue;
+
+    $scope.roller = {};
 
     // define interface
     $scope.interface = {};
