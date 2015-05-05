@@ -28,7 +28,6 @@ def recalculate_model():
     Process all answers
     """
 
-
     cursor = connection.cursor()
     cursor.execute(
         "SELECT "
@@ -112,7 +111,7 @@ class CachingDatabaseDataProvider(DataProviderInterface):
         for user, d in self.user_skills.items():
             for skill, value in d.items():
                 data.append(UserSkill(user_id=user, skill_id=skill, value=value))
-        UserSkill.objects.bulk_create(data)
+        UserSkill.objects.bulk_create(data, 10000)
 
 
     def set_answer(self, answer):
