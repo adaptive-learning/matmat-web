@@ -155,7 +155,10 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                         $scope.next_question();
                         return;
                     }
-                    window.location.replace("/m/my_skills/"+$scope.skill_id);
+                    $scope.loading = true;
+                    $timeout( function() {
+                        window.location.replace("/m/my_skills/" + $scope.skill_id);
+                    }, 0);
                 }else{
                     // load next question
                     $scope.next_question();
