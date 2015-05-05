@@ -34,7 +34,10 @@ skill_as_tuple = lambda skill: SkillTuple(*[skill[k] for k in skill_keys])
 def my_skills(request, pk=None, user_pk=None):
     user = request.user
     if user_pk:
-        user = get_object_or_404(User, pk=user_pk, profile__supervisors=request.user.profile)
+        if request.user.is_superuser:
+            user = get_object_or_404(User, pk=user_pk)
+        else:
+            user = get_object_or_404(User, pk=user_pk, profile__supervisors=request.user.profile)
         user.as_child = True
 
     all_skills = get_all_skills(user)
