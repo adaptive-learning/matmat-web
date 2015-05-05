@@ -18,7 +18,7 @@ def recommend_questions(count, user, skills, in_queue, simulators=None):
         "LEFT JOIN model_questiondifficulty ON ( model_questiondifficulty.question_id = questions_question.id) "
         "WHERE questions_question.skill_id IN ( {0} ) {1} {2}"
         "AND questions_question.active "
-        "GROUP BY questions_question.id ".format(
+        "GROUP BY questions_question.id ORDER BY RAND() LIMIT 100".format(
             ",".join(skills),
             "AND questions_question.id NOT IN ( {0} ) ".format(",".join(in_queue)) if in_queue else "",
             "AND questions_question.player_id IN ( {0} ) ".format(",".join(simulators)) if simulators else "",
