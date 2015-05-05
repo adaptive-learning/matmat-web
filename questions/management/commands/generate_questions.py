@@ -300,11 +300,10 @@ class Command(BaseCommand):
                "kb": KB_FULL}, value=skill)
             if total and a <= 5 and b <= 5:
                 Q(skill, counting,
-                  {"question": [a, "&times;", b], "answer": str(total),
-                   "kb": KB_FULL, "with_text": False}, value=skill)
+                  {"question": [a, "&times;", b], "answer": str(total), "kb": KB_FULL, "with_text": False}, value=skill,
+                  active=False)
                 Q(skill, counting,
-                  {"question": [a, "&times;", b], "answer": str(total), "with_text": True,
-                   "kb": KB_FULL}, value=skill)
+                  {"question": [a, "&times;", b], "answer": str(total), "kb": KB_FULL, "with_text": True}, value=skill)
         for a, b, x in MULTI_2D:
             skill = '%sx%s' % ((a, b) if a <= b else (b, a))
             Q(skill, field, {"field": decode_field(x), "answer": a * b, "text": "{}&times;{}".format(a, b), "kb": KB_FULL}, value=skill)

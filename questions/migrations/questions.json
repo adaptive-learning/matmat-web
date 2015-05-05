@@ -13008,7 +13008,7 @@
         "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": false, \"question\": [2, \"&times;\", 5]}", 
         "value": "2x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x5", 
         "type": "c", 
         "id": "2x5-counting-0"
@@ -13080,7 +13080,7 @@
         "data": "{\"answer\": \"25\", \"kb\": \"full\", \"with_text\": false, \"question\": [5, \"&times;\", 5]}", 
         "value": "5x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "5x5", 
         "type": "c", 
         "id": "5x5-counting-0"
@@ -13269,7 +13269,7 @@
         "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": false, \"question\": [1, \"&times;\", 1]}", 
         "value": "1x1", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x1", 
         "type": "c", 
         "id": "1x1-counting-0"
@@ -13323,7 +13323,7 @@
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": false, \"question\": [3, \"&times;\", 2]}", 
         "value": "2x3", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x3", 
         "type": "c", 
         "id": "2x3-counting-0"
@@ -13386,7 +13386,7 @@
         "data": "{\"answer\": \"20\", \"kb\": \"full\", \"with_text\": false, \"question\": [4, \"&times;\", 5]}", 
         "value": "4x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "4x5", 
         "type": "c", 
         "id": "4x5-counting-0"
@@ -13539,7 +13539,7 @@
         "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": false, \"question\": [3, \"&times;\", 1]}", 
         "value": "1x3", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x3", 
         "type": "c", 
         "id": "1x3-counting-0"
@@ -13728,7 +13728,7 @@
         "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": false, \"question\": [2, \"&times;\", 1]}", 
         "value": "1x2", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x2", 
         "type": "c", 
         "id": "1x2-counting-0"
@@ -13800,7 +13800,7 @@
         "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": false, \"question\": [5, \"&times;\", 1]}", 
         "value": "1x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x5", 
         "type": "c", 
         "id": "1x5-counting-0"
@@ -13962,7 +13962,7 @@
         "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": false, \"question\": [1, \"&times;\", 5]}", 
         "value": "1x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x5", 
         "type": "c", 
         "id": "1x5-counting-2"
@@ -14007,7 +14007,7 @@
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": false, \"question\": [2, \"&times;\", 2]}", 
         "value": "2x2", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x2", 
         "type": "c", 
         "id": "2x2-counting-0"
@@ -14052,7 +14052,7 @@
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": false, \"question\": [4, \"&times;\", 1]}", 
         "value": "1x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x4", 
         "type": "c", 
         "id": "1x4-counting-0"
@@ -14106,7 +14106,7 @@
         "data": "{\"answer\": \"20\", \"kb\": \"full\", \"with_text\": false, \"question\": [5, \"&times;\", 4]}", 
         "value": "4x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "4x5", 
         "type": "c", 
         "id": "4x5-counting-2"
@@ -14304,7 +14304,7 @@
         "data": "{\"answer\": \"15\", \"kb\": \"full\", \"with_text\": false, \"question\": [3, \"&times;\", 5]}", 
         "value": "3x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "3x5", 
         "type": "c", 
         "id": "3x5-counting-0"
@@ -14538,7 +14538,7 @@
         "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": false, \"question\": [1, \"&times;\", 3]}", 
         "value": "1x3", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x3", 
         "type": "c", 
         "id": "1x3-counting-2"
@@ -14898,7 +14898,7 @@
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": false, \"question\": [1, \"&times;\", 4]}", 
         "value": "1x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x4", 
         "type": "c", 
         "id": "1x4-counting-2"
@@ -14943,7 +14943,7 @@
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": false, \"question\": [2, \"&times;\", 3]}", 
         "value": "2x3", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x3", 
         "type": "c", 
         "id": "2x3-counting-2"
@@ -14988,7 +14988,7 @@
         "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": false, \"question\": [4, \"&times;\", 2]}", 
         "value": "2x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x4", 
         "type": "c", 
         "id": "2x4-counting-0"
@@ -15042,7 +15042,7 @@
         "data": "{\"answer\": \"15\", \"kb\": \"full\", \"with_text\": false, \"question\": [5, \"&times;\", 3]}", 
         "value": "3x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "3x5", 
         "type": "c", 
         "id": "3x5-counting-2"
@@ -15231,7 +15231,7 @@
         "data": "{\"answer\": \"12\", \"kb\": \"full\", \"with_text\": false, \"question\": [3, \"&times;\", 4]}", 
         "value": "3x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "3x4", 
         "type": "c", 
         "id": "3x4-counting-0"
@@ -15258,7 +15258,7 @@
         "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": false, \"question\": [2, \"&times;\", 4]}", 
         "value": "2x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x4", 
         "type": "c", 
         "id": "2x4-counting-2"
@@ -15474,7 +15474,7 @@
         "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": false, \"question\": [1, \"&times;\", 2]}", 
         "value": "1x2", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "1x2", 
         "type": "c", 
         "id": "1x2-counting-2"
@@ -15519,7 +15519,7 @@
         "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": false, \"question\": [3, \"&times;\", 3]}", 
         "value": "3x3", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "3x3", 
         "type": "c", 
         "id": "3x3-counting-0"
@@ -15582,7 +15582,7 @@
         "data": "{\"answer\": \"16\", \"kb\": \"full\", \"with_text\": false, \"question\": [4, \"&times;\", 4]}", 
         "value": "4x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "4x4", 
         "type": "c", 
         "id": "4x4-counting-0"
@@ -15924,7 +15924,7 @@
         "data": "{\"answer\": \"12\", \"kb\": \"full\", \"with_text\": false, \"question\": [4, \"&times;\", 3]}", 
         "value": "3x4", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "3x4", 
         "type": "c", 
         "id": "3x4-counting-2"
@@ -15969,7 +15969,7 @@
         "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": false, \"question\": [5, \"&times;\", 2]}", 
         "value": "2x5", 
         "player": "counting", 
-        "active": true, 
+        "active": false, 
         "skill": "2x5", 
         "type": "c", 
         "id": "2x5-counting-2"
