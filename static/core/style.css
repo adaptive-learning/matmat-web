@@ -386,6 +386,10 @@ p.keyboard-text{
     /*border-radius: 3px;*/
 }
 
+cubes.negative .objects > div {
+    background-color: #ffde14;
+}
+
 .objects > div:nth-child(10n):after{
     content: "";
     width: 22.6em;

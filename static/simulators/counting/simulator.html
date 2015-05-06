@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <td ng-repeat="part in data.question track by $index" ng-hide="block">
-            <div ng-show="type(part) == 'number'"> <cubes size="size" count="part"></cubes> </div>
+            <div ng-show="type(part) == 'number'"> <cubes ng-class="{negative: $index === 2 &&  data.question.1 === '-'}" size="size" count="part"></cubes> </div>
             <span ng-show="type(part) == 'string'"> {{ part }} </span>
         </td>
         <td ng-show="block">{{ data.question.0 }}</td>
