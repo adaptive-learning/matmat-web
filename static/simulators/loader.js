@@ -86,7 +86,15 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                 '<{0} interface=\'interface\' data=\'{1}\' />'
                     .format($scope.question.simulator.replace("_",""), $scope.question.data));
             $compile(questionDirective)($scope);
-            $("#playground").append(questionDirective);
+            var playground =  $("#playground");
+            if (playground.length > 0){
+                playground.append(questionDirective);
+            }else{
+                $timeout(function() {
+                    playground =  $("#playground");
+                    playground.append(questionDirective);
+                },100);
+            }
         }
         $scope.get_questions_from_server();
     };
