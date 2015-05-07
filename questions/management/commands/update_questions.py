@@ -57,7 +57,7 @@ class Command(BaseCommand):
                         Skill.objects.create(
                             name=skill["name"],
                             note=skill["note"],
-                            parent=Skill.objects.get(name=skill["parent"])
+                            parent=None if skill["parent"] is None else Skill.objects.get(name=skill["parent"])
                         )
                     except Skill.DoesNotExist:
                         raise CommandError("Parent {} not found".format(skill["parent"]))
