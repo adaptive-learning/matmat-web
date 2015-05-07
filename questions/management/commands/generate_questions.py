@@ -10,13 +10,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.skills = self.skills()
-        json.dump(self.skills.values(), open("questions/migrations/skills.json", "w"), indent=4)
+        json.dump(self.skills, open("questions/migrations/skills.json", "w"), indent=4)
         data = self.questions()
         json.dump(data["questions"], open("questions/migrations/questions.json", "w"), indent=4)
         json.dump(data["simulators"], open("questions/migrations/simulators.json", "w"), indent=4)
 
     def skills(self):
-        skills = {}
+        skills = []
         skill_level = {}
 
         def S(name, parent, note=None):
@@ -28,7 +28,7 @@ class Command(BaseCommand):
                 "parent": None if parent is None else parent["name"],
                 "note": note,
             }
-            skills[name] = (s)
+            skills.append(s)
             return s
 
         # Main math skill:
