@@ -1,0 +1,39 @@
+app.directive("visualization", function(){
+    return {
+        restrict: "E",
+        scope: {
+            data: "=data",
+            interface: "=interface"
+        },
+        templateUrl: template_urls["visualization"],
+        controller: function($scope, SimulatorGlobal, $timeout){
+            $scope.answer = SimulatorGlobal.input;
+            $scope.answer.value = '';
+            $scope.apples = _.range($scope.data.question[1]); 
+            $scope.baskets = _.range($scope.data.question[2]); 
+
+            if ($scope.data.kb != "full"){
+                SimulatorGlobal.keyboard = "choices";
+                SimulatorGlobal.choices = $scope.data.kb;
+            }else{
+                SimulatorGlobal.keyboard = "full";
+            }
+
+            $scope.check_answer = function(){
+                $scope.answer.value = $scope.answer.value.replace(/\s*-\s*/g,'-').trim();
+                var correct = $scope.answer.value == $scope.data.answer;
+                var wait = correct ? 1000 : 3000;
+                $scope.solved = true;
+                $scope.interface.finish(correct, $scope.answer.value, wait);
+            };
+            SimulatorGlobal.submit = $scope.check_answer;
+
+            $scope.change = function(){
+                $scope.interface.log($scope.answer.value);
+            };
+
+            $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
+        }
+    }
+});
+

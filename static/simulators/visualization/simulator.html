@@ -1,0 +1,14 @@
+<h2 class="row collapse">
+    <div class="small-7 medium-6 text-right columns">{{ data.question[0] }}</div>
+    <div class="small-2 medium-2 text-center columns">&nbsp;=&nbsp;</div>
+    <div class="small-3 medium-4 text-left columns"><responsespan answer="data.answer" response="answer.value" solved="solved" /></div>
+</h2>
+<div class="row collapse">
+    <div class="apple columns" ng-repeat="apple in apples" ></div>
+    <div class="columns"></div>
+</div>
+<div class="row collapse">
+    <div class="basket columns" ng-repeat="basket in baskets"></div>
+    <div class="columns"></div>
+</div>
+<responseinput ng-model="answer.value" submit="check_answer()" ng-change="change()" />

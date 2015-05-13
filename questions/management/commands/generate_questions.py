@@ -129,6 +129,7 @@ class Command(BaseCommand):
         fillin = Sim('fillin', 'Doplnění čísla')
         field = Sim('field', 'Počítání předmětů v mřížce')
         pairing = Sim('pairing', 'Matematické pexeso')
+        visualization = Sim('visualization', 'Vizualizace dělení')
 
         # Numbers:
         # --------
@@ -360,6 +361,10 @@ class Command(BaseCommand):
                 Q(skill, free_answer,
                   {"question": "%s &divide; %s" % (total, b),
                    "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL}, value=str(a))
+                if b <= 4 and a <= 7:
+                    Q(skill, visualization,
+                      {"question": ["%s &divide; %s" % (total, b), total, b],
+                       "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL}, value=str(a))
 
         # pairings:
         random.seed(30)

@@ -196,3 +196,19 @@
     background-size: contain;
     background-color: transparent !important;
 }
+
+div.apple {
+    height: 30px;
+    width: 30px;
+    background-image: url('apple.svg');
+    background-size: contain;
+    z-index: 0;
+}
+
+div.basket {
+    height: 85px;
+    width: 150px;
+    background-image: url('basket.svg');
+    background-size: contain;
+    z-index: 0;
+}

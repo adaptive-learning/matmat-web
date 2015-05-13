@@ -17406,6 +17406,15 @@
         "id": "1/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"1 &divide; 1\", 1, 1]}", 
+        "value": "1", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "1/1", 
+        "type": "c", 
+        "id": "1/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 &divide; 2\"}", 
         "value": "1", 
         "player": "free_answer", 
@@ -17413,6 +17422,15 @@
         "skill": "2/2", 
         "type": "c", 
         "id": "2/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"2 &divide; 2\", 2, 2]}", 
+        "value": "1", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "2/2", 
+        "type": "c", 
+        "id": "2/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 &divide; 3\"}", 
@@ -17424,6 +17442,15 @@
         "id": "3/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"3 &divide; 3\", 3, 3]}", 
+        "value": "1", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "3/3", 
+        "type": "c", 
+        "id": "3/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 &divide; 4\"}", 
         "value": "1", 
         "player": "free_answer", 
@@ -17431,6 +17458,15 @@
         "skill": "4/4", 
         "type": "c", 
         "id": "4/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"4 &divide; 4\", 4, 4]}", 
+        "value": "1", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "4/4", 
+        "type": "c", 
+        "id": "4/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 &divide; 5\"}", 
@@ -17496,6 +17532,15 @@
         "id": "2/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"2 &divide; 1\", 2, 1]}", 
+        "value": "2", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "2/1", 
+        "type": "c", 
+        "id": "2/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 &divide; 2\"}", 
         "value": "2", 
         "player": "free_answer", 
@@ -17503,6 +17548,15 @@
         "skill": "4/2", 
         "type": "c", 
         "id": "4/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"4 &divide; 2\", 4, 2]}", 
+        "value": "2", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "4/2", 
+        "type": "c", 
+        "id": "4/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 3\"}", 
@@ -17514,6 +17568,15 @@
         "id": "6/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"6 &divide; 3\", 6, 3]}", 
+        "value": "2", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "6/3", 
+        "type": "c", 
+        "id": "6/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 4\"}", 
         "value": "2", 
         "player": "free_answer", 
@@ -17521,6 +17584,15 @@
         "skill": "8/4", 
         "type": "c", 
         "id": "8/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"8 &divide; 4\", 8, 4]}", 
+        "value": "2", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "8/4", 
+        "type": "c", 
+        "id": "8/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 5\"}", 
@@ -17586,6 +17658,15 @@
         "id": "3/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"3 &divide; 1\", 3, 1]}", 
+        "value": "3", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "3/1", 
+        "type": "c", 
+        "id": "3/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 2\"}", 
         "value": "3", 
         "player": "free_answer", 
@@ -17593,6 +17674,15 @@
         "skill": "6/2", 
         "type": "c", 
         "id": "6/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"6 &divide; 2\", 6, 2]}", 
+        "value": "3", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "6/2", 
+        "type": "c", 
+        "id": "6/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 &divide; 3\"}", 
@@ -17604,6 +17694,15 @@
         "id": "9/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"9 &divide; 3\", 9, 3]}", 
+        "value": "3", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "9/3", 
+        "type": "c", 
+        "id": "9/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"12 &divide; 4\"}", 
         "value": "3", 
         "player": "free_answer", 
@@ -17611,6 +17710,15 @@
         "skill": "12/4", 
         "type": "c", 
         "id": "12/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": [\"12 &divide; 4\", 12, 4]}", 
+        "value": "3", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "12/4", 
+        "type": "c", 
+        "id": "12/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"15 &divide; 5\"}", 
@@ -17676,6 +17784,15 @@
         "id": "4/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"4 &divide; 1\", 4, 1]}", 
+        "value": "4", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "4/1", 
+        "type": "c", 
+        "id": "4/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 2\"}", 
         "value": "4", 
         "player": "free_answer", 
@@ -17683,6 +17800,15 @@
         "skill": "8/2", 
         "type": "c", 
         "id": "8/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"8 &divide; 2\", 8, 2]}", 
+        "value": "4", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "8/2", 
+        "type": "c", 
+        "id": "8/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"12 &divide; 3\"}", 
@@ -17694,6 +17820,15 @@
         "id": "12/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": [\"12 &divide; 3\", 12, 3]}", 
+        "value": "4", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "12/3", 
+        "type": "c", 
+        "id": "12/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"16 &divide; 4\"}", 
         "value": "4", 
         "player": "free_answer", 
@@ -17701,6 +17836,15 @@
         "skill": "16/4", 
         "type": "c", 
         "id": "16/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": [\"16 &divide; 4\", 16, 4]}", 
+        "value": "4", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "16/4", 
+        "type": "c", 
+        "id": "16/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"20 &divide; 5\"}", 
@@ -17766,6 +17910,15 @@
         "id": "5/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"5 &divide; 1\", 5, 1]}", 
+        "value": "5", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "5/1", 
+        "type": "c", 
+        "id": "5/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 2\"}", 
         "value": "5", 
         "player": "free_answer", 
@@ -17773,6 +17926,15 @@
         "skill": "10/2", 
         "type": "c", 
         "id": "10/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"10 &divide; 2\", 10, 2]}", 
+        "value": "5", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "10/2", 
+        "type": "c", 
+        "id": "10/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"15 &divide; 3\"}", 
@@ -17784,6 +17946,15 @@
         "id": "15/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": [\"15 &divide; 3\", 15, 3]}", 
+        "value": "5", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "15/3", 
+        "type": "c", 
+        "id": "15/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"20 &divide; 4\"}", 
         "value": "5", 
         "player": "free_answer", 
@@ -17791,6 +17962,15 @@
         "skill": "20/4", 
         "type": "c", 
         "id": "20/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": [\"20 &divide; 4\", 20, 4]}", 
+        "value": "5", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "20/4", 
+        "type": "c", 
+        "id": "20/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"25 &divide; 5\"}", 
@@ -17856,6 +18036,15 @@
         "id": "6/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"6 &divide; 1\", 6, 1]}", 
+        "value": "6", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "6/1", 
+        "type": "c", 
+        "id": "6/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"12 &divide; 2\"}", 
         "value": "6", 
         "player": "free_answer", 
@@ -17863,6 +18052,15 @@
         "skill": "12/2", 
         "type": "c", 
         "id": "12/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": [\"12 &divide; 2\", 12, 2]}", 
+        "value": "6", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "12/2", 
+        "type": "c", 
+        "id": "12/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"18 &divide; 3\"}", 
@@ -17874,6 +18072,15 @@
         "id": "18/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": [\"18 &divide; 3\", 18, 3]}", 
+        "value": "6", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "18/3", 
+        "type": "c", 
+        "id": "18/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"24 &divide; 4\"}", 
         "value": "6", 
         "player": "free_answer", 
@@ -17881,6 +18088,15 @@
         "skill": "24/4", 
         "type": "c", 
         "id": "24/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": [\"24 &divide; 4\", 24, 4]}", 
+        "value": "6", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "24/4", 
+        "type": "c", 
+        "id": "24/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"30 &divide; 5\"}", 
@@ -17946,6 +18162,15 @@
         "id": "7/1-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": [\"7 &divide; 1\", 7, 1]}", 
+        "value": "7", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "7/1", 
+        "type": "c", 
+        "id": "7/1-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"14 &divide; 2\"}", 
         "value": "7", 
         "player": "free_answer", 
@@ -17953,6 +18178,15 @@
         "skill": "14/2", 
         "type": "c", 
         "id": "14/2-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": [\"14 &divide; 2\", 14, 2]}", 
+        "value": "7", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "14/2", 
+        "type": "c", 
+        "id": "14/2-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"21 &divide; 3\"}", 
@@ -17964,6 +18198,15 @@
         "id": "21/3-free_answer-0"
     }, 
     {
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": [\"21 &divide; 3\", 21, 3]}", 
+        "value": "7", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "21/3", 
+        "type": "c", 
+        "id": "21/3-visualization-0"
+    }, 
+    {
         "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"28 &divide; 4\"}", 
         "value": "7", 
         "player": "free_answer", 
@@ -17971,6 +18214,15 @@
         "skill": "28/4", 
         "type": "c", 
         "id": "28/4-free_answer-0"
+    }, 
+    {
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": [\"28 &divide; 4\", 28, 4]}", 
+        "value": "7", 
+        "player": "visualization", 
+        "active": true, 
+        "skill": "28/4", 
+        "type": "c", 
+        "id": "28/4-visualization-0"
     }, 
     {
         "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"35 &divide; 5\"}", 
