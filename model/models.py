@@ -4,6 +4,7 @@ from django.db.models import Avg
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from core.models import UserProfile, is_user_registred
+from core.utils import cache_pure
 from elo.DataProviderInterface import DataProviderInterface
 from matmat import settings
 from questions.models import Answer
@@ -43,10 +44,19 @@ class Skill(models.Model):
     def active_children(self):
         return self.children.filter(active=True)
 
+    @cache_pure
     def active_children_list(self):
-        # TODO - caching
         deactivated_skills = set([pk for skill in Skill.objects.filter(active=False) for pk in skill.children_list.split(",")])
         return set(self.children_list.split(",")) - deactivated_skills
+
+    @cache_pure
+    def parent_list(self):
+        skill = self
+        parents = []
+        while skill.parent is not None:
+            skill = skill.parent
+            parents.append(skill)
+        return parents
 
 
 @receiver(pre_save, sender=Skill)
