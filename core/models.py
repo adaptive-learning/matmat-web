@@ -45,7 +45,7 @@ class UserProfile(models.Model):
 def is_user_registred(user):
     if not user.is_authenticated() or user.is_anonymous():
         return False
-    if user.social_auth.exists():
+    if hasattr(user, "profile"):
         return True
     return not is_lazy_user(user)
 
