@@ -69,11 +69,11 @@ class Command(BaseCommand):
         m1 = S(name='multiplication1', parent=m0, note=u'Malá násobilka')
         for b in range(1, 11):
             for a in range(1, b + 1):
-                S(name='%sx%s' % (a, b), parent=m1)
+                S(name='%sx%s' % (a, b), parent=m1, note='%s&times;%s' % (a, b))
         m2 = S(name='multiplication2', parent=m0, note=u'Velká násobilka')
         for a in range(1, 11):
             for b in range(11, 21):
-                S(name='%sx%s' % (a, b), parent=m2)
+                S(name='%sx%s' % (a, b), parent=m2, note='%s&times;%s' % (a, b))
 
         # Division:
         # ---------

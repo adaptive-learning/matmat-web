@@ -1045,277 +1045,277 @@
         "parent": "multiplication"
     }, 
     {
-        "note": "1x1", 
+        "note": "1&times;1", 
         "name": "1x1", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x2", 
+        "note": "1&times;2", 
         "name": "1x2", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x2", 
+        "note": "2&times;2", 
         "name": "2x2", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x3", 
+        "note": "1&times;3", 
         "name": "1x3", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x3", 
+        "note": "2&times;3", 
         "name": "2x3", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x3", 
+        "note": "3&times;3", 
         "name": "3x3", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x4", 
+        "note": "1&times;4", 
         "name": "1x4", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x4", 
+        "note": "2&times;4", 
         "name": "2x4", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x4", 
+        "note": "3&times;4", 
         "name": "3x4", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x4", 
+        "note": "4&times;4", 
         "name": "4x4", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x5", 
+        "note": "1&times;5", 
         "name": "1x5", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x5", 
+        "note": "2&times;5", 
         "name": "2x5", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x5", 
+        "note": "3&times;5", 
         "name": "3x5", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x5", 
+        "note": "4&times;5", 
         "name": "4x5", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x5", 
+        "note": "5&times;5", 
         "name": "5x5", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x6", 
+        "note": "1&times;6", 
         "name": "1x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x6", 
+        "note": "2&times;6", 
         "name": "2x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x6", 
+        "note": "3&times;6", 
         "name": "3x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x6", 
+        "note": "4&times;6", 
         "name": "4x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x6", 
+        "note": "5&times;6", 
         "name": "5x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "6x6", 
+        "note": "6&times;6", 
         "name": "6x6", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x7", 
+        "note": "1&times;7", 
         "name": "1x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x7", 
+        "note": "2&times;7", 
         "name": "2x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x7", 
+        "note": "3&times;7", 
         "name": "3x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x7", 
+        "note": "4&times;7", 
         "name": "4x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x7", 
+        "note": "5&times;7", 
         "name": "5x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "6x7", 
+        "note": "6&times;7", 
         "name": "6x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "7x7", 
+        "note": "7&times;7", 
         "name": "7x7", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x8", 
+        "note": "1&times;8", 
         "name": "1x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x8", 
+        "note": "2&times;8", 
         "name": "2x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x8", 
+        "note": "3&times;8", 
         "name": "3x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x8", 
+        "note": "4&times;8", 
         "name": "4x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x8", 
+        "note": "5&times;8", 
         "name": "5x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "6x8", 
+        "note": "6&times;8", 
         "name": "6x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "7x8", 
+        "note": "7&times;8", 
         "name": "7x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "8x8", 
+        "note": "8&times;8", 
         "name": "8x8", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x9", 
+        "note": "1&times;9", 
         "name": "1x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x9", 
+        "note": "2&times;9", 
         "name": "2x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x9", 
+        "note": "3&times;9", 
         "name": "3x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x9", 
+        "note": "4&times;9", 
         "name": "4x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x9", 
+        "note": "5&times;9", 
         "name": "5x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "6x9", 
+        "note": "6&times;9", 
         "name": "6x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "7x9", 
+        "note": "7&times;9", 
         "name": "7x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "8x9", 
+        "note": "8&times;9", 
         "name": "8x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "9x9", 
+        "note": "9&times;9", 
         "name": "9x9", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "1x10", 
+        "note": "1&times;10", 
         "name": "1x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "2x10", 
+        "note": "2&times;10", 
         "name": "2x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "3x10", 
+        "note": "3&times;10", 
         "name": "3x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "4x10", 
+        "note": "4&times;10", 
         "name": "4x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "5x10", 
+        "note": "5&times;10", 
         "name": "5x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "6x10", 
+        "note": "6&times;10", 
         "name": "6x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "7x10", 
+        "note": "7&times;10", 
         "name": "7x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "8x10", 
+        "note": "8&times;10", 
         "name": "8x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "9x10", 
+        "note": "9&times;10", 
         "name": "9x10", 
         "parent": "multiplication1"
     }, 
     {
-        "note": "10x10", 
+        "note": "10&times;10", 
         "name": "10x10", 
         "parent": "multiplication1"
     }, 
@@ -1325,502 +1325,502 @@
         "parent": "multiplication"
     }, 
     {
-        "note": "1x11", 
+        "note": "1&times;11", 
         "name": "1x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x12", 
+        "note": "1&times;12", 
         "name": "1x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x13", 
+        "note": "1&times;13", 
         "name": "1x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x14", 
+        "note": "1&times;14", 
         "name": "1x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x15", 
+        "note": "1&times;15", 
         "name": "1x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x16", 
+        "note": "1&times;16", 
         "name": "1x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x17", 
+        "note": "1&times;17", 
         "name": "1x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x18", 
+        "note": "1&times;18", 
         "name": "1x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x19", 
+        "note": "1&times;19", 
         "name": "1x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "1x20", 
+        "note": "1&times;20", 
         "name": "1x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x11", 
+        "note": "2&times;11", 
         "name": "2x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x12", 
+        "note": "2&times;12", 
         "name": "2x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x13", 
+        "note": "2&times;13", 
         "name": "2x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x14", 
+        "note": "2&times;14", 
         "name": "2x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x15", 
+        "note": "2&times;15", 
         "name": "2x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x16", 
+        "note": "2&times;16", 
         "name": "2x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x17", 
+        "note": "2&times;17", 
         "name": "2x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x18", 
+        "note": "2&times;18", 
         "name": "2x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x19", 
+        "note": "2&times;19", 
         "name": "2x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "2x20", 
+        "note": "2&times;20", 
         "name": "2x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x11", 
+        "note": "3&times;11", 
         "name": "3x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x12", 
+        "note": "3&times;12", 
         "name": "3x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x13", 
+        "note": "3&times;13", 
         "name": "3x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x14", 
+        "note": "3&times;14", 
         "name": "3x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x15", 
+        "note": "3&times;15", 
         "name": "3x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x16", 
+        "note": "3&times;16", 
         "name": "3x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x17", 
+        "note": "3&times;17", 
         "name": "3x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x18", 
+        "note": "3&times;18", 
         "name": "3x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x19", 
+        "note": "3&times;19", 
         "name": "3x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "3x20", 
+        "note": "3&times;20", 
         "name": "3x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x11", 
+        "note": "4&times;11", 
         "name": "4x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x12", 
+        "note": "4&times;12", 
         "name": "4x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x13", 
+        "note": "4&times;13", 
         "name": "4x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x14", 
+        "note": "4&times;14", 
         "name": "4x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x15", 
+        "note": "4&times;15", 
         "name": "4x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x16", 
+        "note": "4&times;16", 
         "name": "4x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x17", 
+        "note": "4&times;17", 
         "name": "4x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x18", 
+        "note": "4&times;18", 
         "name": "4x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x19", 
+        "note": "4&times;19", 
         "name": "4x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "4x20", 
+        "note": "4&times;20", 
         "name": "4x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x11", 
+        "note": "5&times;11", 
         "name": "5x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x12", 
+        "note": "5&times;12", 
         "name": "5x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x13", 
+        "note": "5&times;13", 
         "name": "5x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x14", 
+        "note": "5&times;14", 
         "name": "5x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x15", 
+        "note": "5&times;15", 
         "name": "5x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x16", 
+        "note": "5&times;16", 
         "name": "5x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x17", 
+        "note": "5&times;17", 
         "name": "5x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x18", 
+        "note": "5&times;18", 
         "name": "5x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x19", 
+        "note": "5&times;19", 
         "name": "5x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "5x20", 
+        "note": "5&times;20", 
         "name": "5x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x11", 
+        "note": "6&times;11", 
         "name": "6x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x12", 
+        "note": "6&times;12", 
         "name": "6x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x13", 
+        "note": "6&times;13", 
         "name": "6x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x14", 
+        "note": "6&times;14", 
         "name": "6x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x15", 
+        "note": "6&times;15", 
         "name": "6x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x16", 
+        "note": "6&times;16", 
         "name": "6x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x17", 
+        "note": "6&times;17", 
         "name": "6x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x18", 
+        "note": "6&times;18", 
         "name": "6x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x19", 
+        "note": "6&times;19", 
         "name": "6x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "6x20", 
+        "note": "6&times;20", 
         "name": "6x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x11", 
+        "note": "7&times;11", 
         "name": "7x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x12", 
+        "note": "7&times;12", 
         "name": "7x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x13", 
+        "note": "7&times;13", 
         "name": "7x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x14", 
+        "note": "7&times;14", 
         "name": "7x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x15", 
+        "note": "7&times;15", 
         "name": "7x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x16", 
+        "note": "7&times;16", 
         "name": "7x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x17", 
+        "note": "7&times;17", 
         "name": "7x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x18", 
+        "note": "7&times;18", 
         "name": "7x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x19", 
+        "note": "7&times;19", 
         "name": "7x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "7x20", 
+        "note": "7&times;20", 
         "name": "7x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x11", 
+        "note": "8&times;11", 
         "name": "8x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x12", 
+        "note": "8&times;12", 
         "name": "8x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x13", 
+        "note": "8&times;13", 
         "name": "8x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x14", 
+        "note": "8&times;14", 
         "name": "8x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x15", 
+        "note": "8&times;15", 
         "name": "8x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x16", 
+        "note": "8&times;16", 
         "name": "8x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x17", 
+        "note": "8&times;17", 
         "name": "8x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x18", 
+        "note": "8&times;18", 
         "name": "8x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x19", 
+        "note": "8&times;19", 
         "name": "8x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "8x20", 
+        "note": "8&times;20", 
         "name": "8x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x11", 
+        "note": "9&times;11", 
         "name": "9x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x12", 
+        "note": "9&times;12", 
         "name": "9x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x13", 
+        "note": "9&times;13", 
         "name": "9x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x14", 
+        "note": "9&times;14", 
         "name": "9x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x15", 
+        "note": "9&times;15", 
         "name": "9x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x16", 
+        "note": "9&times;16", 
         "name": "9x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x17", 
+        "note": "9&times;17", 
         "name": "9x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x18", 
+        "note": "9&times;18", 
         "name": "9x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x19", 
+        "note": "9&times;19", 
         "name": "9x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "9x20", 
+        "note": "9&times;20", 
         "name": "9x20", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x11", 
+        "note": "10&times;11", 
         "name": "10x11", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x12", 
+        "note": "10&times;12", 
         "name": "10x12", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x13", 
+        "note": "10&times;13", 
         "name": "10x13", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x14", 
+        "note": "10&times;14", 
         "name": "10x14", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x15", 
+        "note": "10&times;15", 
         "name": "10x15", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x16", 
+        "note": "10&times;16", 
         "name": "10x16", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x17", 
+        "note": "10&times;17", 
         "name": "10x17", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x18", 
+        "note": "10&times;18", 
         "name": "10x18", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x19", 
+        "note": "10&times;19", 
         "name": "10x19", 
         "parent": "multiplication2"
     }, 
     {
-        "note": "10x20", 
+        "note": "10&times;20", 
         "name": "10x20", 
         "parent": "multiplication2"
     }, 
