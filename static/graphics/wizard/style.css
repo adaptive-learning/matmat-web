@@ -198,11 +198,11 @@
 }
 
 div.apple {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     background-image: url('apple.svg');
     background-size: contain;
-    z-index: 0;
+    z-index: 1;
 }
 
 div.basket {

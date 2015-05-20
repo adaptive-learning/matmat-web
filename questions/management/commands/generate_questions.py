@@ -361,7 +361,7 @@ class Command(BaseCommand):
                 Q(skill, free_answer,
                   {"question": "%s &divide; %s" % (total, b),
                    "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL}, value=str(a))
-                if b <= 4 and a <= 7:
+                if b <= 4 and a <= 6:
                     Q(skill, visualization,
                       {"question": ["%s &divide; %s" % (total, b), total, b],
                        "answer": str(a), "kb": KB_10 if total <= 10 else KB_FULL}, value=str(a))
