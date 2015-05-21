@@ -13,7 +13,7 @@
 
     {% for name in names %}
     <h4>{{ name }}</h4>
-    <table class="user_skills" style="display: block;">
+    <table class="user_skill_table">
         {% for row in skill_tables|keyvalue:name %}
             <tr>
                 {% for cell in row %}{% with skills4|keyvalue:cell as skill %}<!-- to avoid whitespaces in inline-block

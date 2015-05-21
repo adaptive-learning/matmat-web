@@ -1,13 +1,14 @@
 # coding=utf-8
+import colorsys
 from math import e
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django import forms
 from django.db.models import Avg, Count, Max
 from django.shortcuts import render
+import math
 from core.models import UserProfile
 from model.models import Skill, UserSkill, QuestionDifficulty
-from model.views import get_style
 from questions.models import Question, Answer
 
 
@@ -174,3 +175,15 @@ SKILL_TABLES = {
     'division':
         [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
     }
+
+def get_style(value, used=True):
+    ''' return css style of user skill'''
+    if value is None:
+        return 'background-color: rgba(127, 127, 0, 0);'
+
+    value = (1 / (1 + math.exp(-value)))
+    color = colorsys.hsv_to_rgb(1. / 12 + value * 2 / 9., 1, 0.8)
+    color = [int(c * 255) for c in color]
+    alpha = 1 if used else 0.2
+    return "background-color: rgba({0[0]}, {0[1]}, {0[2]}, {1});". \
+        format(color, alpha)
