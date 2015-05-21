@@ -19,6 +19,7 @@
         </td>
         <td ng-show="block"></td>
         <td ng-show="block">{{ data.question.2 }}</td>
+        <td ng-show="block"></td>
         <td class="eq"></td>
         <td class="re"></td>
     </tr>
@@ -29,7 +30,8 @@
         </td>
         <td ng-show="block">{{ data.question.0 }}</td>
         <td ng-show="block"><cubes width="data.question.2" height="data.question.0"></cubes></td>
-        <td class="eq"> = </td>
+        <td ng-show="block">{{ data.question.join(" ") }}</td>
+        <td class="eq"> =  </td>
         <td class="re">
             <responsespan answer="data.answer" response="response.value" solved="solved" />
         </td>
