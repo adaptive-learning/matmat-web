@@ -150,7 +150,7 @@ hr.skill-hr{
     top: 69px;
     border-color: black;
     position: absolute;
-    width: 100%;
+    width: 95%;
 }
 
 tab-heading:active, tab-heading:focus { outline-style: none; -moz-outline-style:none; }

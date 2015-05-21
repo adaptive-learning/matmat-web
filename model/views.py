@@ -26,7 +26,6 @@ def my_skills(request, proceed_skill=None, user_pk=None):
         user.as_child = True
 
     skills = dict(map(lambda s: (s.name, s.to_json(user)), Skill.objects.filter(active=True)))
-    print user
 
     return render(request, "model/my_skills.html", {
         "user_showed": user if user_pk is not None else None,
