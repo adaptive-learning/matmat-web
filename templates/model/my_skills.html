@@ -32,7 +32,7 @@
     <hr class="skill-hr" ng-cloak />
     <tabset class="skill-tabs" ng-cloak>
         <tab ng-repeat="s in base_skills" ng-init="skill = skills[s]" active="skill.active">
-            <tab-heading ng-style="skill.style" ng-class="{'active': skill.active}" >
+            <tab-heading ng-style="skill.style" class="fancy" ng-class="{'active': skill.active}" >
                 {{ skill.note }}
                 <div class="gradient"></div>
             </tab-heading>

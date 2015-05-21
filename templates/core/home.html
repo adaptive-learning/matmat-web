@@ -2,15 +2,15 @@
 {% load staticfiles %}
 
 {% block content%}
-    <h1 class="text-center"><b>MatMat</b> - inteligentní procvičování matematiky</h1>
+    <h1 class="text-center"><b class="fancy">MatMat</b> - inteligentní procvičování matematiky</h1>
     <hr/>
     <div id="skill_selector">
     {% for skill in skills%}
         <a href="{% url "play" skill.to_url %}">
         <div class="skill"
              style="background-image: url('{{ skill.image }}')">
-            <span class="title">{{ skill.note }}</span>
-            <span class="subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
+            <span class="fancy title">{{ skill.note }}</span>
+            <span class="fancy subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
         </div></a>
 
         <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>

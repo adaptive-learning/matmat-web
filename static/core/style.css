@@ -1,6 +1,9 @@
 body, p, li{
     font-size: 1.2rem;
 }
+.fancy{
+    font-family: 'Sorts Mill Goudy', serif;
+}
 
 #wrapper{
     position: relative;
@@ -111,6 +114,7 @@ h1{
 
 .paragraph-with-icon h3{
     padding-top: 0.5em;
+    font-family: 'Sorts Mill Goudy', serif;
 }
 
 .paragraph-with-icon i, .heading i{
