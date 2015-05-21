@@ -138,13 +138,14 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
         $scope.question.time =  (new Date().getTime() - $scope.question.start_time) / 1000;
 
         $scope.solved = correctly_solved ? "solved_correctly" : "solved_incorrectly";
-        $scope.fast_solution = $scope.question.time <= $scope.question.expected_time;
+        $scope.fast_solution = $scope.question.time <= $scope.question.expected_time * 2;
+        $scope.extra_fast_solution = $scope.question.time <= $scope.question.expected_time;
         $scope.question.correctly_solved =  correctly_solved;
         $scope.say = correctly_solved ? "Správně" : "Špatně";
-        if ($scope.fast_solution && correctly_solved) $scope.say += " a rychle";
+        if ($scope.extra_fast_solution && correctly_solved) $scope.say += " a rychle";
         $scope.question.answer =  answer;
         SimulatorGlobal.description.top = "";
-        $scope.counter.progress[$scope.counter.current-1] = correctly_solved ? $scope.fast_solution ? 2 : 1 : -1;
+        $scope.counter.progress[$scope.counter.current-1] = correctly_solved ? $scope.fast_solution ? $scope.extra_fast_solution ? 3 : 2 : 1 : -1;
         $timeout($scope.roller.fit_height, 0);
 
         $scope.save_answer();

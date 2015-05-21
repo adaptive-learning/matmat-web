@@ -176,6 +176,7 @@
 }
 .diamond.green, #counter > div.green div{background-image: url("diamond-green.svg")}
 .diamond.shine, #counter > div.shine div{background-image: url("diamond-shine.svg")}
+.diamond.shine-small, #counter > div.shine-small div{background-image: url("diamond-shine-small.svg")}
 .diamond.red, #counter > div.red div{background-image: url("diamond-red.svg")}
 #counter > div:nth-child(even){ margin-left: 35px; }
 
