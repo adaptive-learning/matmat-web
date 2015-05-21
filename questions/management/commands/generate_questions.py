@@ -4,6 +4,35 @@ import json
 import random
 from django.core.management import BaseCommand
 
+BASE_SKILLS = ['numbers', 'addition', 'subtraction', 'multiplication', 'division']
+
+SUB_SKILL = {
+    'numbers': ["numbers <= 10", "numbers <= 20"],
+    'addition': ["addition <= 10", "addition <= 20", "addition <= 100"],
+    'subtraction': ["subtraction <= 10", "subtraction <= 20"],
+    'multiplication': ["multiplication1", "multiplication2"],
+    'division': ['division1'],
+}
+SKILL_TABLES = {
+    'numbers <= 10':
+        [[str(c + r * 10) for c in range(1, 11)] for r in range(1)],
+    'numbers <= 20':
+        [[str(c + r * 10) for c in range(1, 11)] for r in range(1, 2)],
+    'addition <= 10':
+        [['%s+%s' % (r, c) for c in range(1, 10 - r + 1)] for r in range(1, 6)],
+    'addition <= 20':
+        [['%s+%s' % (c, r - c) for c in range(1, 11) if r - c >= c] for r in range(11, 21)],
+    'subtraction <= 10':
+        [['%s-%s' % (r, c) for c in range(1, r + 1)] for r in range(1, 11)],
+    'multiplication1':
+        [['%sx%s' % (c, r) for c in range(1, 11)] for r in range(1, 11)],
+    'multiplication2':
+        [['%sx%s' % (c, r) for c in range(1, 11)] for r in range(11, 21)],
+    'division1':
+        [['%s/%s' % (a * b, b) for a in range(1, 11)] for b in range(1, 11)],
+}
+
+
 
 class Command(BaseCommand):
     help = 'Closes the specified poll for voting'

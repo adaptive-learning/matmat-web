@@ -59,7 +59,7 @@
     color: #000000;
 }
 
-.skill-tabs dd a, .skill-tabs dd a:hover, .skill-tabs dd.active a {
+.skill-tabs tab-heading {
     background: center 20px no-repeat;
     background-size: 30%;
 }
@@ -158,18 +158,25 @@
     position: relative;
 }
 #counter > div div{
-    background: url("diamond-gray.svg") no-repeat center center;
-    background-size: contain;
-    height: 60px;
-    width: 50px;
     transition: all 0.5s;
     position: absolute;
     top: 0;
     bottom: 0;
+    height: 60px;
+    width: 50px;
 }
-#counter > div.green div{background-image: url("diamond-green.svg")}
-#counter > div.shine div{background-image: url("diamond-shine.svg")}
-#counter > div.red div{background-image: url("diamond-red.svg")}
+.diamond{
+    margin-top: -10px;
+    height: 40px;
+    width: 40px;
+}
+.diamond, #counter > div div{
+    background: url("diamond-gray.svg") no-repeat center center;
+    background-size: contain;
+}
+.diamond.green, #counter > div.green div{background-image: url("diamond-green.svg")}
+.diamond.shine, #counter > div.shine div{background-image: url("diamond-shine.svg")}
+.diamond.red, #counter > div.red div{background-image: url("diamond-red.svg")}
 #counter > div:nth-child(even){ margin-left: 35px; }
 
 #counter > div.animated div{

@@ -1,4 +1,4 @@
-var app = angular.module('matmat', ["ngCookies", "ngAnimate"]);
+var app = angular.module('matmat', ["ngCookies", "ngAnimate", "mm.foundation"]);
 
 app.factory("SimulatorGlobal", function(){
         return {

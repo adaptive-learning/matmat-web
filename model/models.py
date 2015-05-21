@@ -1,13 +1,33 @@
+from collections import defaultdict
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Avg
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
+from django.templatetags.static import static
 from core.models import UserProfile, is_user_registred
 from core.utils import cache_pure
 from elo.DataProviderInterface import DataProviderInterface
 from matmat import settings
 from questions.models import Answer
+
+
+ROOT = 'math'
+
+
+class SkillManager(models.Manager):
+
+    @cache_pure
+    def parents(self):
+        parents = {}
+        for skill in self.all().select_related("parent"):
+            parents[skill.name] = skill.parent.name if skill.parent is not None else None
+        return parents
+
+    @cache_pure
+    def all_names(self):
+        return Skill.objects.all().values_list("name", flat=True)
 
 
 class Skill(models.Model):
@@ -18,8 +38,26 @@ class Skill(models.Model):
     children_list = models.TextField(default="")
     active = models.BooleanField(default=True)
 
+    objects = SkillManager()
+
     def __unicode__(self):
         return self.name
+
+    def to_json(self, user):
+        data = {
+            "name": self.name,
+            "note": self.note,
+            "level": self.level,
+            "active": self.active,
+            "image": self.get_image_static(user),
+        }
+
+        if 1 < self.level < 4:
+            data["url"] = reverse(u"play", args=[self.to_url()])
+            data["answer_count"] = self.get_answers_count(user)
+            data["correct_answer_count"] = self.get_answers_count(user, correctly_solved=True)
+
+        return data
 
     def to_url(self):
         return self.note.replace(" ", "_")
@@ -29,11 +67,17 @@ class Skill(models.Model):
         return url.replace("_", " ")
 
     def get_image_name(self, user):
+        if self.level > 2:
+            return None
         graphics = user.profile.graphics if is_user_registred(user) else settings.DEFAULT_GRAPHICS
         if graphics == UserProfile.PLAIN:
             return "graphics/plain/skill_{}.png".format(self.name)
         if graphics == UserProfile.WIZARD:
             return "graphics/wizard/skill_{}.png".format(self.name)
+
+    def get_image_static(self, user):
+        name = self.get_image_name(user)
+        return static(name) if name is not None else None
 
     def get_answers_count(self, user, correctly_solved=None):
         answers = Answer.objects.filter(question__skill__in=self.children_list.split(","), user=user)
@@ -121,10 +165,32 @@ class QuestionDifficulty(models.Model):
             return None
         return self.question.answers.aggregate(Avg('solving_time'))
 
+
+class UserSkillManager(models.Manager):
+
+    def all_diffs(self, user):
+        return defaultdict(lambda: 0, self.filter(user=user).values_list("skill__name", "value"))
+
+    def all_skills(self, user):
+        parents = Skill.objects.parents()
+        diffs = self.all_diffs(user)
+        skills = {}
+        for skill in Skill.objects.all_names():
+            s = skill
+            value = diffs[s]
+            while parents[s] is not None:
+                s = parents[s]
+                value += diffs[s]
+            skills[skill] = value
+        return skills
+
+
 class UserSkill(models.Model):
     user = models.ForeignKey(User, related_name="user_skills")
     skill = models.ForeignKey(Skill, related_name="user_skills")
     value = models.FloatField(default=0)
+
+    objects = UserSkillManager()
 
     class Meta:
         unique_together = ('user', 'skill')

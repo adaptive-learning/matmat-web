@@ -32,7 +32,7 @@ def home(request):
         convert_lazy_user(request.user)
 
     for skill in skills:
-        skill.image = skill.get_image_name(request.user)
+        skill.image = skill.get_image_static(request.user)
 
     return render(request, 'core/home.html', {
         "skills": skills,

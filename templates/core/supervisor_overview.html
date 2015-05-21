@@ -67,24 +67,20 @@
     </div>
     <hr/>
 
-    <dl class="accordion" data-accordion>
-        <dd class="accordion-navigation">
-            <a href="#panel1">{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}</a>
-            <div id="panel1" class="content {{ child_pk|yesno:"active," }} {{ children|yesno:",active" }}">
+    <accordion close-others="true">
+        <accordion-group heading="{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}" is-open='{{ child_pk|yesno:"true, false" }} || {{ children|yesno:"false,true" }}'>
+            {% if child_pk %}
+                <form action="{% url "edit_child" child_pk %}" method="post">
+            {% else %}
+                <form action="{% url "supervisor_overview" %}" method="post">
+            {% endif %}
 
-                {% if child_pk %}
-                    <form action="{% url "edit_child" child_pk %}" method="post">
-                {% else %}
-                    <form action="{% url "supervisor_overview" %}" method="post">
-                {% endif %}
+            {% csrf_token %}
+            {{ child_form }}
+            <input type="submit" class="button radius" value="{{ child_pk|yesno:"Upravit, Přidat" }}"/>
+            </form>
 
-                    {% csrf_token %}
-                    {{ child_form }}
-                    <input type="submit" class="button radius" value="{{ child_pk|yesno:"Upravit, Přidat" }}"/>
-                </form>
-
-            </div>
-        </dd>
-    </dl>
+        </accordion-group>
+    </accordion>
 
 {% endblock %}
