@@ -12,19 +12,19 @@
     {# styles and scripts #}
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
-    <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
-    <link rel="stylesheet" href="{% static "foundation/icons/foundation-icons.css" %}">
-    <link rel="stylesheet" href="{% static "core/style.css" %}">
-    <link rel="stylesheet" href="{% static "core/spinner.css" %}">
-    <link rel="stylesheet" href="{% static "core/animations.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "foundation/icons/foundation-icons.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "core/style.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "core/spinner.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "core/animations.css" %}">
 
     {% if graphics == "wi" %}
-        <link rel="stylesheet" href="{% static "graphics/wizard/style.css" %}">
-        <link rel="stylesheet" href="{% static "graphics/wizard/keyboard.css" %}">
-        <link rel="stylesheet" href="{% static "graphics/wizard/roller.css" %}">
+        <link type="text/css" rel="stylesheet" href="{% static "graphics/wizard/style.css" %}">
+        <link type="text/css" rel="stylesheet" href="{% static "graphics/wizard/keyboard.css" %}">
+        <link type="text/css" rel="stylesheet" href="{% static "graphics/wizard/roller.css" %}">
     {% else %}
-        <link rel="stylesheet" href="{% static "graphics/plain/style.css" %}">
+        <link type="text/css" rel="stylesheet" href="{% static "graphics/plain/style.css" %}">
     {% endif %}
 
     {% block extrastyles %}{% endblock %}
