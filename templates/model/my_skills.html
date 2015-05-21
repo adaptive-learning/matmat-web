@@ -24,10 +24,10 @@
         proceedSkill = data.proceed_skill;
         active = data.active'>
     </div>
-
 {% verbatim %}
-    <div class="right text-right" ng-cloak ng-show="proceedSkill">
-        <a ng-href="{{ skills[proceedSkill].url }}"><button class="radius">Procvičovat dál <br/><b>{{ skills[proceedSkill].note }}</b></button></a>
+    <div class="right text-right">
+        <a ng-href="{{ skills[proceedSkill].url }}" ng-cloak ng-show="proceedSkill"><button class="radius">Procvičovat dál <br/><b>{{ skills[proceedSkill].note }}</b></button></a>
+        {% endverbatim %}{{ user_showed.first_name }}{% verbatim %}
     </div>
     <hr class="skill-hr" ng-cloak />
     <tabset class="skill-tabs" ng-cloak>
