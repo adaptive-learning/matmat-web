@@ -123,7 +123,10 @@ class Command(BaseCommand):
         }
 
         KB_FULL = "full"
-        KB_10 = range(1, 11)
+        # KB_10 = range(1, 11)
+        KB_10 = KB_FULL
+        # KB_010 = [0] + KB_10
+        KB_010 = KB_FULL
         ids = defaultdict(lambda: 0)
 
         def get_skill(name):
@@ -266,7 +269,7 @@ class Command(BaseCommand):
             for b in range(1, a + 1):
                 skill = '%s-%s' % (a, b) if a <= 10 else 'subtraction <= 20'
                 value = str(a - b) if a <= 10 else None
-                kb = [0] + KB_10 if a <= 10 else KB_FULL
+                kb = KB_010 if a <= 10 else KB_FULL
                 Q(skill, free_answer,
                   {"question": "%s - %s" % (a, b), "answer": str(a - b),
                    "kb": kb}, value=value)

@@ -9,7 +9,7 @@
         "id": "1-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [1]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": false, \"question\": [1]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -27,7 +27,7 @@
         "id": "2-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [2]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": false, \"question\": [2]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -45,7 +45,7 @@
         "id": "3-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [3]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": false, \"question\": [3]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -63,7 +63,7 @@
         "id": "4-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [4]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": false, \"question\": [4]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -81,7 +81,7 @@
         "id": "5-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [5]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": false, \"question\": [5]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -99,7 +99,7 @@
         "id": "6-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [6]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": false, \"question\": [6]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -117,7 +117,7 @@
         "id": "7-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [7]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": false, \"question\": [7]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -135,7 +135,7 @@
         "id": "8-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [8]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": false, \"question\": [8]}", 
         "value": "8", 
         "player": "counting", 
         "active": true, 
@@ -153,7 +153,7 @@
         "id": "9-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [9]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": false, \"question\": [9]}", 
         "value": "9", 
         "player": "counting", 
         "active": true, 
@@ -171,7 +171,7 @@
         "id": "10-selecting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": false, \"question\": [10]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": false, \"question\": [10]}", 
         "value": "10", 
         "player": "counting", 
         "active": true, 
@@ -540,7 +540,7 @@
         "id": "20-numberline-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 1\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"1 + 1\"}", 
         "value": "1+1", 
         "player": "free_answer", 
         "active": true, 
@@ -549,7 +549,7 @@
         "id": "1+1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 1]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 1]}", 
         "value": "1+1", 
         "player": "counting", 
         "active": true, 
@@ -558,7 +558,7 @@
         "id": "1+1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 2\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"1 + 2\"}", 
         "value": "1+2", 
         "player": "free_answer", 
         "active": true, 
@@ -567,7 +567,7 @@
         "id": "1+2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 2]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 2]}", 
         "value": "1+2", 
         "player": "counting", 
         "active": true, 
@@ -576,7 +576,7 @@
         "id": "1+2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 3\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"1 + 3\"}", 
         "value": "1+3", 
         "player": "free_answer", 
         "active": true, 
@@ -585,7 +585,7 @@
         "id": "1+3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 3]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 3]}", 
         "value": "1+3", 
         "player": "counting", 
         "active": true, 
@@ -594,7 +594,7 @@
         "id": "1+3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 4\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"1 + 4\"}", 
         "value": "1+4", 
         "player": "free_answer", 
         "active": true, 
@@ -603,7 +603,7 @@
         "id": "1+4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 4]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 4]}", 
         "value": "1+4", 
         "player": "counting", 
         "active": true, 
@@ -612,7 +612,7 @@
         "id": "1+4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 5\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"1 + 5\"}", 
         "value": "1+5", 
         "player": "free_answer", 
         "active": true, 
@@ -621,7 +621,7 @@
         "id": "1+5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 5]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 5]}", 
         "value": "1+5", 
         "player": "counting", 
         "active": true, 
@@ -630,7 +630,7 @@
         "id": "1+5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 6\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"1 + 6\"}", 
         "value": "1+6", 
         "player": "free_answer", 
         "active": true, 
@@ -639,7 +639,7 @@
         "id": "1+6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 6]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 6]}", 
         "value": "1+6", 
         "player": "counting", 
         "active": true, 
@@ -648,7 +648,7 @@
         "id": "1+6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 7\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"1 + 7\"}", 
         "value": "1+7", 
         "player": "free_answer", 
         "active": true, 
@@ -657,7 +657,7 @@
         "id": "1+7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 7]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 7]}", 
         "value": "1+7", 
         "player": "counting", 
         "active": true, 
@@ -666,7 +666,7 @@
         "id": "1+7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 8\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"1 + 8\"}", 
         "value": "1+8", 
         "player": "free_answer", 
         "active": true, 
@@ -675,7 +675,7 @@
         "id": "1+8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 8]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 8]}", 
         "value": "1+8", 
         "player": "counting", 
         "active": true, 
@@ -684,7 +684,7 @@
         "id": "1+8-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 + 9\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"1 + 9\"}", 
         "value": "1+9", 
         "player": "free_answer", 
         "active": true, 
@@ -693,7 +693,7 @@
         "id": "1+9-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 9]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 9]}", 
         "value": "1+9", 
         "player": "counting", 
         "active": true, 
@@ -882,7 +882,7 @@
         "id": "1+19-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 1\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"2 + 1\"}", 
         "value": "1+2", 
         "player": "free_answer", 
         "active": true, 
@@ -891,7 +891,7 @@
         "id": "1+2-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 1]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 1]}", 
         "value": "1+2", 
         "player": "counting", 
         "active": true, 
@@ -900,7 +900,7 @@
         "id": "1+2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 2\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"2 + 2\"}", 
         "value": "2+2", 
         "player": "free_answer", 
         "active": true, 
@@ -909,7 +909,7 @@
         "id": "2+2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 2]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 2]}", 
         "value": "2+2", 
         "player": "counting", 
         "active": true, 
@@ -918,7 +918,7 @@
         "id": "2+2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 3\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"2 + 3\"}", 
         "value": "2+3", 
         "player": "free_answer", 
         "active": true, 
@@ -927,7 +927,7 @@
         "id": "2+3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 3]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 3]}", 
         "value": "2+3", 
         "player": "counting", 
         "active": true, 
@@ -936,7 +936,7 @@
         "id": "2+3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 4\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"2 + 4\"}", 
         "value": "2+4", 
         "player": "free_answer", 
         "active": true, 
@@ -945,7 +945,7 @@
         "id": "2+4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 4]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 4]}", 
         "value": "2+4", 
         "player": "counting", 
         "active": true, 
@@ -954,7 +954,7 @@
         "id": "2+4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 5\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"2 + 5\"}", 
         "value": "2+5", 
         "player": "free_answer", 
         "active": true, 
@@ -963,7 +963,7 @@
         "id": "2+5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 5]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 5]}", 
         "value": "2+5", 
         "player": "counting", 
         "active": true, 
@@ -972,7 +972,7 @@
         "id": "2+5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 6\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"2 + 6\"}", 
         "value": "2+6", 
         "player": "free_answer", 
         "active": true, 
@@ -981,7 +981,7 @@
         "id": "2+6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 6]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 6]}", 
         "value": "2+6", 
         "player": "counting", 
         "active": true, 
@@ -990,7 +990,7 @@
         "id": "2+6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 7\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"2 + 7\"}", 
         "value": "2+7", 
         "player": "free_answer", 
         "active": true, 
@@ -999,7 +999,7 @@
         "id": "2+7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 7]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 7]}", 
         "value": "2+7", 
         "player": "counting", 
         "active": true, 
@@ -1008,7 +1008,7 @@
         "id": "2+7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 + 8\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"2 + 8\"}", 
         "value": "2+8", 
         "player": "free_answer", 
         "active": true, 
@@ -1017,7 +1017,7 @@
         "id": "2+8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 8]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 8]}", 
         "value": "2+8", 
         "player": "counting", 
         "active": true, 
@@ -1206,7 +1206,7 @@
         "id": "2+18-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 1\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"3 + 1\"}", 
         "value": "1+3", 
         "player": "free_answer", 
         "active": true, 
@@ -1215,7 +1215,7 @@
         "id": "1+3-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 1]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 1]}", 
         "value": "1+3", 
         "player": "counting", 
         "active": true, 
@@ -1224,7 +1224,7 @@
         "id": "1+3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 2\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"3 + 2\"}", 
         "value": "2+3", 
         "player": "free_answer", 
         "active": true, 
@@ -1233,7 +1233,7 @@
         "id": "2+3-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 2]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 2]}", 
         "value": "2+3", 
         "player": "counting", 
         "active": true, 
@@ -1242,7 +1242,7 @@
         "id": "2+3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 3\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"3 + 3\"}", 
         "value": "3+3", 
         "player": "free_answer", 
         "active": true, 
@@ -1251,7 +1251,7 @@
         "id": "3+3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 3]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 3]}", 
         "value": "3+3", 
         "player": "counting", 
         "active": true, 
@@ -1260,7 +1260,7 @@
         "id": "3+3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 4\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"3 + 4\"}", 
         "value": "3+4", 
         "player": "free_answer", 
         "active": true, 
@@ -1269,7 +1269,7 @@
         "id": "3+4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 4]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 4]}", 
         "value": "3+4", 
         "player": "counting", 
         "active": true, 
@@ -1278,7 +1278,7 @@
         "id": "3+4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 5\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"3 + 5\"}", 
         "value": "3+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1287,7 +1287,7 @@
         "id": "3+5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 5]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 5]}", 
         "value": "3+5", 
         "player": "counting", 
         "active": true, 
@@ -1296,7 +1296,7 @@
         "id": "3+5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 6\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"3 + 6\"}", 
         "value": "3+6", 
         "player": "free_answer", 
         "active": true, 
@@ -1305,7 +1305,7 @@
         "id": "3+6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 6]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 6]}", 
         "value": "3+6", 
         "player": "counting", 
         "active": true, 
@@ -1314,7 +1314,7 @@
         "id": "3+6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 + 7\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"3 + 7\"}", 
         "value": "3+7", 
         "player": "free_answer", 
         "active": true, 
@@ -1323,7 +1323,7 @@
         "id": "3+7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 7]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 7]}", 
         "value": "3+7", 
         "player": "counting", 
         "active": true, 
@@ -1512,7 +1512,7 @@
         "id": "3+17-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 1\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"4 + 1\"}", 
         "value": "1+4", 
         "player": "free_answer", 
         "active": true, 
@@ -1521,7 +1521,7 @@
         "id": "1+4-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 1]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 1]}", 
         "value": "1+4", 
         "player": "counting", 
         "active": true, 
@@ -1530,7 +1530,7 @@
         "id": "1+4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 2\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"4 + 2\"}", 
         "value": "2+4", 
         "player": "free_answer", 
         "active": true, 
@@ -1539,7 +1539,7 @@
         "id": "2+4-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 2]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 2]}", 
         "value": "2+4", 
         "player": "counting", 
         "active": true, 
@@ -1548,7 +1548,7 @@
         "id": "2+4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 3\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"4 + 3\"}", 
         "value": "3+4", 
         "player": "free_answer", 
         "active": true, 
@@ -1557,7 +1557,7 @@
         "id": "3+4-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 3]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 3]}", 
         "value": "3+4", 
         "player": "counting", 
         "active": true, 
@@ -1566,7 +1566,7 @@
         "id": "3+4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 4\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"4 + 4\"}", 
         "value": "4+4", 
         "player": "free_answer", 
         "active": true, 
@@ -1575,7 +1575,7 @@
         "id": "4+4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 4]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 4]}", 
         "value": "4+4", 
         "player": "counting", 
         "active": true, 
@@ -1584,7 +1584,7 @@
         "id": "4+4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 5\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"4 + 5\"}", 
         "value": "4+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1593,7 +1593,7 @@
         "id": "4+5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 5]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 5]}", 
         "value": "4+5", 
         "player": "counting", 
         "active": true, 
@@ -1602,7 +1602,7 @@
         "id": "4+5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 + 6\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"4 + 6\"}", 
         "value": "4+6", 
         "player": "free_answer", 
         "active": true, 
@@ -1611,7 +1611,7 @@
         "id": "4+6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 6]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 6]}", 
         "value": "4+6", 
         "player": "counting", 
         "active": true, 
@@ -1800,7 +1800,7 @@
         "id": "4+16-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 + 1\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"5 + 1\"}", 
         "value": "1+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1809,7 +1809,7 @@
         "id": "1+5-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 1]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 1]}", 
         "value": "1+5", 
         "player": "counting", 
         "active": true, 
@@ -1818,7 +1818,7 @@
         "id": "1+5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 + 2\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"5 + 2\"}", 
         "value": "2+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1827,7 +1827,7 @@
         "id": "2+5-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 2]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 2]}", 
         "value": "2+5", 
         "player": "counting", 
         "active": true, 
@@ -1836,7 +1836,7 @@
         "id": "2+5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 + 3\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"5 + 3\"}", 
         "value": "3+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1845,7 +1845,7 @@
         "id": "3+5-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 3]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 3]}", 
         "value": "3+5", 
         "player": "counting", 
         "active": true, 
@@ -1854,7 +1854,7 @@
         "id": "3+5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 + 4\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"5 + 4\"}", 
         "value": "4+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1863,7 +1863,7 @@
         "id": "4+5-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 4]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 4]}", 
         "value": "4+5", 
         "player": "counting", 
         "active": true, 
@@ -1872,7 +1872,7 @@
         "id": "4+5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 + 5\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"5 + 5\"}", 
         "value": "5+5", 
         "player": "free_answer", 
         "active": true, 
@@ -1881,7 +1881,7 @@
         "id": "5+5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 5]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 5]}", 
         "value": "5+5", 
         "player": "counting", 
         "active": true, 
@@ -2070,7 +2070,7 @@
         "id": "5+15-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 + 1\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"6 + 1\"}", 
         "value": "1+6", 
         "player": "free_answer", 
         "active": true, 
@@ -2079,7 +2079,7 @@
         "id": "1+6-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 1]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 1]}", 
         "value": "1+6", 
         "player": "counting", 
         "active": true, 
@@ -2088,7 +2088,7 @@
         "id": "1+6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 + 2\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"6 + 2\"}", 
         "value": "2+6", 
         "player": "free_answer", 
         "active": true, 
@@ -2097,7 +2097,7 @@
         "id": "2+6-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 2]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 2]}", 
         "value": "2+6", 
         "player": "counting", 
         "active": true, 
@@ -2106,7 +2106,7 @@
         "id": "2+6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 + 3\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"6 + 3\"}", 
         "value": "3+6", 
         "player": "free_answer", 
         "active": true, 
@@ -2115,7 +2115,7 @@
         "id": "3+6-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 3]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 3]}", 
         "value": "3+6", 
         "player": "counting", 
         "active": true, 
@@ -2124,7 +2124,7 @@
         "id": "3+6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 + 4\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"6 + 4\"}", 
         "value": "4+6", 
         "player": "free_answer", 
         "active": true, 
@@ -2133,7 +2133,7 @@
         "id": "4+6-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 4]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 4]}", 
         "value": "4+6", 
         "player": "counting", 
         "active": true, 
@@ -2322,7 +2322,7 @@
         "id": "6+14-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 + 1\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"7 + 1\"}", 
         "value": "1+7", 
         "player": "free_answer", 
         "active": true, 
@@ -2331,7 +2331,7 @@
         "id": "1+7-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 1]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 1]}", 
         "value": "1+7", 
         "player": "counting", 
         "active": true, 
@@ -2340,7 +2340,7 @@
         "id": "1+7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 + 2\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"7 + 2\"}", 
         "value": "2+7", 
         "player": "free_answer", 
         "active": true, 
@@ -2349,7 +2349,7 @@
         "id": "2+7-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 2]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 2]}", 
         "value": "2+7", 
         "player": "counting", 
         "active": true, 
@@ -2358,7 +2358,7 @@
         "id": "2+7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 + 3\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"7 + 3\"}", 
         "value": "3+7", 
         "player": "free_answer", 
         "active": true, 
@@ -2367,7 +2367,7 @@
         "id": "3+7-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 3]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 3]}", 
         "value": "3+7", 
         "player": "counting", 
         "active": true, 
@@ -2556,7 +2556,7 @@
         "id": "7+13-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 + 1\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"8 + 1\"}", 
         "value": "1+8", 
         "player": "free_answer", 
         "active": true, 
@@ -2565,7 +2565,7 @@
         "id": "1+8-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"+\", 1]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"+\", 1]}", 
         "value": "1+8", 
         "player": "counting", 
         "active": true, 
@@ -2574,7 +2574,7 @@
         "id": "1+8-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 + 2\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"8 + 2\"}", 
         "value": "2+8", 
         "player": "free_answer", 
         "active": true, 
@@ -2583,7 +2583,7 @@
         "id": "2+8-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"+\", 2]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"+\", 2]}", 
         "value": "2+8", 
         "player": "counting", 
         "active": true, 
@@ -2772,7 +2772,7 @@
         "id": "8+12-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 + 1\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"9 + 1\"}", 
         "value": "1+9", 
         "player": "free_answer", 
         "active": true, 
@@ -2781,7 +2781,7 @@
         "id": "1+9-free_answer-1"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"+\", 1]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"+\", 1]}", 
         "value": "1+9", 
         "player": "counting", 
         "active": true, 
@@ -4860,7 +4860,7 @@
         "id": "addition <= 100-free_answer-99"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 3]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 3]}", 
         "value": "3+7", 
         "player": "counting", 
         "active": true, 
@@ -4887,7 +4887,7 @@
         "id": "addition <= 100-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 6]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 6]}", 
         "value": "1+6", 
         "player": "counting", 
         "active": true, 
@@ -4896,7 +4896,7 @@
         "id": "1+6-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 7]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 7]}", 
         "value": "3+7", 
         "player": "counting", 
         "active": true, 
@@ -4905,7 +4905,7 @@
         "id": "3+7-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 5]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 5]}", 
         "value": "2+5", 
         "player": "counting", 
         "active": true, 
@@ -4959,7 +4959,7 @@
         "id": "6+7-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 5]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 5]}", 
         "value": "5+5", 
         "player": "counting", 
         "active": true, 
@@ -5040,7 +5040,7 @@
         "id": "addition <= 100-counting-6"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 1]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 1]}", 
         "value": "1+1", 
         "player": "counting", 
         "active": true, 
@@ -5058,7 +5058,7 @@
         "id": "4+10-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 2]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 2]}", 
         "value": "2+3", 
         "player": "counting", 
         "active": true, 
@@ -5067,7 +5067,7 @@
         "id": "2+3-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 6]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 6]}", 
         "value": "2+6", 
         "player": "counting", 
         "active": true, 
@@ -5076,7 +5076,7 @@
         "id": "2+6-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"+\", 2]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"+\", 2]}", 
         "value": "2+8", 
         "player": "counting", 
         "active": true, 
@@ -5085,7 +5085,7 @@
         "id": "2+8-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 5]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 5]}", 
         "value": "4+5", 
         "player": "counting", 
         "active": true, 
@@ -5175,7 +5175,7 @@
         "id": "addition <= 100-counting-12"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 1]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 1]}", 
         "value": "1+3", 
         "player": "counting", 
         "active": true, 
@@ -5247,7 +5247,7 @@
         "id": "addition <= 100-counting-17"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 1]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 1]}", 
         "value": "1+2", 
         "player": "counting", 
         "active": true, 
@@ -5301,7 +5301,7 @@
         "id": "addition <= 100-counting-19"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 1]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 1]}", 
         "value": "1+5", 
         "player": "counting", 
         "active": true, 
@@ -5328,7 +5328,7 @@
         "id": "3+10-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 2]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 2]}", 
         "value": "2+7", 
         "player": "counting", 
         "active": true, 
@@ -5346,7 +5346,7 @@
         "id": "addition <= 100-counting-21"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 5]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 5]}", 
         "value": "1+5", 
         "player": "counting", 
         "active": true, 
@@ -5355,7 +5355,7 @@
         "id": "1+5-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 6]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 6]}", 
         "value": "3+6", 
         "player": "counting", 
         "active": true, 
@@ -5364,7 +5364,7 @@
         "id": "3+6-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 2]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 2]}", 
         "value": "2+2", 
         "player": "counting", 
         "active": true, 
@@ -5391,7 +5391,7 @@
         "id": "6+8-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 1]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 1]}", 
         "value": "1+4", 
         "player": "counting", 
         "active": true, 
@@ -5427,7 +5427,7 @@
         "id": "7+9-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 4]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 4]}", 
         "value": "4+6", 
         "player": "counting", 
         "active": true, 
@@ -5436,7 +5436,7 @@
         "id": "4+6-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 4]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 4]}", 
         "value": "4+5", 
         "player": "counting", 
         "active": true, 
@@ -5454,7 +5454,7 @@
         "id": "4+10-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"+\", 1]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"+\", 1]}", 
         "value": "1+7", 
         "player": "counting", 
         "active": true, 
@@ -5481,7 +5481,7 @@
         "id": "addition <= 100-counting-24"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 5]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 5]}", 
         "value": "3+5", 
         "player": "counting", 
         "active": true, 
@@ -5490,7 +5490,7 @@
         "id": "3+5-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 7]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 7]}", 
         "value": "2+7", 
         "player": "counting", 
         "active": true, 
@@ -5517,7 +5517,7 @@
         "id": "5+10-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 6]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 6]}", 
         "value": "4+6", 
         "player": "counting", 
         "active": true, 
@@ -5544,7 +5544,7 @@
         "id": "2+9-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 1]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 1]}", 
         "value": "1+6", 
         "player": "counting", 
         "active": true, 
@@ -5607,7 +5607,7 @@
         "id": "addition <= 100-counting-28"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 3]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 3]}", 
         "value": "1+3", 
         "player": "counting", 
         "active": true, 
@@ -5625,7 +5625,7 @@
         "id": "4+8-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 8]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 8]}", 
         "value": "2+8", 
         "player": "counting", 
         "active": true, 
@@ -5661,7 +5661,7 @@
         "id": "5+13-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 2]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 2]}", 
         "value": "2+6", 
         "player": "counting", 
         "active": true, 
@@ -5733,7 +5733,7 @@
         "id": "addition <= 100-counting-34"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 4]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 4]}", 
         "value": "1+4", 
         "player": "counting", 
         "active": true, 
@@ -5751,7 +5751,7 @@
         "id": "3+9-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 3]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 3]}", 
         "value": "2+3", 
         "player": "counting", 
         "active": true, 
@@ -5760,7 +5760,7 @@
         "id": "2+3-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 9]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 9]}", 
         "value": "1+9", 
         "player": "counting", 
         "active": true, 
@@ -5778,7 +5778,7 @@
         "id": "7+8-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 2]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 2]}", 
         "value": "2+4", 
         "player": "counting", 
         "active": true, 
@@ -5805,7 +5805,7 @@
         "id": "5+6-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 3]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 3]}", 
         "value": "3+5", 
         "player": "counting", 
         "active": true, 
@@ -5850,7 +5850,7 @@
         "id": "addition <= 100-counting-36"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 7]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 7]}", 
         "value": "1+7", 
         "player": "counting", 
         "active": true, 
@@ -5859,7 +5859,7 @@
         "id": "1+7-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 4]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 4]}", 
         "value": "3+4", 
         "player": "counting", 
         "active": true, 
@@ -5868,7 +5868,7 @@
         "id": "3+4-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"+\", 4]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"+\", 4]}", 
         "value": "2+4", 
         "player": "counting", 
         "active": true, 
@@ -5913,7 +5913,7 @@
         "id": "addition <= 100-counting-37"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"+\", 1]}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"+\", 1]}", 
         "value": "1+9", 
         "player": "counting", 
         "active": true, 
@@ -5976,7 +5976,7 @@
         "id": "addition <= 100-counting-39"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 2]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 2]}", 
         "value": "1+2", 
         "player": "counting", 
         "active": true, 
@@ -6003,7 +6003,7 @@
         "id": "4+9-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"+\", 3]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"+\", 3]}", 
         "value": "3+3", 
         "player": "counting", 
         "active": true, 
@@ -6021,7 +6021,7 @@
         "id": "2+9-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"+\", 1]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"+\", 1]}", 
         "value": "1+8", 
         "player": "counting", 
         "active": true, 
@@ -6030,7 +6030,7 @@
         "id": "1+8-counting-2"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 4]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 4]}", 
         "value": "4+4", 
         "player": "counting", 
         "active": true, 
@@ -6039,7 +6039,7 @@
         "id": "4+4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"+\", 3]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"+\", 3]}", 
         "value": "3+6", 
         "player": "counting", 
         "active": true, 
@@ -6138,7 +6138,7 @@
         "id": "3+8-counting-3"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"+\", 8]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"+\", 8]}", 
         "value": "1+8", 
         "player": "counting", 
         "active": true, 
@@ -6156,7 +6156,7 @@
         "id": "8+8-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"+\", 3]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"+\", 3]}", 
         "value": "3+4", 
         "player": "counting", 
         "active": true, 
@@ -6192,7 +6192,7 @@
         "id": "addition <= 100-counting-46"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"+\", 2]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"+\", 2]}", 
         "value": "2+5", 
         "player": "counting", 
         "active": true, 
@@ -6570,7 +6570,7 @@
         "id": "addition <= 20-pairing-9"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 - 1\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"1 - 1\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -6579,7 +6579,7 @@
         "id": "1-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"-\", 1]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"-\", 1]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6588,7 +6588,7 @@
         "id": "1-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [1, \"-\", 1]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [1, \"-\", 1]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6597,7 +6597,7 @@
         "id": "1-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 - 1\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"2 - 1\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -6606,7 +6606,7 @@
         "id": "2-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"-\", 1]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"-\", 1]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6615,7 +6615,7 @@
         "id": "2-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"-\", 1]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"-\", 1]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6624,7 +6624,7 @@
         "id": "2-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 - 2\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"2 - 2\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -6633,7 +6633,7 @@
         "id": "2-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"-\", 2]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"-\", 2]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6642,7 +6642,7 @@
         "id": "2-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [2, \"-\", 2]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [2, \"-\", 2]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6651,7 +6651,7 @@
         "id": "2-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 - 1\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"3 - 1\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -6660,7 +6660,7 @@
         "id": "3-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 1]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 1]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6669,7 +6669,7 @@
         "id": "3-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 1]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 1]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6678,7 +6678,7 @@
         "id": "3-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 - 2\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"3 - 2\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -6687,7 +6687,7 @@
         "id": "3-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 2]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 2]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6696,7 +6696,7 @@
         "id": "3-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 2]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 2]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6705,7 +6705,7 @@
         "id": "3-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 - 3\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"3 - 3\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -6714,7 +6714,7 @@
         "id": "3-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 3]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 3]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6723,7 +6723,7 @@
         "id": "3-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [3, \"-\", 3]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [3, \"-\", 3]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6732,7 +6732,7 @@
         "id": "3-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 - 1\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"4 - 1\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -6741,7 +6741,7 @@
         "id": "4-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 1]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 1]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -6750,7 +6750,7 @@
         "id": "4-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 1]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 1]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -6759,7 +6759,7 @@
         "id": "4-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 - 2\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"4 - 2\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -6768,7 +6768,7 @@
         "id": "4-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 2]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 2]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6777,7 +6777,7 @@
         "id": "4-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 2]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 2]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6786,7 +6786,7 @@
         "id": "4-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 - 3\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"4 - 3\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -6795,7 +6795,7 @@
         "id": "4-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 3]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 3]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6804,7 +6804,7 @@
         "id": "4-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 3]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 3]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6813,7 +6813,7 @@
         "id": "4-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 - 4\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"4 - 4\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -6822,7 +6822,7 @@
         "id": "4-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 4]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 4]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6831,7 +6831,7 @@
         "id": "4-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [4, \"-\", 4]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [4, \"-\", 4]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6840,7 +6840,7 @@
         "id": "4-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 - 1\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"5 - 1\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -6849,7 +6849,7 @@
         "id": "5-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 1]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 1]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -6858,7 +6858,7 @@
         "id": "5-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 1]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 1]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -6867,7 +6867,7 @@
         "id": "5-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 - 2\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"5 - 2\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -6876,7 +6876,7 @@
         "id": "5-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 2]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 2]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -6885,7 +6885,7 @@
         "id": "5-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 2]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 2]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -6894,7 +6894,7 @@
         "id": "5-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 - 3\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"5 - 3\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -6903,7 +6903,7 @@
         "id": "5-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 3]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 3]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6912,7 +6912,7 @@
         "id": "5-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 3]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 3]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -6921,7 +6921,7 @@
         "id": "5-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 - 4\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"5 - 4\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -6930,7 +6930,7 @@
         "id": "5-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 4]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 4]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6939,7 +6939,7 @@
         "id": "5-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 4]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 4]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -6948,7 +6948,7 @@
         "id": "5-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 - 5\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"5 - 5\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -6957,7 +6957,7 @@
         "id": "5-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 5]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 5]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6966,7 +6966,7 @@
         "id": "5-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [5, \"-\", 5]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [5, \"-\", 5]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -6975,7 +6975,7 @@
         "id": "5-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 1\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"6 - 1\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -6984,7 +6984,7 @@
         "id": "6-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 1]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 1]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -6993,7 +6993,7 @@
         "id": "6-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 1]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 1]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7002,7 +7002,7 @@
         "id": "6-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 2\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"6 - 2\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -7011,7 +7011,7 @@
         "id": "6-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 2]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 2]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7020,7 +7020,7 @@
         "id": "6-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 2]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 2]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7029,7 +7029,7 @@
         "id": "6-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 3\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"6 - 3\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -7038,7 +7038,7 @@
         "id": "6-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 3]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 3]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7047,7 +7047,7 @@
         "id": "6-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 3]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 3]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7056,7 +7056,7 @@
         "id": "6-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 4\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"6 - 4\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -7065,7 +7065,7 @@
         "id": "6-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 4]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 4]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7074,7 +7074,7 @@
         "id": "6-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 4]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 4]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7083,7 +7083,7 @@
         "id": "6-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 5\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"6 - 5\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -7092,7 +7092,7 @@
         "id": "6-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 5]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 5]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7101,7 +7101,7 @@
         "id": "6-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 5]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 5]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7110,7 +7110,7 @@
         "id": "6-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 - 6\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"6 - 6\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -7119,7 +7119,7 @@
         "id": "6-6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 6]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 6]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7128,7 +7128,7 @@
         "id": "6-6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [6, \"-\", 6]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [6, \"-\", 6]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7137,7 +7137,7 @@
         "id": "6-6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 1\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"7 - 1\"}", 
         "value": "6", 
         "player": "free_answer", 
         "active": true, 
@@ -7146,7 +7146,7 @@
         "id": "7-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 1]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 1]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7155,7 +7155,7 @@
         "id": "7-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 1]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 1]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7164,7 +7164,7 @@
         "id": "7-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 2\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"7 - 2\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -7173,7 +7173,7 @@
         "id": "7-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 2]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 2]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7182,7 +7182,7 @@
         "id": "7-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 2]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 2]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7191,7 +7191,7 @@
         "id": "7-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 3\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"7 - 3\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -7200,7 +7200,7 @@
         "id": "7-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 3]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 3]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7209,7 +7209,7 @@
         "id": "7-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 3]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 3]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7218,7 +7218,7 @@
         "id": "7-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 4\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"7 - 4\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -7227,7 +7227,7 @@
         "id": "7-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 4]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 4]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7236,7 +7236,7 @@
         "id": "7-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 4]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 4]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7245,7 +7245,7 @@
         "id": "7-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 5\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"7 - 5\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -7254,7 +7254,7 @@
         "id": "7-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 5]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 5]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7263,7 +7263,7 @@
         "id": "7-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 5]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 5]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7272,7 +7272,7 @@
         "id": "7-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 6\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"7 - 6\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -7281,7 +7281,7 @@
         "id": "7-6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 6]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 6]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7290,7 +7290,7 @@
         "id": "7-6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 6]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 6]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7299,7 +7299,7 @@
         "id": "7-6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 - 7\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"7 - 7\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -7308,7 +7308,7 @@
         "id": "7-7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 7]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 7]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7317,7 +7317,7 @@
         "id": "7-7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [7, \"-\", 7]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [7, \"-\", 7]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7326,7 +7326,7 @@
         "id": "7-7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 1\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"8 - 1\"}", 
         "value": "7", 
         "player": "free_answer", 
         "active": true, 
@@ -7335,7 +7335,7 @@
         "id": "8-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 1]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 1]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7344,7 +7344,7 @@
         "id": "8-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 1]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 1]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7353,7 +7353,7 @@
         "id": "8-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 2\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"8 - 2\"}", 
         "value": "6", 
         "player": "free_answer", 
         "active": true, 
@@ -7362,7 +7362,7 @@
         "id": "8-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 2]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 2]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7371,7 +7371,7 @@
         "id": "8-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 2]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 2]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7380,7 +7380,7 @@
         "id": "8-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 3\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"8 - 3\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -7389,7 +7389,7 @@
         "id": "8-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 3]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 3]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7398,7 +7398,7 @@
         "id": "8-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 3]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 3]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7407,7 +7407,7 @@
         "id": "8-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 4\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"8 - 4\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -7416,7 +7416,7 @@
         "id": "8-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 4]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 4]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7425,7 +7425,7 @@
         "id": "8-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 4]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 4]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7434,7 +7434,7 @@
         "id": "8-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 5\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"8 - 5\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -7443,7 +7443,7 @@
         "id": "8-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 5]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 5]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7452,7 +7452,7 @@
         "id": "8-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 5]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 5]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7461,7 +7461,7 @@
         "id": "8-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 6\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"8 - 6\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -7470,7 +7470,7 @@
         "id": "8-6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 6]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 6]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7479,7 +7479,7 @@
         "id": "8-6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 6]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 6]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7488,7 +7488,7 @@
         "id": "8-6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 7\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"8 - 7\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -7497,7 +7497,7 @@
         "id": "8-7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 7]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 7]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7506,7 +7506,7 @@
         "id": "8-7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 7]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 7]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7515,7 +7515,7 @@
         "id": "8-7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 - 8\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"8 - 8\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -7524,7 +7524,7 @@
         "id": "8-8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 8]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 8]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7533,7 +7533,7 @@
         "id": "8-8-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [8, \"-\", 8]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [8, \"-\", 8]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7542,7 +7542,7 @@
         "id": "8-8-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 1\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"9 - 1\"}", 
         "value": "8", 
         "player": "free_answer", 
         "active": true, 
@@ -7551,7 +7551,7 @@
         "id": "9-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 1]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 1]}", 
         "value": "8", 
         "player": "counting", 
         "active": true, 
@@ -7560,7 +7560,7 @@
         "id": "9-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 1]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 1]}", 
         "value": "8", 
         "player": "counting", 
         "active": true, 
@@ -7569,7 +7569,7 @@
         "id": "9-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 2\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"9 - 2\"}", 
         "value": "7", 
         "player": "free_answer", 
         "active": true, 
@@ -7578,7 +7578,7 @@
         "id": "9-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 2]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 2]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7587,7 +7587,7 @@
         "id": "9-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 2]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 2]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7596,7 +7596,7 @@
         "id": "9-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 3\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"9 - 3\"}", 
         "value": "6", 
         "player": "free_answer", 
         "active": true, 
@@ -7605,7 +7605,7 @@
         "id": "9-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 3]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 3]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7614,7 +7614,7 @@
         "id": "9-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 3]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 3]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7623,7 +7623,7 @@
         "id": "9-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 4\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"9 - 4\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -7632,7 +7632,7 @@
         "id": "9-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 4]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 4]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7641,7 +7641,7 @@
         "id": "9-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 4]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 4]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7650,7 +7650,7 @@
         "id": "9-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 5\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"9 - 5\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -7659,7 +7659,7 @@
         "id": "9-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 5]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 5]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7668,7 +7668,7 @@
         "id": "9-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 5]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 5]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7677,7 +7677,7 @@
         "id": "9-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 6\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"9 - 6\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -7686,7 +7686,7 @@
         "id": "9-6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 6]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 6]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7695,7 +7695,7 @@
         "id": "9-6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 6]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 6]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7704,7 +7704,7 @@
         "id": "9-6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 7\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"9 - 7\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -7713,7 +7713,7 @@
         "id": "9-7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 7]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 7]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7722,7 +7722,7 @@
         "id": "9-7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 7]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 7]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7731,7 +7731,7 @@
         "id": "9-7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 8\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"9 - 8\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -7740,7 +7740,7 @@
         "id": "9-8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 8]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 8]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7749,7 +7749,7 @@
         "id": "9-8-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 8]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 8]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -7758,7 +7758,7 @@
         "id": "9-8-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 - 9\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"9 - 9\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -7767,7 +7767,7 @@
         "id": "9-9-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 9]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 9]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7776,7 +7776,7 @@
         "id": "9-9-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [9, \"-\", 9]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [9, \"-\", 9]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -7785,7 +7785,7 @@
         "id": "9-9-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 1\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"10 - 1\"}", 
         "value": "9", 
         "player": "free_answer", 
         "active": true, 
@@ -7794,7 +7794,7 @@
         "id": "10-1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 1]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 1]}", 
         "value": "9", 
         "player": "counting", 
         "active": true, 
@@ -7803,7 +7803,7 @@
         "id": "10-1-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 1]}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 1]}", 
         "value": "9", 
         "player": "counting", 
         "active": true, 
@@ -7812,7 +7812,7 @@
         "id": "10-1-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 2\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"10 - 2\"}", 
         "value": "8", 
         "player": "free_answer", 
         "active": true, 
@@ -7821,7 +7821,7 @@
         "id": "10-2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 2]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 2]}", 
         "value": "8", 
         "player": "counting", 
         "active": true, 
@@ -7830,7 +7830,7 @@
         "id": "10-2-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 2]}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 2]}", 
         "value": "8", 
         "player": "counting", 
         "active": true, 
@@ -7839,7 +7839,7 @@
         "id": "10-2-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 3\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"10 - 3\"}", 
         "value": "7", 
         "player": "free_answer", 
         "active": true, 
@@ -7848,7 +7848,7 @@
         "id": "10-3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 3]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 3]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7857,7 +7857,7 @@
         "id": "10-3-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 3]}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 3]}", 
         "value": "7", 
         "player": "counting", 
         "active": true, 
@@ -7866,7 +7866,7 @@
         "id": "10-3-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 4\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"10 - 4\"}", 
         "value": "6", 
         "player": "free_answer", 
         "active": true, 
@@ -7875,7 +7875,7 @@
         "id": "10-4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 4]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 4]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7884,7 +7884,7 @@
         "id": "10-4-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 4]}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 4]}", 
         "value": "6", 
         "player": "counting", 
         "active": true, 
@@ -7893,7 +7893,7 @@
         "id": "10-4-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 5\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"10 - 5\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -7902,7 +7902,7 @@
         "id": "10-5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 5]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 5]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7911,7 +7911,7 @@
         "id": "10-5-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 5]}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 5]}", 
         "value": "5", 
         "player": "counting", 
         "active": true, 
@@ -7920,7 +7920,7 @@
         "id": "10-5-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 6\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"10 - 6\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -7929,7 +7929,7 @@
         "id": "10-6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 6]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 6]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7938,7 +7938,7 @@
         "id": "10-6-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 6]}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 6]}", 
         "value": "4", 
         "player": "counting", 
         "active": true, 
@@ -7947,7 +7947,7 @@
         "id": "10-6-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 7\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"10 - 7\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -7956,7 +7956,7 @@
         "id": "10-7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 7]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 7]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7965,7 +7965,7 @@
         "id": "10-7-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 7]}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 7]}", 
         "value": "3", 
         "player": "counting", 
         "active": true, 
@@ -7974,7 +7974,7 @@
         "id": "10-7-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 8\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"10 - 8\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -7983,7 +7983,7 @@
         "id": "10-8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 8]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 8]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -7992,7 +7992,7 @@
         "id": "10-8-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 8]}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 8]}", 
         "value": "2", 
         "player": "counting", 
         "active": true, 
@@ -8001,7 +8001,7 @@
         "id": "10-8-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 9\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"10 - 9\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -8010,7 +8010,7 @@
         "id": "10-9-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 9]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 9]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -8019,7 +8019,7 @@
         "id": "10-9-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 9]}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 9]}", 
         "value": "1", 
         "player": "counting", 
         "active": true, 
@@ -8028,7 +8028,7 @@
         "id": "10-9-counting-1"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 - 10\"}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"question\": \"10 - 10\"}", 
         "value": "0", 
         "player": "free_answer", 
         "active": true, 
@@ -8037,7 +8037,7 @@
         "id": "10-10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 10]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 10]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -8046,7 +8046,7 @@
         "id": "10-10-counting-0"
     }, 
     {
-        "data": "{\"answer\": \"0\", \"kb\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"with_text\": true, \"question\": [10, \"-\", 10]}", 
+        "data": "{\"answer\": \"0\", \"kb\": \"full\", \"with_text\": true, \"question\": [10, \"-\", 10]}", 
         "value": "0", 
         "player": "counting", 
         "active": true, 
@@ -17397,7 +17397,7 @@
         "id": "multiplication2-pairing-9"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"1 &divide; 1\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"1 &divide; 1\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17406,7 +17406,7 @@
         "id": "1/1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 &divide; 2\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"2 &divide; 2\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17415,7 +17415,7 @@
         "id": "2/2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 &divide; 3\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"3 &divide; 3\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17424,7 +17424,7 @@
         "id": "3/3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 &divide; 4\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"4 &divide; 4\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17433,7 +17433,7 @@
         "id": "4/4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 &divide; 5\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"5 &divide; 5\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17442,7 +17442,7 @@
         "id": "5/5-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 6\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"6 &divide; 6\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17451,7 +17451,7 @@
         "id": "6/6-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 &divide; 7\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"7 &divide; 7\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17460,7 +17460,7 @@
         "id": "7/7-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 8\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"8 &divide; 8\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17469,7 +17469,7 @@
         "id": "8/8-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 &divide; 9\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"9 &divide; 9\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17478,7 +17478,7 @@
         "id": "9/9-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"1\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 10\"}", 
+        "data": "{\"answer\": \"1\", \"kb\": \"full\", \"question\": \"10 &divide; 10\"}", 
         "value": "1", 
         "player": "free_answer", 
         "active": true, 
@@ -17487,7 +17487,7 @@
         "id": "10/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"2 &divide; 1\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"2 &divide; 1\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -17496,7 +17496,7 @@
         "id": "2/1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 &divide; 2\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"4 &divide; 2\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -17505,7 +17505,7 @@
         "id": "4/2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 3\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"6 &divide; 3\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -17514,7 +17514,7 @@
         "id": "6/3-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 4\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"8 &divide; 4\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -17523,7 +17523,7 @@
         "id": "8/4-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"2\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 5\"}", 
+        "data": "{\"answer\": \"2\", \"kb\": \"full\", \"question\": \"10 &divide; 5\"}", 
         "value": "2", 
         "player": "free_answer", 
         "active": true, 
@@ -17577,7 +17577,7 @@
         "id": "20/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"3 &divide; 1\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"3 &divide; 1\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -17586,7 +17586,7 @@
         "id": "3/1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 2\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"6 &divide; 2\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -17595,7 +17595,7 @@
         "id": "6/2-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"3\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 &divide; 3\"}", 
+        "data": "{\"answer\": \"3\", \"kb\": \"full\", \"question\": \"9 &divide; 3\"}", 
         "value": "3", 
         "player": "free_answer", 
         "active": true, 
@@ -17667,7 +17667,7 @@
         "id": "30/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"4 &divide; 1\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"4 &divide; 1\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -17676,7 +17676,7 @@
         "id": "4/1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"4\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 2\"}", 
+        "data": "{\"answer\": \"4\", \"kb\": \"full\", \"question\": \"8 &divide; 2\"}", 
         "value": "4", 
         "player": "free_answer", 
         "active": true, 
@@ -17757,7 +17757,7 @@
         "id": "40/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"5 &divide; 1\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"5 &divide; 1\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -17766,7 +17766,7 @@
         "id": "5/1-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"5\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 2\"}", 
+        "data": "{\"answer\": \"5\", \"kb\": \"full\", \"question\": \"10 &divide; 2\"}", 
         "value": "5", 
         "player": "free_answer", 
         "active": true, 
@@ -17847,7 +17847,7 @@
         "id": "50/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"6\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"6 &divide; 1\"}", 
+        "data": "{\"answer\": \"6\", \"kb\": \"full\", \"question\": \"6 &divide; 1\"}", 
         "value": "6", 
         "player": "free_answer", 
         "active": true, 
@@ -17937,7 +17937,7 @@
         "id": "60/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"7\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"7 &divide; 1\"}", 
+        "data": "{\"answer\": \"7\", \"kb\": \"full\", \"question\": \"7 &divide; 1\"}", 
         "value": "7", 
         "player": "free_answer", 
         "active": true, 
@@ -18027,7 +18027,7 @@
         "id": "70/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"8\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"8 &divide; 1\"}", 
+        "data": "{\"answer\": \"8\", \"kb\": \"full\", \"question\": \"8 &divide; 1\"}", 
         "value": "8", 
         "player": "free_answer", 
         "active": true, 
@@ -18117,7 +18117,7 @@
         "id": "80/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"9\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"9 &divide; 1\"}", 
+        "data": "{\"answer\": \"9\", \"kb\": \"full\", \"question\": \"9 &divide; 1\"}", 
         "value": "9", 
         "player": "free_answer", 
         "active": true, 
@@ -18207,7 +18207,7 @@
         "id": "90/10-free_answer-0"
     }, 
     {
-        "data": "{\"answer\": \"10\", \"kb\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], \"question\": \"10 &divide; 1\"}", 
+        "data": "{\"answer\": \"10\", \"kb\": \"full\", \"question\": \"10 &divide; 1\"}", 
         "value": "10", 
         "player": "free_answer", 
         "active": true, 
