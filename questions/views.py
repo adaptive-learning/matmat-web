@@ -146,23 +146,6 @@ class SelectSkillForm(forms.Form):
     simulator = forms.ModelChoiceField(queryset=Simulator.objects.all().order_by("name"), required=True
                                        , widget=forms.Select(attrs={"onChange": "submit()"}))
 
-@allow_lazy_user
-@login_required
-def my_stats(request):
-    math = Skill.objects.get(level=1)
-    skills = Skill.objects.filter(level=2)
-
-    for skill in list(skills) + [math]:
-        skill.answers_count = skill.get_answers_count(request.user)
-        skill.correct_answers_count = skill.get_answers_count(request.user, correctly_solved=True)
-        # skill.incorrect_answers_count = skill.get_answers_count(request.user, correctly_solved=False)
-
-
-    return render(request, 'questions/my_stats.html',{
-        "math": math,
-        "skills": skills,
-    })
-
 
 def get_device_info(request):
 
