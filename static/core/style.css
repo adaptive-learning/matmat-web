@@ -202,6 +202,7 @@ tab-heading:active, tab-heading:focus { outline-style: none; -moz-outline-style:
     border-top: none;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .skill-tabs dl.accordion > dd > a > div:hover{
@@ -218,7 +219,8 @@ tab-heading:active, tab-heading:focus { outline-style: none; -moz-outline-style:
 }
 table.user_skill_table {
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    background-color: transparent;
 }
 table.user_skill_table td{
     border: 1px solid white;
