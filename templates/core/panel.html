@@ -4,7 +4,7 @@
     <nav class="top-bar" data-topbar data-options="back_text: Zpět">
         <ul class="title-area">
             <li class="name">
-                <h1 class="fancy"><a href="{% url "home" %}">MatMat</a></h1>
+                <h1><a href="{% url "home" %}">MatMat</a></h1>
             </li>
         </ul>
         <div class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></div>
@@ -32,6 +32,8 @@
                     <ul class="dropdown">
                         {% if not user.profile.is_child %}
                             <li><a href="{% url "supervisor_overview" %}">Učitelský - rodičovský režim</a></li>
+                        {% else %}
+                            <li><a href="{% url "supervisor_overview" %}">Propojení účtů</a></li>
                         {% endif %}
                         <li><a href="{% url "logout" %}">Odhlásit se</a></li>
                     </ul>

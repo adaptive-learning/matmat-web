@@ -11,6 +11,7 @@ urlpatterns = patterns('core.views',
     url(r'^supervisor_overview/(?P<child_pk>\d+)$', "supervisor_overview", name="edit_child"),
     url(r'^send_child$', "send_child", name="send_child"),
     url(r'^receive_child/(?P<code>\w{10})$', "receive_child", name="receive_child"),
+    url(r'^join_supervisor$', "join_supervisor", name="join_supervisor"),
     url(r'^log_as_child/(?P<child_pk>\d+)$', "log_as_child", name="log_as_child"),
 
     url(r'^playground/$', TemplateView.as_view(template_name="core/playground.html"), name='playground'),

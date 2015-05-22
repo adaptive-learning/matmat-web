@@ -144,6 +144,25 @@ def receive_child(request, code):
     return redirect("supervisor_overview")
 
 
+@non_lazy_required
+def join_supervisor(request):
+    code = request.GET.get("code", None)
+    supervisor = UserProfile.objects.filter(code=code).first()
+    if supervisor is None:
+        messages.error(request, "Nesprávný kód")
+        return redirect("supervisor_overview")
+    supervisor = supervisor.user
+
+    if supervisor.pk == request.user.pk:
+        messages.error(request, "Nelze přidat se sám sobě")
+        return redirect("supervisor_overview")
+
+    supervisor.profile.children.add(request.user.profile)
+
+    messages.success(request, u"Úspěšně přidáno pod účet '{} {}'".format(supervisor.first_name, supervisor.last_name))
+
+    return redirect("supervisor_overview")
+
 
 def feedback(request):
     msg = "Někde se stala chyba"
