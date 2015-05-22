@@ -1,0 +1,83 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Porovnání děti{% endblock %}
+
+{% block extrascripts %}
+    <script src="{% static "my_skills.js" %}"></script>
+    <script src="{% static "scripts.js" %}"></script>
+    <script src="{% static "graphics/wizard/wizard.js" %}"></script>
+    {% include "questions/template_urls.html" %}
+{% endblock %}
+
+{% block content%}
+
+    <div ng-controller="childrenComparison">
+        <div ng-init='
+        data = {{ data | safe }};
+        skills = data.skills;
+        base_skills = data.base_skills;
+        sub_skills = data.sub_skills;
+        userSkills = data.user_skills;
+        userDiffs = data.user_diffs;
+        children = data.children;
+        '>
+    </div>
+
+    {% verbatim %}
+        <table style="border: none;" class="children-comparison">
+            <thead style="background-color: transparent;">
+                <tr>
+                    <th></th>
+                    <th class="rotate" ng-repeat="(c, data) in skills" ng-init="child = children[c]"><div><span>
+                        <a href="{% endverbatim %}{% url "user_skills" %}{% verbatim %}{{ child.user_pk }}">{{ child.name }}</a>
+                    </span></div></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="s in base_skills" ng-init="skill = pure_skills[s]">
+                <tr>
+                    <th>{{ skill.note }}</th>
+                    <td class="skill_detail"  ng-repeat="(c, name) in children" ng-init="user_skill = skills[c][s]" ng-style="user_skill.style"
+                        ng-click="clickUserSkill(user_skill)">
+                        {{ user_skill.fromFive }}/5
+                        <div ng-cloak ng-show="user_skill.opened" >
+                            <div ng-hide="user_skill.details">
+                                {% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}
+                            </div>
+                            <div ng-show="user_skill.details">
+                                {{ user_skill.details.user  }} - {{ user_skill.details.note }}
+                                <br/>
+                                <b>{{ user_skill.details.answer_count }} odpovědí</b>
+                                <br/>
+                                <b class="green">{{ user_skill.details.correct_answer_count }} správných</b>
+                                <br/><span class="red">{{ user_skill.details.answer_count - user_skill.details.correct_answer_count }} špatných</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat="ss in sub_skills[s]" ng-init="sub_skill = pure_skills[ss]">
+                    <th>&nbsp;&nbsp;&nbsp;{{ sub_skill.note }}</th>
+                    <td class="skill_detail" ng-repeat="(c, name) in children" ng-init="user_skill = skills[c][ss]" ng-style="user_skill.style"
+                        ng-click="clickUserSkill(user_skill)">
+                        {{ user_skill.fromFive }}/5
+                        <div ng-cloak ng-show="user_skill.opened" >
+                            <div ng-hide="user_skill.details">
+                                {% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}
+                            </div>
+                            <div ng-show="user_skill.details">
+                                {{ user_skill.details.user  }} - {{ user_skill.details.note }}
+                                <br/>
+                                <b>{{ user_skill.details.answer_count }} odpovědí</b>
+                                <br/>
+                                <b class="green">{{ user_skill.details.correct_answer_count }} správných</b>
+                                <br/><span class="red">{{ user_skill.details.answer_count - user_skill.details.correct_answer_count }} špatných</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    {% endverbatim %}
+
+{% endblock %}

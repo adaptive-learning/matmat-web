@@ -43,16 +43,18 @@ class Skill(models.Model):
     def __unicode__(self):
         return self.name
 
-    def to_json(self, user):
+    def to_json(self, user, details=True):
         data = {
+            "id": self.pk,
             "name": self.name,
             "note": self.note,
             "level": self.level,
             "active": self.active,
-            "image": self.get_image_static(user),
+            "user": user.first_name + " " + user.last_name,
         }
 
-        if 1 < self.level < 4:
+        if 1 < self.level < 4 and details:
+            data["image"] = self.get_image_static(user),
             data["url"] = reverse(u"play", args=[self.to_url()])
             data["answer_count"] = self.get_answers_count(user)
             data["correct_answer_count"] = self.get_answers_count(user, correctly_solved=True)

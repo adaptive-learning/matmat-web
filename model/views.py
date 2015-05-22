@@ -1,8 +1,10 @@
 import json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import JsonResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from lazysignup.decorators import allow_lazy_user
+from core.decorators import non_lazy_required
 from model.models import Skill, UserSkill
 from questions.management.commands.generate_questions import BASE_SKILLS, SUB_SKILL, SKILL_TABLES
 
@@ -40,3 +42,31 @@ def my_skills(request, proceed_skill=None, user_pk=None):
             "proceed_skill": proceed_skill.name if proceed_skill is not None else "",
         }),
     })
+
+@non_lazy_required
+def children_comparison(request, user_pk):
+    user = get_object_or_404(User, pk=user_pk)
+    children = user.profile.children.all()
+
+    skills = {child.pk: dict(map(lambda s: (s.name, s.to_json(user, details=False)), Skill.objects.filter(level__lt=4,
+                active=True))) for child in children}
+
+    return render(request, "model/children_comparison.html", {
+        "data": json.dumps({
+            "user_diffs": {child.pk: dict(UserSkill.objects.all_diffs(child.user)) for child in children},
+            "user_skills": {child.pk: UserSkill.objects.all_skills(child.user) for child in children},
+            "base_skills": BASE_SKILLS,
+            "sub_skills": SUB_SKILL,
+            "skills": skills,
+            "children": {child.pk: child.to_json() for child in children},
+        }),
+    })
+
+@non_lazy_required
+def skill_detail(request, user_pk, skill_pk):
+    try:
+        user = request.user.profile.children.get(user__id=user_pk).user
+    except:
+        return HttpResponseNotFound("User not found")
+    skill = get_object_or_404(Skill, pk=skill_pk)
+    return JsonResponse(skill.to_json(user))

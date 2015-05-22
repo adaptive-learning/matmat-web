@@ -24,7 +24,10 @@
     </p>
 
 
-    {% if children %}<h4>Přihlásit se jako</h4>{% endif %}
+    {% if children %}
+        <h4><a href="{% url "children_comparison" user.pk %}">Porovnat děti</a></h4>
+        <h4>Přihlásit se jako</h4>
+    {% endif %}
     <div class="button-bar" ng-controller="send_child">
     {% for child in children %}
         <ul class="button-group round">

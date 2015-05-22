@@ -41,6 +41,12 @@ class UserProfile(models.Model):
     def has_children(self):
         return self.children.exists()
 
+    def to_json(self):
+        return {
+            "name": self.user.first_name + " " + self.user.last_name,
+            "user_pk": self.user_id,
+        }
+
 
 def is_user_registred(user):
     if not user.is_authenticated() or user.is_anonymous():

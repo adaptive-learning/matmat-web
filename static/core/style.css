@@ -460,3 +460,47 @@ cubes.negative .objects > div {
 .objects.selectable > div.hovered{ background-color: orange; }
 .objects.selectable > div.correct{ background-color: darkgreen; }
 .objects.selectable > div.incorrect{ background-color: darkred; }
+
+
+th.rotate {
+    height: 70px;
+    white-space: nowrap;
+}
+
+th.rotate > div {
+    transform:
+    translate(17px, 20px)
+    rotate(315deg);
+    width: 20px;
+}
+th.rotate > div > span {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 5px;
+}
+
+.children-comparison{
+    border-collapse: separate;
+    border-spacing: 1px 1px;;
+}
+.children-comparison td{
+    border: solid transparent 1px;
+}
+.children-comparison td:hover{
+    box-shadow: 0 0 3px gray;
+}
+.children-comparison td.skill_detail{position: relative}
+.children-comparison td.skill_detail > div{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: solid gray 1px;
+    padding: 5px;
+    z-index: 1000;
+    width: 200px;
+}
+
+.children-comparison td.skill_detail > div .spinner {
+    margin: auto;
+}
