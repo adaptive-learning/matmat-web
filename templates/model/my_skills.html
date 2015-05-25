@@ -25,8 +25,8 @@
         active = data.active'>
     </div>
 {% verbatim %}
-    <div class="right text-right">
-        <a ng-href="{{ skills[proceedSkill].url }}" ng-cloak ng-show="proceedSkill"><button class="radius">Procvičovat dál <br/><b>{{ skills[proceedSkill].note }}</b></button></a>
+    <div class="right text-right" style="max-width: 190px;">
+        <a ng-href="{{ skills[proceedSkill].url }}" ng-cloak ng-show="proceedSkill"><button style="margin-top: 5px; margin-right: 5px; padding: 15px;" class="radius">Procvičovat dál <br/><b>{{ skills[proceedSkill].note }}</b></button></a>
         {% endverbatim %}{{ user_showed.first_name }}{% verbatim %}
     </div>
     <hr class="skill-hr" ng-cloak />
