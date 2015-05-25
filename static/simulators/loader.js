@@ -167,7 +167,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                     }
                     $scope.loading = true;
                     $timeout( function() {
-                        window.location.replace("/m/my_skills/" + $scope.skill_id);
+                        window.location.replace("/m/moje_vedomosti/" + $scope.skill_id);
                     }, 0);
                 }else{
                     // load next question
