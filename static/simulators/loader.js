@@ -8,6 +8,8 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 10;
+    }else{
+        ga("send", "event", "set", "started", skill_name);
     }
     if (!$scope.test) $scope.skill_id = skill;         // selected skill from global
     $scope.question = null;                             // 17 question
@@ -166,6 +168,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
                         return;
                     }
                     $scope.loading = true;
+                    ga("send", "event", "set", "finished", skill_name);
                     $timeout( function() {
                         window.location.replace("/m/moje_vedomosti/" + $scope.skill_id);
                     }, 0);

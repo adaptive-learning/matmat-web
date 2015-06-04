@@ -9,4 +9,10 @@
       ga('send', 'pageview');
 
     </script>
+{% else %}
+    <script>
+        var ga = function(what, command, category, action, label, value){
+            console.log("google analytics", what, command, category, action, label, value);
+        }
+    </script>
 {% endif %}
