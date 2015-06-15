@@ -175,10 +175,12 @@ def feedback(request):
         text_content = render_to_string("emails/feedback.plain", {
             "data": data,
             "user": request.user,
+            "user_agent": request.META.get('HTTP_USER_AGENT', ''),
         })
         html_content = render_to_string("emails/feedback.html", {
             "data": data,
             "user": request.user,
+            "user_agent": request.META.get('HTTP_USER_AGENT', ''),
         })
 
         msg = EmailMultiAlternatives(subject, text_content, "MatMat <{}>".format(from_email), [to])
