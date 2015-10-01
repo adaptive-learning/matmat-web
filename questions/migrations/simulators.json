@@ -26,5 +26,9 @@
     {
         "note": "Matematick\u00e9 pexeso", 
         "name": "pairing"
+    }, 
+    {
+        "note": "Vizualizace d\u011blen\u00ed", 
+        "name": "visualization"
     }
 ]
