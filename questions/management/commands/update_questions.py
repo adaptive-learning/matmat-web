@@ -69,7 +69,7 @@ class Command(BaseCommand):
                 db_simulator = Simulator.objects.get(name=simulator["name"])
                 changed = False
                 if db_simulator.note != simulator["note"]:
-                    self.stdout.write("Updating simulator note {}->{}".format(db_simulator.note, simulator["note"]))
+                    self.stdout.write(u"Updating simulator note {}->{}".format(db_simulator.note, simulator["note"]))
                     db_simulator.note = simulator["note"]
                     changed = True
                 if changed and options["update"]:
