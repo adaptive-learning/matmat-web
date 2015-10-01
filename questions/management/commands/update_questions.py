@@ -87,7 +87,10 @@ class Command(BaseCommand):
         self.stdout.write("json: {}, db: {}".format(len(questions), Question.objects.all().count()))
         for question in questions:
             try:
-                db_question = Question.objects.get(Q(identifier=question["id"]) | Q(identifier__isnull=True, id=id_map[question["id"]]))
+                if question["id"] in id_map:
+                    db_question = Question.objects.get(Q(identifier=question["id"]) | Q(identifier__isnull=True, id=id_map[question["id"]]))
+                else:
+                    db_question = Question.objects.get(Q(identifier=question["id"]))
                 changed = False
                 if json.loads(db_question.data) != json.loads(question["data"]):
                     self.stdout.write("Updating question {} data {}->{}".format(question["id"], db_question.data, question["data"]))
@@ -131,6 +134,7 @@ class Command(BaseCommand):
                             skill=Skill.objects.get(name=question["skill"]),
                             active=question["active"],
                             type=question["type"],
+                            value=question["value"],
                             )
                     except Skill.DoesNotExist:
                         raise CommandError("Skill {} not found".format(question["skill"]))
