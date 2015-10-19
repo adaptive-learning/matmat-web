@@ -6,3 +6,4 @@ django-social-auth==0.7.28
 raven==4.1.1
 django-debug-toolbar==1.3.0
 python-memcached==1.53
+pandas==0.17.0
