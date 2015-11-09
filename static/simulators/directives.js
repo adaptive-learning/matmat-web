@@ -60,7 +60,7 @@ app.directive("keyboard", function($timeout){
                 }else{
                     $scope.global.input.value = value + s;
                 }
-                $scope.global.log_something("soft-kyeborad:"+s);
+                $scope.global.log_something("soft-keyboard:"+s);
                 $scope.global.log_something($scope.global.input.value)
             };
 
