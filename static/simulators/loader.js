@@ -133,6 +133,9 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     };
 
     $scope.finish_question = function(correctly_solved, answer, wait_time){
+        if (!SimulatorGlobal.simulator_active){
+            return;
+        }
         SimulatorGlobal.simulator_active = false;
         wait_time = typeof wait_time !== 'undefined' ? wait_time : INITIAL_WAIT_TIME_BEFORE_Q_FINISH;
 
