@@ -4,8 +4,10 @@
 <form ng-submit="submit()" ng-hide="simple">
     <div class="row collapse">
         <div class="small-1 small-centered columns">
-            <input class="button postfix tick" type="submit" value="&nbsp;" />
+            <input class="button postfix tick" ng-disabled="selected==0" type="submit" value="&nbsp;" />
         </div>
     </div>
 </form>
+
+{{ selected }}
 

@@ -21,6 +21,11 @@ app.directive("selecting", function(){
                 }
             };
 
+            $scope.$watch("selected", function(n, o){
+                if (n > 0){
+                    $scope.interface.log("selected:" + n);
+                }
+            });
 
             SimulatorGlobal.description.top = "Vyber zadaný počet čtverečků.";
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
