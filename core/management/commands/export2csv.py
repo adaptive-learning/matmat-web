@@ -2,6 +2,8 @@ from collections import defaultdict
 from contextlib import closing
 import csv
 import zipfile
+
+import sys
 from django.db import connection
 import os
 from django.core.management import BaseCommand, CommandError
@@ -116,6 +118,7 @@ def get_skill_parent_lists(skills):
 
 
 def prepare_data(input_dir="data/source", output_dir="data"):
+    csv.field_size_limit(sys.maxsize)
     answers = pd.read_csv(os.path.join(input_dir, "questions_answer.csv"), engine='python', index_col=0)
     items = pd.read_csv(os.path.join(input_dir, "questions_question.csv"), index_col=0)
     simulators = pd.read_csv(os.path.join(input_dir, "questions_simulator.csv"), index_col=0)
