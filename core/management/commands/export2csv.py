@@ -116,10 +116,10 @@ def get_skill_parent_lists(skills):
 
 
 def prepare_data(input_dir="data/source", output_dir="data"):
-    answers = pd.DataFrame.from_csv(os.path.join(input_dir, "questions_answer.csv"))
-    items = pd.DataFrame.from_csv(os.path.join(input_dir, "questions_question.csv"))
-    simulators = pd.DataFrame.from_csv(os.path.join(input_dir, "questions_simulator.csv"))
-    skills = pd.DataFrame.from_csv(os.path.join(input_dir, "model_skill.csv"))
+    answers = pd.read_csv(os.path.join(input_dir, "questions_answer.csv"), engine='python', index_col=0)
+    items = pd.read_csv(os.path.join(input_dir, "questions_question.csv"), index_col=0)
+    simulators = pd.read_csv(os.path.join(input_dir, "questions_simulator.csv"), index_col=0)
+    skills = pd.read_csv(os.path.join(input_dir, "model_skill.csv"), index_col=0)
     skill_parents = get_skill_parent_lists(skills)
 
     items = items.join(simulators, "player")
