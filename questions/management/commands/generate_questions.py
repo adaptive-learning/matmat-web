@@ -6,7 +6,7 @@ from django.core.management import BaseCommand
 
 BASE_SKILLS = ['numbers', 'addition', 'subtraction', 'multiplication', 'division']
 
-SUB_SKILL = {
+SUB_SKILLS = {
     'numbers': ["numbers <= 10", "numbers <= 20"],
     'addition': ["addition <= 10", "addition <= 20", "addition <= 100"],
     'subtraction': ["subtraction <= 10", "subtraction <= 20"],

@@ -16,19 +16,6 @@ app.controller("childrenComparison", function($scope, $http){
             }
         }
     });
-
-    $scope.clickUserSkill = function(user_skill){
-
-        user_skill.opened = !user_skill.opened;
-        if (user_skill.opened){
-            if (!user_skill.details){
-                $http.get("/m/skill_detail/{0}/{1}".format(user_skill.user, user_skill.id)).
-                    success(function(response){
-                        user_skill.details = response;
-                    })
-            }
-        }
-    }
 });
 
 

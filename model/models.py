@@ -2,7 +2,7 @@ from collections import defaultdict
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from django.templatetags.static import static
@@ -26,8 +26,28 @@ class SkillManager(models.Manager):
         return parents
 
     @cache_pure
+    def children(self):
+        return {pk: map(int, list.split(",")) for pk, list in self.filter(level__lt=4).values_list("pk", "children_list")}
+
+    @cache_pure
     def all_names(self):
         return Skill.objects.all().values_list("name", flat=True)
+
+    def answer_counts(self, users, skills, correctly_solved=None):
+        qs = Answer.objects.filter(user__in=users)
+        if correctly_solved is not None:
+            qs = qs.filter(correctly_solved=correctly_solved)
+        counts = qs.values("user", "question__skill").annotate(answer_count=Count("pk"))
+        counts = {(c["user"], c["question__skill"]): c["answer_count"] for c in counts}
+        children = self.children()
+
+        return {
+            user.pk: {
+                skill.pk: sum([counts.get((user.pk, child), 0) for child in children[skill.pk]])
+                for skill in skills
+            } for user in users
+        }
+
 
 
 class Skill(models.Model):
