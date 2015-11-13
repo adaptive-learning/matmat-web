@@ -18,6 +18,8 @@ from core.models import create_profile, is_user_registred, convert_lazy_user, Us
 from core.utils import generate_random_string
 from matmat import settings
 from model.models import Skill
+from model.views import get_data_for_children_comparison
+
 
 @ensure_csrf_cookie
 def home(request):
@@ -73,6 +75,7 @@ class SupervisorOverviewView(View):
         return render(request, 'core/supervisor_overview.html', {
             "child_form": child_form,
             "child_pk": child_pk,
+            "data": get_data_for_children_comparison(request.user)
         })
 
 
@@ -86,6 +89,7 @@ class SupervisorOverviewView(View):
             "child_form": child_form,
             "child_pk": child_pk,
             "children": request.user.profile.children.all(),
+            "data": get_data_for_children_comparison(request.user)
             })
 
 supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view())

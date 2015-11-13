@@ -3,80 +3,105 @@
 
 {% block title %}Učitelský - rodičovský režim{% endblock %}
 
+{% block extrascripts %}
+    <script src="{% static "my_skills.js" %}"></script>
+    <script src="{% static "scripts.js" %}"></script>
+    <script src="{% static "graphics/wizard/wizard.js" %}"></script>
+    {% include "questions/template_urls.html" %}
+{% endblock %}
+
 {% block content%}
+    <style>
+        #content {background-color: white}
+    </style>
+
     {% if user.profile.is_child %}
         Tento účet je spravován následujícími lidmi: <br/>
         {% for supervisor in user.profile.supervisors.all %}
             {{ supervisor.user.first_name }} {{ supervisor.user.last_name }}<br/>
         {% endfor %}
+        <hr>
+        {% if not children %}
+            <form action="{% url "join_supervisor" %}">
+                <input type="text" name="code" placeholder="Zadejte kód účtu pod, který se chcete přidat"/>
+                <input type="submit" class="button radius" value="Přidat se"/>
+            </form>
+        {% endif %}
     {% else %}
 
-        <div class="heading">
-                <i class="fi-torsos-all"></i>
-            <h1>Učitelský - rodičovský režim</h1>
-            <p>
-                Zde můžete k vašemu účtu připojit několik dětí.
-                Ty pak mohou snadno procvičovat ve vlastní verzi systému, která se jim bude přizpůsobovat na míru a bude zobrazovat jejich vlastní postup a statistiky.
-                To vše bez nutnosti pamatovaní přihlašovacích údajů pro každé dítě  zvlášť.
-            </p>
-        </div>
-
-        <b>Proč mít pro každé dítě zvláštní účet?</b>
-        <p>
-            MatMat se učí o dětech z jejich odpovědí a vybírá jim otázky, které jsou pro ně vhodné.
-            Pokud tedy dítě má vlastní účet, procvičovaní s MatMatem je efektivnější.
-            Navíc děti mohou sledovat svoje dlouhodobé zlepšovaní.
-            Z těchto důvodů je také důležité, aby děti odpovídali samostatně.
-            Není ostuda se splést nebo nevědět - z chyb se učíme všichni včetně doporučovacího algoritmu MatMatu.
-        </p>
-
-
-        {% if children %}
-            <h4><a href="{% url "children_comparison" user.pk %}">Porovnat děti</a></h4>
-            <h4>Přihlásit se jako</h4>
-        {% endif %}
-        <div class="button-bar" ng-controller="send_child">
-        {% for child in children %}
-            <ul class="button-group round">
-                <li><a class="button"  href="{% url "log_as_child" child.user.pk %}">
-                      {{ child.user.first_name }} {{ child.user.last_name }}
-                </a></li>
-                <li>
-                    <div class="dropdown_arrow button dropdown" data-dropdown="drop{{ child.pk }}"
-                         aria-controls="drop{{ child.pk }}" aria-expanded="true">&nbsp;</div>
-                </li>
-            </ul>
-
-            <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
-                <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
-                <li> <a href="{% url "user_skills" child.user.pk %}">náhled vědomostí</a></li>
-                <li> <a href="#" ng-click="name='{{ child.user.first_name }} {{ child.user.last_name }}'; pk='{{ child.pk }}'"
-                        data-reveal-id="send-child-modal">zpřístupnit dítě jinému úživateli</a></li>
-            </ul>
-
-            <div id="send-child-modal" class="reveal-modal" data-reveal>
-
-                <form action="{% url "send_child" %}" method="post">
-                    {% csrf_token %}
-                    {% verbatim %}
-                    <h3>Zpřístupnit dítě "{{ name }}" jinému úživateli</h3>
-                    <p>Tento formulář odešle email, přes který si příjemce bude schopný přidat dítě ke svému účtu.</p>
-                    <label for="email">e-mail:</label>
-                    <input ng-required="true" name="email" type="email"/>
-                    <textarea rows="3" placeholder="Zpráva pro příjemnce" name="msg"></textarea>
-                    <input type="hidden" name="pk" ng-value="pk"/>
-                    <button type="submit" class="right radius">Odeslat</button>
-                    {% endverbatim %}
-                </form>
-                <a class="close-reveal-modal">&#215;</a>
-            </div>
-        {% empty %}
-            K tomuto účtu nejsou zatím přiřazeny žádné děti.
-        {% endfor %}
-        </div>
-        <hr/>
         <accordion close-others="true">
-            <accordion-group heading="{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}" is-open='{{ child_pk|yesno:"true, false" }} || {{ children|yesno:"false,true" }}'>
+            <accordion-group heading="Učitelský - rodičovský režim" is-open='{{ child_pk|yesno:"false, true" }} && {{ children|yesno:"false, true" }}'>
+                <div class="heading">
+                    <i class="fi-torsos-all"></i>
+                    <h1>Učitelský - rodičovský režim</h1>
+                    <p>
+                        Zde můžete k vašemu účtu připojit několik dětí.
+                        Ty pak mohou snadno procvičovat ve vlastní verzi systému, která se jim bude přizpůsobovat na míru a bude zobrazovat jejich vlastní postup a statistiky.
+                        To vše bez nutnosti pamatovaní přihlašovacích údajů pro každé dítě  zvlášť.
+                    </p>
+                </div>
+
+                <b>Proč mít pro každé dítě zvláštní účet?</b>
+                <p>
+                    MatMat se učí o dětech z jejich odpovědí a vybírá jim otázky, které jsou pro ně vhodné.
+                    Pokud tedy dítě má vlastní účet, procvičovaní s MatMatem je efektivnější.
+                    Navíc děti mohou sledovat svoje dlouhodobé zlepšovaní.
+                    Z těchto důvodů je také důležité, aby děti odpovídali samostatně.
+                    Není ostuda se splést nebo nevědět - z chyb se učíme všichni včetně doporučovacího algoritmu MatMatu.
+                </p>
+            </accordion-group>
+
+            {% if children %}
+
+                <accordion-group heading="Přihlásit se jako" is-open='{{ child_pk|yesno:"false, true" }} && {{ children|yesno:"true, false" }}'>
+                    <div class="button-bar" ng-controller="send_child">
+                    {% for child in children %}
+                        <ul class="button-group round">
+                            <li><a class="button"  href="{% url "log_as_child" child.user.pk %}">
+                                {{ child.user.first_name }} {{ child.user.last_name }}
+                            </a></li>
+                            <li>
+                                <div class="dropdown_arrow button dropdown" data-dropdown="drop{{ child.pk }}"
+                                     aria-controls="drop{{ child.pk }}" aria-expanded="true">&nbsp;</div>
+                            </li>
+                        </ul>
+
+                        <ul id="drop{{ child.pk }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+                            <li> <a href="{% url "edit_child" child.user.pk %}">upravit</a></li>
+                            <li> <a href="{% url "user_skills" child.user.pk %}">náhled vědomostí</a></li>
+                            <li> <a href="#" ng-click="name='{{ child.user.first_name }} {{ child.user.last_name }}'; pk='{{ child.pk }}'"
+                                    data-reveal-id="send-child-modal">zpřístupnit dítě jinému úživateli</a></li>
+                        </ul>
+
+                        <div id="send-child-modal" class="reveal-modal" data-reveal>
+
+                            <form action="{% url "send_child" %}" method="post">
+                                {% csrf_token %}
+                                {% verbatim %}
+                                <h3>Zpřístupnit dítě "{{ name }}" jinému úživateli</h3>
+                                <p>Tento formulář odešle email, přes který si příjemce bude schopný přidat dítě ke svému účtu.</p>
+                                <label for="email">e-mail:</label>
+                                <input ng-required="true" name="email" type="email"/>
+                                <textarea rows="3" placeholder="Zpráva pro příjemnce" name="msg"></textarea>
+                                <input type="hidden" name="pk" ng-value="pk"/>
+                                <button type="submit" class="right radius">Odeslat</button>
+                                {% endverbatim %}
+                            </form>
+                            <a class="close-reveal-modal">&#215;</a>
+                        </div>
+                    {% empty %}
+                        K tomuto účtu nejsou zatím přiřazeny žádné děti.
+                    {% endfor %}
+                    </div>
+                </accordion-group>
+
+                <accordion-group heading="Přehled dětí" is-open='false'>
+                    {% include "model/child_comparison.html" %}
+                </accordion-group>
+            {% endif %}
+
+
+            <accordion-group heading="{{ child_pk|yesno:"Upravit dítě, Přidat dítě" }}" is-open='{{ child_pk|yesno:"true, false" }}'>
                 {% if child_pk %}
                     <form action="{% url "edit_child" child_pk %}" method="post">
                 {% else %}
@@ -85,24 +110,23 @@
 
                 {% csrf_token %}
                 {{ child_form }}
-                <input type="submit" class="button radius" value="{{ child_pk|yesno:"Upravit, Přidat" }}"/>
+                <input type="submit" class="button radius" value="{{ child_pk|yesno:"Upravit, Vytvořit nové" }}"/>
                 </form>
+
+                <b>{{ user.profile.code }}</b> - tento kód umožní dítěti (s již vytvořeným účtem) přidat se do <i>vašich dětí</i>
             </accordion-group>
+
+            {% if not children %}
+                <accordion-group heading="Připojit se k učiteli" is-open=false'>
+                    <form action="{% url "join_supervisor" %}">
+                        <input type="text" name="code" placeholder="Zadejte kód účtu pod, který se chcete přidat"/>
+                        <input type="submit" class="button radius" value="Přidat se"/>
+                    </form>
+                </accordion-group>
+            {% endif %}
+
         </accordion>
 
-    {% endif %}
-
-    <hr/>
-
-    <h3>Propojení účtů</h3>
-    {% if not user.profile.is_child %}
-        <b>{{ user.profile.code }}</b> - tento kód umožní dítěti (s vytvořeným účtem) přidat se do <i>vašich dětí</i>
-    {% endif %}
-    {% if not children %}
-        <form action="{% url "join_supervisor" %}">
-            <input type="text" name="code" placeholder="Zadejte kód účtu pod, který se chcete přidat"/>
-            <input type="submit" class="button radius" value="Přidat se"/>
-        </form>
     {% endif %}
 
 {% endblock %}

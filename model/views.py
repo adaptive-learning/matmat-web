@@ -45,25 +45,31 @@ def my_skills(request, proceed_skill=None, user_pk=None):
 
 
 @non_lazy_required
-def children_comparison(request, user_pk):
-    user = get_object_or_404(User, pk=user_pk)
+def children_comparison(request):
+    user = request.user
+
+    return render(request, "model/children_comparison.html", {
+        "data": get_data_for_children_comparison(user)
+    })
+
+
+def get_data_for_children_comparison(user):
     children = user.profile.children.all().select_related("user")
 
     skill_objects = Skill.objects.filter(level__lt=4, active=True)
     skills = {child.user.pk: dict(map(lambda s: (s.name, s.to_json(user, details=False)), skill_objects)) for child in children}
 
-    return render(request, "model/children_comparison.html", {
-        "data": json.dumps({
-            "user_diffs": {child.user.pk: dict(UserSkill.objects.all_diffs(child.user)) for child in children},
-            "user_skills": {child.user.pk: UserSkill.objects.all_skills(child.user) for child in children},
-            "answer_counts": Skill.objects.answer_counts([c.user for c in children], skill_objects),
-            "answer_correct_counts": Skill.objects.answer_counts([c.user for c in children], skill_objects, correctly_solved=True),
-            "base_skills": BASE_SKILLS,
-            "sub_skills": SUB_SKILLS,
-            "skills": skills,
-            "children": {child.user.pk: child.to_json() for child in children},
-        }),
+    return json.dumps({
+        "user_diffs": {child.user.pk: dict(UserSkill.objects.all_diffs(child.user)) for child in children},
+        "user_skills": {child.user.pk: UserSkill.objects.all_skills(child.user) for child in children},
+        "answer_counts": Skill.objects.answer_counts([c.user for c in children], skill_objects),
+        "answer_correct_counts": Skill.objects.answer_counts([c.user for c in children], skill_objects, correctly_solved=True),
+        "base_skills": BASE_SKILLS,
+        "sub_skills": SUB_SKILLS,
+        "skills": skills,
+        "children": {child.user.pk: child.to_json() for child in children},
     })
+
 
 @non_lazy_required
 def skill_detail(request, user_pk, skill_pk):
