@@ -73,11 +73,12 @@ class Skill(models.Model):
             "user": user.first_name + " " + user.last_name,
         }
 
-        if 1 < self.level < 4 and details:
-            data["image"] = self.get_image_static(user),
+        if self.level < 4 and details:
             data["url"] = reverse(u"play", args=[self.to_url()])
-            data["answer_count"] = self.get_answers_count(user)
-            data["correct_answer_count"] = self.get_answers_count(user, correctly_solved=True)
+            if 1 < self.level:
+                data["image"] = self.get_image_static(user),
+                data["answer_count"] = self.get_answers_count(user)
+                data["correct_answer_count"] = self.get_answers_count(user, correctly_solved=True)
 
         return data
 
