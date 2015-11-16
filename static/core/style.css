@@ -515,3 +515,11 @@ th.rotate > div > span {
 .children-comparison td.skill_detail > div .spinner {
     margin: auto;
 }
+
+.carousel{text-align: center;}
+.clearing-thumbs{ display: inline-block; margin-bottom: 20px}
+.auto-thumbs a > img {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+}
