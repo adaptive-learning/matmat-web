@@ -9,6 +9,7 @@
         children = data.children;
         answer_counts = data.answer_counts;
         answer_correct_counts = data.answer_correct_counts;
+        children_ids = data.children_ids;
         '></div>
     {% verbatim %}
     <table style="border: none;" class="children-comparison">
@@ -23,7 +24,7 @@
                     </span></div></th>
         </tr>
         </thead>
-        <tbody ng-repeat="(c, data) in skills" ng-init="child = children[c]">
+        <tbody ng-repeat="c in children_ids | orderBy:children[c].name" ng-init="data = skills[c]; child = children[c]">
         <tr>
             <th><a href="{% endverbatim %}{% url "user_skills" %}{% verbatim %}{{ child.user_pk }}">{{ child.name }}</a></th>
             <td class="skill_detail"  ng-repeat-start="s in base_skills"

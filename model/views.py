@@ -54,7 +54,7 @@ def children_comparison(request):
 
 
 def get_data_for_children_comparison(user):
-    children = user.profile.children.all().select_related("user")
+    children = user.profile.children.all().order_by("user__last_name", "user__first_name").select_related("user")
 
     skill_objects = Skill.objects.filter(level__lt=4, active=True)
     skills = {child.user.pk: dict(map(lambda s: (s.name, s.to_json(user, details=False)), skill_objects)) for child in children}
@@ -68,6 +68,7 @@ def get_data_for_children_comparison(user):
         "sub_skills": SUB_SKILLS,
         "skills": skills,
         "children": {child.user.pk: child.to_json() for child in children},
+        "children_ids": [child.user.pk for child in children],
     })
 
 
