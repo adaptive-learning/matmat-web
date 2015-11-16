@@ -18,7 +18,7 @@ urlpatterns = patterns('core.views',
     url(r'^playground/$', TemplateView.as_view(template_name="core/playground.html"), name='playground'),
 
     # authorization
-    url(r'^convert/', include('lazysignup.urls'), {"template_name": "core/convert.html", 'form_class': Form}, name="user_convert"),
+    url(r'^convert/', include('lazysignup.urls'), {"template_name": "core/convert.html", 'form_class': Form}),
     url(r'', include('social_auth.urls')),
     url(r'^close_login_popup/$', TemplateView.as_view(template_name="core/close_login_popup.html"), name='login_popup_close'),
     url(r'^logout/$', logout, {"next_page": "home"}, name='logout'),

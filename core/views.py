@@ -92,7 +92,7 @@ class SupervisorOverviewView(View):
             "data": get_data_for_children_comparison(request.user)
             })
 
-supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view())
+supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view(), redirect_to="convert")
 
 @non_lazy_required
 def log_as_child(request, child_pk):
