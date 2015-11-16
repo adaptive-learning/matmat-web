@@ -38,7 +38,7 @@
                         <li><a href="{% url "logout" %}">Odhlásit se</a></li>
                     </ul>
                 {% else %}
-                    <a href="#"> Přihlášení </a>
+                    <a href="#" data-reveal-id="login-modal"> Přihlášení </a>
                     <ul class="dropdown">
                     <li>
                         <a class="login-provider" id="login-google"
@@ -69,6 +69,7 @@
                     </ul>
                 {% endif %}
             </li>
+            <li><a style="height: 45px" href="{% url "faq" %}"><i style="font-size: 1.8em;" class="fi-info"></i></a></li>
         </ul>
 
 {#        <ul class="left">#}
