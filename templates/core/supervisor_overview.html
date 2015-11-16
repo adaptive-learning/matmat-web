@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 
-{% block title %}Učitelský - rodičovský režim{% endblock %}
+{% block title %}Učitelský režim{% endblock %}
 
 {% block extrascripts %}
     <script src="{% static "my_skills.js" %}"></script>
@@ -30,10 +30,10 @@
     {% else %}
 
         <accordion close-others="true">
-            <accordion-group heading="Učitelský - rodičovský režim" is-open='{{ child_pk|yesno:"false, true" }} && {{ children|yesno:"false, true" }}'>
+            <accordion-group heading="Učitelský režim" is-open='{{ child_pk|yesno:"false, true" }} && {{ children|yesno:"false, true" }}'>
                 <div class="heading">
                     <i class="fi-torsos-all"></i>
-                    <h1>Učitelský - rodičovský režim</h1>
+                    <h1>Učitelský režim</h1>
                     <p>
                         Zde můžete k vašemu účtu připojit několik dětí.
                         Ty pak mohou snadno procvičovat ve vlastní verzi systému, která se jim bude přizpůsobovat na míru a bude zobrazovat jejich vlastní postup a statistiky.

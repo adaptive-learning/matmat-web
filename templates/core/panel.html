@@ -31,7 +31,7 @@
                     <a href="#"> {{ user.first_name }} {{ user.last_name }} </a>
                     <ul class="dropdown">
                         {% if not user.profile.is_child %}
-                            <li><a href="{% url "supervisor_overview" %}">Učitelský - rodičovský režim</a></li>
+                            <li><a href="{% url "supervisor_overview" %}">Učitelský režim</a></li>
                         {% else %}
                             <li><a href="{% url "supervisor_overview" %}">Propojení účtů</a></li>
                         {% endif %}
