@@ -196,7 +196,10 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
     // skip question
     SimulatorGlobal.skip = $scope.skip = function(){
         $scope.log_something("skipped");
-        $scope.finish_question(false, null, 0);
+        if ($cookieStore.get('asked_to_skip', 0) > 0 || window.confirm("Opravdu chcete přeskočit tuto otázku?")){
+            $cookieStore.put('asked_to_skip', $cookieStore.get('asked_to_skip', 0) + 1);
+            $scope.finish_question(false, null, 0);
+        }
     };
 
     // log step while solving process
