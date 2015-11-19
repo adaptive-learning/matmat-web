@@ -115,6 +115,7 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
     // send answer and log to server
     $scope.save_answer = function(){
+        $scope.question.log = JSON.stringify($scope.question.log);
         if ($scope.test){
             console.log($scope.question);
             return;
