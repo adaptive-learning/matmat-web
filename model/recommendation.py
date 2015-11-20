@@ -112,7 +112,7 @@ def question_priority(question, log, skill_tree, similar_questions_times, simila
     TIME_WEIGHT = 300               # seconds after which penalty for question is 1
     TIME_SIMILAR_WEIGHT = 300        # seconds after which penalty for similar question is 1
     COUNT_WEIGHT = 5                # bonus for less answered questions by user
-    TOTAL_COUNT_WEIGHT = 2                # bonus for less answered questions - globally
+    TOTAL_COUNT_WEIGHT = 10                # bonus for less answered questions - globally
     COUNT_SIMILAR_WEIGHT = 5                # bonus for less answered questions
     RANDOM_WEIGHT = 0.001           # random bonus from [0, 1]
 
