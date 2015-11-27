@@ -45,12 +45,13 @@ def my_skills(request, proceed_skill=None, user_pk=None):
 
 
 @non_lazy_required
-def children_comparison(request):
+def children_comparison(request, as_json=False):
     user = request.user
 
-    return render(request, "model/children_comparison.html", {
-        "data": get_data_for_children_comparison(user)
-    })
+    if as_json:
+        return JsonResponse(get_data_for_children_comparison(user), safe=False)
+
+    return render(request, "model/children_comparison.html", {})
 
 
 def get_data_for_children_comparison(user):
@@ -59,7 +60,7 @@ def get_data_for_children_comparison(user):
     skill_objects = Skill.objects.filter(level__lt=4, active=True)
     skills = {child.user.pk: dict(map(lambda s: (s.name, s.to_json(user, details=False)), skill_objects)) for child in children}
 
-    return json.dumps({
+    return {
         "user_diffs": {child.user.pk: dict(UserSkill.objects.all_diffs(child.user)) for child in children},
         "user_skills": {child.user.pk: UserSkill.objects.all_skills(child.user) for child in children},
         "answer_counts": Skill.objects.answer_counts([c.user for c in children], skill_objects),
@@ -69,7 +70,7 @@ def get_data_for_children_comparison(user):
         "skills": skills,
         "children": {child.user.pk: child.to_json() for child in children},
         "children_ids": [child.user.pk for child in children],
-    })
+    }
 
 
 @non_lazy_required

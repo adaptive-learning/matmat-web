@@ -1,18 +1,7 @@
 {% include "core/googleanalytics.html" %}<div ng-controller="childrenComparison">
-    <div ng-init='
-        data = {{ data | safe }};
-        skills = data.skills;
-        base_skills = data.base_skills;
-        sub_skills = data.sub_skills;
-        userSkills = data.user_skills;
-        userDiffs = data.user_diffs;
-        children = data.children;
-        answer_counts = data.answer_counts;
-        answer_correct_counts = data.answer_correct_counts;
-        children_ids = data.children_ids;
-        '></div>
     {% verbatim %}
-    <table style="border: none;" class="children-comparison">
+    <div ng-hide="skills">{% endverbatim %}{% include "core/spinner.html" %}{% verbatim %}</div>
+    <table ng-cloak ng-show="skills" style="border: none;" class="children-comparison">
         <thead style="background-color: transparent;">
         <tr>
             <th></th>

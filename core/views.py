@@ -78,7 +78,6 @@ class SupervisorOverviewView(View):
         return render(request, 'core/supervisor_overview.html', {
             "child_form": child_form,
             "child_pk": child_pk,
-            "data": get_data_for_children_comparison(request.user)
         })
 
 
@@ -92,7 +91,6 @@ class SupervisorOverviewView(View):
             "child_form": child_form,
             "child_pk": child_pk,
             "children": request.user.profile.children.all().order_by("user__first_name"),
-            "data": get_data_for_children_comparison(request.user)
             })
 
 supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view(), redirect_to="convert")
