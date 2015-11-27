@@ -36,6 +36,9 @@ def home(request):
     for skill in skills:
         skill.image = skill.get_image_static(request.user)
 
+    if hasattr(request.user, "profile") and not request.user.profile.is_child() and not request.user.profile.has_children() and request.user.answers.count() <= 20:
+        messages.info(request, "Víte, že můžete snadno pod svým účtem spravovat více dětských účtů? Více <a href='/faq'>zde</a>.")
+
     return render(request, 'core/home.html', {
         "skills": skills,
     })
@@ -98,7 +101,7 @@ supervisor_overview = non_lazy_required(SupervisorOverviewView.as_view(), redire
 def log_as_child(request, child_pk):
     child = request.user.profile.children.get(user__pk=child_pk).user
     child.backend = 'django.contrib.auth.backends.ModelBackend'
-    print login(request, child)
+    login(request, child)
     return redirect("home")
 
 

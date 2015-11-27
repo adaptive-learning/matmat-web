@@ -52,7 +52,7 @@
     <div id="feedback-modal" class="reveal-modal" data-reveal ng-controller="Feedback">
         {% verbatim %}
             <div ng-show="msg" ng-cloak data-alert class="medium-8 medium-offset-2 alert-box text-center {{ msg_tag }}">
-                {{ msg }}
+                {{ msg  }}
             </div>
         {% endverbatim %}
         <form ng-hide="sending" ng-submit="submit()">
@@ -72,7 +72,7 @@
     {% if messages %}
         {% for message in messages %}
             <div data-alert class="alert-box text-center {{ message.tags }} {% if message.tags == "error" %}alert{% endif %}">
-                {{ message }}
+                {{ message | safe }}
                 <a href="#" class="close">&times;</a>
             </div>
         {% endfor %}
