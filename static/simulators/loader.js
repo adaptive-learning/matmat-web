@@ -3,6 +3,7 @@ var INITIAL_WAIT_TIME_BEFORE_Q_FINISH = 1000;
 var FADEOUT_DURATION = 500;         // animation time after finish question
 var FADEIN_DURATION = 500;         // animation time of showing question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
+var AUTO_NEXT_QUESTION = false;
 
 app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
     if ($scope.test){
@@ -156,33 +157,40 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
         $scope.save_answer();
 
-        // wait to show correct answer
+        if (AUTO_NEXT_QUESTION || correctly_solved || answer === null) {
+            // give time to show correct answer
+            $timeout($scope.hide_question, wait_time);
+        }else{
+            SimulatorGlobal.hide_question = $scope.hide_question
+        }
+    };
+
+    $scope.hide_question = function () {
+        SimulatorGlobal.hide_question = null;
+        $scope.question.hide = true;
+        $scope.say = "";
+        // wait to finish fade-out animation
         $timeout(function() {
-            $scope.question.hide = true;
-            $scope.say = "";
-            // wait to finish fade-out animation
-            $timeout(function() {
-                $("#playground").empty();
-                $scope.question = null;
-                if ($scope.counter.current == $scope.counter.total){
-                    // if last question: redirect to "my skills" page
-                    if ($scope.test){
-                        $scope.counter.current = 1;
-                        $scope.next_question();
-                        return;
-                    }
-                    $scope.loading = true;
-                    ga("send", "event", "set", "finished", skill_name);
-                    $timeout( function() {
-                        window.location.replace("/m/moje_vedomosti/" + $scope.skill_id);
-                    }, 0);
-                }else{
-                    // load next question
+            $("#playground").empty();
+            $scope.question = null;
+            if ($scope.counter.current == $scope.counter.total) {
+                // if last question: redirect to "my skills" page
+                if ($scope.test) {
+                    $scope.counter.current = 1;
                     $scope.next_question();
+                    return;
                 }
+                $scope.loading = true;
+                ga("send", "event", "set", "finished", skill_name);
+                $timeout(function () {
+                    window.location.replace("/m/moje_vedomosti/" + $scope.skill_id);
+                }, 0);
+            } else {
+                // load next question
+                $scope.next_question();
+            }
             $scope.solved = "";
-            }, FADEOUT_DURATION);
-        }, wait_time);
+        }, FADEOUT_DURATION);
     };
 
     $scope.save_partial_answer = function (correctly_solved, answer) {

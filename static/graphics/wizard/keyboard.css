@@ -78,7 +78,7 @@
     margin-right: -150px;
 }
 
-#keyboard-wizard div.key.submit{
+#keyboard-wizard div.key.submit, #keyboard-wizard div.key.hide{
     background-color: darkgreen;
     height: 70px;
     width: 70px;
@@ -87,7 +87,7 @@
     margin-left: -20px;
     margin-right: 5px;
 }
-#keyboard-wizard div.key.submit:hover{ background-color: green; }
+#keyboard-wizard div.key.submit:hover, #keyboard-wizard div.key.hide:hover{ background-color: green; }
 #keyboard-wizard div.key.submit.disabled{ background-color: gray; box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);}
 #keyboard-wizard div.key.submit.disabled:hover{ background-color: gray; }
 
@@ -105,9 +105,10 @@
 
 #keyboard-wizard div.key.skip{
     height: 30px;
-    width: 50px;
+    font-size: 0.8rem;
     margin-top: 55px;
     background-color: gray;
+    cursor: pointer;
 }
 #keyboard-wizard div.key.skip i{position: absolute; top: -4px; left: 15px;}
 #keyboard-wizard div.key.skip:hover{background-color: darkgray;}

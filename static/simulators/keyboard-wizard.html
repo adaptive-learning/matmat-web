@@ -1,4 +1,4 @@
-<div id="keyboard-wizard" class="unselectable" ng-class="{open: global.keyboard != 'gone' && global.keyboard != 'empty' && !closed}">
+<div keypress-events id="keyboard-wizard" class="unselectable" ng-class="{open: global.keyboard != 'gone' && global.keyboard != 'empty' && !closed && !global.hide_question}">
     <div id="scroll-left"></div><div id="scroll-center">
         <div id="scroll-content">
             <div>
@@ -14,5 +14,6 @@
             </div>
         </div>
     </div><div id="scroll-right"></div>
-    <div class="key skip" style="margin-left: -140px; position:absolute; top: 150px;" ng-click="skip()"><i class="fi-next"></i></div>
+    <div class="key skip" style="margin-left: -165px; position:absolute; top: 150px;" ng-click="skip()">přeskočit</div>
+    <div ng-cloak next-action="global.hide_question" ng-show="global.hide_question" class="blink key hide" style="margin-left: 5px; position:absolute; top: 80px;" ng-click="global.hide_question()"><i class="fi-arrow-right"></i></div>
 </div>
