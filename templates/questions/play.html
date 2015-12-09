@@ -4,18 +4,6 @@
 {% block title %}{{ skill.note }}{% endblock %}
 
 {% block extrascripts %}
-    <script src="{% static "simulators/loader.js" %}"></script>
-    <script src="{% static "simulators/directives.js" %}"></script>
-    {% if graphics == "wi" %}
-        <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
-        <script src="{% static "simulators/roller-wizard.js" %}"></script>
-        <script src="{% static "simulators/counter-wizard.js" %}"></script>
-        <script src="{% static "graphics/wizard/wizard.js" %}"></script>
-    {% else %}
-    {% endif %}
-    {% for simulator in simulators %}
-        <script src="{% static "simulators/" %}{{ simulator }}/controller.js"></script>
-    {% endfor %}
     <script>
         var skill = {{ skill.pk }};
         var skill_name = "{{ skill.note | safe }}";
@@ -29,7 +17,6 @@
             {% endfor %}
         ]
     </script>
-    {% include "questions/template_urls.html" %}
 {% endblock %}
 
 {% block content %}

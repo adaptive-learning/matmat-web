@@ -5,8 +5,8 @@ app.directive("fillin", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: template_urls["fillin"],
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/fillin/simulator.html",
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
             $scope.fill = '_';
             $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
@@ -33,6 +33,6 @@ app.directive("fillin", function(){
             };
 
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
-        }
+        }]
     }
 });

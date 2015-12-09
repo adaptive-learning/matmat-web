@@ -1,4 +1,4 @@
-app.directive("rollerwizard", function($timeout){
+app.directive("rollerwizard", ["$timeout", function($timeout){
     return {
         restrict: "E",
         transclude: true,
@@ -7,8 +7,8 @@ app.directive("rollerwizard", function($timeout){
             question: "=",
             control: "="
         },
-        templateUrl: template_urls["roller-wizard"],
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/roller-wizard.html",
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
             $scope.global = SimulatorGlobal;
 
             $scope.control.fit_height = $scope.fit_height = function(){
@@ -21,6 +21,6 @@ app.directive("rollerwizard", function($timeout){
                 $timeout($scope.fit_height, 100);
                 $timeout($scope.fit_height, 1000);
             });
-        }
+        }]
     }
-});
+}]);

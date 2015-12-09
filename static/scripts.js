@@ -51,3 +51,5 @@ function HSVtoRGB(h, s, v) {
         b: Math.floor(b * 255)
     };
 }
+
+$.mobile_device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));

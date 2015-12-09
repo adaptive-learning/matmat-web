@@ -1,4 +1,4 @@
-app.controller("Feedback", function($scope, $http, $location){
+app.controller("Feedback", ["$scope", "$http", "$location", function($scope, $http, $location){
     $scope.feedback = {};
 
     $scope.submit = function(){
@@ -21,4 +21,4 @@ app.controller("Feedback", function($scope, $http, $location){
         var modal = $(this);
         $scope.msg = "";
     });
-});
+}]);

@@ -5,8 +5,8 @@ app.directive("selecting", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: template_urls["selecting"],
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/selecting/simulator.html",
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
             SimulatorGlobal.keyboard = "empty";
             $scope.selected = 0;
 //            $scope.simple = $scope.data.answer < 10;
@@ -29,6 +29,6 @@ app.directive("selecting", function(){
 
             SimulatorGlobal.description.top = "Vyber zadaný počet čtverečků.";
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
-        }
+        }]
     }
 });

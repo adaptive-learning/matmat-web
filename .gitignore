@@ -1,3 +1,4 @@
 *.pyc
 .ropeproject
 media
+node_modules

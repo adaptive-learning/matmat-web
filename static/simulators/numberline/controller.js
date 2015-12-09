@@ -6,8 +6,8 @@ app.directive("numberline", function(){
             data: "=data",              // json data from database
             interface: "=interface"     // interface of loader
         },
-        templateUrl: template_urls["numberline"],  // html
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/numberline/simulator.html",  // html
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
 
             SimulatorGlobal.keyboard = "empty";
             $scope.selected_number = null;
@@ -135,6 +135,6 @@ app.directive("numberline", function(){
 
             SimulatorGlobal.description.top = "Najdi číslo na číselné ose.";
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
-        }
+        }]
     }
 });

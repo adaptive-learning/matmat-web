@@ -8,7 +8,7 @@ app.directive('focus', function(){
     };
 });
 
-app.directive('focusMe', function($timeout) {
+app.directive('focusMe', ["$timeout", function($timeout) {
     return {
         scope: {
             trigger: '=focusMe'
@@ -26,15 +26,15 @@ app.directive('focusMe', function($timeout) {
             });
         }
     };
-});
+}]);
 
-app.directive("keyboard", function($timeout){
+app.directive("keyboard", ["$timeout", function($timeout){
     return {
         restrict: "E",
         scope: {
         },
-        templateUrl: template_urls["keyboard"],
-        controller: function($scope, $cookieStore, SimulatorGlobal){
+        templateUrl: "simulators/keyboard.html",
+        controller: ["$scope", "$cookieStore", "SimulatorGlobal", function($scope, $cookieStore, SimulatorGlobal){
             //  $scope.hidden = !$cookieStore.get("keyboard");
             $scope.hidden = false;
             $scope.global = SimulatorGlobal;
@@ -78,12 +78,12 @@ app.directive("keyboard", function($timeout){
                     $cookieStore.put("keyboard", false);
                 }
             };
-        }
+        }]
     }
-});
+}]);
 
 // input field with submit button
-app.directive("responseinput", function($timeout){
+app.directive("responseinput", ["$timeout", function($timeout){
     return {
         restrict: "E",
         scope: {
@@ -91,9 +91,9 @@ app.directive("responseinput", function($timeout){
             submit: "&",        // submit function
             ngChange: "&"       // function to call after input change
         },
-        templateUrl: template_urls["response-input"],
+        templateUrl: "simulators/response-input.html",
 
-        controller: function($scope, SimulatorGlobal){
+        controller: ["$scope", "SimulatorGlobal", function($scope, SimulatorGlobal){
             $scope.global = SimulatorGlobal;
             $scope.change = function(){
                 $timeout($scope.ngChange, 0);
@@ -103,9 +103,9 @@ app.directive("responseinput", function($timeout){
                 if ($scope.global.input.value)
                     $scope.submit()
             };
-        }
+        }]
     }
-});
+}]);
 
 // show current response, after finish question show correct solution
 app.directive("responsespan", function(){
@@ -117,9 +117,9 @@ app.directive("responsespan", function(){
             solved: "=",        // indicator of question finish
             def: "@"        // default string to show if answer is empty
         },
-        templateUrl: template_urls["response-span"],
-        controller: function($scope){
-        }
+        templateUrl: "simulators/response-span.html",
+        controller: ["$scope", function($scope){
+        }]
     }
 });
 
@@ -129,8 +129,8 @@ app.directive("simulatorselector", function(){
         restrict: "E",
         scope: {
         },
-        templateUrl: template_urls["simulator-selector"],
-        controller: function($scope, $cookieStore, SimulatorGlobal){
+        templateUrl: "simulators/simulator_selector.html",
+        controller: ["$scope", "$cookieStore", "SimulatorGlobal", function($scope, $cookieStore, SimulatorGlobal){
             $scope.simulators = simulators;
 
             for (var i=0; i<$scope.simulators.length; i++){
@@ -145,7 +145,7 @@ app.directive("simulatorselector", function(){
                 $cookieStore.put("simulator" + simulator.pk, simulator.selected);
                 SimulatorGlobal.clear_queue();
             };
-        }
+        }]
     }
 });
 
@@ -161,8 +161,8 @@ app.directive("cubes", function(){
             input: "=",
             correct: "="
         },
-        templateUrl: template_urls["cubes"],
-        controller: function($scope, $element, $timeout){
+        templateUrl: "simulators/cubes.html",
+        controller: ["$scope", "$element", "$timeout", function($scope, $element, $timeout){
             if ($scope.size){
                 $($element).find(".objects").css("font-size", $scope.size+"px")
             }
@@ -206,6 +206,6 @@ app.directive("cubes", function(){
             $scope.repeater = function(n) {
                 return new Array(n);
             };
-        }
+        }]
     }
 });

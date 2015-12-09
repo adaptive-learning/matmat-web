@@ -5,7 +5,7 @@ var FADEIN_DURATION = 500;         // animation time of showing question
 var QUESTIONS_IN_QUEUE = 1; // 0 - for load Q when needed. 1 - for 1 waiting Q, QUESTIONS_IN_SET - for load all Q on start
 var AUTO_NEXT_QUESTION = false;
 
-app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
+app.controller("Loader", ["$scope", "$cookieStore", "SimulatorGlobal", "$http", "$compile", "$timeout", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
     if ($scope.test){
         QUESTIONS_IN_QUEUE = 0;
         QUESTIONS_IN_SET = 10;
@@ -249,4 +249,4 @@ app.controller("Loader", function($scope, $cookieStore, SimulatorGlobal, $http, 
 
     // start loading questions
     $scope.next_question();
-});
+}]);

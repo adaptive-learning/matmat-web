@@ -17,13 +17,12 @@ app.factory("SimulatorGlobal", function(){
     }
 );
 
-app.config(function($httpProvider){
-        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-    }
-);
+app.config(["$httpProvider", function($httpProvider){
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}]);
 
-app.controller("singin", function($scope, $http){
+app.controller("singin", ["$scope", "$http", function($scope, $http){
     $scope.submit = function(){
         $http.post("/ajaxlogin/",
             {
@@ -44,14 +43,14 @@ app.controller("singin", function($scope, $http){
                 $scope.msg_color =  "red";
         });
     }
-});
+}]);
 
 
-app.controller("send_child", function($scope){
+app.controller("send_child", ["$scope", function($scope){
     $scope.neco = function(){
         console.log($scope.name);
     }
-});
+}]);
 
 app.directive('keypressEvents', ["$document", "$rootScope", function ($document, $rootScope) {
     return {

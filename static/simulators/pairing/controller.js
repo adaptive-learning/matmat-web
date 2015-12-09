@@ -5,8 +5,8 @@ app.directive("pairing", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: template_urls["pairing"],
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/pairing/simulator.html",
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
             $scope.gameover = false;
             SimulatorGlobal.keyboard = "empty";
 
@@ -67,6 +67,6 @@ app.directive("pairing", function(){
 
             SimulatorGlobal.description.top = "Vyznač kartičky se stejnou hodnotou.";
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
-        }
+        }]
     }
 });

@@ -1,11 +1,11 @@
-app.controller("mySkills", function($scope){
+app.controller("mySkills", ["$scope", function($scope){
     $scope.$watch("skills", function(skills){
         process_skills(skills, $scope.userSkills, $scope.userDiffs, $scope.active);
     });
-});
+}]);
 
 
-app.controller("childrenComparison", function($scope, $http){
+app.controller("childrenComparison", ["$scope", "$http", function($scope, $http){
 
     var get_data = function(){
         $http.get("/m/children_comparison")
@@ -30,7 +30,7 @@ app.controller("childrenComparison", function($scope, $http){
     };
 
     get_data()
-});
+}]);
 
 
 process_skills = function(skills, userSkills, userDiffs, active, user){

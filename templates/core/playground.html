@@ -2,14 +2,8 @@
 {% load staticfiles %}
 
 {% block extrascripts %}
-    {% include "questions/template_urls.html" %}
-    <script src="{% static "simulators/keyboard-wizard.js" %}"></script>
-    <script src="{% static "simulators/roller-wizard.js" %}"></script>
-    <script src="{% static "simulators/counter-wizard.js" %}"></script>
-    <script src="{% static "simulators/directives.js" %}"></script>
-    <script src="{% static "graphics/wizard/wizard.js" %}"></script>
     <script>
-    app.controller("playground", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
+    app.controller("playground", ["$scope", "$cookieStore", "SimulatorGlobal", "$http", "$compile", "$timeout", function($scope, $cookieStore, SimulatorGlobal, $http, $compile, $timeout){
         $scope.q = "Kolik je to čtverečků?";
         $scope.s = null;
         $scope.n= 27;

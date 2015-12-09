@@ -22,7 +22,6 @@ Celkově řešeno <b>{{ math.answers_count }}</b> úloh z toho vyřešeno <span 
 {% endblock %}
 
 {% block postextrascripts %}
-    <script src="{% static "scripts.js" %}"></script>
     <script>
         {% for skill in skills %}
         generate_cubes({{ skill.correct_answers_count }}, "cubes{{ skill.pk }}");

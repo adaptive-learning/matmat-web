@@ -1,11 +1,11 @@
-app.directive("counterwizard", function($timeout){
+app.directive("counterwizard", ["$timeout", function($timeout){
     return {
         restrict: "E",
         scope: {
             current: "="
         },
-        templateUrl: template_urls["counter-wizard"],
-        controller: function($scope){
+        templateUrl: "simulators/counter-wizard.html",
+        controller: ["$scope", function($scope){
             var counter = $("#counter");
             $scope.$watch("current", function(n, o){
                 for (var i=0; i < n.length; i++){
@@ -19,6 +19,6 @@ app.directive("counterwizard", function($timeout){
                     }
                 }
             }, true);
-        }
+        }]
     }
-});
+}]);

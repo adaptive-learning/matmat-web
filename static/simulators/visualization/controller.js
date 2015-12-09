@@ -5,8 +5,8 @@ app.directive("visualization", function(){
             data: "=data",
             interface: "=interface"
         },
-        templateUrl: template_urls["visualization"],
-        controller: function($scope, SimulatorGlobal, $timeout){
+        templateUrl: "simulators/visualization/simulator.html",
+        controller: ["$scope", "SimulatorGlobal", "$timeout", function($scope, SimulatorGlobal, $timeout){
             $scope.answer = SimulatorGlobal.input;
             $scope.answer.value = '';
             $scope.apples = _.range($scope.data.question[1]); 
@@ -49,7 +49,7 @@ app.directive("visualization", function(){
             };
 
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
-        }
+        }]
     }
 });
 

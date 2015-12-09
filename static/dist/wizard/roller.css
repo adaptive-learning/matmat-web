@@ -1,0 +1,58 @@
+#roller-wizard{
+    width: 940px;
+    margin: auto;
+    min-height: 400px;
+    z-index: 10;
+    text-align: center;
+    position: relative;
+    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px);
+}
+
+#roller-wizard #roller-top{
+    height: 50px;
+    background: url("roller.png") no-repeat top;
+    position: relative;
+    z-index: 11;
+    color: grey;
+    padding: 10px;
+    font-weight: bold;
+}
+#roller-wizard #roller-top:hover{color: black}
+
+#roller-wizard #roller-playground{
+    position: relative;
+    background-color: #ffffff;
+    border: solid #b3b3b3;
+    border-width: 0 1px 0 1px;
+    margin: -1px auto auto;
+    z-index: 9;
+    overflow: hidden;
+    width: 765px;
+    transition: height 1.0s;
+}
+
+#roller-wizard #roller-playground > div{
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    width: 765px;
+}
+
+#roller-wizard #roller-bottom{
+    position: relative;
+    height: 42px;
+    width: 765px;
+    margin: auto;
+    background: url("roller-bottom.png") no-repeat;
+}
+
+#roller-wizard.closed #roller-playground{
+    height: 0 !important;
+}
+
+responseinput.phantom:before{
+    height: 57px;
+    float: left;
+    content: "";
+}

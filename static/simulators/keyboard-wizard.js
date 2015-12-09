@@ -1,11 +1,11 @@
-app.directive("keyboardwizard", function($timeout){
+app.directive("keyboardwizard", ["$timeout", function($timeout){
     return {
         restrict: "E",
         scope: {
             closed: "="
         },
-        templateUrl: template_urls["keyboard-wizard"],
-        controller: function($scope, $cookieStore, SimulatorGlobal){
+        templateUrl: "simulators/keyboard-wizard.html",
+        controller: ["$scope", "$cookieStore", "SimulatorGlobal", function($scope, $cookieStore, SimulatorGlobal){
             $scope.choices = ["1","2","3","4","5","6","7","8","9","0"];
             $scope.global = SimulatorGlobal;
 
@@ -66,6 +66,6 @@ app.directive("keyboardwizard", function($timeout){
                     }, $scope.global.keyboard == 'choices' ? 500: 3000);
                 }
             });
-        }
+        }]
     }
-});
+}]);

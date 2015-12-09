@@ -1,0 +1,86 @@
+/* Skill selection*/
+#skill_selector{
+    text-align: center;
+    align-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#skill_selector div.skill{
+    height: 200px;
+    width: 200px;
+    border: solid #000000 1px;
+    margin: 5px;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: gray;
+    background: center center no-repeat;
+    position: relative;
+}
+
+#skill_selector div.skill:hover{
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    color: #000000;
+}
+
+#skill_selector div.skill span.subskills{
+    position: absolute;
+    bottom: 5px;
+    right: 50px;
+    color: #2BA6CB;
+}
+
+
+#skill_selector div.skill span.title{
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #000000;
+}
+
+.skill-tabs dd a, .skill-tabs dd a:hover, .skill-tabs dd.active a {
+    background: center bottom no-repeat;
+    background-size: 50%;
+}
+
+#playground{
+    text-align: center;
+    transition: background-color, box-shadow cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+#playground h2{
+    font-size: 4em;
+}
+
+#playground.solved_correctly{
+    background-color: rgba(11, 87, 0, 0.1);
+    box-shadow: 0 0 40px rgba(11, 87, 0, 0.3);
+}
+
+#playground.solved_incorrectly{
+    background-color: rgba(158, 20, 9, 0.1);
+    box-shadow: 0 0 40px rgba(158, 20, 9, 0.3);
+}
+
+.tick{
+    background-image: url("tick.png") ;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 70%;
+}
+
+.cubes{
+    height: 150px;
+    border: solid lightgrey 1px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cubes div{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: solid #000000 1px;
+}

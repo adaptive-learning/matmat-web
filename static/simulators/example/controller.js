@@ -6,8 +6,8 @@ app.directive("example", function(){
             data: "=data",              // json data from database
             interface: "=interface"     // interface of loader
         },
-        templateUrl: template_urls["example"],  // html
-        controller: function($scope, $timeout){
+        templateUrl: "simulators/example/simulator.html",  // html
+        controller: ["$scope", "$timeout", function($scope, $timeout){
             /*
                 During solving log interesting actions
              */
@@ -25,6 +25,6 @@ app.directive("example", function(){
 
             $timeout(function(){SimulatorGlobal.simulator_loaded_callback()}, 0);
 
-        }
+        }]
     }
 });
