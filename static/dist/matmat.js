@@ -506,7 +506,7 @@ app.controller("mySkills", ["$scope", function($scope){
 app.controller("childrenComparison", ["$scope", "$http", function($scope, $http){
 
     var get_data = function(){
-        $http.get("/m/children_comparison")
+        $http.get("/m/children_comparison/")
             .success(function(data){
                 $scope.skills = data.skills;
                 $scope.base_skills = data.base_skills;
