@@ -117,6 +117,20 @@ def get_skill_parent_lists(skills):
     return lists
 
 
+def parse_question(item, data):
+    if item["visualization"] == "pairing":
+        return ""
+    question = data["question"] if "question" in data else data["text"]
+    if type(question) is list and len(question) == 3 and type(question[0]) is unicode:
+        question = question[0]
+    if type(question) is list and len(question) == 3 and type(question[0]) is int:
+        question = "".join(map(str, question))
+    if type(question) is list and len(question) == 1:
+        question = question[0]
+    question = str(question).replace("&times;", "x").replace("&divide;", "/").replace(" ", "")
+    return question
+
+
 def prepare_data(input_dir="data/source", output_dir="data"):
     csv.field_size_limit(sys.maxsize)
     answers = pd.read_csv(os.path.join(input_dir, "questions_answer.csv"), engine='python', index_col=0)
@@ -128,14 +142,16 @@ def prepare_data(input_dir="data/source", output_dir="data"):
     items = items.join(simulators, "player")
     items.rename(inplace=True, columns={"name": "visualization"})
     items["answer"] = 0
+    items["question"] = ""
     items["skill_lvl_1"], items["skill_lvl_2"], items["skill_lvl_3"] = None, None, None
     for id, item in items.iterrows():
         data = json.loads(item["data"])
         items.loc[id, "data"] = item["data"].replace('"', "'")
-        items.loc[id, "answer"] = int(data["answer"])
+        items.loc[id, "answer"] = int(data["answer"]) if item["visualization"] != "pairing" else None
+        items.loc[id, "question"] = parse_question(item, data)
         for i, skill in enumerate(skill_parents[item["skill"]][::-1][1:]):
             items.loc[id, "skill_lvl_{}".format(i + 1)] = skill
-    items = items[["answer", "visualization", "skill", "skill_lvl_1", "skill_lvl_2", "skill_lvl_3", "data"]]
+    items = items[["question", "answer", "visualization", "skill", "skill_lvl_1", "skill_lvl_2", "skill_lvl_3", "data"]]
 
     answers.rename(inplace=True, columns={
         "question": "item",
