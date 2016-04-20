@@ -1,4 +1,5 @@
 *.pyc
-.ropeproject
 media
 node_modules
+bower_components
+static
