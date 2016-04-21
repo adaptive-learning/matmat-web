@@ -56,6 +56,7 @@ module.exports = function(grunt) {
                 files: {
                     'static/matmat.min.css': [
                         "bower_components/foundation/css/normalize.css",
+                        "bower_components/foundation-icon-fonts/foundation-icons.css",
                         "static-source/css/foundation.css",
                         'static-source/css/*.css'
                     ]
@@ -70,6 +71,17 @@ module.exports = function(grunt) {
             }
         },
         copy: {
+            fonts: {
+                expand: true,
+                cwd: "bower_components/foundation-icon-fonts/",
+                src: [
+                    "foundation-icons.eot",
+                    "foundation-icons.svg",
+                    "foundation-icons.ttf",
+                    "foundation-icons.woff"
+                ],
+                dest: 'static/'
+            }
         }
     });
 
@@ -83,5 +95,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.registerTask('foundation', ['sass']);
-    grunt.registerTask('default', ['jshint', 'foundation', 'ngtemplates', 'concat', 'uglify:build', 'cssmin']);
+    grunt.registerTask('default', ['jshint', 'foundation', 'ngtemplates', 'concat', 'uglify:build', 'cssmin', 'copy']);
 };
