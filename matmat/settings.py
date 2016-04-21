@@ -149,6 +149,20 @@ else:
         },
     }
 
+
+if ON_SERVER and not ON_DEV:
+    LANGUAGE_DOMAINS = {
+        'cs': 'matmat.cz',
+    }
+elif ON_DEV:
+    LANGUAGE_DOMAINS = {
+        'cs': 'devel.matmat.cz',
+    }
+else:
+    LANGUAGE_DOMAINS = {
+        'cs': 'localhost:8000',
+    }
+
 # Emails
 
 EMAIL_SELF = 'web@matmat.cz'
