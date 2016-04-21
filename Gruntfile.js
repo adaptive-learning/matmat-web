@@ -2,6 +2,16 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            dist: {
+                options: {
+                    loadPath: 'bower_components/foundation/scss'
+                },
+                files: {
+                    'static-source/css/foundation.css': 'static-source/css/foundation.custom.scss'
+                }
+            }
+        },
         concat: {
             libs: {
                 src: [
@@ -46,7 +56,7 @@ module.exports = function(grunt) {
                 files: {
                     'static/matmat.min.css': [
                         "bower_components/foundation/css/normalize.css",
-                        "bower_components/foundation/css/foundation.css",
+                        "static-source/css/foundation.css",
                         'static-source/css/*.css'
                     ]
                 }
@@ -69,6 +79,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['jshint', 'ngtemplates', 'concat', 'uglify:build', "cssmin"]);
+    grunt.registerTask('foundation', ['sass']);
+    grunt.registerTask('default', ['jshint', 'foundation', 'ngtemplates', 'concat', 'uglify:build', 'cssmin']);
 };

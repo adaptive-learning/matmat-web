@@ -4,3 +4,5 @@ node_modules
 bower_components
 static/*.js
 static/*.css
+static-source/css/foundation.css*
+.sass-cache
