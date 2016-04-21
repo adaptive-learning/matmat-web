@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 dest: 'static/libs.min.js'
             },
             dist: {
-                src: ['static-source/js/*.js', 'static-source/ng-templates/templates.js'],
+                src: ['static-source/js/*.js', 'static/templates.js'],
                 dest: 'static/matmat.js'
             }
         },
@@ -64,8 +64,9 @@ module.exports = function(grunt) {
         },
         ngtemplates:  {
             matmat: {
-                src: 'static-source/ng-templates/*.html',
-                dest: 'static-source/ng-templates/templates.js'
+                cwd: 'static-source/ng-templates/',
+                src: '*.html',
+                dest: 'static/templates.js'
             }
         },
         copy: {

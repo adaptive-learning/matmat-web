@@ -25,6 +25,13 @@
         <script src="{% static "matmat.min.js" %}"></script>
     {% endif %}
 
+    <script>
+        var user = {{ user | safe | default:"null" }};
+        var config = {{ config_json | safe }};
+    </script>
+
+    <base href="/">
+
 
     {% include "googleanalytics.html" %}
 </head>
@@ -32,11 +39,11 @@
 <body ng-app="matmat">
 
 <div id="wrapper">
-    {% include "panel.html" %}
+    <div ng-include="'panel.html'" class="contain-to-grid" role="navigation"></div>
 
     <a href="#" data-reveal-id="feedback-modal" id="feedback">Napište nám</a>
 
-    <div id="feedback-modal" class="reveal-modal" data-reveal ng-controller="Feedback">
+    <div id="feedback-modal" class="reveal-modal" data-reveal>
         {% verbatim %}
         <div ng-show="msg" ng-cloak data-alert class="medium-8 medium-offset-2 alert-box text-center {{ msg_tag }}">
             {{ msg  }}
@@ -56,16 +63,7 @@
 
     <div id="content-wrapper">
         <div id="content" class="row">
-            {% if messages %}
-                {% for message in messages %}
-                    <div data-alert class="alert-box text-center {{ message.tags }} {% if message.tags == "error" %}alert{% endif %}">
-                        {{ message | safe }}
-                        <a href="#" class="close">&times;</a>
-                    </div>
-                {% endfor %}
-            {% endif %}
-            {% block content %}
-            {% endblock %}
+            <div ng-view></div>
         </div>
     </div>
 
