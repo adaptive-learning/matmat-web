@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             files: ['static-source/js/*.js']
         },
         watch: {
-            files: ['static-source/js/*.js', "static-source/*.css", "static-source/ng-templates/*.html"],
+            files: ['static-source/js/*.js', "static-source/css/*.css", "static-source/ng-templates/*.html"],
             tasks: ['jshint', 'ngtemplates', 'concat:dist', 'uglify:build', "cssmin"]
         },
         cssmin: {

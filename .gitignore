@@ -2,4 +2,5 @@
 media
 node_modules
 bower_components
-static
+static/*.js
+static/*.css

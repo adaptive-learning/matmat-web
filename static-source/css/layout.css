@@ -1,0 +1,42 @@
+#wrapper{
+    position: relative;
+    min-height: 100%;
+}
+
+
+#content{
+    padding: 5px;
+    padding-bottom: 50px;
+    min-width: 960px;
+    min-height: 500px;
+}
+
+#footer{
+    background-color: #333;
+    font-size: 0.8em;
+    color: #eee;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    text-align: center;
+}
+
+#feedback{
+    right: -50px;
+    position: fixed;
+    top: 250px;
+    z-index: 999;
+
+    background: #333;
+    border-radius: 6px 6px 0 0;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    width: 140px;
+}

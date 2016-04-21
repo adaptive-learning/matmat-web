@@ -9,4 +9,5 @@ urlpatterns = patterns(
     url(r'^models/', include('proso_models.urls')),
     url(r'^common/', include('proso_common.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^.*$', "matmat.views.index", name='index'),
 )
