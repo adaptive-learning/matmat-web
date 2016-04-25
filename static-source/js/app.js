@@ -6,6 +6,12 @@ app.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
+app.run(["$rootScope", "$location", "userService", function ($rootScope, $location, userService) {
+    $rootScope.$on('$routeChangeSuccess', function(){
+        ga('send', 'pageview', $location.path());
+    });
+}]);
+
 app.run(["configService", "userService", function(configService, userService) {
     configService.processConfig(config);
     userService.processUser(user);
