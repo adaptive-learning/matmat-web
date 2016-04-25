@@ -35,6 +35,28 @@ app.controller("panel", ["$scope", "userService", function ($scope, userService)
 app.controller("home", ["$scope", function ($scope) {
 }]);
 
+app.controller("feedback", ["$scope", "$http", "$location", "userService", function ($scope, $http, $location, userService) {
+    $scope.feedback = {};
+    if (userService.user){
+        console.log(userService.user);
+        $scope.feedback.email = userService.user.email;
+    }
+
+    $scope.send = function() {
+        $scope.feedback.page = $location.absUrl();
+
+        $http.post('/feedback/feedback/', $scope.feedback).success(function(data){
+            $scope.sending = false;
+            $scope.feedback.text = '';
+            $('#feedback-modal').foundation('reveal', 'close');
+        }).error(function(){
+            $scope.sending = false;
+
+        });
+        $scope.sending = true;
+    };
+}]);
+
 var social_auth_callback = function(){
     var element = angular.element($("body"));
     element.injector().get("userService").loadUserFromJS(element.scope());

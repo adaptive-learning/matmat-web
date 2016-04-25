@@ -43,23 +43,7 @@
 
     <a href="#" data-reveal-id="feedback-modal" id="feedback">Napište nám</a>
 
-    <div id="feedback-modal" class="reveal-modal" data-reveal>
-        {% verbatim %}
-        <div ng-show="msg" ng-cloak data-alert class="medium-8 medium-offset-2 alert-box text-center {{ msg_tag }}">
-            {{ msg  }}
-        </div>
-        {% endverbatim %}
-        <form ng-hide="sending" ng-submit="submit()">
-            <h3>Napište nám</h3>
-            <p>Narazili jste na chybu v aplikaci? Máte nápad na vylepšení? Nebo jakýkoliv jiný postřeh či komentář? Zajímá nás všechno, co nám chcete sdělit.</p>
-            <textarea ng-required="true" rows="6" ng-model="feedback.text"></textarea>
-            Vaše emailová adresa (nepovinné)
-            <input name="email" type="text" value="@" ng-model="feedback.email" />
-            <button type="submit" class="right radius">Odeslat</button>
-        </form>
-        <div class="text-center loader" ng-cloak ng-show="sending"></div>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
+    <div ng-include="'feedback.html'" ng-controller="feedback"></div>
 
     <div id="content-wrapper">
         <div id="content" class="row">
