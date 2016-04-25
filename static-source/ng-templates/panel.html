@@ -1,7 +1,7 @@
-<nav ng-controller="panel" class="top-bar" data-topbar data-options="back_text: Zpět">
+<nav class="top-bar" data-topbar data-options="back_text: Zpět">
     <ul class="title-area">
         <li class="name">
-            <h1><a href="#">MatMat</a></h1>
+            <h1><a href="/">MatMat</a></h1>
         </li>
     </ul>
     <div class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></div>
@@ -54,22 +54,21 @@
                 </li>
             </ul>
         </li>
-        <li><a style="height: 45px" href="#">
+        <li><a style="height: 45px" href="/faq">
             <i style="font-size: 1.8em;" class="fi-info"></i>
         </a></li>
     </ul>
 
     </section>
 
-
     <div id="login-modal" class="reveal-modal small" data-reveal>
         <a class="close-reveal-modal">&#215;</a><br/>
         <div class="row collapse">
             <div class="columns medium-12 large-5">
-                <input ng-model="username" type="text" placeholder="jméno" name="username" />
+                <input ng-model="credentials.username" type="text" placeholder="jméno" name="username" />
             </div>
             <div class="columns medium-8 large-5">
-                <input ng-model="password" class="columns medium-5" type="password" placeholder="heslo" name="password" />
+                <input ng-model="credentials.password" class="columns medium-5" type="password" placeholder="heslo" name="password" />
             </div>
             <div class="columns medium-4 large-2">
                 <a href="#" ng-click="login()" class="button postfix">Přihlásit</a>

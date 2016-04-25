@@ -13,15 +13,20 @@ app.run(["configService", "userService", function(configService, userService) {
 
 app.controller("panel", ["$scope", "userService", function ($scope, userService) {
     $scope.userService = userService;
+    $scope.credentials = {};
 
     $scope.login = function () {
-        userService.login($scope.username, $scope.password)
+        userService.login($scope.credentials.username, $scope.credentials.password)
             .success(function (response) {
-
+                $('#login-modal').foundation('reveal', 'close');
             }).error(function(response) {
                 $scope.msg = response.error;
         });
     };
+    $(document).foundation('reveal');
+}]);
+
+app.controller("home", ["$scope", function ($scope) {
 }]);
 
 var social_auth_callback = function(){

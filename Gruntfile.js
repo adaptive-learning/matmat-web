@@ -15,6 +15,7 @@ module.exports = function(grunt) {
         concat: {
             libs: {
                 src: [
+                    'bower_components/foundation/js/vendor/modernizr.js',
                     'bower_components/foundation/js/vendor/jquery.js',
                     'bower_components/angular/angular.min.js',
                     'bower_components/angular-cookies/angular-cookies.min.js',
@@ -22,9 +23,8 @@ module.exports = function(grunt) {
                     'bower_components/angular-foundation/mm-foundation-tpls.min.js',
                     'bower_components/jsTimezoneDetect/jstz.min.js',
                     'bower_components/proso-apps-js/proso-apps-services.js',
-                    'bower_components/foundation/js/vendor/modernizr.js',
                     'bower_components/foundation/js/vendor/fastclick.js',
-                    'bower_components/foundation/js/foundation.min.js',
+                    'bower_components/foundation/js/foundation/foundation.js',
                     'bower_components/foundation/js/foundation/foundation.clearing.js',
                     'bower_components/foundation/js/foundation/foundation.reveal.js'
                 ],

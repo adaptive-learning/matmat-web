@@ -39,7 +39,7 @@
 <body ng-app="matmat">
 
 <div id="wrapper">
-    <div ng-include="'panel.html'" class="contain-to-grid" role="navigation"></div>
+    <div ng-include="'panel.html'" ng-controller="panel" class="contain-to-grid" role="navigation"></div>
 
     <a href="#" data-reveal-id="feedback-modal" id="feedback">Napište nám</a>
 
@@ -71,13 +71,13 @@
         <a target="_blank"  href="http://www.fi.muni.cz/">
             <img src="{% static "imgs/logo_fi_small.png" %}" alt="Fakulty Informatiky"/> &nbsp;&nbsp;&nbsp;
         </a>
-        <a href="#">
+        <a href="/about">
             <img src="{% static "imgs/al-logo-small.png" %}" alt="Adaptive Learning"/> &nbsp;&nbsp;&nbsp;
             O projektu</a>
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="#" data-reveal-id="feedback-modal">Napište nám</a>
         &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" >FAQ</a>
+        <a href="/faq" >FAQ</a>
         &nbsp;&nbsp;|&nbsp;&nbsp;
         Vyzkoušejte také
         <a href="http://slepemapy.cz" target="_blank">Slepé Mapy</a>,
@@ -87,8 +87,5 @@
         <a href="http://zlomky-hrave.cz/" target="_blank">Zlomky hravě</a>
     </div>
 </div>
-
-<script>$(document).foundation();</script>
-{% block postextrascripts %}{% endblock %}
 </body>
 </html>

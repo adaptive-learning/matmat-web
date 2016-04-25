@@ -9,6 +9,23 @@
     padding-bottom: 50px;
     min-width: 960px;
     min-height: 500px;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: visible;
+    z-index: 0;
+}
+
+#content-wrapper {
+    background: url("imgs/wizard/komnata.svg") 50% 100px no-repeat;
+    background-size: contain;
+    max-width: 1500px;
+    min-width: 1000px;
+    min-height: 900px;
+    margin: auto;
+    padding: 5px;
 }
 
 #footer{

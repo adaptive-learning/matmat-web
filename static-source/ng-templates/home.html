@@ -1,0 +1,81 @@
+<h1 class="text-center"><b class="fancy">MatMat</b> - inteligentní procvičování matematiky</h1>
+<hr/>
+<div id="skill_selector">
+    {% for skill in skills%}
+        <a href="{% url "play" skill.to_url %}">
+            <div class="skill"
+                 style="background-image: url('{{ skill.image }}')">
+                <span class="fancy title">{{ skill.note }}</span>
+                <span class="fancy subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
+            </div></a>
+
+        <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
+            {% for subskill in skill.active_children.all %}
+                <li><a href="{% url "play" skill.to_url subskill.to_url %}">{{ subskill.note }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+<hr/>
+
+<div class="medium-10 medium-offset-1">
+
+    <div class="paragraph-with-icon">
+        <i class="fi-die-five"></i>
+        <h3>Procvičování matematiky</h3>
+        MatMat nabízí procvičování základoškolské matematiky,
+        které vede k osvojení a zautomatizování základních matematických dovedností:
+        počítání do 10, číselná osa, sčítání a odčítání do 100, malá násobilka, celočíselné dělení a další.
+    </div>
+
+    <div class="paragraph-with-icon">
+        <i class="fi-puzzle"></i>
+        <h3>Matematika hrou</h3>
+        Procvičování počítání s grafikou přívětivou k dětem, s bezprostředním
+        hodnocením a drobnými odměnami (diamanty).
+    </div>
+
+    <div class="paragraph-with-icon">
+        <i class="fi-lightbulb"></i>
+        <h3>Adaptabilní procvičování</h3>
+        MatMat se přizpůsobuje každému dítěti zvlášť - podle toho, jaké má vědomosti, MatMat volí vhodně těžké otázky.
+        Systém tak předkládá otázky, jejichž procvičení je pro děti nejužitečnější.
+    </div>
+
+    <div class="paragraph-with-icon">
+        <i class="fi-loop"></i>
+        <h3>Pravidelné aktualizace</h3>
+        Stéle na MatMatu pracujeme a ten je každým týdnem lepší a lepší.
+        Momentálně jsme v testovací verzi a tak můžete čekat velké změny již brzy.
+    </div>
+
+    <div class="paragraph-with-icon">
+        <i class="fi-graph-trend"></i>
+        <h3>Vizualizace znalostí</h3>
+        Na základě odpovědí MatMat odhadne, jak dobře děti ovládají různé matematické dovedeností, a přehledně je znázorní.
+        To jim pomůže ujasnit si, co jim vlastně jde a kde mají slabiny.
+    </div>
+
+    <div class="paragraph-with-icon">
+        <i class="fi-torsos-all"></i>
+        <h3>Podpora pro učitele a rodiny</h3>
+        MatMat umožňuje pod jedním uživatelským účtem vést více dětí.
+        Ty pak snadno mohou cvičit matematiku ušitou na míru každého z nich.
+    </div>
+
+    <!--
+    <div class="paragraph-with-icon">
+        <i class="fi-graph-bar"></i>
+        <h3>Učení z dat</h3>
+        MatMat se učí z dat od všech dětí, které ho používají.
+        Výběr otázek je založen na těchto datech, nikoliv na znalostech experta na matematiku, který "ví", který druh příkladů je těžší.
+    </div>
+    -->
+
+    <div class="paragraph-with-icon">
+        <i class="fi-graph-bar"></i>
+        <h3>Zdarma a bez reklam</h3>
+        MatMat je výzkumný projekt vyvíjený na Masarykově univerzitě.
+        Za použití systému neplatíte, děti neobtěžují žádné reklamy a používání projektu pomáhá podporovat vědu.
+    </div>
+</div>
