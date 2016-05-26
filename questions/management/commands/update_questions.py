@@ -92,6 +92,12 @@ class Command(BaseCommand):
                 else:
                     db_question = Question.objects.get(Q(identifier=question["id"]))
                 changed = False
+
+                if db_question.identifier is None:
+                    self.stdout.write("Adding question {} identifier {}".format(question["id"], question["id"]))
+                    db_question.identifier = question["id"]
+                    changed = True
+
                 if json.loads(db_question.data) != json.loads(question["data"]):
                     self.stdout.write("Updating question {} data {}->{}".format(question["id"], db_question.data, question["data"]))
                     db_question.data = question["data"]
