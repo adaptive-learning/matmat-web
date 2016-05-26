@@ -1,5 +1,3 @@
-import random
-
 import os
 import json
 from django.core.management import BaseCommand, CommandError
@@ -47,17 +45,17 @@ class Command(BaseCommand):
         # Numbers:
         # --------
         numbers = add_skill('numbers', math, 'Počítání')
-        num10 = add_skill('numbers <= 10', numbers, 'Počítání do 10')
-        num20 = add_skill('numbers <= 20', numbers, 'Počítání do 20')
+        num10 = add_skill('numbers_leq_10', numbers, 'Počítání do 10')
+        num20 = add_skill('numbers_leq_20', numbers, 'Počítání do 20')
         for n in range(1, 21):
             add_skill(str(n), num10 if n <= 10 else num20)
 
         # Addition:
         # ---------
         addition = add_skill('addition', math, u'Sčítání')
-        a1 = add_skill('addition <= 10', addition, u'Sčítání do 10')
-        a2 = add_skill('addition <= 20', addition, u'Sčítání do 20')
-        add_skill('addition <= 100', addition, u'Sčítání do 100')
+        a1 = add_skill('addition_leq_10', addition, u'Sčítání do 10')
+        a2 = add_skill('addition_leq_20', addition, u'Sčítání do 20')
+        add_skill('addition_leq_100', addition, u'Sčítání do 100')
         for a in range(20):
             for b in range(a, 21):
                 if a + b <= 20:
@@ -66,8 +64,8 @@ class Command(BaseCommand):
         # Subtraction:
         # ------------
         subtr = add_skill('subtraction', math, u'Odčítání')
-        s1 = add_skill('subtraction <= 10', subtr, u'Odčítání do 10')
-        s2 = add_skill('subtraction <= 20', subtr, u'Odčítání do 20')
+        s1 = add_skill('subtraction_leq_10', subtr, u'Odčítání do 10')
+        s2 = add_skill('subtraction_leq_20', subtr, u'Odčítání do 20')
         for a in range(1, 11):
             for b in range(1, a + 1):
                 add_skill('%s-%s' % (a, b), s1)
@@ -75,11 +73,11 @@ class Command(BaseCommand):
         # Multiplication:
         # ---------------
         m0 = add_skill('multiplication', math, u'Násobení')
-        m1 = add_skill('multiplication1', m0, u'Malá násobilka')
+        m1 = add_skill('multiplication_small', m0, u'Malá násobilka')
         for b in range(1, 11):
             for a in range(1, b + 1):
                 add_skill('%sx%s' % (a, b), m1, '%s&times;%s' % (a, b))
-        m2 = add_skill('multiplication2', m0, u'Velká násobilka')
+        m2 = add_skill('multiplication_big', m0, u'Velká násobilka')
         for a in range(1, 11):
             for b in range(11, 21):
                 add_skill('%sx%s' % (a, b), m2, '%s&times;%s' % (a, b))
@@ -195,30 +193,17 @@ class Command(BaseCommand):
                 identifier = '{}+{}'.format(a, b)
                 skill = '{}+{}'.format(x, y)
                 add_task(identifier, skill, {'operation': '+', 'operands': [a, b], 'answer': a + b}, ['written_question', 'object_counting_with_numbers'])
-        skill = 'addition <= 100'
-        random.seed(150 - 2)
-        X = set([])
-        while len(X) < 100:
-            a, b = random.randint(1, 100), random.randint(1, 100)
-            if (a > 20 or b > 20) and a + b <= 100:
-                X.add((a, b))
-        for a, b in X:
+        skill = 'addition_leq_100'
+        for a, b in RAND_ADD_1:
             identifier = '{}+{}'.format(a, b)
             add_task(identifier, skill, {'operation': '+', 'operands': [a, b], 'answer': a + b}, ['written_question'])
 
-        X = set([])
-        for a in range(1, 11):
-            for b in range(1, 11):
-                X.add((a, b))
-        while len(X) < 150:
-            a, b = random.randint(1, 50), random.randint(1, 50)
-            X.add((a, b))
-        for a, b in X:
+        for a, b in RAND_ADD_2:
             if a <= 20 and a + b <= 20:
                 x, y = (a, b) if a <= b else (b, a)
                 skill = '{}+{}'.format(x, y)
             else:
-                skill = 'addition <= 100'
+                skill = 'addition_leq_100'
             identifier = '{}+{}'.format(a, b)
             add_task(identifier, skill, {'operation': '+', 'operands': [a, b], 'answer': a + b}, ['object_counting_with_numbers'])
 
@@ -227,7 +212,7 @@ class Command(BaseCommand):
         # up to 20
         for a in range(1, 21):
             for b in range(1, a + 1):
-                skill = '{}-{}'.format(a, b) if a <= 10 else 'subtraction <= 20'
+                skill = '{}-{}'.format(a, b) if a <= 10 else 'subtraction_leq_20'
                 identifier = '{}-{}'.format(a, b)
                 add_task(identifier, skill, {'operation': '-', 'operands': [a, b], 'answer': a - b}, ['written_question', 'object_counting_with_numbers'])
         # multiples of 5:
@@ -280,6 +265,9 @@ def decode_field(x):
             x //= 2
         f.append(l)
     return f
+
+RAND_ADD_1 = [(2, 34), (3, 58), (4, 50), (4, 67), (4, 81), (6, 56), (7, 58), (8, 23), (8, 57), (8, 75), (9, 48), (10, 30), (10, 37), (10, 87), (11, 43), (12, 55), (16, 39), (17, 39), (17, 52), (17, 57), (17, 74), (20, 50), (20, 56), (21, 69), (22, 66), (23, 9), (24, 32), (24, 33), (25, 50), (25, 66), (27, 2), (28, 13), (28, 72), (29, 11), (29, 16), (29, 25), (29, 31), (29, 71), (30, 45), (30, 57), (31, 12), (31, 37), (31, 64), (32, 59), (34, 46), (34, 58), (35, 4), (35, 39), (35, 65), (37, 21), (37, 44), (38, 9), (38, 49), (39, 12), (39, 40), (40, 40), (40, 47), (41, 40), (42, 39), (42, 41), (42, 50), (45, 55), (46, 10), (46, 20), (47, 13), (47, 15), (47, 51), (48, 12), (48, 51), (49, 22), (50, 8), (50, 39), (50, 47), (51, 20), (51, 33), (52, 9), (52, 22), (53, 12), (55, 33), (56, 10), (56, 20), (57, 23), (61, 21), (61, 22), (61, 31), (61, 32), (64, 25), (65, 16), (65, 23), (65, 25), (67, 7), (69, 3), (71, 6), (71, 16), (73, 6), (75, 13), (77, 15), (78, 14), (82, 7), (86, 4)]
+RAND_ADD_2 = [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9), (1, 10), (1, 15), (1, 30), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (2, 9), (2, 10), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9), (3, 10), (3, 40), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 25), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), (5, 7), (5, 8), (5, 9), (5, 10), (5, 13), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (6, 7), (6, 8), (6, 9), (6, 10), (6, 19), (6, 48), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (7, 7), (7, 8), (7, 9), (7, 10), (7, 32), (8, 1), (8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7), (8, 8), (8, 9), (8, 10), (9, 1), (9, 2), (9, 3), (9, 4), (9, 5), (9, 6), (9, 7), (9, 8), (9, 9), (9, 10), (10, 1), (10, 2), (10, 3), (10, 4), (10, 5), (10, 6), (10, 7), (10, 8), (10, 9), (10, 10), (10, 24), (11, 47), (14, 2), (15, 6), (16, 15), (18, 27), (20, 28), (20, 33), (23, 8), (24, 33), (28, 6), (28, 24), (29, 4), (30, 20), (31, 25), (31, 47), (32, 41), (33, 39), (34, 31), (34, 35), (35, 5), (35, 10), (35, 26), (35, 41), (35, 45), (36, 24), (36, 43), (37, 48), (38, 7), (38, 36), (39, 47), (40, 25), (40, 37), (41, 44), (42, 15), (42, 40), (43, 42), (44, 4), (44, 33), (46, 9), (46, 40), (48, 47)]
 
 
 MULTI_2D = [(2, 3, 464378630459495837192945664),
