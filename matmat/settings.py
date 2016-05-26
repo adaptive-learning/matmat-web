@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'proso_models',
     'proso_user',
     'proso_feedback',
+    'proso_tasks',
     'social.apps.django_app.default',
+    'matmat',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'proso_common.middleware.ToolbarMiddleware',
     'proso.django.request.RequestMiddleware',
     'proso.django.cache.RequestCacheMiddleware',
@@ -68,7 +71,10 @@ WSGI_APPLICATION = 'matmat.wsgi.application'
 
 
 # Database
-DATABASES = {"default": dj_database_url.config(default='postgresql://matmat:matmat@localhost/matmat')}
+DATABASES = {
+    "default": dj_database_url.config(default='postgresql://matmat:matmat@localhost/matmat'),
+    "old": dj_database_url.config(default='mysql://matmat:matmat@localhost/matmat'),
+}
 
 # Internationalization
 LANGUAGE_CODE = 'cs-cz'
@@ -76,7 +82,9 @@ TIME_ZONE = 'Europe/Prague'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
-
+LANGUAGES = (
+    ('cs', 'Čeština'),
+)
 
 # Static files (CSS, JavaScript, Images)
 if ON_SERVER and not ON_DEV:

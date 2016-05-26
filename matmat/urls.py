@@ -9,6 +9,7 @@ urlpatterns = patterns(
     url(r'^models/', include('proso_models.urls')),
     url(r'^common/', include('proso_common.urls')),
     url(r'^feedback/', include('proso_feedback.urls')),
+    url(r'^tasks/', include('proso_tasks.urls', namespace="tasks")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('social.apps.django_app.urls', namespace='social')),
