@@ -121,6 +121,7 @@ class Command(BaseCommand):
             "simulators": [],
             "questions": [],
         }
+        old_new = []
 
         KB_FULL = "full"
         # KB_10 = range(1, 11)
@@ -132,20 +133,51 @@ class Command(BaseCommand):
         def get_skill(name):
             return self.skills[name]
 
-        def Q(skill, player, data, type='c', value=None, active=True):
-            data = json.dumps(data)
-            q = {
-                "type": type,
+        instance_identifiers = []
+
+        def Q(skill, player, data, t='c', value=None, active=True, not_increment=False):
+            d = json.dumps(data)
+            question = {
+                "type": t,
                 "skill": skill,
                 "player": player,
-                "data": data,
+                "data": d,
                 "value": value,
                 "active": active,
                 "id": "{}-{}-{}".format(skill, player, ids["{}-{}".format(skill, player)]),
             }
+
+            if active:
+                q = data['question'] if 'question' in data else data['text']
+                if type(q) == list:
+                    if len(q) == 4:
+                        q = q[:3]
+                    if player == "visualization":
+                        q = q[:1]
+                    q = "".join(map(str, q))
+
+                q = str(q).replace(' ', '').replace('&divide;', '/').replace('&times;', 'x')
+
+                p = player\
+                    .replace('free_answer', 'written_question')\
+                    .replace('counting', 'object_counting_with_numbers')\
+                    .replace('selecting', 'object_selection_answer')\
+                    .replace('numberline', 'number_line_answer') \
+                    .replace('visualization', 'division_visualization')\
+                    .replace('field', 'multiplication_visualization_field')
+                if 'with_text' in data and not data['with_text']:
+                    p = 'object_counting'
+                instance_identifier = "{}-{}".format(q, p)
+                i = 1
+                while instance_identifier in instance_identifiers and not not_increment:
+                    instance_identifier = '{}-{}-{}'.format(q, p, i)
+                    i += 1
+                instance_identifiers.append(instance_identifier)
+                old_new.append(["{}-{}-{}".format(skill, player, ids["{}-{}".format(skill, player)]), instance_identifier])
+
             ids["{}-{}".format(skill, player)] += 1
-            json_data["questions"].append(q)
-            return q
+            json_data["questions"].append(question)
+            return question
 
         def Sim(name, note):
             sim = {"name": name, "note": note}
@@ -202,6 +234,7 @@ class Command(BaseCommand):
             a, b = random.randint(1, 100), random.randint(1, 100)
             if (a > 20 or b > 20) and a + b <= 100:
                 X.add((a, b))
+        print(sorted(X))
         for a, b in X:
             Q(skill, free_answer,
               {"question": "%s + %s" % (a, b), "answer": str(a + b),
@@ -214,6 +247,7 @@ class Command(BaseCommand):
         while len(X) < 150:
             a, b = random.randint(1, 50), random.randint(1, 50)
             X.add((a, b))
+        print(sorted(X))
         for a, b in X:
             if a <= 20 and a + b <= 20:
                 x, y = (a, b) if a <= b else (b, a)
@@ -280,7 +314,7 @@ class Command(BaseCommand):
                    "kb": KB_FULL if a > 10 else kb}, value=value)
                 if a <= 10:
                     Q(skill, counting,
-                      {"question": [a, "-", b], "answer": str(a - b), "kb": kb, "with_text": True}, value=value)
+                      {"question": [a, "-", b], "answer": str(a - b), "kb": kb, "with_text": True}, value=value, not_increment=True)
         # multiples of 5:
         for a in range(25, 101, 5):
             for b in range(10, a + 1, 5):
@@ -411,6 +445,9 @@ class Command(BaseCommand):
                 Q("division1", pairing, {"question": gen0(k), "answer": 1}, active=False)
             for _ in range(10):
                 Q("division1", pairing, {"question": gen(k), "answer": 1}, active=False)
+
+
+        json.dump(old_new, open("questions/migrations/old_new.json", "w"), indent=4)
 
         return json_data
 
