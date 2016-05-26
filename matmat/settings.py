@@ -63,7 +63,7 @@ WSGI_APPLICATION = 'matmat.wsgi.application'
 
 # Database
 
-DATABASES = {"default": dj_database_url.config(default='mysql://matmat:poklop@localhost/matmat')}
+DATABASES = {"default": dj_database_url.config(default='mysql://matmat:matmat@localhost/matmat')}
 DATABASES["default"]["TEST_COLLATION"] = "utf8_czech_ci"
 # Internationalization
 
