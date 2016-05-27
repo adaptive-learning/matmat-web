@@ -38,7 +38,6 @@ app.controller("home", ["$scope", function ($scope) {
 app.controller("feedback", ["$scope", "$http", "$location", "userService", function ($scope, $http, $location, userService) {
     $scope.feedback = {};
     if (userService.user){
-        console.log(userService.user);
         $scope.feedback.email = userService.user.email;
     }
 
@@ -55,6 +54,8 @@ app.controller("feedback", ["$scope", "$http", "$location", "userService", funct
         });
         $scope.sending = true;
     };
+
+    $(document).foundation('reveal');
 }]);
 
 var social_auth_callback = function(){
