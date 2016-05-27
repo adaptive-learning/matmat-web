@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
 import os
+from django.core.cache import cache
 from clint.textui import progress
 from datetime import timedelta
 from django.contrib.auth.models import User
@@ -40,6 +41,8 @@ class Command(BaseCommand):
 
         if 'answers' in options['parts']:
             self.migrate_answers()
+
+        cache.clear()
 
     def migrate_users(self):
         self.dump_load('auth', exclude=['auth.Permission'] )
