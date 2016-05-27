@@ -1,4 +1,4 @@
-angular.module("proso.apps", ["proso.apps.common-config","proso.apps.common-logging","proso.apps.flashcards-practice","proso.apps.flashcards-userStats","proso.apps.user-user", "proso.apps.common-toolbar", "proso.apps.tpls"]);
+angular.module("proso.apps", ["proso.apps.common-config","proso.apps.common-logging","proso.apps.models-practice","proso.apps.user-user", "proso.apps.common-toolbar", "proso.apps.tpls"]);
 var app = angular.module('matmat', ["ngCookies", "ngRoute", "mm.foundation", "proso.apps"]);
 
 app.config(["$httpProvider", function ($httpProvider) {
