@@ -5,6 +5,9 @@ body, p, li{
     font-family: 'Sorts Mill Goudy', serif;
 }
 
+.red{ color: darkred;}
+.green{ color: darkgreen;}
+
 .unselectable{
     -webkit-touch-callout: none;
     -webkit-user-select: none;

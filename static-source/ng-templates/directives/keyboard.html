@@ -1,0 +1,19 @@
+<div keypress-events id="keyboard" class="unselectable" ng-class="{open: global.keyboard != 'gone' && global.keyboard != 'empty' && !closed && !global.closeQuestion}">
+    <div id="scroll-left"></div><div id="scroll-center">
+    <div id="scroll-content">
+        <div>
+            <div class="key left back" ng-cloak ng-show="global.keyboard == 'full'" ng-click="addText('larr')"><i class="fi-arrow-left"></i></div>
+            <div class="key right submit" ng-cloak ng-click="submit()" ng-class="{disabled: !global.input.value}"><i class="fi-check"></i></div>
+
+            <div class="choices"  ng-cloak ng-show="global.keyboard == 'full'">
+                <div class="key" ng-repeat="choice in choices" ng-click="addText(choice)" >{{ choice }}</div>
+            </div>
+            <div class="choices" ng-cloak ng-show="global.keyboard == 'choices'">
+                <div class="key choice" ng-repeat="choice in global.choices" ng-click="chooseAnswer(choice)" >{{ choice }}</div>
+            </div>
+        </div>
+    </div>
+</div><div id="scroll-right"></div>
+    <div class="key skip" style="margin-left: -165px; position:absolute; top: 150px;" ng-click="skip()">přeskočit</div>
+    <div ng-cloak next-action="global.closeQuestion" ng-show="global.closeQuestion" class="blink key hide" style="margin-left: 5px; position:absolute; top: 80px;" ng-click="global.closeQuestion()"><i class="fi-arrow-right"></i></div>
+</div>

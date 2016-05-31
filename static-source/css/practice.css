@@ -1,0 +1,167 @@
+#roller-wizard{
+    width: 940px;
+    margin: auto;
+    min-height: 400px;
+    z-index: 10;
+    text-align: center;
+    position: relative;
+    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px);
+}
+
+#roller-wizard #roller-top{
+    height: 50px;
+    background: url("imgs/wizard/roller.png") no-repeat top;
+    position: relative;
+    z-index: 11;
+    color: grey;
+    padding: 10px;
+    font-weight: bold;
+}
+#roller-wizard #roller-top:hover{color: black}
+
+#roller-wizard #roller-playground{
+    position: relative;
+    background-color: #ffffff;
+    border: solid #b3b3b3;
+    border-width: 0 1px 0 1px;
+    margin: -1px auto auto;
+    z-index: 9;
+    overflow: hidden;
+    width: 765px;
+    transition: height 1.0s;
+}
+
+#roller-wizard #roller-playground > div{
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    width: 765px;
+}
+
+#roller-wizard #roller-bottom{
+    position: relative;
+    height: 42px;
+    width: 765px;
+    margin: auto;
+    background: url("imgs/wizard/roller-bottom.png") no-repeat;
+}
+
+#roller-wizard.closed #roller-playground{
+    height: 0 !important;
+}
+
+#playground .large{
+    font-size: 4em;
+}
+
+.tick{
+    background-image: url('imgs/wizard/tick.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-color: darkgreen !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: background-color, box-shadow 0.5s;
+}
+.tick:hover{ background-color: green !important; box-shadow:0 0 7px rgba(0, 0, 0, 1); -webkit-box-shadow:0 0 7px rgba(0, 0, 0, 1);}
+
+response-input.phantom:before{
+    height: 57px;
+    float: left;
+    content: "";
+}
+
+
+#wizard{
+    position: absolute;
+    right: -50px;
+    top: 300px;
+    text-align: center;
+}
+
+#wizard #guy{
+    height: 220px;
+    width: 200px;
+    background-image: url('imgs/wizard/wizard.svg');
+    background-size: contain;
+    z-index: 0;
+}
+
+#wizard-bubble, #wizard-bubble1, #wizard-bubble2{
+    display: block;
+    position: absolute;
+    z-index: 100;
+    background: #ffffff;
+    border: solid black 1px;
+    border-radius: 15px;
+}
+
+#wizard-bubble{
+    padding: 15px;
+    right: 55px;
+    bottom: 220px;
+    min-height: 30px;
+    min-width: 50px;
+    font-weight: bold;
+}
+
+#wizard-bubble1{
+    padding: 10px;
+    right: 70px;
+    bottom: 195px;
+    border-radius: 10px;
+}
+
+#wizard-bubble2{
+    padding: 5px;
+    right: 65px;
+    bottom: 180px;
+    border-radius: 5px;
+}
+
+
+#progress{
+    position: absolute;
+    left: 15px;
+    top: 80px;
+    -webkit-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px);
+}
+
+#progress > div{
+    height: 60px;
+    width: 50px;
+    overflow: visible;
+    margin-bottom: -30px;
+    position: relative;
+}
+#progress > div div{
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 60px;
+    width: 50px;
+}
+.diamond{
+    margin-top: -10px;
+    height: 40px;
+    width: 40px;
+}
+.diamond, #progress > div div{
+    background: url("imgs/wizard/diamond-gray.svg") no-repeat center center;
+    background-size: contain;
+}
+.diamond.green, #progress > div.green div{background-image: url("imgs/wizard/diamond-green.svg")}
+.diamond.shine, #progress > div.shine div{background-image: url("imgs/wizard/diamond-shine.svg")}
+.diamond.shine-small, #progress > div.shine-small div{background-image: url("imgs/wizard/diamond-shine-small.svg")}
+.diamond.red, #progress > div.red div{background-image: url("imgs/wizard/diamond-red.svg")}
+#progress > div:nth-child(even){ margin-left: 35px; }
+
+#progress > div.animated div{
+    height: 120px;
+    width: 100px;
+    margin-left: -25px;
+    margin-top: -30px;
+}

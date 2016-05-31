@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 dest: 'static/libs.min.js'
             },
             dist: {
-                src: ['static-source/js/*.js', 'static/templates.js'],
+                src: ['static-source/js/**/*.js', 'static/templates.js'],
                 dest: 'static/matmat.js'
             }
         },
@@ -45,10 +45,10 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: ['static-source/js/*.js']
+            files: ['static-source/js/**/*.js']
         },
         watch: {
-            files: ['static-source/js/*.js', "static-source/css/*.css", "static-source/ng-templates/*.html"],
+            files: ['static-source/js/**/*.js', "static-source/css/*.css", "static-source/ng-templates/**/*.html"],
             tasks: ['jshint', 'ngtemplates', 'concat:dist', 'uglify:build', "cssmin"]
         },
         cssmin: {
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         ngtemplates:  {
             matmat: {
                 cwd: 'static-source/ng-templates/',
-                src: '*.html',
+                src: '**/*.html',
                 dest: 'static/templates.js'
             }
         },

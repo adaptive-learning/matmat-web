@@ -1,0 +1,4 @@
+<span ng-hide="response">{{ def }}</span>
+<span ng-hide="solved">{{ response }}</span>
+<span ng-show="solved && answer!=response" class="red" style="text-decoration: line-through">{{ response }}</span>
+<span ng-cloak ng-show="solved" class="green">{{ answer }}</span>

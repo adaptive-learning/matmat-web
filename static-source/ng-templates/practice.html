@@ -1,0 +1,15 @@
+<a href="#" data-reveal-id="simulator-selector" class="right fi-list-thumbnails"></a><br/>
+
+
+<roller closed="!question || question.closed" control="roller" question="question_description.top">
+    <div id="playground"></div>
+</roller>
+
+<div ng-hide="question" ng-cloak class="loader"> </div>
+
+
+<keyboard closed="loading || question.hide" interface="interface"> </keyboard>
+
+
+<wizard say="say" ng-class="solved"></wizard>
+<practice-progress current="counter.progress"></practice-progress>

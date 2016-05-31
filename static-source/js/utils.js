@@ -11,3 +11,15 @@ function openPopup(url, next) {
 
     window.open(url, "popup", settings);
 }
+
+if (!String.prototype.format) {
+    String.prototype.format = function() {
+        /* format functionality for strings */
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+            return typeof args[number] !== 'undefined' ? args[number] : match;
+        });
+    };
+}
+
+$.mobileDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
