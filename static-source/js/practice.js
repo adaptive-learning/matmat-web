@@ -21,7 +21,7 @@ app.factory("practiceGlobal", function(){
 app.controller("practice", ["$scope", "$location", "practiceService", "$routeParams", "$compile", "practiceGlobal", "$timeout", "$cookieStore", function ($scope, $location, practiceService, $routeParams, $compile, practiceGlobal, $timeout, $cookieStore) {
     var loadQuestions = function(){
         practiceService.initSet("common");
-        practiceService.setFilter({filter: [['context/written_question']]});
+        practiceService.setFilter({filter: [['context/division_visualization_baskets']]});    // TODO
 
         var setLength = practiceService.getConfig().set_length;
         $scope.counter = {
@@ -52,10 +52,10 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
 
                 var questionDirective = angular.element(
                     '<{0} interface=\'interface\' extra=\'{1}\' data=\'{2}\' setting=\'{3}\' />'.format(
-                        'visualization-simple',
-                        JSON.stringify($scope.question.payload.description),
-                        JSON.stringify($scope.question.payload.task.content),
-                        JSON.stringify($scope.question.payload.context.content)
+                        'visualization-'+question.payload.context.content.directive,
+                        JSON.stringify(question.payload.description),
+                        JSON.stringify(question.payload.task.content),
+                        JSON.stringify(question.payload.context.content)
                     ));
                 $compile(questionDirective)($scope);
                 var playground =  $("#playground");
@@ -65,7 +65,7 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
                     $timeout(function() {
                         playground =  $("#playground");
                         playground.append(questionDirective);
-                    },100);
+                    }, 100);
                 }
 
             }, function(msg){
@@ -118,7 +118,6 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
             $scope.say += " a rychle";
         }
         $scope.counter.progress[$scope.counter.current - 1] = correctlySolved ? fastSolution ? extraFastSolution ? 3 : 2 : 1 : -1;
-        console.log($scope.counter);
         $timeout($scope.roller.fitHeight, 0);
 
         var answer = {
@@ -177,14 +176,12 @@ app.directive("roller", ["$timeout", function($timeout){
             };
 
             $scope.$watch("closed", function(o, n){
-                $scope.fitHeight();
-                $timeout($scope.fitHeight, 100);
+                $timeout($scope.fitHeight, 50);
                 $timeout($scope.fitHeight, 1000);
             });
         }]
     };
 }]);
-
 
 app.directive("responseInput", ["$timeout", function($timeout){
     return {
@@ -269,8 +266,8 @@ app.directive("keyboard", ["$timeout", function($timeout){
                 }else{
                     $scope.global.input.value = value + s;
                 }
-                $scope.interface.logSomething("soft-keyboard:" + s);
-                $scope.interface.logSomething($scope.global.input.value);
+                $scope.interface.log("soft-keyboard:" + s);
+                $scope.interface.log($scope.global.input.value);
             };
 
             $scope.skip = function(){
@@ -346,3 +343,67 @@ app.directive("practiceProgress", ["$timeout", function($timeout){
         }]
     };
 }]);
+
+app.directive("cubes", function(){
+    return {
+        restrict: "E",
+        scope: {
+            count: "=",
+            height: "=",
+            width: "=",
+            size: "=",
+            field: "=",
+            input: "=",
+            correct: "="
+        },
+        templateUrl: "directives/cubes.html",
+        controller: ["$scope", "$element", "$timeout", function($scope, $element, $timeout){
+            if ($scope.size){
+                $($element).find(".objects").css("font-size", $scope.size+"px");
+            }
+            if ($scope.input || $scope.input === 0){
+                $scope.selectable = true;
+                $timeout(function(){$scope.cubes = $($element).find("div > div");});
+
+                $scope.hover = function(n){
+                    if ($scope.correct) {
+                        return;
+                    }
+                    $scope.cubes.removeClass("hovered");
+                    $scope.cubes.slice(0, n).addClass("hovered");
+                };
+
+                $scope.select = function(n){
+                    if ($scope.correct) {
+                        return;
+                    }
+                    $scope.input = n;
+                    $scope.cubes.removeClass("selected");
+                    $scope.cubes.removeClass("hovered");
+                    $scope.cubes.slice(0, n).addClass("selected");
+                };
+
+                $scope.$watch("correct", function(n, o){
+                    if (n){
+                        $scope.cubes.removeClass("selected");
+                        $scope.cubes.removeClass("hovered");
+                        if (n === $scope.input){
+                            $scope.cubes.slice(0, n).addClass("correct");
+                        }else{
+                            $scope.cubes.slice(0, $scope.input).addClass("incorrect");
+                            $timeout(function () {
+                                $scope.cubes.removeClass("incorrect");
+                                $scope.cubes.slice(0, n).addClass("correct");
+                            }, 1000);
+                        }
+                    }
+
+                });
+            }
+
+            $scope.repeater = function(n) {
+                return new Array(n);
+            };
+        }]
+    };
+});

@@ -112,13 +112,13 @@ class Command(BaseCommand):
             self.contexts[identifier] = context
             return context
 
-        add_context('written_question', 'Psaná otázka', {})
-        add_context('object_counting', 'Počítání předmětů', {"with_numbers": False})
-        add_context('object_counting_with_numbers', 'Počítání předmětů s čísly', {"with_numbers": True})
-        add_context('object_selection_answer', 'Výběr správného počtu předmětů', {})
-        add_context('number_line_answer', 'Výběr odpovědi na číselné ose', {})
-        add_context('multiplication_visualization_field', 'Počítání předmětů v mřížce', {})
-        add_context('division_visualization', 'Vizualizace dělení', {})
+        add_context('written_question', 'Psaná otázka', {'directive': 'simple'})
+        add_context('object_counting', 'Počítání předmětů', {'directive': 'object-counting', 'with_numbers': False})
+        add_context('object_counting_with_numbers', 'Počítání předmětů s čísly', {'directive': 'object-counting', 'with_numbers': True})
+        add_context('object_selection_answer', 'Výběr správného počtu předmětů', {'directive': 'object-selection'})
+        add_context('number_line_answer', 'Výběr odpovědi na číselné ose', {'directive': 'number-line'})
+        add_context('multiplication_visualization_field', 'Počítání předmětů v mřížce', {'directive': 'multiplication-field'})
+        add_context('division_visualization_baskets', 'Vizualizace dělení', {'directive': 'division-baskets'})
 
         return contexts
 
@@ -176,7 +176,7 @@ class Command(BaseCommand):
             # for numbers above .... choice up to a 100
             rows = 1 if n <= 7 else 2
 
-            add_task(value, value, {'operands': [value], 'answer': [value]}, {
+            add_task(value, value, {'operands': [n], 'answer': n}, {
                 'object_selection_answer': {'rows': rows},      # number -> select objects
                 'object_counting': None,                        # objects -> number
                 'number_line_answer': None,                     # number -> number-line
@@ -251,7 +251,7 @@ class Command(BaseCommand):
                 skill = '{}/{}'.format(total, b)
                 add_task(skill, skill, {'operation': '/', 'operands': [total, b], 'answer': a}, ['written_question'])
                 if b <= 4 and a <= 6:
-                    add_task(skill, skill, {'operation': '/', 'operands': [total, b], 'answer': a}, ['division_visualization'])
+                    add_task(skill, skill, {'operation': '/', 'operands': [total, b], 'answer': a}, ['division_visualization_baskets'])
 
         return instances, tasks
 

@@ -1,0 +1,21 @@
+<style>
+    table#field-simulator{
+        margin:auto;
+        background: none;
+        border: none;
+        margin-top: 10px;
+    }
+    table#field-simulator td{ font-size: 3rem; text-align: center;}
+    table#field-simulator td.eq{ width: 2rem; }
+    table#field-simulator td.re{ width: 20rem; text-align: left; }
+</style>
+
+<table id="field-simulator">
+    <tr>
+        <td><cubes field="field"></cubes></td>
+        <td class="eq"></td>
+        <td class="re">{{ question }} = <response-span answer="data.answer" response="answer.value" solved="solved" /></td>
+    </tr>
+</table>
+
+<response-input ng-model="answer.value" submit="checkAnswer()" ng-change="change()" />

@@ -23,3 +23,8 @@ if (!String.prototype.format) {
 }
 
 $.mobileDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+
+
+var range = function (n) {
+    return Array.apply(null, Array(n)).map(function (_, i) {return i;});
+};

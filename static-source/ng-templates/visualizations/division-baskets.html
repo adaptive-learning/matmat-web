@@ -1,0 +1,14 @@
+<div class="row collapse large">
+    <div class="small-7 medium-6 text-right columns">{{ question }}</div>
+    <div class="small-2 medium-2 text-center columns">&nbsp;=&nbsp;</div>
+    <div class="small-3 medium-4 text-left columns"><response-span answer="data.answer" response="answer.value" solved="solved" /></div>
+</div>
+<div class="row collapse">
+    <div class="apple columns" ng-repeat="apple in apples track by $index" ng-attr-id="{{'apple' + $index}}" ></div>
+    <div class="columns"></div>
+</div>
+<div class="row collapse">
+    <div class="basket columns" ng-repeat="basket in baskets track by $index" ng-attr-id="{{'basket' + $index}}"></div>
+    <div class="columns"></div>
+</div>
+<response-input ng-model="answer.value" submit="checkAnswer()" ng-change="change()" />

@@ -1,0 +1,41 @@
+<style>
+    table#object-counting {
+        margin:auto;
+        background: none;
+        border: none;
+        margin-top: 10px;
+    }
+    table#object-counting td{ font-size: 3rem; text-align: center;}
+    table#object-counting td.eq{ width: 2rem; }
+    table#object-counting td.re{ width: 10rem; text-align: left; }
+    table#object-counting cubes > div{margin-top: 10px;}
+    table#object-counting tr{background-color: white;}
+</style>
+
+<table id="object-counting">
+    <tr ng-show="setting.with_numbers || block">
+        <td ng-show="!block"> {{ data.operands[0] }} </td>
+        <td ng-show="!block && data.operation"></td>
+        <td ng-show="!block && data.operands.length > 1"> {{ data.operands[1] }} </td>
+        <td ng-show="block"></td>
+        <td ng-show="block">{{ data.operands[1] }}</td>
+        <td ng-show="block"></td>
+        <td class="eq"></td>
+        <td class="re"></td>
+    </tr>
+    <tr>
+        <td ng-show="!block"> <cubes size="size" count="data.operands[0]"></cubes> </td>
+        <td ng-show="!block && data.operation"> {{ data.operation }} </td>
+        <td ng-show="!block && data.operands.length > 1"> <cubes ng-class="{negative:data.operation === '-'}" size="size" count="data.operands[1]"></cubes> </td>
+        <td ng-show="block">{{ data.operands[0] }}</td>
+        <td ng-show="block"><cubes width="data.operands[1]" height="data.operands[0]"></cubes></td>
+        <td ng-show="block">{{ question }}</td>
+        <td class="eq"> =  </td>
+        <td class="re">
+            <response-span answer="data.answer" response="answer.value" solved="solved" />
+        </td>
+    </tr>
+</table>
+
+<div style="height:30px;"></div>
+<response-input ng-model="answer.value" submit="checkAnswer()" ng-change="change()" />

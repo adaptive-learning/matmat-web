@@ -165,3 +165,112 @@ response-input.phantom:before{
     margin-left: -25px;
     margin-top: -30px;
 }
+
+
+.block-objects{
+    font-size: 15px;
+    margin: auto;
+    display: inline-block;
+}
+.block-objects > div{height: 2.2em}
+.block-objects > div > div{
+    height: 2em;
+    width: 2em;
+    background-color: #ff7f0e;
+    margin-right: 0.2em;
+    position: relative;
+    display: inline-block;
+    /*border-radius: 3px;*/
+}
+
+.block-objects > div > div.hide{background-color: #ffffff}
+
+.objects{
+    font-size: 15px;
+    max-width: 23.2em;
+    margin: auto;
+    text-align: left;
+    margin-bottom: -1em;
+}
+
+.objects > div{
+    height: 2em;
+    width: 2em;
+    background-color: #ff7f0e;
+    margin-right: 0.2em;
+    margin-bottom: 1em;
+    position: relative;
+    display: inline-block;
+    /*border-radius: 3px;*/
+}
+
+cubes.negative .objects > div {
+    background-color: #ffde14;
+}
+
+.objects > div:nth-child(10n):after{
+    content: "";
+    width: 22.6em;
+    left: -20.4em;
+    top: -0.1em;
+    height: 2.2em;
+    display: block;
+    background-color: #ffd080;
+    position: absolute;
+    z-index: -1;
+    /*border-radius: 5px;*/
+    box-shadow: 0 0 0.3em orange;
+}
+.objects > div:nth-child(10n+1){
+}
+
+.objects > div:nth-child(10n+5){
+    margin-right: 0.6em;
+}
+/*.objects > div:nth-child(3n+2){opacity: 0.9}*/
+/*.objects > div:nth-child(4n+1){opacity: 0.8}*/
+/*.objects > div:nth-child(6n+3){opacity: 0.7}*/
+/*.objects > div:nth-child(7n+1){opacity: 0.6}*/
+/*.objects > div:nth-child(10n){opacity: 1}*/
+
+.objects.selectable > div { background-color: gray; }
+.objects.selectable > div:nth-child(10n):after{display: none; }
+.objects.selectable > div.selected{ background-color: #ff7f0e; }
+.objects.selectable > div.hovered{ background-color: orange; }
+.objects.selectable > div.correct{ background-color: darkgreen; }
+.objects.selectable > div.incorrect{ background-color: darkred; }
+
+
+/* Numberline */
+.numberline-point rect{
+    opacity: 0;
+    cursor: pointer;
+}
+.numberline-point circle.shadow{
+    fill: darkgreen;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.numberline-point circle.point{ transition: fill 0.25s}
+.numberline-point:hover circle.shadow{ opacity: 0.7 }
+.numberline-point.selected circle.shadow{ opacity: 0.7; fill: blue; }
+.numberline-point.selected circle.point{ fill: blue }
+.numberline-point.selected:hover circle.shadow{ opacity: 1; }
+.numberline-point:hover circle.point{ fill: black; }
+
+
+div.apple {
+    height: 40px;
+    width: 40px;
+    background-image: url('imgs/wizard/apple.svg');
+    background-size: contain;
+    z-index: 1;
+}
+
+div.basket {
+    height: 85px;
+    width: 150px;
+    background-image: url('imgs/wizard/basket.svg');
+    background-size: contain;
+    z-index: 0;
+}
