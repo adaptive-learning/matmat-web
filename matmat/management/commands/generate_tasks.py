@@ -59,7 +59,7 @@ class Command(BaseCommand):
         for a in range(20):
             for b in range(a, 21):
                 if a + b <= 20:
-                    add_skill('%s+%s' % (a, b), a1 if a + b <= 10 else a2)
+                    add_skill('%s+%s' % (a, b), a1 if a + b <= 10 else a2, active=a > 0)
 
         # Subtraction:
         # ------------
