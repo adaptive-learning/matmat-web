@@ -171,6 +171,8 @@ else:
         'cs': 'localhost:8000',
     }
 
+PROSO_JS_FILES = ['libs.min.js']
+
 # Emails
 
 EMAIL_SELF = 'web@matmat.cz'
