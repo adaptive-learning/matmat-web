@@ -17,22 +17,11 @@ app.run(["configService", "userService", function(configService, userService) {
     userService.processUser(user);
 }]);
 
-app.controller("panel", ["$scope", "userService", function ($scope, userService) {
-    $scope.userService = userService;
-    $scope.credentials = {};
+app.service("skillsService", ["$q", "conceptService", function($q, conceptService) {
+    var self = this;
+    var skills = null;
+    var skillsPromise = $q.defer();
 
-    $scope.login = function () {
-        userService.login($scope.credentials.username, $scope.credentials.password)
-            .success(function (response) {
-                $('#login-modal').foundation('reveal', 'close');
-            }).error(function(response) {
-                $scope.msg = response.error;
-        });
-    };
-    $(document).foundation('reveal');
-}]);
-
-app.controller("home", ["$scope", "conceptService", function ($scope, conceptService) {
     conceptService.getConceptsWithTags('level:0').then(function (concepts0) {
         enrichConcepts(concepts0);
         concept = concepts0[0];
@@ -48,11 +37,64 @@ app.controller("home", ["$scope", "conceptService", function ($scope, conceptSer
                     concept.subConcepts = subConcepts;
                 });
             });
-            $scope.concepts = concepts0.concat(concepts);
-            console.log($scope.concepts);
+            skills = concepts0.concat(concepts);
+            skillsPromise.resolve(skills);
         });
     });
-    $(document).foundation('dropdown');
+
+    self.getSkills = function () {
+        return skillsPromise.promise;
+    };
+
+}]);
+
+app.controller("panel", ["$scope", "userService", function ($scope, userService) {
+    $scope.userService = userService;
+    $scope.credentials = {};
+
+    $scope.login = function () {
+        userService.login($scope.credentials.username, $scope.credentials.password)
+            .success(function (response) {
+                $('#login-modal').foundation('reveal', 'close');
+            }).error(function(response) {
+                $scope.msg = response.error;
+        });
+    };
+    $(document).foundation('reveal');
+}]);
+
+app.controller("home", ["$scope", "skillsService", function ($scope, skillsService) {
+    skillsService.getSkills().then(function (concepts) {
+        $scope.concepts = concepts;
+    });
+}]);
+
+app.controller("skills", ["$scope", "skillsService", "conceptService", "$routeParams", function ($scope, skillsService, conceptService, $routeParams) {
+    var currentConcept = $routeParams.concept;
+    conceptService.getUserStats().then(function (userStats) {
+        enrichUserStats(userStats);
+        $scope.userStats = userStats;
+        skillsService.getSkills().then(function (concepts) {
+            $scope.concepts = concepts.slice(1, concepts.length);
+            if (currentConcept) {
+                conceptService.getConceptByName(currentConcept).then(function (concept) {
+                    enrichConcepts([concept]);
+                    $scope.currentConcept = concept;
+                    angular.forEach($scope.concepts, function (concept) {
+                        if (concept.identifier === $scope.currentConcept.identifier){
+                            concept.active = true;
+                        }
+                        angular.forEach(concept.subConcepts, function (subConcept) {
+                            if (subConcept.identifier === $scope.currentConcept.identifier){
+                                concept.active = true;
+                                subConcept.active = true;
+                            }
+                        });
+                    });
+                });
+            }
+        });
+    });
 }]);
 
 app.controller("feedback", ["$scope", "$http", "$location", "userService", function ($scope, $http, $location, userService) {
@@ -89,5 +131,23 @@ var enrichConcepts = function(concepts){
             concept[action.identifier] = action;
             action.url = /\/(.*)/.exec(action.url)[1];
         });
+    });
+};
+
+var enrichUserStats = function (userStats) {
+    angular.forEach(userStats, function (userStat, id) {
+        userStat.color = getColor(userStat.prediction, userStat.practiced_items_count);
+        userStat.style = {
+            'background-color': 'rgba({0}, {1}, {2}, {3})'.format(userStat.color.r, userStat.color.g, userStat.color.b, userStat.color.alpha)
+        };
+
+        userStat.style2 = {
+            'background': 'linear-gradient(to left, white, rgba({0}, {1}, {2}, {3}))'.format(userStat.color.r, userStat.color.g, userStat.color.b, userStat.color.alpha)
+        };
+        userStat.diamonds = [false, false, false, false, false];
+        userStat.fromFive = Math.round(userStat.prediction * 5);
+        for (var i = 0; i < userStat.fromFive; i++){
+            userStat.diamonds[userStat.diamonds.length - 1 - i] = true;
+        }
     });
 };

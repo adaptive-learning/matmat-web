@@ -3,6 +3,8 @@ m.service("conceptService", ["$http", "$q", function($http, $q) {
     var self = this;
     var concepts = null;
     var conceptsPromise = null;
+    var userStats = null;
+    var userStatsPromise = null;
 
     var _getConcepts = function () {
         if (conceptsPromise){
@@ -23,6 +25,19 @@ m.service("conceptService", ["$http", "$q", function($http, $q) {
         return conceptsPromise;
     };
 
+    var _getUserStats = function () {
+        if (userStatsPromise){
+            return userStatsPromise;
+        }
+        userStatsPromise = $http.get("/concepts/user_stats")
+            .success(function(response){
+                userStats = response.data;
+            }).error(function(){
+                console.error("Error while loading user stats from backend");
+            });
+        return userStatsPromise;
+    };
+
     // get all concepts
     self.getConcepts = function () {
         return $q(function(resolve, reject) {
@@ -34,6 +49,21 @@ m.service("conceptService", ["$http", "$q", function($http, $q) {
                         resolve(angular.copy(concepts));
                     }).error(function(){
                         reject("Error while loading concepts from backend");
+                });
+            }
+        });
+    };
+
+    self.getUserStats = function (getFromServer) {
+        return $q(function(resolve, reject) {
+            if (userStats !== null && !getFromServer ) {
+                resolve(angular.copy(userStats));
+            } else {
+                _getUserStats()
+                    .success(function(){
+                        resolve(angular.copy(userStats));
+                    }).error(function(){
+                    reject("Error while loading userStats from backend");
                 });
             }
         });

@@ -1,0 +1,40 @@
+<div class="right text-right" style="max-width: 190px;">
+    <a href="{{ currentConcept.practice.url }}" ng-cloak ng-show="currentConcept"><button style="margin-top: 5px; margin-right: 5px; padding: 15px;" class="radius">Procvičovat dál <br/><b>{{ currentConcept.name }}</b></button></a>
+</div>
+
+<hr class="skill-hr" ng-cloak />
+
+<tabset class="skill-tabs" ng-cloak>
+    <tab ng-repeat="concept in concepts" active="concept.active" ng-init="userStat = userStats[concept.identifier]">
+        <tab-heading ng-style="userStat.style" style="background-image: url('static/imgs/skills/skill_{{ concept.rawName }}.png')" class="fancy" ng-class="{'active': concept.active}" >
+            {{ concept.name }}
+            <div class="gradient"></div>
+        </tab-heading>
+        <div class="skill-heading" ng-style="userStat.style2">
+            <i class="fi-arrow-down"></i>
+            <div class="right">
+                <div ng-repeat="is in userStat.diamonds track by $index" class="diamond right" ng-class="{green: is}"></div>
+            </div>
+            {{ concept.name }}
+            {{ userStat.prediction }}
+        </div>
+        Celkem <b>{{ userStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userStat.correct_answer_count }} správných</b> a <span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
+        <div class="right"><a ng-href="{{ concept.practice.url }}"><i class="fi-play"></i> Procvičit <b>{{ concept.name }}</b></a></div>
+
+        <accordion close-others="true">
+            <accordion-group ng-repeat="subConcept in concept.subConcepts" ng-init="userSubStat = userStats[subConcept.identifier]" is-open="subConcept.active">
+                <accordion-heading><div ng-style="userSubStat.style2">
+                    <i ng-class="{'fi-arrow-right': !subConcept.active, 'fi-arrow-down': subConcept.active}"></i>
+                    <div class="right" ng-show="userSubStat.practiced_items_count">
+                        <div ng-repeat="is in userSubStat.diamonds track by $index" class="diamond right" ng-class="{green: is}"></div>
+                    </div>
+                    {{ subConcept.name }}
+                </div></accordion-heading>
+                Celkem <b>{{ userSubStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userSubStat.correct_answer_count }} správných</b> a <span class="red">{{ userSubStat.answer_count - userSubStat.correct_answer_count }} špatných</span>
+                <div class="right"><a ng-href="{{ subConcept.practice.url }}"><i class="fi-play"></i> <b>{{ subConcept.name }}</b></a></div>
+            </accordion-group>
+        </accordion>
+    </tab>
+</tabset>
+
+<wizard></wizard>

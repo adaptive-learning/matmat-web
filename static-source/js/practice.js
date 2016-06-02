@@ -74,7 +74,7 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
                 }
 
             }, function(msg){
-                $location.path("/post-practice");
+                $location.path(concept.view.url);
                 $scope.loading = true;
                 ga("send", "event", "set", "finished", concept.name);
         });

@@ -83,3 +83,133 @@
     margin-left: 15px;
     color: #000000;
 }
+
+
+.skill-tabs{
+    align-content: center;
+    display: inline-block;
+    user-select: none;
+}
+
+.skill-tabs > dl > dd > a, .skill-tabs > dl > dd > a:hover{
+    padding: 0;
+    border: 0;
+    background-color: transparent !important;
+}
+.skill-tabs tab-heading{
+    text-align: center;
+    width: 150px;
+    height: 80px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 0;
+    border: solid #000000 1px;
+    font-weight: bold;
+    user-select: none;
+    display: inline-block;
+    background-size: auto 100%;
+}
+
+hr.skill-hr{
+    top: 69px;
+    border-color: black;
+    position: absolute;
+    width: 95%;
+}
+
+tab-heading:active, tab-heading:focus { outline-style: none; -moz-outline-style:none; }
+
+
+.skill-tabs tab-heading{ box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.5); }
+.skill-tabs tab-heading i{
+    position: absolute;
+    left: 1rem;
+    bottom: 0;
+}
+.skill-tabs tab-heading:hover{ box-shadow: 2px -2px 3px rgba(0, 0, 0, 0.3); }
+
+.skill-tabs tab-heading.active{
+    box-shadow:  5px -5px 5px rgba(0, 0, 0, 0);
+    border-bottom: solid 1px white;
+}
+
+.skill-tabs tab-heading div.gradient{ display: none; }
+.skill-tabs tab-heading.active div.gradient{
+    display: block;
+    position: absolute;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 6px;
+    margin-right: 6px;
+    background: linear-gradient(rgba(255,255,255,0), white);
+}
+
+.skill-tabs dl.accordion > dd > a, .skill-tabs dl.accordion > dd > a:hover{ padding: 0; background-color: transparent}
+.skill-tabs dl.accordion > dd > a > div{
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
+    font-weight: bold;
+    border-radius: 0.7rem;
+    margin-top: 5px;
+    margin-left: 1rem;
+    border: solid lightgrey 1px;
+}
+.skill-tabs dl.accordion .content {
+    margin-left: 2rem;
+    margin-right: 1rem;
+    border: lightgrey 1px solid;
+    border-top: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.skill-tabs dl.accordion > dd > a > div:hover{
+    border: solid gray 1px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+.skill-heading{
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: solid lightgrey 1px;
+}
+table.user-skill-table {
+    margin: auto;
+    border: none;
+    background-color: transparent;
+}
+table.user-skill-table td{
+    border: 1px solid white;
+    text-align: center;
+    display: inline-block;
+    width: 60px;
+    position: relative;
+}
+table.user-skill-table td span{
+    position: absolute;
+    font-size: 0.6em;
+    color: grey;
+    top: 0;
+    right: 2px;
+}
+.skill-tabs tab-heading {
+    background: center 20px no-repeat;
+    background-size: 30%;
+}
+
+.progress{
+    height: 40px;
+}
+.progress .meter{
+    padding-top: 5px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
