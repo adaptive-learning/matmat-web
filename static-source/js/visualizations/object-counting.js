@@ -15,7 +15,11 @@ app.directive("visualizationObjectCounting", function(){
 
             $scope.size = $scope.data.operands.length >= 2 && ($scope.data.operands[0] > 7 || $scope.data.operands[1] > 7) ? 10 : 15;
             $scope.block = $scope.data.operation === "x";
-            $scope.question = $scope.data.operands.join(" "+$scope.data.operation.replace('x', '×').replace('/', '÷')+" ");
+            if ($scope.data.operation) {
+                $scope.question = $scope.data.operands.join(" " + $scope.data.operation.replace('x', '×').replace('/', '÷') + " ");
+            }else{
+                $scope.question = $scope.data.operands[0];
+            }
 
 
             $scope.setText = function(n){
