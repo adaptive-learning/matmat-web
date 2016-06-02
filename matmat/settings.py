@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'lazysignup',
     'proso_ab',
     'proso_configab',
+    'proso_concepts',
     'proso_common',
     'proso_models',
     'proso_user',

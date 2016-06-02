@@ -8,6 +8,7 @@ urlpatterns = patterns(
     url(r'^user/', include('proso_user.urls')),
     url(r'^models/', include('proso_models.urls')),
     url(r'^common/', include('proso_common.urls')),
+    url(r'^concepts/', include('proso_concepts.urls', namespace="concepts")),
     url(r'^feedback/', include('proso_feedback.urls')),
     url(r'^tasks/', include('proso_tasks.urls', namespace="tasks")),
     url(r'^admin/', include(admin.site.urls)),
