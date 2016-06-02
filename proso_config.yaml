@@ -5,18 +5,16 @@ default:
         predictive_model:
             class: proso.models.prediction.PriorCurrentPredictiveModel
         mastery_threshold: 0.9
-    proso_common:
-        logging:
-            js_errors: true
-    proso_flashcards:
         practice:
             common:
                 set_length: 10
-                fc_queue_size_max: 1
-                fc_queue_size_min: 1
+                question_queue_size_max: 1
+                question__queue_size_min: 1
                 save_answer_immediately: false
-                cache_context: true
                 queue_length: 10
+    proso_common:
+        logging:
+            js_errors: true
     proso_feedback:
         domain: matmat.cz
         to: [matmat@googlegroups.com]
