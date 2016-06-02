@@ -1,20 +1,22 @@
 <h1 class="text-center"><b class="fancy">MatMat</b> - inteligentní procvičování matematiky</h1>
 <hr/>
-<div id="skill_selector">
-    {% for skill in skills%}
-        <a href="{% url "play" skill.to_url %}">
-            <div class="skill"
-                 style="background-image: url('{{ skill.image }}')">
-                <span class="fancy title">{{ skill.note }}</span>
-                <span class="fancy subskills" data-dropdown="subskills{{ skill.pk }}"  data-options="is_hover:false">Podoblasti &raquo;</span>
-            </div></a>
 
-        <ul id="subskills{{ skill.pk }}" class="f-dropdown" data-dropdown-content>
-            {% for subskill in skill.active_children.all %}
-                <li><a href="{% url "play" skill.to_url subskill.to_url %}">{{ subskill.note }}</a></li>
-            {% endfor %}
+<div id="skill-selector">
+    <div ng-repeat="concept in concepts">
+        <a ng-href="{{ concept.practice.url }}">
+            <div class="skill"
+                 style="background-image: url('static/imgs/skills/skill_{{ concept.rawName }}.png')">
+                <span class="fancy title">{{ concept.name }}</span>
+                <span class="fancy subskills" dropdown-toggle="#sub-concepts-{{ concept.id }}" >Podoblasti &raquo;</span>
+            </div>
+        </a>
+
+        <ul id="sub-concepts-{{ concept.id }}" class="f-dropdown">
+            <li ng-repeat="subConcept in concept.subConcepts">
+                <a href="{{ subConcept.practice.url }}">{{ subConcept.name }}</a>
+            </li>
         </ul>
-    {% endfor %}
+    </div>
 </div>
 <hr/>
 

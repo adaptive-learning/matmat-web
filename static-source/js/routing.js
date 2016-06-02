@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         when('/faq', {
             templateUrl: 'faq.html'
         }).
-        when('/practice', {
+        when('/practice/:concept', {
             templateUrl: 'practice.html',
             controller: "practice"
         }).

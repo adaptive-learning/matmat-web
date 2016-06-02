@@ -1,4 +1,4 @@
-angular.module("proso.apps", ["proso.apps.common-config","proso.apps.common-logging","proso.apps.models-practice","proso.apps.user-user", "proso.apps.common-toolbar", "proso.apps.tpls"]);
+angular.module("proso.apps", ["proso.apps.common-config","proso.apps.common-logging","proso.apps.models-practice", "proso.apps.user-user", "proso.apps.concept-concept", "proso.apps.common-toolbar", "proso.apps.tpls"]);
 var app = angular.module('matmat', ["ngCookies", "ngRoute", "mm.foundation", "proso.apps"]);
 
 app.config(["$httpProvider", function ($httpProvider) {
@@ -32,7 +32,27 @@ app.controller("panel", ["$scope", "userService", function ($scope, userService)
     $(document).foundation('reveal');
 }]);
 
-app.controller("home", ["$scope", function ($scope) {
+app.controller("home", ["$scope", "conceptService", function ($scope, conceptService) {
+    conceptService.getConceptsWithTags('level:0').then(function (concepts0) {
+        enrichConcepts(concepts0);
+        concept = concepts0[0];
+        conceptService.getConceptsWithTags(['level:1']).then(function (subConcepts) {
+            enrichConcepts(subConcepts);
+            concept.subConcepts = subConcepts;
+        });
+        conceptService.getConceptsWithTags('level:1').then(function (concepts) {
+            enrichConcepts(concepts);
+            angular.forEach(concepts, function (concept) {
+                conceptService.getConceptsWithTags(['concept:'+concept.rawName, 'level:2']).then(function (subConcepts) {
+                    enrichConcepts(subConcepts);
+                    concept.subConcepts = subConcepts;
+                });
+            });
+            $scope.concepts = concepts0.concat(concepts);
+            console.log($scope.concepts);
+        });
+    });
+    $(document).foundation('dropdown');
 }]);
 
 app.controller("feedback", ["$scope", "$http", "$location", "userService", function ($scope, $http, $location, userService) {
@@ -54,11 +74,20 @@ app.controller("feedback", ["$scope", "$http", "$location", "userService", funct
         });
         $scope.sending = true;
     };
-
-    $(document).foundation('reveal');
 }]);
 
 var social_auth_callback = function(){
     var element = angular.element($("body"));
     element.injector().get("userService").loadUserFromJS(element.scope());
+};
+
+var enrichConcepts = function(concepts){
+    angular.forEach(concepts, function (concept) {
+        concept.rawName = /"skill\/(.*)"/.exec(concept.query)[1];
+        concept.query = JSON.parse(concept.query);
+        angular.forEach(concept.actions, function (action) {
+            concept[action.identifier] = action;
+            action.url = /\/(.*)/.exec(action.url)[1];
+        });
+    });
 };

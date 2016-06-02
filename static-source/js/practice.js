@@ -18,19 +18,24 @@ app.factory("practiceGlobal", function(){
 );
 
 
-app.controller("practice", ["$scope", "$location", "practiceService", "$routeParams", "$compile", "practiceGlobal", "$timeout", "$cookieStore", function ($scope, $location, practiceService, $routeParams, $compile, practiceGlobal, $timeout, $cookieStore) {
+app.controller("practice", ["$scope", "$location", "practiceService", "$routeParams", "$compile", "practiceGlobal", "$timeout", "$cookieStore", "conceptService", function ($scope, $location, practiceService, $routeParams, $compile, practiceGlobal, $timeout, $cookieStore, conceptService) {
+    var concept = $routeParams.concept;
+
     var loadQuestions = function(){
         practiceService.initSet("common");
-        practiceService.setFilter({filter: [['context/division_visualization_baskets']]});    // TODO
-
         var setLength = practiceService.getConfig().set_length;
         $scope.counter = {
             total: setLength,
             current: 0,
             progress: Array.apply(null, new Array(setLength)).map(Number.prototype.valueOf,0)
         };
+        conceptService.getConceptByName(concept).then(function (c) {
+            concept = c;
+            enrichConcepts([concept]);
+            practiceService.setFilter({filter: concept.query});
 
-        nextQuestion();
+            nextQuestion();
+        });
     };
 
     var saveAnswer = function(answer){
@@ -71,7 +76,7 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
             }, function(msg){
                 $location.path("/post-practice");
                 $scope.loading = true;
-                ga("send", "event", "set", "finished", 'skill name missing'); // TODO skill name
+                ga("send", "event", "set", "finished", concept.name);
         });
     };
 
