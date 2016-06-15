@@ -3,11 +3,16 @@ default:
         random_test:
             nth: 10
         predictive_model:
-            class: proso.models.prediction.PriorCurrentPredictiveModel
+            class: matmat.prediction.TasksHierarchicalPredictiveModel
+            parameters:
+                pfae_good: 3.5
+                pfae_bad: 2.5
+                elo_alpha: 1.2
+                elo_dynamic_alpha: 0.1
         mastery_threshold: 0.9
         practice:
             common:
-                set_length: 10
+                set_length: 5
                 question_queue_size_max: 1
                 question__queue_size_min: 1
                 save_answer_immediately: false
