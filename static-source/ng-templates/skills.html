@@ -24,7 +24,7 @@
 
             <accordion close-others="true">
                 <accordion-group ng-repeat="subConcept in concept.subConcepts" ng-init="userSubStat = userStats[subConcept.identifier]" is-open="subConcept.active">
-                    <accordion-heading><div ng-style="userSubStat.style2">
+                    <accordion-heading><div ng-click="activeSubConcept(subConcept)" ng-style="userSubStat.style2">
                         <i ng-class="{'fi-arrow-right': !subConcept.active, 'fi-arrow-down': subConcept.active}"></i>
                         <div class="right" ng-show="userSubStat.practiced_items_count">
                             <div ng-repeat="is in userSubStat.diamonds track by $index" class="diamond right" ng-class="{green: is}"></div>
@@ -33,6 +33,15 @@
                     </div></accordion-heading>
                     Celkem <b>{{ userSubStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userSubStat.correct_answer_count }} správných</b> a <span class="red">{{ userSubStat.answer_count - userSubStat.correct_answer_count }} špatných</span>
                     <div class="right"><a ng-href="{{ subConcept.practice.url }}"><i class="fi-play"></i> <b>{{ subConcept.name }}</b></a></div>
+
+                    <div ng-show="tables[subConcept.rawName] && tables[subConcept.rawName].loading" class="loader"> </div>
+                    <table ng-show="tables[subConcept.rawName] && !tables[subConcept.rawName].loading" class="user-skill-table">
+                        <tr ng-repeat="row in tables[subConcept.rawName].structure">
+                            <td ng-repeat="c in row" ng-init="cell = tables[subConcept.rawName].data[c]" ng-style="cell.style">
+                                {{ cell.name }}
+                            </td>
+                        </tr>
+                    </table>
                 </accordion-group>
             </accordion>
         </tab>

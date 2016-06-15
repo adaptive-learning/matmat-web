@@ -17,7 +17,7 @@ app.run(["configService", "userService", function(configService, userService) {
     userService.processUser(user);
 }]);
 
-app.service("skillsService", ["$q", "conceptService", function($q, conceptService) {
+app.service("skillsService", ["$q", "conceptService", "$http", function($q, conceptService, $http) {
     var self = this;
     var skills = null;
     var skillsPromise = $q.defer();
@@ -46,6 +46,10 @@ app.service("skillsService", ["$q", "conceptService", function($q, conceptServic
         return skillsPromise.promise;
     };
 
+    self.getTable = function(concept){
+        return $http.get('small_concepts/' + concept);
+    };
+
 }]);
 
 app.controller("panel", ["$scope", "userService", function ($scope, userService) {
@@ -71,7 +75,8 @@ app.controller("home", ["$scope", "skillsService", function ($scope, skillsServi
 
 app.controller("skills", ["$scope", "skillsService", "conceptService", "$routeParams", function ($scope, skillsService, conceptService, $routeParams) {
     var currentConcept = $routeParams.concept;
-    conceptService.getUserStats().then(function (userStats) {
+    console.log('tt');
+    conceptService.getUserStats(true).then(function (userStats) {
         enrichUserStats(userStats);
         $scope.userStats = userStats;
         skillsService.getSkills().then(function (concepts) {
@@ -88,6 +93,7 @@ app.controller("skills", ["$scope", "skillsService", "conceptService", "$routePa
                             if (subConcept.identifier === $scope.currentConcept.identifier){
                                 concept.active = true;
                                 subConcept.active = true;
+                                getTable(subConcept.rawName);
                             }
                         });
                     });
@@ -95,6 +101,31 @@ app.controller("skills", ["$scope", "skillsService", "conceptService", "$routePa
             }
         });
     });
+
+    $scope.tables = {};
+
+    $scope.activeSubConcept = function (concept) {
+        if (!concept.active) {          // activity change after this function
+            getTable(concept.rawName);
+        }
+    };
+
+    var getTable = function (identifier) {
+        if ($scope.tables[identifier]){
+            return;
+        }
+        $scope.tables[identifier] = {'loading': true};
+        skillsService.getTable(identifier)
+            .success(function(response){
+                angular.forEach(response.data, function(concept){
+                    concept.color = getColor(concept.prediction, concept.answer_count);
+                    concept.style = {
+                        'background-color': 'rgba({0}, {1}, {2}, {3})'.format(concept.color.r, concept.color.g, concept.color.b, concept.color.alpha)
+                    };
+                });
+                $scope.tables[identifier] = response;
+            });
+    };
 }]);
 
 app.controller("feedback", ["$scope", "$http", "$location", "userService", function ($scope, $http, $location, userService) {

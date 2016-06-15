@@ -184,6 +184,9 @@ table.user-skill-table {
     border: none;
     background-color: transparent;
 }
+table.user-skill-table tr{
+    background-color: transparent;
+}
 table.user-skill-table td{
     border: 1px solid white;
     text-align: center;
