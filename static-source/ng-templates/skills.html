@@ -18,7 +18,6 @@
                     <div ng-repeat="is in userStat.diamonds track by $index" class="diamond right" ng-class="{green: is}"></div>
                 </div>
                 {{ concept.name }}
-                {{ userStat.prediction }}
             </div>
             Celkem <b>{{ userStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userStat.correct_answer_count }} správných</b> a <span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
             <div class="right"><a ng-href="{{ concept.practice.url }}"><i class="fi-play"></i> Procvičit <b>{{ concept.name }}</b></a></div>
