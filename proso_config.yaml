@@ -12,7 +12,7 @@ default:
         mastery_threshold: 0.9
         practice:
             common:
-                set_length: 5
+                set_length: 10
                 question_queue_size_max: 1
                 question__queue_size_min: 1
                 save_answer_immediately: false
