@@ -59,6 +59,7 @@ m.service("conceptService", ["$http", "$q", function($http, $q) {
             if (userStats !== null && !getFromServer ) {
                 resolve(angular.copy(userStats));
             } else {
+                userStatsPromise = null;
                 _getUserStats()
                     .success(function(){
                         resolve(angular.copy(userStats));
