@@ -76,11 +76,11 @@ class Command(BaseCommand):
         m1 = add_skill('multiplication_small', m0, u'Malá násobilka')
         for b in range(1, 11):
             for a in range(1, b + 1):
-                add_skill('%sx%s' % (a, b), m1, '%s&times;%s' % (a, b))
+                add_skill('%sx%s' % (a, b), m1, '%s×%s' % (a, b))
         m2 = add_skill('multiplication_big', m0, u'Velká násobilka')
         for a in range(1, 11):
             for b in range(11, 21):
-                add_skill('%sx%s' % (a, b), m2, '%s&times;%s' % (a, b))
+                add_skill('%sx%s' % (a, b), m2, '%s×%s' % (a, b))
 
         # Division:
         # ---------
@@ -89,7 +89,7 @@ class Command(BaseCommand):
         for a in range(1, 11):
             for b in range(1, 11):
                 total = a * b
-                add_skill('%s/%s' % (total, b), d1)
+                add_skill('%s/%s' % (total, b), d1, '%s÷%s' % (total, b))
 
         return skills
 
