@@ -12,7 +12,8 @@ class HierarchicalPredictiveModel(PredictiveModel):
         self._elo_alpha = elo_alpha
         self._elo_dynamic_alpha = elo_dynamic_alpha
 
-        self._structure = None
+        self._parents = None
+        self._children = None
 
     def prepare_phase(self, environment, user, item, time, **kwargs):
         return self.prepare_phase_more_items(environment, user, [item], time, **kwargs)
@@ -20,23 +21,25 @@ class HierarchicalPredictiveModel(PredictiveModel):
     def prepare_phase_more_items(self, environment, user, items, time, **kwargs):
         parents = self._load_parents(environment, items)
         all_items = list(set(items + [i for ps in list(parents.values()) for (i, v) in ps]))
+        leaves = [i for i, v in self._get_leaves(items)]
         return {
             'skills': dict(list(zip(
                 all_items, environment.read_more_items('skill', items=all_items, user=user, default=0)))),
             'first_answers': dict(list(zip(
-                items, environment.number_of_first_answers_more_items(items=items)))),
+                leaves, environment.number_of_first_answers_more_items(items=leaves)))),
             'answer_counts': dict(list(zip(
                 all_items, environment.read_more_items('answer_count', user=user, items=all_items, default=0)))),
             'difficulties': dict(list(zip(
-                items, environment.read_more_items('difficulty', items=items, default=0)))),
+                leaves, environment.read_more_items('difficulty', items=leaves, default=0)))),
             'last_times': dict(list(zip(
-                items, environment.last_answer_time_more_items(items=items, user=user)))),
+                leaves, environment.last_answer_time_more_items(items=leaves, user=user)))),
             'parents': parents
         }
 
     def predict_phase(self, data, user, item, time, **kwargs):
         skill = self._load_skill(item, data)
-        difficulty = data['difficulties'][item]
+        leaves = self._get_leaves([item])
+        difficulty = sum([data['difficulties'][i] * v for i, v in leaves]) / len(leaves)
         return predict_simple(
             skill - difficulty,
             number_of_options=len(kwargs['options']) if 'options' in kwargs else 0,
@@ -72,7 +75,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
         self._prepare_structure(environment)
         parents = {}
         while len(items) > 0:
-            found = [(i, self._structure[i]) for i in items if i in self._structure]
+            found = [(i, self._parents[i]) for i in items if i in self._parents]
             new_items = set()
             for i, ps in found:
                 new_items = new_items.union([x[0] for x in ps])
@@ -82,14 +85,17 @@ class HierarchicalPredictiveModel(PredictiveModel):
 
     # @cache_pure TODO
     def _prepare_structure(self, environment):
-        if self._structure is not None:
-            return self._structure
+        if self._parents is not None:
+            return self._parents, self._children
 
         parents = defaultdict(lambda: [])
+        children = defaultdict(lambda: [])
         for _, child, parent, value in environment.read_all_with_key('parent'):
             parents[child].append((parent, value))
-        self._structure = dict(parents  )
-        return self._structure
+            children[parent].append((child, value))
+        self._parents = dict(parents)
+        self._children = dict(children)
+        return self._parents, self._children
 
     def _load_skill(self, item, data):
         skill = 0
@@ -104,15 +110,29 @@ class HierarchicalPredictiveModel(PredictiveModel):
             yield to_find
             to_find = [iw for ps in [data['parents'][i_w2[0]] for i_w2 in to_find if i_w2[0] in data['parents']] for iw in ps]
 
+    def _get_leaves(self, items):
+        to_explore = [(item, 1) for item in items]
+        leaves = defaultdict(lambda:0)
+        while len(to_explore) > 0:
+            new = []
+            for item, v in to_explore:
+                if item not in self._children:
+                    leaves[item] += v
+                else:
+                    for child, vc in self._children[item]:
+                        new.append((child, vc * v))
+            to_explore = new
+        return list(leaves.items())
+
 
 class TasksHierarchicalPredictiveModel(HierarchicalPredictiveModel):
     # @cache_pure TODO
     def _prepare_structure(self, environment):
         """ Remove task items from skill tree """
-        if self._structure is not None:
-            return self._structure
+        if self._parents is not None:
+            return self._parents, self._children
 
-        parents = super()._prepare_structure(environment)
+        parents, children = super()._prepare_structure(environment)
 
         not_task_instances = [parent for ps in parents.values() for parent, _ in ps]
         self._task_instances = set(parents.keys()) - set(not_task_instances)
@@ -122,12 +142,17 @@ class TasksHierarchicalPredictiveModel(HierarchicalPredictiveModel):
             task, vt = parents[task_instance][0]
             skill, vs = parents[task][0]
             parents[task_instance] = [(skill, vs * vt)]
+            if (task, vs) in children[skill]:
+                children[skill].remove((task, vs))
+            children[skill].append((task_instance, vs * vt))
             to_delete.add(task)
         for task in to_delete:
             del parents[task]
+            del children[task]
 
-        self._structure = dict(parents)
-        return self._structure
+        self._parents = dict(parents)
+        self._children = dict(children)
+        return self._parents, self._children
 
     def _iterate_parents_per_level(self, item, data):
         """ Do not track skills for leafs (task instances) """
