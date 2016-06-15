@@ -152,7 +152,7 @@ else:
         },
         'loggers': {
             'django.request': {
-                'handlers': ['console'],
+                'handlers': [],
                 'propagate': True,
                 'level': 'DEBUG',
             }
