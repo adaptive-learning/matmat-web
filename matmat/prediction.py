@@ -69,10 +69,13 @@ class HierarchicalPredictiveModel(PredictiveModel):
                 data['skills'][parent] += alpha_fun(data['answer_counts'][parent]) * update_const * (correct - parent_prediction)
                 environment.write('skill', data['skills'][parent], item=parent, user=user, time=time, answer=answer_id)
                 data['answer_counts'][parent] += 1
-                environment.write('answer_count', data['answer_counts'][parent], item=parent, user=user, time=time, answer=answer_id)
+                environment.write('answer_count', data['answer_counts'][parent], item=parent,
+                                  user=user, time=time, answer=answer_id, audit=False)
 
     def _load_parents(self, environment, items):
-        self._prepare_structure(environment)
+        if self._parents is None:
+            self._parents, self._children = self._prepare_structure(environment)
+
         parents = {}
         while len(items) > 0:
             found = [(i, self._parents[i]) for i in items if i in self._parents]
@@ -83,19 +86,14 @@ class HierarchicalPredictiveModel(PredictiveModel):
             items = list(new_items)
         return parents
 
-    # @cache_pure TODO
+    @cache_pure
     def _prepare_structure(self, environment):
-        if self._parents is not None:
-            return self._parents, self._children
-
         parents = defaultdict(lambda: [])
         children = defaultdict(lambda: [])
         for _, child, parent, value in environment.read_all_with_key('parent'):
             parents[child].append((parent, value))
             children[parent].append((child, value))
-        self._parents = dict(parents)
-        self._children = dict(children)
-        return self._parents, self._children
+        return dict(parents), dict(children)
 
     def _load_skill(self, item, data):
         skill = 0
@@ -126,19 +124,16 @@ class HierarchicalPredictiveModel(PredictiveModel):
 
 
 class TasksHierarchicalPredictiveModel(HierarchicalPredictiveModel):
-    # @cache_pure TODO
+    @cache_pure
     def _prepare_structure(self, environment):
         """ Remove task items from skill tree """
-        if self._parents is not None:
-            return self._parents, self._children
-
         parents, children = super()._prepare_structure(environment)
 
         not_task_instances = [parent for ps in parents.values() for parent, _ in ps]
-        self._task_instances = set(parents.keys()) - set(not_task_instances)
+        task_instances = set(parents.keys()) - set(not_task_instances)
 
         to_delete = set()
-        for task_instance in self._task_instances:
+        for task_instance in task_instances:
             task, vt = parents[task_instance][0]
             skill, vs = parents[task][0]
             parents[task_instance] = [(skill, vs * vt)]
@@ -150,13 +145,11 @@ class TasksHierarchicalPredictiveModel(HierarchicalPredictiveModel):
             del parents[task]
             del children[task]
 
-        self._parents = dict(parents)
-        self._children = dict(children)
-        return self._parents, self._children
+        return dict(parents), dict(children)
 
     def _iterate_parents_per_level(self, item, data):
         """ Do not track skills for leafs (task instances) """
         parents = super()._iterate_parents_per_level(item, data)
-        if item not in self._task_instances:
+        if item in self._children:
             return parents
         return list(parents)[1:]
