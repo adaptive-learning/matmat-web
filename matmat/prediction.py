@@ -1,3 +1,6 @@
+import math
+
+from builtins import print
 from collections import defaultdict
 from proso.django.util import cache_pure
 
@@ -6,11 +9,12 @@ from proso.models.prediction import PredictiveModel, predict_simple
 
 class HierarchicalPredictiveModel(PredictiveModel):
 
-    def __init__(self, pfae_good=1.0, pfae_bad=0.5, elo_alpha=0.8, elo_dynamic_alpha=0.05):
+    def __init__(self, pfae_good=1.0, pfae_bad=0.5, elo_alpha=0.8, elo_dynamic_alpha=0.05, time_penalty_slope=0.9):
         self._pfae_good = pfae_good
         self._pfae_bad = pfae_bad
         self._elo_alpha = elo_alpha
         self._elo_dynamic_alpha = elo_dynamic_alpha
+        self._time_penalty_slope = time_penalty_slope
 
         self._parents = None
         self._children = None
@@ -27,6 +31,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
             'first_answers': environment.number_of_first_answers_more_items(items=leaves),
             'answer_counts': environment.read_more_items('answer_count', user=user, items=all_items, default=0),
             'difficulties': environment.read_more_items('difficulty', items=leaves, default=0),
+            'time_intensities': environment.read_more_items('time_intensity', items=leaves, default=math.log(7 * 1000)),
             'last_times': environment.last_answer_time_more_items(items=leaves, user=user),
             'parents': parents
         }
@@ -44,16 +49,21 @@ class HierarchicalPredictiveModel(PredictiveModel):
         return [self.predict_phase(data, user, i, time, **kwargs) for i in items]
 
     def update_phase(self, environment, data, prediction, user, item, correct, time, answer_id, **kwargs):
+        response_time = kwargs['response_time']
+        response = self._get_response(correct, response_time, data['time_intensities'][item])
+
         alpha_fun = lambda n: self._elo_alpha / (1 + self._elo_dynamic_alpha * n)
         if data['last_times'][item] is None:
             difficulty_alpha = alpha_fun(data['first_answers'][item])
-            data['difficulties'][item] -= difficulty_alpha * (correct - prediction)
+            data['difficulties'][item] -= difficulty_alpha * (response - prediction)
             environment.write('difficulty', data['difficulties'][item], item=item, time=time, answer=answer_id)
+            data['time_intensities'][item] += (math.log(response_time) - data['time_intensities'][item]) / (data['first_answers'][item] + 1)
+            environment.write('time_intensity', data['time_intensities'][item], item=item, time=time, answer=answer_id)
         parents_per_level = [
             list(set([i_w[0] for i_w in parents])) for parents in self._iterate_parents_per_level(item, data)]
         parents_per_level = list(zip(list(range(len(parents_per_level))), parents_per_level))
         parents_per_level.reverse()
-        update_const = self._pfae_good if correct else self._pfae_bad
+        update_const = self._pfae_good if response else self._pfae_bad
         difficulty = data['difficulties'][item]
         for level, parents in parents_per_level:
             for parent in parents:
@@ -61,11 +71,20 @@ class HierarchicalPredictiveModel(PredictiveModel):
                     self._load_skill(parent, data) - difficulty,
                     number_of_options=len(kwargs['options']) if 'options' in kwargs else 0,
                     guess=kwargs.get('guess'))[0]
-                data['skills'][parent] += alpha_fun(data['answer_counts'][parent]) * update_const * (correct - parent_prediction)
+                data['skills'][parent] += alpha_fun(data['answer_counts'][parent]) * update_const * (response - parent_prediction)
                 environment.write('skill', data['skills'][parent], item=parent, user=user, time=time, answer=answer_id)
                 data['answer_counts'][parent] += 1
                 environment.write('answer_count', data['answer_counts'][parent], item=parent,
                                   user=user, time=time, answer=answer_id, audit=False)
+
+    def _get_response(self, correct, response_time, time_intensity):
+        if not correct:
+            return 0
+        mean_response_time = math.exp(time_intensity)
+        if response_time <= mean_response_time:
+            return 1
+        return self._time_penalty_slope ** ((response_time / mean_response_time) - 1)
+
 
     def _load_parents(self, environment, items):
         if self._parents is None:
