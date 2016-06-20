@@ -23,16 +23,11 @@ class HierarchicalPredictiveModel(PredictiveModel):
         all_items = list(set(items + [i for ps in list(parents.values()) for (i, v) in ps]))
         leaves = [i for i, v in self._get_leaves(items)]
         return {
-            'skills': dict(list(zip(
-                all_items, environment.read_more_items('skill', items=all_items, user=user, default=0)))),
-            'first_answers': dict(list(zip(
-                leaves, environment.number_of_first_answers_more_items(items=leaves)))),
-            'answer_counts': dict(list(zip(
-                all_items, environment.read_more_items('answer_count', user=user, items=all_items, default=0)))),
-            'difficulties': dict(list(zip(
-                leaves, environment.read_more_items('difficulty', items=leaves, default=0)))),
-            'last_times': dict(list(zip(
-                leaves, environment.last_answer_time_more_items(items=leaves, user=user)))),
+            'skills': environment.read_more_items('skill', items=all_items, user=user, default=0),
+            'first_answers': environment.number_of_first_answers_more_items(items=leaves),
+            'answer_counts': environment.read_more_items('answer_count', user=user, items=all_items, default=0),
+            'difficulties': environment.read_more_items('difficulty', items=leaves, default=0),
+            'last_times': environment.last_answer_time_more_items(items=leaves, user=user),
             'parents': parents
         }
 

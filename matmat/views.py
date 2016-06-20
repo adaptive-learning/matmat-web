@@ -31,11 +31,11 @@ def small_concepts(request, skill_identifier):
     answer_counts = environment.read_more_items('answer_count', user=request.user.pk, items=items, default=0)
 
     data = {}
-    for s, p, a in zip(skills, predictions, answer_counts):
+    for s, p, i in zip(skills, predictions, items):
         data[s.identifier] = {
             'name': s.name,
             'prediction':p,
-            'answer_count': a
+            'answer_count': answer_counts[i]
         }
 
     return JsonResponse({
