@@ -1,7 +1,6 @@
 var FADEIN_DURATION = 1000;
 var FADEOUT_DURATION = 1000;
 var DEFAULT_WAIT_TIME_BEFORE_Q_FINISH = 1000;
-var EXPECTED_TIME = 4000;
 
 app.factory("practiceGlobal", function(){
         return {
@@ -115,8 +114,8 @@ app.controller("practice", ["$scope", "$location", "practiceService", "$routePar
         var responseTime =  (new Date().getTime() - $scope.question.startTime);
 
         $scope.solved = correctlySolved ? "solved_correctly" : "solved_incorrectly";
-        var fastSolution = responseTime <= EXPECTED_TIME * 2;
-        var extraFastSolution = responseTime <= EXPECTED_TIME;
+        var fastSolution = responseTime <= $scope.question.payload.mean_time * 2;
+        var extraFastSolution = responseTime <= $scope.question.payload.mean_time;
 
         $scope.say = correctlySolved ? "Správně" : "Špatně";
         if ($scope.extraFastSolution && correctlySolved){

@@ -1,10 +1,20 @@
 import math
-
-from builtins import print
 from collections import defaultdict
 from proso.django.util import cache_pure
-
 from proso.models.prediction import PredictiveModel, predict_simple
+
+
+DEFAULT_MEAN_TIME = 7 * 1000
+
+
+def enrich_mean_time(request, json_list, nested):
+    from proso_models import models
+
+    items = [question["payload"]["item_id"] for question in json_list]
+    environment = models.get_environment()
+    times = environment.read_more_items('time_intensity', items=items, default=math.log(DEFAULT_MEAN_TIME))
+    for question in json_list:
+        question["payload"]["mean_time"] =  round(math.exp(times[question["payload"]["item_id"]]))
 
 
 class HierarchicalPredictiveModel(PredictiveModel):
@@ -31,7 +41,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
             'first_answers': environment.number_of_first_answers_more_items(items=leaves),
             'answer_counts': environment.read_more_items('answer_count', user=user, items=all_items, default=0),
             'difficulties': environment.read_more_items('difficulty', items=leaves, default=0),
-            'time_intensities': environment.read_more_items('time_intensity', items=leaves, default=math.log(7 * 1000)),
+            'time_intensities': environment.read_more_items('time_intensity', items=leaves, default=math.log(DEFAULT_MEAN_TIME)),
             'last_times': environment.last_answer_time_more_items(items=leaves, user=user),
             'parents': parents
         }
@@ -49,7 +59,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
         return [self.predict_phase(data, user, i, time, **kwargs) for i in items]
 
     def update_phase(self, environment, data, prediction, user, item, correct, time, answer_id, **kwargs):
-        response_time = kwargs['response_time']
+        response_time = max(200, kwargs['response_time'])       # minimal response time
         response = self._get_response(correct, response_time, data['time_intensities'][item])
 
         alpha_fun = lambda n: self._elo_alpha / (1 + self._elo_dynamic_alpha * n)
