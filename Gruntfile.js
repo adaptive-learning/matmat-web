@@ -26,7 +26,8 @@ module.exports = function(grunt) {
                     'bower_components/foundation/js/vendor/fastclick.js',
                     'bower_components/foundation/js/foundation/foundation.js',
                     'bower_components/foundation/js/foundation/foundation.clearing.js',
-                    'bower_components/foundation/js/foundation/foundation.reveal.js'
+                    'bower_components/foundation/js/foundation/foundation.reveal.js',
+                    'bower_components/toastr/toastr.min.js'
                 ],
                 dest: 'static/libs.min.js'
             },
@@ -57,6 +58,7 @@ module.exports = function(grunt) {
                     'static/matmat.min.css': [
                         "bower_components/foundation/css/normalize.css",
                         "bower_components/foundation-icon-fonts/foundation-icons.css",
+                        "bower_components/toastr/toastr.css",
                         "static-source/css/foundation.css",
                         'static-source/css/*.css'
                     ]
