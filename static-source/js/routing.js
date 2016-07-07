@@ -1,3 +1,16 @@
+app.run(["$rootScope", "$location", "userService", function ($rootScope, $location, userService) {
+    $rootScope.$on('$routeChangeSuccess', function(){
+        ga('send', 'pageview', $location.path());
+    });
+
+    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+        if (next.originalPath === "/teacher" && !userService.status.logged){
+            $location.path("/");
+        }
+        $("#feedback").css('display', next.templateUrl === 'tournament_match.html' ? "none" : "block");
+    });
+}]);
+
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.
@@ -22,6 +35,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         when('/view', {
             templateUrl: 'skills.html',
             controller: "skills"
+        }).
+        when('/teacher', {
+            templateUrl: 'teacher.html',
+            controller: "teacher"
         }).
         otherwise({
             redirectTo: '/'

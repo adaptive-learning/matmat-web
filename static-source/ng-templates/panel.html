@@ -16,11 +16,11 @@
         </li>
     </ul>
     <ul class="right">
-        <li><a style="height: 45px" href="#"><i style="font-size: 1.8em;" class="fi-torsos-all"></i></a></li>
+        <li ng-show="userService.status.logged"><a style="height: 45px" href="teacher"><i style="font-size: 1.8em;" class="fi-torsos-all"></i></a></li>
         <li class="has-dropdown not-click" ng-show="userService.status.logged">
             <a href="#">{{ userService.user.first_name }} {{ userService.user.last_name }}</a>
             <ul class="dropdown">
-                <li><a href="#">Učitelský režim</a></li>
+                <li><a href="/teacher">Učitelský režim</a></li>
                 <li><a href="#">Propojení účtů</a></li>
                 <li ng-click="userService.logout()"><a>Odhlásit se</a></li>
             </ul>

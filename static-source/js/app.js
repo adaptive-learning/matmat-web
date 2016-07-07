@@ -6,10 +6,10 @@ app.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }]);
 
-app.run(["$rootScope", "$location", "userService", function ($rootScope, $location, userService) {
-    $rootScope.$on('$routeChangeSuccess', function(){
-        ga('send', 'pageview', $location.path());
-    });
+app.run([function () {
+    toastr.options = {
+        "positionClass": "toast-top-center"
+    };
 }]);
 
 app.run(["configService", "userService", function(configService, userService) {
@@ -64,7 +64,7 @@ app.controller("panel", ["$scope", "userService", function ($scope, userService)
                 $scope.msg = response.error;
         });
     };
-    $(document).foundation('reveal');
+    $(document).foundation();
 }]);
 
 app.controller("home", ["$scope", "skillsService", function ($scope, skillsService) {
@@ -148,6 +148,56 @@ app.controller("feedback", ["$scope", "$http", "$location", "userService", funct
         $scope.sending = true;
     };
 }]);
+
+app.controller("teacher", ["$scope", "$location", "userService", function ($scope, $location, userService) {
+    $scope.new = {};
+    $scope.data = {};
+    $scope.newClassName = null;
+    $scope.classes = userService.user.profile.owner_of;
+    $scope.profile = userService.user.profile;
+    $scope.status = userService.status;
+
+    $scope.createClass = function () {
+        userService.createClass($scope.data.newClassName)
+            .success(function(response){
+                toastr.success('Třída vytvořena');
+                $scope.data.newClassName = null;
+            }).error(function(response) {
+                toastr.error(response.error);
+            });
+    };
+
+    $scope.joinClass = function () {
+        userService.joinClass($scope.data.joinClassCode)
+            .success(function(response){
+                toastr.success('Přídání se do třídy proběhlo úspěšně');
+                $scope.data.joinClassCode = null;
+            }).error(function(response) {
+            toastr.error(response.error);
+        });
+    };
+
+    $scope.addChild = function(){
+        userService.createStudent($scope.new)
+            .success(function(response){
+                toastr.success('Přidání dítěte proběhlo úspěšně');
+                $scope.new = {};
+            }).error(function(response) {
+                toastr.error(response.error);
+        });
+    };
+
+    $scope.logAs = function(id){
+        userService.loginStudent(id)
+            .success(function(response){
+                $location.path('/');
+            }).error(function(response) {
+                toastr.error(response.error);
+        });
+    };
+
+}]);
+
 
 var social_auth_callback = function(){
     var element = angular.element($("body"));

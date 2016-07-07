@@ -23,3 +23,6 @@ default:
     proso_feedback:
         domain: matmat.cz
         to: [matmat@googlegroups.com]
+    proso_user:
+        allow_create_students: true
+        allow_login_students: true

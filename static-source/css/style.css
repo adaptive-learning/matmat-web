@@ -49,3 +49,7 @@ h1{
     height: 100px;
     width: 100px;
 }
+
+.dropdown_arrow{
+    padding-right: 10px !important;
+}

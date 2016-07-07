@@ -1,0 +1,101 @@
+<style>
+    #content {background-color: white}
+</style>
+
+<div ng-show="status.logged">
+
+    <button ng-click="activate=true" ng-hide="classes.length > 0 || activate">Aktivovat učitelský režim</button>
+
+    <accordion close-others="true" ng-show="classes.length > 0 || activate">
+        <accordion-group heading="Učitelský režim" is-open="classes.length === 0">
+            <div class="heading">
+                <i class="fi-torsos-all"></i>
+                <h1>Učitelský režim</h1>
+                <p>
+                    Zde můžete k vašemu účtu připojit několik dětí a spravovat je v několi třídách.
+                    Ty pak mohou snadno procvičovat ve vlastní verzi systému, která se jim bude přizpůsobovat na míru a bude zobrazovat jejich vlastní postup a statistiky.
+                    To vše bez nutnosti pamatovaní přihlašovacích údajů pro každé dítě  zvlášť.
+                </p>
+            </div>
+
+            <b>Proč mít pro každé dítě zvláštní účet?</b>
+            <p>
+                MatMat se učí o dětech z jejich odpovědí a vybírá jim otázky, které jsou pro ně vhodné.
+                Pokud tedy dítě má vlastní účet, procvičovaní s MatMatem je efektivnější.
+                Navíc děti mohou sledovat svoje dlouhodobé zlepšovaní.
+                Z těchto důvodů je také důležité, aby děti odpovídali samostatně.
+                Není ostuda se splést nebo nevědět - z chyb se učíme všichni včetně doporučovacího algoritmu MatMatu.
+            </p>
+        </accordion-group>
+
+        <accordion-group heading="Přihlásit se jako" is-open="classes.length > 0">
+            <div class="button-bar" ng-repeat="cls in classes">
+                <h3>{{ cls.name }}</h3>
+                <p style="color: grey; font-size: 1rem">kód třídy: <i>{{ cls.code }}</i></p>
+                <button style="margin: 5px" ng-repeat="member in cls.members" ng-click="logAs(member.id)" class="radius">
+                    {{ member.user.first_name }} {{ member.user.last_name }}
+                </button>
+
+            </div>
+        </accordion-group>
+
+        <accordion-group heading="Přehled dětí" is-open='false'>
+            TODO
+        </accordion-group>
+
+        <accordion-group heading="Přidat dítě">
+            <div class="row">
+                <div class="columns medium-4">
+                    <select
+                            ng-model="new.class"
+                            ng-options="cls.id as cls.name for cls in classes"
+                    >
+                    </select>
+                </div>
+                <div class="columns medium-3"><input type="text" ng-model="new.first_name" placeholder="jméno"></div>
+                <div class="columns medium-3"><input type="text" ng-model="new.last_name" placeholder="příjmení"></div>
+                <div class="columns medium-2">
+                    <input ng-disabled="!new.class || !new.first_name" ng-click="addChild()" class="button postfix" type="submit" value="Přidat">
+                </div>
+            </div>
+        </accordion-group>
+
+        <accordion-group heading="Vytvořit třídu">
+            <div style="max-width: 500px "> <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse">
+                        <div class="small-9 columns">
+                            <input ng-model="data.newClassName" placeholder="Zadejte jméno nové třídy">
+                        </div>
+                        <div class="small-3 columns">
+                            <a href="#" class="button postfix" ng-click="createClass()" ng-disabled="!data.newClassName">Vytvořit</a>
+                        </div>
+                    </div>
+                </div>
+            </div> </div>
+        </accordion-group>
+        <hr>
+    </accordion>
+
+
+    <div ng-show="profile.member_of.length > 0">
+        Patříte do následujících tříd: <br/>
+        <div ng-repeat="cls in profile.member_of">
+            {{ cls.name }} ({{ cls.owner.user.first_name }} {{ cls.owner.user.last_name }})
+        </div>
+        <hr>
+    </div>
+
+    <div style="max-width: 500px "> <div class="row">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-9 columns">
+                    <input ng-model="data.joinClassCode" placeholder="Zadejte kód třídy, do které se chcete přidat">
+                </div>
+                <div class="small-3 columns">
+                    <a class="button postfix" ng-click="joinClass()" ng-disabled="!data.joinClassCode">Přidat se</a>
+                </div>
+            </div>
+        </div>
+    </div> </div>
+</div>
