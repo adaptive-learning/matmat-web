@@ -13,7 +13,7 @@ from proso.django.config import get_global_config
 from proso_common.models import Config
 from proso_models.models import update_predictive_model, AnswerMeta
 from proso_tasks.models import TaskInstance, TaskAnswer
-from proso_user.models import UserProfile, Session
+from proso_user.models import UserProfile, Session, Class
 
 
 class Command(BaseCommand):
@@ -52,31 +52,28 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Users successfully migrated'))
 
     def migrate_profiles(self):
-        profiles = {}
-        with connections['old'].cursor() as cursor:
-            cursor.execute('SELECT u.user_id, u.code, cp.user_id as child'
-                           '  FROM core_userprofile u '
-                           '  LEFT JOIN core_userprofile_children c '
-                           '    ON u.id = c.from_userprofile_id'
-                           '  LEFT JOIN core_userprofile cp '
-                           '    ON c.to_userprofile_id = cp.id')
-            for profile in dict_fetch_all(cursor):
-                if profile['user_id'] in profiles:
-                    profiles[profile['user_id']]['children'].append(profile['child'])
-                else:
-                    profiles[profile['user_id']] = {
-                        'code': profile['code'],
-                        'children': [] if profile['child'] is None else [profile['child']]
-                    }
-            with open('matmat-profiles.json', 'w') as output:
-                json.dump(profiles, output)
-            self.stdout.write(self.style.SUCCESS('Profiles successfully exported'))
-
         for user in User.objects.filter(lazyuser__isnull=True):
             UserProfile.objects.get_or_create(user=user)
         self.stdout.write(self.style.SUCCESS('New profiles successfully created'))
 
-        self.stdout.write(self.style.ERROR('Profiles import not implemented!'))  # TODO
+        children_map = defaultdict(lambda: [])
+        with connections['old'].cursor() as cursor:
+            cursor.execute('SELECT u.user_id, u.code, cp.user_id as child'
+                           '  FROM core_userprofile u '
+                           '  RIGHT JOIN core_userprofile_children c '
+                           '    ON u.id = c.from_userprofile_id'
+                           '  LEFT JOIN core_userprofile cp '
+                           '    ON c.to_userprofile_id = cp.id')
+            for profile in dict_fetch_all(cursor):
+                children_map[profile['user_id']].append(profile['child'])
+
+        for user_id, children in children_map.items():
+            profile = UserProfile.objects.get(user_id=user_id)
+            cls, _ = Class.objects.get_or_create(owner_id=profile.pk, name='Moje děti')
+            for child_id in children:
+                cls.members.add(UserProfile.objects.get(user_id=child_id))
+
+        self.stdout.write(self.style.SUCCESS('Classes successfully created'))
 
     def migrate_question(self):
         call_command('generate_tasks')
