@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'uevk2coz&16)x-r(5c_f0njs+9!$j&_(8)f20fa1*pu(&lvr08')
 
-ON_SERVER = os.getenv('ON_SERVER', "False") == "True"
+ON_SERVER = os.getenv('ON_AL', "False") == "True"
 ON_DEV = os.getenv('ON_DEV', "False") == "True"
 DEBUG = os.getenv('DJANGO_DEBUG', "False") == "True"
 
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'matmat.wsgi.application'
 # Database
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://matmat:matmat@localhost/matmat'),
-    "old": dj_database_url.config(default='mysql://matmat:matmat@localhost/matmat'),
+    "old": dj_database_url.config(default='mysql://matmat:matmat@localhost/matmat', env='DATABASE_URL_OLD'),
 }
 
 # Internationalization
@@ -166,7 +166,7 @@ if ON_SERVER and not ON_DEV:
     }
 elif ON_DEV:
     LANGUAGE_DOMAINS = {
-        'cs': 'devel.matmat.cz',
+        'cs': 'staging.matmat.cz',
     }
 else:
     LANGUAGE_DOMAINS = {
