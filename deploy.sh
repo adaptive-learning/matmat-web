@@ -13,6 +13,7 @@ pip install -r $DIR/requirements.txt
 python $DIR/manage.py migrate  --noinput
 
 #js
+export PATH=$PATH:/usr/local/bin
 npm install
 bower install
 grunt
