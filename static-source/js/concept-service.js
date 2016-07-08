@@ -125,4 +125,8 @@ m.service("conceptService", ["$http", "$q", function($http, $q) {
     self.getConceptByQuery = function (query) {
         return getConceptByParam('identifier', query);
     };
+
+    self.getUserStatsBulk = function (users) {
+        return $http.get("/concepts/user_stats_bulk", {params: {users: JSON.stringify(users)}});
+    };
 }]);

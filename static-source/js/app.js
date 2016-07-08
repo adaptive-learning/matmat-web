@@ -75,7 +75,6 @@ app.controller("home", ["$scope", "skillsService", function ($scope, skillsServi
 
 app.controller("skills", ["$scope", "skillsService", "conceptService", "$routeParams", function ($scope, skillsService, conceptService, $routeParams) {
     var currentConcept = $routeParams.concept;
-    console.log('tt');
     conceptService.getUserStats(true).then(function (userStats) {
         enrichUserStats(userStats);
         $scope.userStats = userStats;
@@ -198,6 +197,45 @@ app.controller("teacher", ["$scope", "$location", "userService", function ($scop
 
 }]);
 
+app.directive("childrenComparison", [function(){
+    return {
+        restrict: "E",
+        transclude: true,
+        scope: {
+            cls: "="
+        },
+        templateUrl: "children_comparison.html",
+        controller: ["$scope", "conceptService", "skillsService", function($scope, conceptService, skillsService){
+            $scope.stats = {};
+            var loading = false;
+
+            var ids = [];
+            angular.forEach($scope.cls.members, function (member) {
+                ids.push(member.user.id);
+            });
+
+            skillsService.getSkills().then(function (concepts) {
+                $scope.concepts = concepts.slice(1, concepts.length);
+            });
+
+            var loadStats = function () {
+                loading = true;
+                conceptService.getUserStatsBulk(ids).success(function (response) {
+                    angular.forEach(response.data.users, function (userStats) {
+                        enrichUserStats(userStats.concepts);
+                        $scope.stats[userStats.user_id] = userStats.concepts;
+                    });
+                });
+            };
+
+            $scope.$watch('cls.isOpen', function(isOpen){
+                if (isOpen && !loading){
+                    loadStats();
+                }
+            });
+        }]
+    };
+}]);
 
 var social_auth_callback = function(){
     var element = angular.element($("body"));

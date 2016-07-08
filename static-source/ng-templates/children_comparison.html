@@ -1,0 +1,55 @@
+<div ng-hide="stats" class="loader"></div>
+
+<table ng-cloak ng-show="stats" style="border: none;" class="children-comparison">
+    <thead style="background-color: transparent;">
+    <tr>
+        <th></th>
+        <th ng-repeat-start="concept in concepts" class="rotate" ><div><span> <b>{{ concept.name }}</b> </span></div> </th>
+        <th class="rotate" ng-repeat-end ng-repeat="subConcept in concept.subConcepts"><div><span>
+                        &nbsp;&nbsp;&nbsp;{{ subConcept.name }} </span></div> </th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="child in cls.members | orderBy:[child.user.first_name, child.user.last_name]">
+    <tr>
+        <th>{{ child.user.first_name }} {{ child.user.last_name }}</th>
+        <td class="skill_detail"  ng-repeat-start="concept in concepts"
+            ng-mouseenter="userStat.opened=true" ng-mouseleave="userStat.opened=false"
+            ng-style="userStat.style">
+            {{(userStat = stats[child.user.id][concept.identifier]).initHack}}
+
+            {{ userStat.correct_answer_count || 0 }}/{{ userStat.answer_count || 0  }}
+            <div ng-cloak ng-show="userStat.opened" >
+                <div ng-show="userStat">
+                    {{ child.user.first_name }} {{ child.user.last_name }} - {{ concept.name }}
+                    <br/>
+                    Dovednost: <b>{{ userStat.fromFive }} z 5</b>
+                    <br/>
+                    <b>{{ userStat.answer_count }} odpovědí</b>
+                    <br/>
+                    <b class="green">{{ userStat.correct_answer_count }} správných</b>
+                    <br/><span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
+                </div>
+            </div>
+        </td>
+        <td class="skill_detail" ng-repeat-end ng-repeat="subConcept in concept.subConcepts"
+            ng-mouseenter="userStat.opened=true" ng-mouseleave="userStat.opened=false"
+            ng-style="userStat.style">
+            {{(userStat = stats[child.user.id][subConcept.identifier]).initHack}}
+
+            {{ userStat.correct_answer_count || 0 }}/{{ userStat.answer_count || 0  }}
+            <div ng-cloak ng-show="userStat.opened" >
+                <div ng-show="userStat">
+                    {{ child.user.first_name }} {{ child.user.last_name }} - {{ subConcept.name }}
+                    <br/>
+                    Dovednost: <b>{{ userStat.fromFive }} z 5</b>
+                    <br/>
+                    <b>{{ userStat.answer_count }} odpovědí</b>
+                    <br/>
+                    <b class="green">{{ userStat.correct_answer_count }} správných</b>
+                    <br/><span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

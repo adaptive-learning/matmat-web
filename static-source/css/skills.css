@@ -216,3 +216,65 @@ table.user-skill-table td span{
     font-size: 1.2em;
     font-weight: bold;
 }
+
+th.rotate {
+    height: 70px;
+    width: 55px;
+    white-space: nowrap;
+}
+
+th.rotate > div {
+    transform:
+            translate(12px, 27px)
+            rotate(270deg);
+    width: 20px;
+    font-weight: normal;
+}
+th.rotate > div > span {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 5px;
+}
+
+.children-comparison{
+    width: 100%;
+    margin-top: 90px;
+    border-collapse: separate;
+    border-spacing: 1px 1px;
+    table-layout: fixed;
+}
+.children-comparison td{
+    border: solid transparent 1px;
+    text-align: center;
+    font-size: 0.6rem;
+    padding: 0;
+    height: 55px;
+}
+.children-comparison td:hover{
+    box-shadow: 0 0 3px gray;
+}
+.children-comparison td.skill_detail{position: relative}
+.children-comparison td.skill_detail > div{
+    position: absolute;
+    text-align: left;
+    font-size: 1rem;
+    left: 30px;
+    top: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: solid gray 1px;
+    padding: 5px;
+    z-index: 1000;
+    width: 200px;
+}
+
+.children-comparison td.skill_detail > div .spinner {
+    margin: auto;
+}
+
+.carousel{text-align: center;}
+.clearing-thumbs{ display: inline-block; margin-bottom: 20px}
+.auto-thumbs a > img {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+}

@@ -4,7 +4,7 @@
 
 <div ng-show="status.logged">
 
-    <button ng-click="activate=true" ng-hide="classes.length > 0 || activate">Aktivovat učitelský režim</button>
+    <button ng-click="activate=true " ng-hide="classes.length > 0 || activate">Aktivovat učitelský režim</button>
 
     <accordion close-others="true" ng-show="classes.length > 0 || activate">
         <accordion-group heading="Učitelský režim" is-open="classes.length === 0">
@@ -39,8 +39,12 @@
             </div>
         </accordion-group>
 
-        <accordion-group heading="Přehled dětí" is-open='false'>
-            TODO
+        <accordion-group heading="Přehled dovedností" is-open='false'>
+            <accordion close-others="true">
+                <accordion-group ng-repeat="cls in classes" heading="{{ cls.name }}" is-open="cls.isOpen">
+                    <children-comparison cls="cls">
+                </accordion-group>
+            </accordion>
         </accordion-group>
 
         <accordion-group heading="Přidat dítě">
