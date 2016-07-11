@@ -114,7 +114,8 @@ class Command(BaseCommand):
                            '    a.solving_time, '
                            '    a.answer,'
                            '    a.device, '
-                           '    q.identifier'
+                           '    q.identifier,'
+                           '    a.log'
                            ' FROM questions_answer a '
                            ' LEFT JOIN questions_question q '
                            '    ON q.id = a.question_id '
@@ -123,7 +124,6 @@ class Command(BaseCommand):
                            )
 
             sessions = defaultdict(lambda: (None, None))
-            metas = {}
             answers = []
             for answer in progress.bar(dict_fetch_all(cursor),
                                        every=max(1, min(100, cursor.rowcount // 1000)), expected_size=cursor.rowcount):
@@ -140,11 +140,10 @@ class Command(BaseCommand):
                 sessions[user] = session, answer['timestamp']
 
                 device = answer['device']
-                if device in metas:
-                    meta = metas[device]
-                else:
-                    meta = AnswerMeta.objects.from_content({'device': device})
-                    metas[device] = meta
+                meta = AnswerMeta.objects.from_content({
+                    'device': device,
+                    'client_meta': json.loads(answer['log'])
+                })
 
                 a = TaskAnswer(
                     user_id=user,
