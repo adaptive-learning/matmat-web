@@ -20,3 +20,8 @@ grunt
 
 # static files
 python $DIR/manage.py collectstatic --noinput
+
+# data
+python $DIR/manage.py generate_tasks
+python $DIR/manage.py load_tasks
+
