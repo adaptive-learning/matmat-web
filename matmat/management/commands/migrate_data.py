@@ -140,10 +140,14 @@ class Command(BaseCommand):
                 sessions[user] = session, answer['timestamp']
 
                 device = answer['device']
-                meta = AnswerMeta.objects.from_content({
-                    'device': device,
-                    'client_meta': json.loads(answer['log'])
-                })
+                try:
+                    meta = AnswerMeta.objects.from_content({
+                        'device': device,
+                        'client_meta': json.loads(answer['log'])
+                    })
+                except ValueError:
+                    print('Skipping bad log for answer:', answer)
+                    meta = AnswerMeta.objects.from_content({'device': device,})
 
                 a = TaskAnswer(
                     user_id=user,
