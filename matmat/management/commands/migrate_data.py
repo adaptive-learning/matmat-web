@@ -153,7 +153,7 @@ class Command(BaseCommand):
                     response_time=answer['solving_time'] * 1000,
                     lang='cs',
                     question=task_instance.task.identifier,
-                    answer=answer['answer'],
+                    answer=None if answer['answer'] is None else answer['answer'][:255],
                     session_id=session.pk,
                     config_id=config,
                     metainfo_id=meta.pk
