@@ -156,7 +156,8 @@ class Command(BaseCommand):
                     answer=None if answer['answer'] is None else answer['answer'][:255],
                     session_id=session.pk,
                     config_id=config,
-                    metainfo_id=meta.pk
+                    metainfo_id=meta.pk,
+                    time=answer['timestamp'],
                 )
                 answers.append(a)
                 a.save()
