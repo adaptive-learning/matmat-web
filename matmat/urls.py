@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+import matmat.views
+
 admin.autodiscover()
 
 urlpatterns = patterns(
@@ -14,6 +16,6 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^small_concepts/(?P<skill_identifier>\w+)$', "matmat.views.small_concepts", name='small_concepts'),
-    url(r'^.*$', "matmat.views.index", name='index'),
+    url(r'^small_concepts/(?P<skill_identifier>\w+)$', matmat.views.small_concepts, name='small_concepts'),
+    url(r'^.*$', matmat.views.index, name='index'),
 )
