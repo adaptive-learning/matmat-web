@@ -14,7 +14,7 @@ if not ON_SERVER:
     DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['matmat.cz', 'www.matmat.cz', '*.matmat.cz']
+ALLOWED_HOSTS = ['matmat.cz', 'www.matmat.cz', '.matmat.cz']
 
 
 ADMINS = (
