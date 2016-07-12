@@ -19,7 +19,7 @@
                 </div>
                 {{ concept.name }}
             </div>
-            Celkem <b>{{ userStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userStat.correct_answer_count }} správných</b> a <span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
+            Celkem <b>{{ userStat.answer_count || 0 }} odpovědí</b> z toho <b class="green">{{ userStat.correct_answer_count || 0 }} správných</b> a <span class="red">{{ userStat.answer_count - userStat.correct_answer_count }} špatných</span>
             <div class="right"><a ng-href="{{ concept.practice.url }}"><i class="fi-play"></i> Procvičit <b>{{ concept.name }}</b></a></div>
 
             <accordion close-others="true">
@@ -31,7 +31,7 @@
                         </div>
                         {{ subConcept.name }}
                     </div></accordion-heading>
-                    Celkem <b>{{ userSubStat.answer_count }} odpovědí</b> z toho <b class="green">{{ userSubStat.correct_answer_count }} správných</b> a <span class="red">{{ userSubStat.answer_count - userSubStat.correct_answer_count }} špatných</span>
+                    Celkem <b>{{ userSubStat.answer_count || 0 }} odpovědí</b> z toho <b class="green">{{ userSubStat.correct_answer_count || 0 }} správných</b> a <span class="red">{{ userSubStat.answer_count - userSubStat.correct_answer_count }} špatných</span>
                     <div class="right"><a ng-href="{{ subConcept.practice.url }}"><i class="fi-play"></i> <b>{{ subConcept.name }}</b></a></div>
 
                     <div ng-show="tables[subConcept.rawName] && tables[subConcept.rawName].loading" class="loader"> </div>
