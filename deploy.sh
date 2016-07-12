@@ -23,7 +23,7 @@ python $DIR/manage.py collectstatic --noinput
 
 # data
 python $DIR/manage.py generate_tasks
-python $DIR/manage.py load_tasks $DIR/data/matmat-skills.json $DIR/data/matmat-tasks.json
+python $DIR/manage.py load_tasks $DIR/data/matmat-skills.json $DIR/data/matmat-contexts.json $DIR/data/matmat-tasks.json
 
 python $DIR/manage.py generate_concepts
 python $DIR/manage.py load_concepts $DIR/data/matmat-concepts.json
