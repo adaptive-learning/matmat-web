@@ -5,8 +5,7 @@ import matmat.views
 
 admin.autodiscover()
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^user/', include('proso_user.urls')),
     url(r'^models/', include('proso_models.urls')),
     url(r'^common/', include('proso_common.urls')),
@@ -18,4 +17,4 @@ urlpatterns = patterns(
     url(r'^', include('social.apps.django_app.urls', namespace='social')),
     url(r'^small_concepts/(?P<skill_identifier>\w+)$', matmat.views.small_concepts, name='small_concepts'),
     url(r'^.*$', matmat.views.index, name='index'),
-)
+]
