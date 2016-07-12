@@ -11,6 +11,7 @@ default:
                 elo_dynamic_alpha: 0.1
         mastery_threshold: 0.9
         practice:
+            limit_item_set_size_to_select_from: 100
             common:
                 set_length: 10
                 question_queue_size_max: 1
