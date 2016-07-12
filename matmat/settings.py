@@ -141,23 +141,61 @@ if ON_SERVER:
     RAVEN_CONFIG = {
         'dsn': os.getenv('RAVEN_DSN')
     }
-else:
-    LOGGING = {
-        'version': 1,
-        'handlers': {
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-            },
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
         },
-        'loggers': {
-            'django.request': {
-                'handlers': [],
-                'propagate': True,
-                'level': 'DEBUG',
-            }
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
         },
-    }
+        'mail_admins_javascript': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'proso.django.log.AdminJavascriptEmailHandler'
+        },
+        'request': {
+            'level': 'DEBUG',
+            'class': 'proso.django.log.RequestHandler',
+            'formatter': 'simple'
+        },
+    },
+    'formatters': {
+        'simple': {
+            'format': '[%(asctime)s] %(levelname)s "%(message)s"'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['request', 'mail_admins'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'javascript': {
+            'handlers': ['console', 'mail_admins_javascript'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.db.backends': {
+            'level': 'INFO',
+            'handlers': ['console'],
+        }
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+}
 
 
 if ON_SERVER and not ON_DEV:
@@ -181,3 +219,5 @@ EMAIL_SELF = 'web@matmat.cz'
 EMAIL_CONTACT = 'matmat-web@googlegroups.com'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
+
+
