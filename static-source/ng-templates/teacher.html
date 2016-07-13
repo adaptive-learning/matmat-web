@@ -4,7 +4,7 @@
 
 <div ng-show="status.logged">
 
-    <button ng-click="activate=true " ng-hide="classes.length > 0 || activate">Aktivovat učitelský režim</button>
+    <button ng-click="activate=true " ng-hide="classes.length > 0 || activate || profile.member_of.length > 0">Aktivovat učitelský režim</button>
 
     <accordion close-others="true" ng-show="classes.length > 0 || activate">
         <accordion-group heading="Učitelský režim" is-open="classes.length === 0">
@@ -102,4 +102,5 @@
             </div>
         </div>
     </div> </div>
+    <a ng-click="activate=true" style="font-size: 0.7em" ng-show="profile.member_of.length > 0">Aktivovat učitelský režim</a>
 </div>
