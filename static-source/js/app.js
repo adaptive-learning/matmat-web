@@ -156,6 +156,10 @@ app.controller("teacher", ["$scope", "$location", "userService", function ($scop
     $scope.profile = userService.user.profile;
     $scope.status = userService.status;
 
+    if ($scope.classes.length === 1){
+        $scope.classes[0].isOpen = true;
+    }
+
     $scope.createClass = function () {
         userService.createClass($scope.data.newClassName)
             .success(function(response){
