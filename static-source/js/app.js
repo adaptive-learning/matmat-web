@@ -206,7 +206,7 @@ app.directive("childrenComparison", [function(){
         },
         templateUrl: "children_comparison.html",
         controller: ["$scope", "conceptService", "skillsService", function($scope, conceptService, skillsService){
-            $scope.stats = {};
+            $scope.stats = null;
             var loading = false;
 
             var ids = [];
@@ -221,6 +221,7 @@ app.directive("childrenComparison", [function(){
             var loadStats = function () {
                 loading = true;
                 conceptService.getUserStatsBulk(ids).success(function (response) {
+                    $scope.stats = {};
                     angular.forEach(response.data.users, function (userStats) {
                         enrichUserStats(userStats.concepts);
                         $scope.stats[userStats.user_id] = userStats.concepts;
