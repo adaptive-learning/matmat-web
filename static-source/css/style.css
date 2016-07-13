@@ -53,3 +53,7 @@ h1{
 .dropdown_arrow{
     padding-right: 10px !important;
 }
+
+#proso-toolbar, #proso-toolbar li, #proso-toolbar p{
+    font-size: 1rem;
+}
