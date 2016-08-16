@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" ng-app="matmat">
 <head>
     <meta charset="utf-8">
 
@@ -36,7 +36,7 @@
     {% include "googleanalytics.html" %}
 </head>
 
-<body ng-app="matmat">
+<body>
 
 <div id="wrapper">
     <div ng-include="'panel.html'" ng-controller="panel" class="contain-to-grid" role="navigation"></div>
