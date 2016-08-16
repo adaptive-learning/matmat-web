@@ -1,6 +1,6 @@
 import math
 from collections import defaultdict
-from proso.django.util import cache_pure
+from proso.django.cache import cache_pure
 from proso.models.prediction import PredictiveModel, predict_simple
 
 

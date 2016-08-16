@@ -32,7 +32,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lazysignup',
-    'proso_ab',
     'proso_configab',
     'proso_concepts',
     'proso_common',
