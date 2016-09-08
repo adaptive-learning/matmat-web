@@ -55,6 +55,7 @@ app.service("skillsService", ["$q", "conceptService", "$http", function($q, conc
 app.controller("panel", ["$scope", "userService", "$timeout", function ($scope, userService, $timeout) {
     $scope.userService = userService;
     $scope.credentials = {};
+    $scope.newUser = {};
 
     $scope.login = function () {
         userService.login($scope.credentials.username, $scope.credentials.password)
@@ -64,6 +65,16 @@ app.controller("panel", ["$scope", "userService", "$timeout", function ($scope, 
                 $scope.msg = response.error;
         });
     };
+
+    $scope.signup = function () {
+        userService.signup($scope.newUser)
+            .success(function (response) {
+                $('#signup-modal').foundation('reveal', 'close');
+            }).error(function(response) {
+                $scope.msg = response.error;
+        });
+    };
+
     $timeout(function(){
         $(document).foundation();
     });

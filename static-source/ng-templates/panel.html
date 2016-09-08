@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="login-provider" href="#" id="login-email">
+                    <a class="login-provider" href="#" id="login-email" data-reveal-id="signup-modal">
                         <i class="fi-arrow-up"></i>
                         <span class="provider-signup-text"><b>registrovat</b></span>
                     </a>
@@ -60,23 +60,60 @@
     </ul>
 
     </section>
-
-    <div id="login-modal" class="reveal-modal small" data-reveal>
-        <a class="close-reveal-modal">&#215;</a><br/>
-        <div class="row collapse">
-            <div class="columns medium-12 large-5">
-                <input ng-model="credentials.username" type="text" placeholder="jméno" name="username" />
-            </div>
-            <div class="columns medium-8 large-5">
-                <input ng-model="credentials.password" class="columns medium-5" type="password" placeholder="heslo" name="password" />
-            </div>
-            <div class="columns medium-4 large-2">
-                <a href="#" ng-click="login()" class="button postfix">Přihlásit</a>
-            </div>
-        </div>
-        <p class="text-center" ng-class="msg_color">
-            {{ msg }}
-        </p>
-        <p class="right"><a href="#">registrovat</a></p>
-    </div>
 </nav>
+
+<div id="login-modal" class="reveal-modal small" data-reveal>
+    <a class="close-reveal-modal">&#215;</a><br/>
+    <div class="row collapse">
+        <div class="columns medium-12 large-5">
+            <input ng-model="credentials.username" type="text" placeholder="jméno" name="username" />
+        </div>
+        <div class="columns medium-8 large-5">
+            <input ng-model="credentials.password" class="columns medium-5" type="password" placeholder="heslo" name="password" />
+        </div>
+        <div class="columns medium-4 large-2">
+            <a href="#" ng-click="login()" class="button postfix" >Přihlásit</a>
+        </div>
+    </div>
+    <p class="text-center" ng-class="msg_color">
+        {{ msg }}
+    </p>
+    <p class="right"><a href="#" data-reveal-id="signup-modal">registrovat</a></p>
+</div>
+
+<div id="signup-modal" class="reveal-modal small" data-reveal>
+    <a class="close-reveal-modal">&#215;</a><br/>
+    <div class="row collapse">
+        <legend>
+            Uživatelské jméno
+            <input type="text" ng-model="newUser.username">
+        </legend>
+        <legend>
+            E-mail
+            <input type="text" ng-model="newUser.email">
+        </legend>
+        <legend>
+            Heslo
+            <input type="password" ng-model="newUser.password">
+        </legend>
+        <legend>
+            Kontrola hesla
+            <input type="password" ng-model="newUser.password_check">
+        </legend>
+        <legend>
+            Křestní jméno
+            <input type="text" ng-model="newUser.first_name">
+        </legend>
+        <legend>
+            Příjmení
+            <input type="text" ng-model="newUser.last_name">
+        </legend>
+
+
+        <button ng-disabled="!newUser.username || !newUser.email || !newUser.password || !newUser.password_check || !newUser.first_name || !newUser.last_name"
+                ng-click="signup()">Registrovat</button>
+    </div>
+    <p class="text-center" ng-class="msg_color">
+        {{ msg }}
+    </p>
+</div>
