@@ -52,7 +52,7 @@ app.service("skillsService", ["$q", "conceptService", "$http", function($q, conc
 
 }]);
 
-app.controller("panel", ["$scope", "userService", function ($scope, userService) {
+app.controller("panel", ["$scope", "userService", "$timeout", function ($scope, userService, $timeout) {
     $scope.userService = userService;
     $scope.credentials = {};
 
@@ -64,7 +64,9 @@ app.controller("panel", ["$scope", "userService", function ($scope, userService)
                 $scope.msg = response.error;
         });
     };
-    $(document).foundation();
+    $timeout(function(){
+        $(document).foundation();
+    });
 }]);
 
 app.controller("home", ["$scope", "skillsService", function ($scope, skillsService) {
