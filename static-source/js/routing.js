@@ -40,6 +40,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'teacher.html',
             controller: "teacher"
         }).
+        when('/admin', {
+            templateUrl: 'admin.html'
+        }).
         otherwise({
             redirectTo: '/'
         });
