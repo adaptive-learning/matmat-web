@@ -168,8 +168,6 @@ def prepare_data(input_dir="data/source", output_dir="data"):
             items.loc[id, "skill_lvl_{}".format(i + 1)] = skill
     items["skill"] = items["skill"].astype(int)
     items.rename(inplace=True, columns={"identifier_context": "visualization", 'content': 'data'})
-    items = items[["question", "answer", "visualization", "skill", "skill_lvl_1", "skill_lvl_2", "skill_lvl_3", "data", 'item']]
-
 
     answers['correct'] = 1 * (answers['item_asked'] == answers['item_answered'])
     answers = answers.join(pd.Series(data=items.index, index=items['item'], name='item_id'), on='item')
@@ -185,6 +183,7 @@ def prepare_data(input_dir="data/source", output_dir="data"):
     contexts.rename(inplace=True, columns={"note": "name_cz",})
 
     answers.to_csv(os.path.join(output_dir, "answers.csv"), float_format="%.0f")
+    items = items[["question", "answer", "visualization", "skill", "skill_lvl_1", "skill_lvl_2", "skill_lvl_3", "data"]]
     items.to_csv(os.path.join(output_dir, "items.csv"))
     # contexts.to_csv(os.path.join(output_dir, "visualizations.csv"))
     skills.to_csv(os.path.join(output_dir, "skills.csv"), float_format="%.0f")
