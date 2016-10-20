@@ -21,6 +21,9 @@ default:
     proso_common:
         logging:
             js_errors: true
+        events:
+            source_name: matmat
+            endpoint: https://events.proso.hkar.eu
     proso_feedback:
         domain: matmat.cz
         to: [matmat@googlegroups.com]
