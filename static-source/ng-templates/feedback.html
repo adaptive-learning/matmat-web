@@ -8,7 +8,7 @@
         <textarea ng-required="true" rows="6" ng-model="feedback.text"></textarea>
         Vaše emailová adresa (nepovinné)
         <input name="email" type="text" value="@" ng-model="feedback.email" />
-        <button type="submit" class="right radius">Odeslat</button>
+        <button type="submit" class="right radius" ng-disabled="!feedback.text">Odeslat</button>
     </form>
     <div class="text-center loader" ng-cloak ng-show="sending"></div>
     <a class="close-reveal-modal">&#215;</a>
