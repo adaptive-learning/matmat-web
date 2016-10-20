@@ -43,6 +43,7 @@ they can be used for comfortably item filtering.
  - **log** - JSON with addition information about answer
     - device used by the user
     - log of the user actions during solving the item
+ - **random** - 0 for adaptively selected items and 1 randomly selected items 
 
 
 ## Visualizations
