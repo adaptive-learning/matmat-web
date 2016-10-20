@@ -20,7 +20,7 @@ Note that only some of *the level 2 skills* have children.
 
 Every item belongs to exactly one skill (mostly level 2 or level 3 skills). 
 Features 'skill_lvl_X' stands for ancestor skill of item on given level. 
-they can be used for comfortably item filtering. 
+They can be used for comfortable item filtering. 
 
  - **id**
  - **question** - human readable question represented by item
