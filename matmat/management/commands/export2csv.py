@@ -175,6 +175,7 @@ def prepare_data(input_dir="data/source", output_dir="data"):
     del answers['item']
     answers.rename(inplace=True, columns={"user": "student", 'content': 'log', 'item_id': 'item'})
     answers = answers[["time", "item", "student", "response_time", "correct", "answer", "answer_expected", "log"]]
+    answers['random'] = 1 * answers['log'].str.contains('random_without_options')
     answers = answers.round({"response_time": 3})
 
     skills.rename(inplace=True, columns={"note": "name_cz",})
