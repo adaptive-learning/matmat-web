@@ -82,7 +82,7 @@ class Command(BaseCommand):
 
     def dump_cursor(self, cursor, filename, append=False):
         headers = [re.sub(r'_id$', '', col[0]) for col in cursor.description]
-        with open(filename, 'a' if append else 'w') as csvfile:
+        with open(filename, 'a' if append else 'w', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
             if not append:
                 writer.writerow(headers)
@@ -183,8 +183,8 @@ def prepare_data(input_dir="data/source", output_dir="data"):
 
     contexts.rename(inplace=True, columns={"note": "name_cz",})
 
-    answers.to_csv(os.path.join(output_dir, "answers.csv"), float_format="%.0f")
+    answers.to_csv(os.path.join(output_dir, "answers.csv"), float_format="%.0f", encoding='utf-8')
     items = items[["question", "answer", "visualization", "skill", "skill_lvl_1", "skill_lvl_2", "skill_lvl_3", "data"]]
-    items.to_csv(os.path.join(output_dir, "items.csv"))
+    items.to_csv(os.path.join(output_dir, "items.csv"), encoding='utf-8')
     # contexts.to_csv(os.path.join(output_dir, "visualizations.csv"))
-    skills.to_csv(os.path.join(output_dir, "skills.csv"), float_format="%.0f")
+    skills.to_csv(os.path.join(output_dir, "skills.csv"), float_format="%.0f", encoding='utf-8')
