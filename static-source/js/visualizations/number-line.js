@@ -15,7 +15,6 @@ app.directive("visualizationNumberLine", function(){
             practiceGlobal.keyboard = "empty";
             $scope.selectedNumber = null;
             $scope.simple = $scope.data.answer <= 10;
-            console.log($scope.data); // TODO
             $scope.question = $scope.data.operation ?
                 $scope.data.operands.join(" "+$scope.data.operation.replace('x', '×').replace('/', '÷')+" ") :
                 $scope.data.operands[0];
