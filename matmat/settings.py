@@ -159,6 +159,11 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'proso.django.log.AdminJavascriptEmailHandler'
         },
+        'sentry': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+        },
         'request': {
             'level': 'DEBUG',
             'class': 'proso.django.log.RequestHandler',
@@ -177,7 +182,7 @@ LOGGING = {
             'level': 'DEBUG',
         },
         'javascript': {
-            'handlers': ['console', 'mail_admins_javascript'],
+            'handlers': ['console', 'mail_admins_javascript', 'sentry'],
             'propagate': True,
             'level': 'INFO',
         },
