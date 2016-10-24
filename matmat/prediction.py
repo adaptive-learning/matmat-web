@@ -110,7 +110,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
             items = list(new_items)
         return parents
 
-    @cache_pure
+    @cache_pure()
     def _prepare_structure(self, environment):
         parents = defaultdict(lambda: [])
         children = defaultdict(lambda: [])
@@ -148,7 +148,7 @@ class HierarchicalPredictiveModel(PredictiveModel):
 
 
 class TasksHierarchicalPredictiveModel(HierarchicalPredictiveModel):
-    @cache_pure
+    @cache_pure()
     def _prepare_structure(self, environment):
         """ Remove task items from skill tree """
         parents, children = super()._prepare_structure(environment)
