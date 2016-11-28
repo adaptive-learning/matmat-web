@@ -36,6 +36,7 @@ They can be used for comfortable item filtering.
  - **time** - time of the answer
  - **item** - id of the item
  - **student** - id of the user
+ - **session** - id of user's session 
  - **response_time** - time taken to answer an item in milliseconds
  - **correct** - 0 for incorrect answer and 1 for correct answer
  - **answer** - answer given by the user
