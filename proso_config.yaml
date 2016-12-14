@@ -26,7 +26,7 @@ default:
             endpoint: https://events.proso.hkar.eu
     proso_feedback:
         domain: matmat.cz
-        to: [matmat@googlegroups.com]
+        to: [matmat-web@googlegroups.com]
     proso_user:
         allow_create_students: true
         allow_login_students: true
