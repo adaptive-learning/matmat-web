@@ -25,6 +25,7 @@ module.exports = function(grunt) {
                     'bower_components/proso-apps-js/proso-apps-services.js',
                     'bower_components/foundation/js/vendor/fastclick.js',
                     'bower_components/foundation/js/foundation/foundation.js',
+                    'bower_components/foundation/js/foundation/foundation.alert.js',
                     'bower_components/foundation/js/foundation/foundation.clearing.js',
                     'bower_components/foundation/js/foundation/foundation.reveal.js',
                     'bower_components/toastr/toastr.min.js'
