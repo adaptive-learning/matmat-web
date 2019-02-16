@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^tasks/', include('proso_tasks.urls', namespace="tasks")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^', include('social_django.urls', namespace='social')),
     url(r'^small_concepts/(?P<skill_identifier>\w+)$', matmat.views.small_concepts, name='small_concepts'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     url(r'^.*$', matmat.views.index, name='index'),

@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'proso_user',
     'proso_feedback',
     'proso_tasks',
-    'social.apps.django_app.default',
+    'social_django',
     'matmat',
 )
 
@@ -61,8 +61,8 @@ MIDDLEWARE_CLASSES = (
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'lazysignup.backends.LazySignupBackend',
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
 )
 
 ROOT_URLCONF = 'matmat.urls'
